@@ -1,3 +1,5 @@
+C:\Users\Leoš Gjumija>"C:\Program Files (x86)\EasyPHP-DevServer-14.1VC9\binaries\mysql\bin\mysql.exe" -u lastSeenAdmin -p
+
 CREATE DATABASE IF NOT EXISTS lastSeen;
 
 CREATE USER IF NOT EXISTS 'lastSeenAdmin'@'localhost' IDENTIFIED BY 'lsa';
