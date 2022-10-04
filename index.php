@@ -5,7 +5,7 @@ include './functions/db_conn.php';
 $conn = db_conn('localhost', 'root', '', 'test', TRUE);
 
 ?>
-
+<!DOCTYPE html>
 <html>
     <head>
         <title>Index</title>
