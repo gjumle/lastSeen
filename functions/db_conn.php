@@ -7,7 +7,7 @@ function db_conn($hostname, $username, $password, $db, $ms) {
         die("Connection error: " . mysqli_connect_error() . "<br>");
     }
     if ($ms == TRUE) {
-        echo "<p class='connect'>Connection successfully created.</p>";
+        return "Connection successfully created.";
     }
     return $conn;
 }
