@@ -22,11 +22,12 @@ $conn = db_conn('localhost', 'lastSeenAdmin', 'lsa', 'lastSeen', TRUE);
         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
     </head>
     <body>
-       <div class="nav_bar">
-              <ul>
-                <li><a href="index.php">Home</a></li>
-                <li><a href="login.php">Login</a></li>
-                <li><a href="register.php">Register</a></li>
+       <div class="nav-bar">
+              <ul class='nav-bar-links'>
+                <li><a class='nav-bar-link' href="profile.php">Profile</a></li>
+                <li><a class='nav-bar-link' href="contacs.php">Contacts</a></li>
+                <li><a class='nav-bar-link' href="meetings.php">Meetings</a></li>
+                <li><a class='nav-bar-link' href="register.php">Register</a></li>
               </ul>
        </div>
     </body>
