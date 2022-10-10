@@ -16,18 +16,30 @@ $conn = db_conn('localhost', 'lastSeenAdmin', 'lsa', 'lastSeen', TRUE);
             alert("<?php echo $conn; ?>");
         </script>
         <link rel="stylesheet" href="css/master.css">
-        <!-- FONTS -->
+        <link rel='stylesheet' href='css/mode.css'>
+        <!-- GOOGLE FONTS -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+        <!-- FONT AWESOM -->
+        <script src="https://kit.fontawesome.com/b848197ec1.js" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="js/master.js"></script>
     </head>
     <body>
        <div class="nav-bar">
-              <ul class='nav-bar-links'>
-                <li><a class='nav-bar-link' href="profile.php">Profile</a></li>
-                <li><a class='nav-bar-link' href="contacs.php">Contacts</a></li>
-                <li><a class='nav-bar-link' href="meetings.php">Meetings</a></li>
-                <li><a class='nav-bar-link' href="register.php">Register</a></li>
-              </ul>
+            <div class="nav-bar">
+                <ul class='nav-bar-links'>
+                    <li><a class='nav-bar-link' href="profile.php">Profile</a></li>
+                    <li><a class='nav-bar-link' href="contacs.php">Contacts</a></li>
+                    <li><a class='nav-bar-link' href="meetings.php">Meetings</a></li>
+                </ul>
+            </div>
+            <div class="nav-bar-right">
+                <ul class='nav-bar-links'>
+                    <li><a class='nav-bar-link' href="register.php">Register</a></li>
+                    <li><a class='nav-bar-link nav-bar-icon' href="#"><button id='mode'><i class="fa-solid fa-sun"></i></button></a></li>
+                </ul>
+            </div>
        </div>
     </body>
