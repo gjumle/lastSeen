@@ -1,6 +1,6 @@
 addEventListener('click', () => {
 
-    document.getElementById('mode').onclick = (e) => {
+    document.getElementById('mode') = (e) => {
         if (mode == 'light') {
             document.documentElement.classList.remove("light")
             document.documentElement.classList.add("dark")
