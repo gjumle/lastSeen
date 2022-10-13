@@ -12,7 +12,6 @@
     align-items: center;
     justify-content: center;
     padding: 1rem 0;
-    border-top: 3px solid #a91b60;
     text-align: center;
     width: 75%;
 }
@@ -21,6 +20,7 @@
     font-size: 2rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
+    border-top: 3px solid #a91b60;
 }
 
 .profile-info {

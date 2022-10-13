@@ -4,12 +4,14 @@
     align-items: center;
     height: 75vh;
     text-align: center;
+    flex-direction: column;
 }
 
-.reg-heading {
+.reg-heading h1{
     font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    border-top: 3px solid #a91b60;
 }
 
 .register-field {

@@ -52,10 +52,11 @@ if (isset($_POST['submit'])) {
             </div>
        </div>
        <div class="register-card">
+            <div class="reg-heading">
+                <h1>Register</h1>
+            </div>
             <form action="./register.php" method="POST" class='register'>
-                <div class="reg-heading">
-                    <h1>Register</h1>
-                </div>
+                
                 <div class="register-field">
                     <div class="label">
                         <label for="username">Username</label>

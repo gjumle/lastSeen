@@ -13,6 +13,7 @@ $conn = db_conn('localhost', 'lastSeenAdmin', 'lsa', 'lastSeen', TRUE);
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/master.css">
         <link rel='stylesheet' href='css/mode.css'>
+        <link rel="stylesheet" href="css/contacts.css">
         <!-- GOOGLE FONTS -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,6 +35,59 @@ $conn = db_conn('localhost', 'lastSeenAdmin', 'lsa', 'lastSeen', TRUE);
                     <li><a class='nav-bar-link' href="./register.php">Register</a></li>
                     <li><a class='nav-bar-link nav-bar-icon' href="#"><button id='mode'><i class="fa-solid fa-sun"></i></button></a></li>
                 </ul>
+            </div>
+       </div>
+       <div class="contacts-heading">
+              <h1>Contacts</h1>
+       </div>
+       <div class="contacts-grid">
+              <div class="contacts-grid-item">
+                <div class="contacts-grid-item-header">
+                     <h1>Contact</h1>
+                </div>
+                <div class="contacts-grid-item-body">
+                    <p>Here is your contact info</p>
+                </div>
+            </div>
+            <div class="contacts-grid-item">
+                <div class="contacts-grid-item-header">
+                     <h1>Contact</h1>
+                </div>
+                <div class="contacts-grid-item-body">
+                    <p>Here is your contact info</p>
+                </div>
+            </div>
+            <div class="contacts-grid-item">
+                <div class="contacts-grid-item-header">
+                     <h1>Contact</h1>
+                </div>
+                <div class="contacts-grid-item-body">
+                    <p>Here is your contact info</p>
+                </div>
+            </div>
+            <div class="contacts-grid-item">
+                <div class="contacts-grid-item-header">
+                     <h1>Contact</h1>
+                </div>
+                <div class="contacts-grid-item-body">
+                    <p>Here is your contact info</p>
+                </div>
+            </div>
+            <div class="contacts-grid-item">
+                <div class="contacts-grid-item-header">
+                     <h1>Contact</h1>
+                </div>
+                <div class="contacts-grid-item-body">
+                    <p>Here is your contact info</p>
+                </div>
+            </div>
+            <div class="contacts-grid-item">
+                <div class="contacts-grid-item-header">
+                     <h1>Contact</h1>
+                </div>
+                <div class="contacts-grid-item-body">
+                    <p>Here is your contact info</p>
+                </div>
             </div>
        </div>
     </body>
