@@ -74,10 +74,10 @@ if (isset($_POST['submit'])) {
                 </div>
                 <div class="register-field">
                     <div class="lable">
-                        <label for="password">Confirm password</label>
+                        <label for="password2">Confirm password</label>
                     </div>
                     <div class="input">
-                        <input type="password" name="password" id="password" placeholder="Confirm Password">
+                        <input type="password" name="password2" id="password2" placeholder="Confirm Password">
                     </div>
                 </div>
                 <div class="register-field">

@@ -16,10 +16,21 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+    width: 50%;
     text-align: center;
     margin-bottom: 30px;
     padding: 10px;
+}
+
+.register {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 50%;
+    padding: 1rem;
+    border: 2px solid #a91b60;
 }
 
 .register-field label {
@@ -30,7 +41,6 @@
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 5px;
 }
 
 .register-field input:focus {

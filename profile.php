@@ -11,10 +11,12 @@ $conn = db_conn('localhost', 'lastSeenAdmin', 'lsa', 'lastSeen', TRUE);
         <title>lastSeen</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--
         <script>
             console.log("<?php echo $conn; ?>");
             alert("<?php echo $conn; ?>");
         </script>
+        -->
         <link rel="stylesheet" href="css/master.css">
         <link rel='stylesheet' href='css/mode.css'>
         <link rel='stylesheet' href='css/profile.css'>
