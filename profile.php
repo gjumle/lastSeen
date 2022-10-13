@@ -67,7 +67,7 @@ $conn = db_conn('localhost', 'lastSeenAdmin', 'lsa', 'lastSeen', TRUE);
                             <h2>Email</h2>
                         </div>
                         <div class="info-body">
-                            <p>
+                            <p>addres@domain.xz</p>
                         </div>
                     </div>
                     <div class="profile-item">

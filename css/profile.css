@@ -12,8 +12,9 @@
     align-items: center;
     justify-content: center;
     padding: 1rem 0;
-    border-bottom: 3px solid #eee;
+    border-top: 3px solid #a91b60;
     text-align: center;
+    width: 75%;
 }
 
 .profile-heading h1 {
@@ -29,7 +30,7 @@
     justify-content: center;
     height: 50%;
     padding: 1rem;
-    border: 3px solid #eee;
+    border: 2px solid #a91b60;
     width: 50%;
 }
 
