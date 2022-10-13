@@ -23,8 +23,8 @@ $conn = db_conn('localhost', 'lastSeenAdmin', 'lsa', 'lastSeen', TRUE);
         <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
         <!-- FONT AWESOM -->
         <script src="https://kit.fontawesome.com/b848197ec1.js" crossorigin="anonymous"></script>
+        <!-- AJAX -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="js/master.js"></script>
     </head>
     <body>
        <div class="nav-bar">
