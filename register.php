@@ -13,6 +13,7 @@ $conn = db_conn('localhost', 'lastSeenAdmin', 'lsa', 'lastSeen', TRUE);
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/master.css">
         <link rel='stylesheet' href='css/mode.css'>
+        <link rel='stylesheet' href='css/register.css'>
         <!-- GOOGLE FONTS -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,5 +36,39 @@ $conn = db_conn('localhost', 'lastSeenAdmin', 'lsa', 'lastSeen', TRUE);
                     <li><a class='nav-bar-link nav-bar-icon' href="#"><button id='mode'><i class="fa-solid fa-sun"></i></button></a></li>
                 </ul>
             </div>
+       </div>
+       <div class="register-card">
+            <form action="./functions/register.php" method="POST" class='register'>
+                <div class="reg-heading">
+                    <h1>Register</h1>
+                </div>
+                <div class="register-field">
+                    <div class="label">
+                        <label for="username">Username</label>
+                    </div>
+                    <div class="input">
+                        <input type="text" name="username" id="username" placeholder="Username">
+                    </div>
+                </div>
+                <div class="register-field">
+                    <div class="lable">
+                        <label for="password">Password</label>
+                    </div>
+                    <div class="input">
+                        <input type="password" name="password" id="password" placeholder="Password">
+                    </div>
+                </div>
+                <div class="register-field">
+                    <div class="lable">
+                        <label for="password">Confirm password</label>
+                    </div>
+                    <div class="input">
+                        <input type="password" name="password" id="password" placeholder="Confirm Password">
+                    </div>
+                </div>
+                <div class="register-field">
+                    <input type="submit" value="Register">
+                </div>
+            </form>
        </div>
     </body>

@@ -1,0 +1,109 @@
+.register-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75vh;
+    text-align: center;
+}
+
+.reg-heading {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.register-field {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 10px;
+}
+
+.register-field label {
+    width: 100px;
+}
+
+.register-field input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.register-field input:focus {
+    outline: none;
+    border: 1px solid #a91b60;
+}
+
+.register-field input::placeholder {
+    color: #ccc;
+}
+
+.register-field input:focus::placeholder {
+    color: #a91b60;
+}
+
+.register-field input[type="submit"] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #a91b60;
+    color: #fff;
+    cursor: pointer;
+}
+
+.register-field input[type="submit"]:hover {
+    background: #a91b60;
+}
+
+.register-field input[type="submit"]:focus {
+    outline: none;
+}
+
+.register-field input[type="submit"]:active {
+    background: #a91b60;
+}
+
+.register-field input[type="submit"]:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.register-field input[type="submit"]:disabled:hover {
+    background: #ccc;
+}
+
+.register-field input[type="submit"]:disabled:focus {
+    background: #ccc;
+}
+
+.register-field input[type="submit"]:disabled:active {
+    background: #ccc;
+}
+
+.register-field input[type="submit"]:disabled::placeholder {
+    color: #fff;
+}
+
+.register-field input[type="submit"]:disabled:focus::placeholder {
+    color: #fff;
+}
+
+.register-field input[type="submit"]:disabled:hover::placeholder {
+    color: #fff;
+}
+
+.register-field input[type="submit"]:disabled:active::placeholder {
+    color: #fff;
+}
+
+.register-field label {
+    width: 100px;
+}
