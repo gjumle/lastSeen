@@ -4,6 +4,20 @@ include './functions/db_conn.php';
 
 $conn = db_conn('localhost', 'lastSeenAdmin', 'lsa', 'lastSeen', TRUE);
 
+if (isset($_POST['submit'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $email = $_POST['email'];
+    $password = password_hash($password, PASSWORD_DEFAULT);
+    $sql = "INSERT INTO users (username, password, email) VALUES ('$username', '$password', '$email')";
+    $result = mysqli_query($conn, $sql);
+    if ($result) {
+        header('Location: login.php');
+    } else {
+        echo 'Error: ' . mysqli_error($conn);
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -38,7 +52,7 @@ $conn = db_conn('localhost', 'lastSeenAdmin', 'lsa', 'lastSeen', TRUE);
             </div>
        </div>
        <div class="register-card">
-            <form action="./functions/register.php" method="POST" class='register'>
+            <form action="./register.php" method="POST" class='register'>
                 <div class="reg-heading">
                     <h1>Register</h1>
                 </div>
@@ -67,7 +81,7 @@ $conn = db_conn('localhost', 'lastSeenAdmin', 'lsa', 'lastSeen', TRUE);
                     </div>
                 </div>
                 <div class="register-field">
-                    <input type="submit" value="Register">
+                    <input type="submit" value="Register" href='./profile.php'>
                 </div>
             </form>
        </div>
