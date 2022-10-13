@@ -11,10 +11,6 @@ $conn = db_conn('localhost', 'lastSeenAdmin', 'lsa', 'lastSeen', TRUE);
         <title>lastSeen</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script>
-            console.log("<?php echo $conn; ?>");
-            alert("<?php echo $conn; ?>");
-        </script>
         <link rel="stylesheet" href="css/master.css">
         <link rel='stylesheet' href='css/mode.css'>
         <!-- GOOGLE FONTS -->
@@ -28,9 +24,9 @@ $conn = db_conn('localhost', 'lastSeenAdmin', 'lsa', 'lastSeen', TRUE);
        <div class="nav-bar">
             <div class="nav-bar">
                 <ul class='nav-bar-links'>
-                    <li><a class='nav-bar-link' href="profile.php">Profile</a></li>
-                    <li><a class='nav-bar-link' href="contacs.php">Contacts</a></li>
-                    <li><a class='nav-bar-link' href="meetings.php">Meetings</a></li>
+                    <li><a class='nav-bar-link' href="./profile.php">Profile</a></li>
+                    <li><a class='nav-bar-link' href="./contacts.php">Contacts</a></li>
+                    <li><a class='nav-bar-link' href="./meetings.php">Meetings</a></li>
                 </ul>
             </div>
             <div class="nav-bar-right">
