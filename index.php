@@ -16,7 +16,6 @@ $conn = db_conn('localhost', 'lastSeenAdmin', 'lsa', 'lastSeen', TRUE);
             alert("<?php echo $conn; ?>");
         </script>
         <link rel="stylesheet" href="css/master.css">
-        <link rel='stylesheet' href='css/mode.css'>
         <!-- GOOGLE FONTS -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
