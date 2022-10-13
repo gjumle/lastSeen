@@ -17,6 +17,7 @@ $conn = db_conn('localhost', 'lastSeenAdmin', 'lsa', 'lastSeen', TRUE);
         </script>
         <link rel="stylesheet" href="css/master.css">
         <link rel='stylesheet' href='css/mode.css'>
+        <link rel='stylesheet' href='css/profile.css'>
         <!-- GOOGLE FONTS -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,5 +40,44 @@ $conn = db_conn('localhost', 'lastSeenAdmin', 'lsa', 'lastSeen', TRUE);
                     <li><a class='nav-bar-link nav-bar-icon' href="#"><button id='mode'><i class="fa-solid fa-sun"></i></button></a></li>
                 </ul>
             </div>
+       </div>
+       <div class="profile-card">
+             <div class="profile-heading">
+                    <h1>Profile</h1>
+             </div>
+             <div class="profile-info">
+                    <div class="profile-item">
+                        <div class="info-head">
+                            <h2>First Name</h2>
+                        </div>
+                        <div class="info-body">
+                            <p>John</p>
+                        </div>
+                    </div>
+                    <div class="profile-item">
+                        <div class="info-head">
+                            <h2>Last Name</h2>
+                        </div>
+                        <div class="info-body">
+                            <p>Doe</p>
+                        </div>
+                    </div>
+                    <div class="profile-item">
+                        <div class="info-head">
+                            <h2>Email</h2>
+                        </div>
+                        <div class="info-body">
+                            <p>
+                        </div>
+                    </div>
+                    <div class="profile-item">
+                        <div class="info-head">
+                            <h2>Phone</h2>
+                        </div>
+                        <div class="info-body">
+                            <p>1234567890</p>
+                        </div>
+                    </div>
+             </div>
        </div>
     </body>

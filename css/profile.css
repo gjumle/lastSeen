@@ -1,0 +1,91 @@
+.profile-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 75vh
+}
+
+.profile-heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 0;
+    border-bottom: 2px solid #eee;
+    text-align: center;
+}
+
+.profile-heading h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50%;
+    padding: 1rem;
+    border: 2px solid #eee;
+    width: 50%;
+}
+
+.info-head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.info-head h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.info-head h2 {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #999;
+}
+
+.info-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.info-body p {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #333;
+}
+
+.info-body a {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #333;
+    text-decoration: none;
+}
+
+.info-body a:hover {
+    color: #999;
+}
+
+.info-body a:active {
+    color: #999;
+}
+
+.info-body a:visited {
+    color: #999;
+}
+
+.info-body a:link {
+    color: #999;
+}
