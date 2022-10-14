@@ -80,4 +80,10 @@ $conn = db_conn('localhost', 'lastSeenAdmin', 'lsa', 'lastSeen', TRUE);
              </div>
        </div>
        <script src='./js/mode.js'></script>
+        <footer class='foot'>
+            <div class="footer">
+                <p>lastSeen &copy; 2022</p>
+            </div>
+
+        </footer>
     </body>

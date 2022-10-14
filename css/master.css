@@ -89,3 +89,25 @@
 .nav-nar-right {
     float: right;
 }
+
+.foot {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 1rem 2rem; 
+    background-color: var(--secondary-color);
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    flex-direction: column;
+}
+
+.footer p {
+    padding: 0 1rem;
+    text-decoration: none;
+    color: var(--primary-color);
+}
