@@ -90,6 +90,10 @@
     float: right;
 }
 
+#active {
+    color: #a91b60;
+}
+
 .foot {
     position: fixed;
     bottom: 0;

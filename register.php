@@ -47,7 +47,7 @@ if (isset($_POST['submit'])) {
             </div>
             <div class="nav-bar-right">
                 <ul class='nav-bar-links'>
-                    <li><a class='nav-bar-link' href="./register.php">Register</a></li>
+                    <li><a class='nav-bar-link' href="./register.php" id='active'>Register</a></li>
                     <li><a class='nav-bar-link' href="#" id='mode'>Dark Mode</i></a></li>
                 </ul>
             </div>

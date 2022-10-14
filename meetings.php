@@ -28,7 +28,7 @@ $conn = db_conn('localhost', 'lastSeenAdmin', 'lsa', 'lastSeen', TRUE);
                     <li><a class='nav-bar-link' href="./index.php">Home</a></li>
                     <li><a class='nav-bar-link' href="./profile.php">Profile</a></li>
                     <li><a class='nav-bar-link' href="./contacts.php">Contacts</a></li>
-                    <li><a class='nav-bar-link' href="./meetings.php">Meetings</a></li>
+                    <li><a class='nav-bar-link' href="./meetings.php" id='active'>Meetings</a></li>
                 </ul>
             </div>
             <div class="nav-bar-right">
