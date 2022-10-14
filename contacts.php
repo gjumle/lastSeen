@@ -217,6 +217,126 @@ $conn = db_conn('localhost', 'lastSeenAdmin', 'lsa', 'lastSeen', TRUE);
                     <p>Here is your contact info</p>
                 </div>
             </div>
+            <div class="contacts-grid-item">
+                <div class="contacts-grid-item-header">
+                     <h1>Contact</h1>
+                </div>
+                <div class="contacts-grid-item-body">
+                    <p>Here is your contact info</p>
+                </div>
+            </div>
+            <div class="contacts-grid-item">
+                <div class="contacts-grid-item-header">
+                     <h1>Contact</h1>
+                </div>
+                <div class="contacts-grid-item-body">
+                    <p>Here is your contact info</p>
+                </div>
+            </div>
+            <div class="contacts-grid-item">
+                <div class="contacts-grid-item-header">
+                     <h1>Contact</h1>
+                </div>
+                <div class="contacts-grid-item-body">
+                    <p>Here is your contact info</p>
+                </div>
+            </div>
+            <div class="contacts-grid-item">
+                <div class="contacts-grid-item-header">
+                     <h1>Contact</h1>
+                </div>
+                <div class="contacts-grid-item-body">
+                    <p>Here is your contact info</p>
+                </div>
+            </div>
+            <div class="contacts-grid-item">
+                <div class="contacts-grid-item-header">
+                     <h1>Contact</h1>
+                </div>
+                <div class="contacts-grid-item-body">
+                    <p>Here is your contact info</p>
+                </div>
+            </div>
+            <div class="contacts-grid-item">
+                <div class="contacts-grid-item-header">
+                     <h1>Contact</h1>
+                </div>
+                <div class="contacts-grid-item-body">
+                    <p>Here is your contact info</p>
+                </div>
+            </div>
+            <div class="contacts-grid-item">
+                <div class="contacts-grid-item-header">
+                     <h1>Contact</h1>
+                </div>
+                <div class="contacts-grid-item-body">
+                    <p>Here is your contact info</p>
+                </div>
+            </div>
+            <div class="contacts-grid-item">
+                <div class="contacts-grid-item-header">
+                     <h1>Contact</h1>
+                </div>
+                <div class="contacts-grid-item-body">
+                    <p>Here is your contact info</p>
+                </div>
+            </div>
+            <div class="contacts-grid-item">
+                <div class="contacts-grid-item-header">
+                     <h1>Contact</h1>
+                </div>
+                <div class="contacts-grid-item-body">
+                    <p>Here is your contact info</p>
+                </div>
+            </div>
+            <div class="contacts-grid-item">
+                <div class="contacts-grid-item-header">
+                     <h1>Contact</h1>
+                </div>
+                <div class="contacts-grid-item-body">
+                    <p>Here is your contact info</p>
+                </div>
+            </div>
+            <div class="contacts-grid-item">
+                <div class="contacts-grid-item-header">
+                     <h1>Contact</h1>
+                </div>
+                <div class="contacts-grid-item-body">
+                    <p>Here is your contact info</p>
+                </div>
+            </div>
+            <div class="contacts-grid-item">
+                <div class="contacts-grid-item-header">
+                     <h1>Contact</h1>
+                </div>
+                <div class="contacts-grid-item-body">
+                    <p>Here is your contact info</p>
+                </div>
+            </div>
+            <div class="contacts-grid-item">
+                <div class="contacts-grid-item-header">
+                     <h1>Contact</h1>
+                </div>
+                <div class="contacts-grid-item-body">
+                    <p>Here is your contact info</p>
+                </div>
+            </div>
+            <div class="contacts-grid-item">
+                <div class="contacts-grid-item-header">
+                     <h1>Contact</h1>
+                </div>
+                <div class="contacts-grid-item-body">
+                    <p>Here is your contact info</p>
+                </div>
+            </div>
+            <div class="contacts-grid-item">
+                <div class="contacts-grid-item-header">
+                     <h1>Contact</h1>
+                </div>
+                <div class="contacts-grid-item-body">
+                    <p>Here is your contact info</p>
+                </div>
+            </div>
        </div>
        <div class="contacts-add">
             <button id="add-contact"><i class="fa-solid fa-plus"></i></button>
