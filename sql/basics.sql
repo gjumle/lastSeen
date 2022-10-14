@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS 'contacts' (
   PRIMARY KEY ('id')
 ) DEFAULT CHARSET=latin1;
 
-CREATE TABLE IF NOT EXISTS 'meet' (
+CREATE TABLE IF NOT EXISTS 'meetings' (
   'm_id' int(11) NOT NULL AUTO_INCREMENT,
   'user_id' int(11) NOT NULL, FOREIGN KEY (u_id) REFERENCES users(u_id),
   'contact_id' int(11) NOT NULL, FOREIGN KEY (c_id) REFERENCES contacts(c_id),
