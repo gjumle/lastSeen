@@ -71,4 +71,9 @@ $conn = db_conn('localhost', 'lastSeenAdmin', 'lsa', 'lastSeen', TRUE);
                 <button id="add-meeting"><i class="fa-solid fa-plus"></i></button>
             </div>
        </div>
+       <footer class='foot'>
+            <div class="footer">
+                <p>lastSeen &copy; 2022</p>
+            </div>
+        </footer>
     </body>

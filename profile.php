@@ -87,6 +87,5 @@ $conn = db_conn('localhost', 'lastSeenAdmin', 'lsa', 'lastSeen', TRUE);
             <div class="footer">
                 <p>lastSeen &copy; 2022</p>
             </div>
-
         </footer>
     </body>

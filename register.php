@@ -86,4 +86,9 @@ if (isset($_POST['submit'])) {
                 </div>
             </form>
        </div>
+       <footer class='foot'>
+            <div class="footer">
+                <p>lastSeen &copy; 2022</p>
+            </div>
+        </footer>
     </body>

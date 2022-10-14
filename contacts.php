@@ -221,4 +221,9 @@ $conn = db_conn('localhost', 'lastSeenAdmin', 'lsa', 'lastSeen', TRUE);
        <div class="contacts-add">
             <button id="add-contact"><i class="fa-solid fa-plus"></i></button>
        </div>
+       <footer class='foot'>
+            <div class="footer">
+                <p>lastSeen &copy; 2022</p>
+            </div>
+        </footer>
     </body>
