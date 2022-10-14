@@ -78,6 +78,9 @@ $conn = db_conn('localhost', 'lastSeenAdmin', 'lsa', 'lastSeen', TRUE);
                         </div>
                     </div>
              </div>
+             <div class="profile-add">
+                <button id="add-profile"><i class="fa-solid fa-plus"></i></button>
+            </div>
        </div>
        <script src='./js/mode.js'></script>
         <footer class='foot'>
