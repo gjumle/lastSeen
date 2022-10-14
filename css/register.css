@@ -1,3 +1,13 @@
+:root {
+    --primary-color: #000106;
+    --secondary-color: #fff;
+}
+
+.dark-theme {
+    --primary-color: #fff;
+    --secondary-color: #000106;
+}
+
 .register-card {
     display: flex;
     justify-content: center;
@@ -5,6 +15,7 @@
     height: 75vh;
     text-align: center;
     flex-direction: column;
+    background-color: var(--secondary-color);
 }
 
 .reg-heading h1{
@@ -12,6 +23,7 @@
     font-weight: 600;
     margin-bottom: 0.5rem;
     border-top: 3px solid #a91b60;
+    color: var(--primary-color);
 }
 
 .register-field {
@@ -22,6 +34,7 @@
     text-align: center;
     margin-bottom: 30px;
     padding: 10px;
+    background-color: var(--secondary-color);
 }
 
 .register {
@@ -37,12 +50,14 @@
 
 .register-field label {
     width: 100px;
+    color: var(--primary-color);
 }
 
 .register-field input {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--secondary-color);
+    color: var(--primary-color);
 }
 
 .register-field input:focus {
@@ -51,7 +66,7 @@
 }
 
 .register-field input::placeholder {
-    color: #ccc;
+    color: var(--secondary-color);
 }
 
 .register-field input:focus::placeholder {
@@ -66,12 +81,12 @@
     padding: 10px;
     border: none;   
     background: #a91b60;
-    color: #fff;
+    color: var(--secondary-color);
     cursor: pointer;
 }
 
 .register-field input[type="submit"]:hover {
-    background-color: #fff;
+    background-color: var(--secondary-color);
     color: #a91b60;
     border: 1px solid #a91b60;
 }
@@ -85,36 +100,36 @@
 }
 
 .register-field input[type="submit"]:disabled {
-    background: #ccc;
+    background: var(--secondary-color);
     cursor: not-allowed;
 }
 
 .register-field input[type="submit"]:disabled:hover {
-    background: #ccc;
+    background: var(--secondary-color);
 }
 
 .register-field input[type="submit"]:disabled:focus {
-    background: #ccc;
+    background: var(--secondary-color);
 }
 
 .register-field input[type="submit"]:disabled:active {
-    background: #ccc;
+    background: var(--secondary-color);
 }
 
 .register-field input[type="submit"]:disabled::placeholder {
-    color: #fff;
+    color: var(--secondary-color);
 }
 
 .register-field input[type="submit"]:disabled:focus::placeholder {
-    color: #fff;
+    color: var(--secondary-color);
 }
 
 .register-field input[type="submit"]:disabled:hover::placeholder {
-    color: #fff;
+    color: var(--secondary-color);
 }
 
 .register-field input[type="submit"]:disabled:active::placeholder {
-    color: #fff;
+    color: var(--secondary-color);
 }
 
 .register-field label {

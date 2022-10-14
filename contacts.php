@@ -33,7 +33,7 @@ $conn = db_conn('localhost', 'lastSeenAdmin', 'lsa', 'lastSeen', TRUE);
             <div class="nav-bar-right">
                 <ul class='nav-bar-links'>
                     <li><a class='nav-bar-link' href="./register.php">Register</a></li>
-                    <li><a class='nav-bar-link nav-bar-icon' href="#"><button id='mode'><i class="fa-solid fa-sun"></i></button></a></li>
+                    <li><a class='nav-bar-link' href="#" id='mode'>Dark Mode</i></a></li>
                 </ul>
             </div>
        </div>
