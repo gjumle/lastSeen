@@ -337,10 +337,15 @@ $conn = db_conn('localhost', 'lastSeenAdmin', 'lsa', 'lastSeen', TRUE);
                     <p>Here is your contact info</p>
                 </div>
             </div>
+            <div class="contacts-grid-item">
+                <div class="contacts-add">
+                    <button id="add-contact"><i class="fa-solid fa-plus"></i></button>
+                </div>
+            </div>
        </div>
        <div class="contacts-add">
-            <button id="add-contact"><i class="fa-solid fa-plus"></i></button>
-       </div>
+                    <button id="add-contact"><i class="fa-solid fa-plus"></i></button>
+                </div>
        <footer class='foot'>
             <div class="footer">
                 <p>lastSeen &copy; 2022</p>
