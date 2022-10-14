@@ -37,6 +37,10 @@
     border: 1px solid #a91b60;
 }
 
+.contacts-grid-item h1:hover {
+    color: #a91b60;
+}
+
 .contacts-grid-body {
     display: flex;
     flex-direction: column;
@@ -44,4 +48,8 @@
     align-items: center;
     padding: 10px;
     border: 1px solid #ccc;
+}
+
+.contacts-grid-item-body p {
+    font-style: italic;
 }
