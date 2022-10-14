@@ -86,6 +86,7 @@ if (isset($_POST['submit'])) {
                 </div>
             </form>
        </div>
+       <script src='./js/mode.js'></script>
        <footer class='foot'>
             <div class="footer">
                 <p>lastSeen &copy; 2022</p>

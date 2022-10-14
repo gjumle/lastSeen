@@ -344,8 +344,9 @@ $conn = db_conn('localhost', 'lastSeenAdmin', 'lsa', 'lastSeen', TRUE);
             </div>
        </div>
        <div class="contacts-add">
-                    <button id="add-contact"><i class="fa-solid fa-plus"></i></button>
-                </div>
+            <button id="add-contact"><i class="fa-solid fa-plus"></i></button>
+        </div>
+        <script src='./js/mode.js'></script>
        <footer class='foot'>
             <div class="footer">
                 <p>lastSeen &copy; 2022</p>

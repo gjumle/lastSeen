@@ -1,9 +1,20 @@
+:root {
+    --primary-color: #000106;
+    --secondary-color: #fff;
+}
+
+.dark-theme {
+    --primary-color: #fff;
+    --secondary-color: #000106;
+}
+
 .contacts-heading {
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     flex-direction: column;
+    background-color: var(--secondary-color);
 }
 
 .contacts-heading h1{
@@ -11,6 +22,7 @@
     font-weight: 600;
     margin-bottom: 0.5rem;
     border-top: 3px solid #a91b60;
+    color: var(--primary-color);
 }
 
 .contacts-grid {
@@ -21,6 +33,11 @@
     width: 80%;
     padding: 30px;
     border: 2px solid #a91b60;
+    background-color: var(--secondary-color);
+}
+
+.contacts-grid-item-header h1 {
+    color: var(--primary-color);
 }
 
 .contacts-grid-item {
@@ -29,7 +46,7 @@
     justify-content: center;
     align-items: center;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--secondary-color);
 }
 
 .contacts-grid-item:hover {
@@ -47,11 +64,12 @@
     justify-content: center;
     align-items: center;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--secondary-color);
 }
 
 .contacts-grid-item-body p {
     font-style: italic;
+    color: var(--primary-color);
 }
 
 .contacts-add {
@@ -64,7 +82,7 @@
 
 .contacts-add button {
     background-color: #a91b60;
-    color: #fff;
+    color: var(--secondary-color);
     border: none;
     padding: 10px;
     margin-top: 10px;
@@ -72,7 +90,7 @@
 }
 
 .contacts-add button:hover {
-    background-color: #fff;
+    background-color: var(--secondary-color);
     color: #a91b60;
     border: 1px solid #a91b60;
 }
