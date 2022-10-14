@@ -90,4 +90,7 @@ $conn = db_conn('localhost', 'lastSeenAdmin', 'lsa', 'lastSeen', TRUE);
                 </div>
             </div>
        </div>
+       <div class="contacts-add">
+            <button id="add-contact">Add Contact</button>
+       </div>
     </body>
