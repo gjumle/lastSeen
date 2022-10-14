@@ -11,9 +11,12 @@ $conn = db_conn('localhost', 'lastSeenAdmin', 'lsa', 'lastSeen', TRUE);
         <title>lastSeen</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            console.log("<?php echo $conn; ?>");
+        </script>
         <link rel="stylesheet" href="css/master.css">
         <link rel='stylesheet' href='css/mode.css'>
-        <link rel="stylesheet" href="css/meetings.css">
+        <link rel='stylesheet' href='css/index.css'>
         <!-- GOOGLE FONTS -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,42 +41,17 @@ $conn = db_conn('localhost', 'lastSeenAdmin', 'lsa', 'lastSeen', TRUE);
                 </ul>
             </div>
        </div>
-       <div class="meetings-card">
-              <div class="meetings-heading">
-                <h1>Meetings</h1>
-              </div>
-              <div class="meetings-card-body">
-                <div class="meetings-card-body-item">
-                     <div class="item-heading">
-                          <h1>Meeting</h1>
-                     </div>
-                     <div class="item-body">
-                          <p>Here is your meeting info</p>
-                     </div>
-                </div>
-                <div class="meetings-card-body-item">
-                     <div class="item-heading">
-                          <h1>Meeting</h1>
-                     </div>
-                     <div class="item-body">
-                          <p>Here is your meeting info</p>
-                     </div>
-                </div>
-                <div class="meetings-card-body-item">
-                     <div class="item-heading">
-                          <h1>Meeting</h1>
-                     </div>
-                     <div class="item-body">
-                          <p>Here is your meeting info</p>
-                     </div>
-                </div>
+       <div class="index-card">
+            <div class="index-heading">
+                <h1>lastSeen</h1>
             </div>
-            <div class="meetings-add">
-                <button id="add-meeting"><i class="fa-solid fa-plus"></i></button>
+            <div class="index-text">
+                <p>Wellcome to lastSeen home page</p>
+                <p>lastSeen is a web application that allows you to keep track of your contacts and meetings. You can add, edit and delete contacts and meetings. You can also search for contacts and meetings.</p>
             </div>
        </div>
        <script src='./js/mode.js'></script>
-       <footer class='foot'>
+        <footer class='foot'>
             <div class="footer">
                 <p>lastSeen &copy; 2022</p>
             </div>
