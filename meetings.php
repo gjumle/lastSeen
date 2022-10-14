@@ -36,4 +36,35 @@ $conn = db_conn('localhost', 'lastSeenAdmin', 'lsa', 'lastSeen', TRUE);
                 </ul>
             </div>
        </div>
+       <div class="metings-card">
+              <div class="meetings-card-header">
+                <h1>Meetings</h1>
+              </div>
+              <div class="meetings-card-body">
+                <div class="meetings-card-body-item">
+                     <div class="meetings-card-body-item-header">
+                          <h1>Meeting</h1>
+                     </div>
+                     <div class="meetings-card-body-item-body">
+                          <p>Here is your meeting info</p>
+                     </div>
+                </div>
+                <div class="meetings-card-body-item">
+                     <div class="meetings-card-body-item-header">
+                          <h1>Meeting</h1>
+                     </div>
+                     <div class="meetings-card-body-item-body">
+                          <p>Here is your meeting info</p>
+                     </div>
+                </div>
+                <div class="meetings-card-body-item">
+                     <div class="meetings-card-body-item-header">
+                          <h1>Meeting</h1>
+                     </div>
+                     <div class="meetings-card-body-item-body">
+                          <p>Here is your meeting info</p>
+                     </div>
+                </div>
+              </div>
+       </div>
     </body>
