@@ -48,20 +48,6 @@ mysql> describe users;
 +----------+--------------+------+-----+---------+----------------+
 4 rows in set (0.01 sec)
 
-mysql> describe meetings;
-+------------+--------------+------+-----+-------------------+-----------------------------+
-| Field      | Type         | Null | Key | Default           | Extra                       |
-+------------+--------------+------+-----+-------------------+-----------------------------+
-| m_id       | int(11)      | NO   | PRI | NULL              | auto_increment              |
-| user_id    | int(11)      | NO   | MUL | NULL              |                             |
-| contact_id | int(11)      | NO   | MUL | NULL              |                             |
-| date       | date         | NO   |     | NULL              |                             |
-| time       | time         | NO   |     | NULL              |                             |
-| location   | varchar(255) | NO   |     | NULL              |                             |
-| lastSeen   | timestamp    | NO   |     | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP |
-+------------+--------------+------+-----+-------------------+-----------------------------+
-7 rows in set (0.01 sec)
-
 mysql> describe contacts;
 +----------+--------------+------+-----+---------+----------------+
 | Field    | Type         | Null | Key | Default | Extra          |
@@ -74,4 +60,18 @@ mysql> describe contacts;
 | f_name   | varchar(255) | NO   |     | NULL    |                |
 | s_name   | varchar(255) | NO   |     | NULL    |                |
 +----------+--------------+------+-----+---------+----------------+
+7 rows in set (0.01 sec)
+
+mysql> describe meetings;
++------------+--------------+------+-----+-------------------+-----------------------------+
+| Field      | Type         | Null | Key | Default           | Extra                       |
++------------+--------------+------+-----+-------------------+-----------------------------+
+| m_id       | int(11)      | NO   | PRI | NULL              | auto_increment              |
+| user_id    | int(11)      | NO   | MUL | NULL              |                             |
+| contact_id | int(11)      | NO   | MUL | NULL              |                             |
+| date       | date         | NO   |     | NULL              |                             |
+| time       | time         | NO   |     | NULL              |                             |
+| location   | varchar(255) | NO   |     | NULL              |                             |
+| lastSeen   | timestamp    | NO   |     | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP |
++------------+--------------+------+-----+-------------------+-----------------------------+
 7 rows in set (0.01 sec)
