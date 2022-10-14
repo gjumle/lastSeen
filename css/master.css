@@ -4,11 +4,26 @@
     padding: 0;
 }
 
+:root {
+    --primary-color: #000106;
+    --secondary-color: #fff;
+}
+
+.dark-theme {
+    --primary-color: #fff;
+    --secondary-color: #000106;
+}
+
+#mode {
+    color: var(--primary-color);
+}
+
 .nav-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem; 
+    background-color: var(--secondary-color);
 }
 
 .nav-bar-links {
@@ -21,7 +36,7 @@
 .nav-bar-link {
     padding: 0 1rem;
     text-decoration: none;
-    color: #000;
+    color: var(--primary-color);
 }
 
 .nav-bar-link:hover {

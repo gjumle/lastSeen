@@ -11,12 +11,9 @@ $conn = db_conn('localhost', 'lastSeenAdmin', 'lsa', 'lastSeen', TRUE);
         <title>lastSeen</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!--
         <script>
             console.log("<?php echo $conn; ?>");
-            alert("<?php echo $conn; ?>");
         </script>
-        -->
         <link rel="stylesheet" href="css/master.css">
         <link rel='stylesheet' href='css/mode.css'>
         <link rel='stylesheet' href='css/profile.css'>
@@ -39,7 +36,7 @@ $conn = db_conn('localhost', 'lastSeenAdmin', 'lsa', 'lastSeen', TRUE);
             <div class="nav-bar-right">
                 <ul class='nav-bar-links'>
                     <li><a class='nav-bar-link' href="./register.php">Register</a></li>
-                    <li><a class='nav-bar-link nav-bar-icon' href="#"><button id='mode'><i class="fa-solid fa-sun"></i></button></a></li>
+                    <li><a class='nav-bar-link' href="#" id='mode'>Dark Mode</i></a></li>
                 </ul>
             </div>
        </div>
@@ -82,4 +79,5 @@ $conn = db_conn('localhost', 'lastSeenAdmin', 'lsa', 'lastSeen', TRUE);
                     </div>
              </div>
        </div>
+       <script src='./js/mode.js'></script>
     </body>

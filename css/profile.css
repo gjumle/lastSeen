@@ -1,9 +1,20 @@
+:root {
+    --primary-color: #000106;
+    --secondary-color: #fff;
+}
+
+.dark-theme {
+    --primary-color: #fff;
+    --secondary-color: #000106;
+}
+
 .profile-card {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 75vh
+    height: 75vh;
+    background-color: var(--secondary-color);
 }
 
 .profile-heading {
@@ -21,6 +32,7 @@
     font-weight: 600;
     margin-bottom: 0.5rem;
     border-top: 3px solid #a91b60;
+    color: var(--primary-color);
 }
 
 .profile-info {
@@ -45,13 +57,13 @@
 .info-head h1 {
     font-size: 1.5rem;
     font-weight: 600;
-    color: #333;
+    color: var(--primary-color);
 }
 
 .info-head h2 {
     font-size: 1rem;
     font-weight: 400;
-    color: #999;
+    color: var(--primary-color);
 }
 
 .info-body {
@@ -65,28 +77,28 @@
 .info-body p {
     font-size: 1rem;
     font-weight: 400;
-    color: #333;
+    color: var(--primary-color);
 }
 
 .info-body a {
     font-size: 1rem;
     font-weight: 400;
-    color: #333;
+    color: var(--primary-color);
     text-decoration: none;
 }
 
 .info-body a:hover {
-    color: #999;
+    color: var(--primary-color);
 }
 
 .info-body a:active {
-    color: #999;
+    color: var(--primary-color);
 }
 
 .info-body a:visited {
-    color: #999;
+    color: var(--primary-color);
 }
 
 .info-body a:link {
-    color: #999;
+    color: var(--primary-color);
 }
