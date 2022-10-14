@@ -71,3 +71,26 @@
     color: #999;
     font-style: italic;
 }
+
+.meetings-add {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.meetings-add button {
+    background-color: #a91b60;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.meetings-add button:hover {
+    background-color: #fff;
+    color: #a91b60;
+    border: 1px solid #a91b60;
+}

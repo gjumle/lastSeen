@@ -66,6 +66,9 @@ $conn = db_conn('localhost', 'lastSeenAdmin', 'lsa', 'lastSeen', TRUE);
                           <p>Here is your meeting info</p>
                      </div>
                 </div>
-              </div>
+            </div>
+            <div class="meetings-add">
+                <button id="add-meeting"><i class="fa-solid fa-plus"></i></button>
+            </div>
        </div>
     </body>
