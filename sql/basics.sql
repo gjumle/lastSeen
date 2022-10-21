@@ -20,7 +20,6 @@ CREATE TABLE IF NOT EXISTS users (
 CREATE TABLE IF NOT EXISTS contacts (
   c_id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   username varchar(255) NOT NULL,
-  name varchar(255) NOT NULL,
   email varchar(255) NOT NULL,
   phone varchar(255) NOT NULL,
   f_name varchar(255) NOT NULL,
@@ -54,7 +53,6 @@ mysql> describe contacts;
 +----------+--------------+------+-----+---------+----------------+
 | c_id     | int(11)      | NO   | PRI | NULL    | auto_increment |
 | username | varchar(255) | NO   |     | NULL    |                |
-| name     | varchar(255) | NO   |     | NULL    |                |
 | email    | varchar(255) | NO   |     | NULL    |                |
 | phone    | varchar(255) | NO   |     | NULL    |                |
 | f_name   | varchar(255) | NO   |     | NULL    |                |
