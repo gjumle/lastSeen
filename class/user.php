@@ -62,4 +62,16 @@ class User {
             </tr>";
         }
     }
+
+    public static function renderDataTalbeHead() {
+        return "
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Admin</th>
+            <th>Last Seen</th>
+            <th>Actions</th>
+        </tr>";
+    }
 }
