@@ -47,7 +47,6 @@ $conn = db_conn('localhost', 'lastSeenAdmin', 'lsa', 'lastSeen', TRUE);
             </div>
             <div class="index-text">
                 <p>Wellcome to lastSeen home page</p>
-                <p>lastSeen is a web application that allows you to keep track of your contacts and meetings. You can add, edit and delete contacts and meetings. You can also search for contacts and meetings.</p>
             </div>
        </div>
        <script src='./js/mode.js'></script>
