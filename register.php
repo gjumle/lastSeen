@@ -1,7 +1,5 @@
 <?php
 
-include './functions/db_conn.php';
-
 ?>
 <!DOCTYPE html>
 <html>

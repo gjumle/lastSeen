@@ -11,4 +11,15 @@ class DB {
         }
         return $db;
     }
+
+    static function close() {
+        self::$conn->close();
+    }
+
+    static function query($sql) {
+        $conn = self::connect();
+        $result = $conn->query($sql);
+        self::close();
+        return $result;
+    }
 }

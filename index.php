@@ -1,9 +1,5 @@
 <?php
 
-include './functions/db_conn.php';
-
-$conn = db_conn('localhost', 'lastSeenAdmin', 'lsa', 'lastSeen', TRUE);
-
 ?>
 <!DOCTYPE html>
 <html>

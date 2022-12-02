@@ -74,4 +74,22 @@ class User {
             <th>Actions</th>
         </tr>";
     }
+
+    public function saveToDB() {
+        $conn = DB::connect();
+        $sql = "UPDATE users SET username = '" . $this->username . "', password = '" . $this->password . "', admin = '" . $this->admin . "', lastSeen = '" . $this->lastSeen . "' WHERE uid = " . $this->uid;
+        $conn->query($sql);
+    }
+    
+    public function deleteFromDB() {
+        $conn = DB::connect();
+        $sql = "DELETE FROM users WHERE uid = " . $this->uid;
+        $conn->query($sql);
+    }
+
+    public function insertToDB() {
+        $conn = DB::connect();
+        $sql = "INSERT INTO users (username, password, admin, lastSeen) VALUES ('" . $this->username . "', '" . $this->password . "', '" . $this->admin . "', '" . $this->lastSeen . "')";
+        $conn->query($sql);
+    }
 }
