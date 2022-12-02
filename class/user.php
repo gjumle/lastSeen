@@ -39,4 +39,27 @@ class User {
             <td><input type='submit' name='" . $btnName . "' value='Save'></td>
         </form>";
     }
+
+    private function getAdminAsString() {
+        return $this->admin == 1 ? "Yes" : "No";
+    }
+    
+    public function renderAsRowTable() {
+        if (isset($_GET['edit']) && $this->udi == $_GET['edit']) {
+            return $this->renderForm();
+        } else {
+            return "
+            <tr>
+                <td>#" . $this->uid . "</td>
+                <td>" . $this->username . "</td>
+                <td>" . $this->password . "</td>
+                <td>" . $this->getAdminAsString() . "</td>
+                <td>" . $this->lastSeen . "</td>
+                <td>
+                    <a href='?edit=" . $this->uid . "'>Edit</a>
+                    <a href='?delete=" . $this->uid . "'>Delete</a>
+                </td>
+            </tr>";
+        }
+    }
 }
