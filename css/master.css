@@ -7,12 +7,13 @@
 :root {
     --primary-color: #000106;
     --secondary-color: #fff;
-    --hover-color: #a91b60;
+    --color-hover: #a91b60;
 }
 
 .dark-theme {
     --primary-color: #fff;
     --secondary-color: #000106;
+    --color-hover: #a91b60;
 }
 
 #mode {
@@ -41,11 +42,11 @@
 }
 
 .nav-bar-link:hover {
-    color: var(--hover-color);
+    color: var(--color-hover);
 }
 
 .nav-bar-link.active {
-    color: var(--hover-color);
+    color: var(--color-hover);
 }
 
 .nav-bar-link.active::after {
@@ -62,11 +63,11 @@
 }
 
 .nav-bar-link.active:hover {
-    color: var(--hover-color);
+    color: var(--color-hover);
 }
 
 .nav-bar-link:hover::after {
-    background: var(--hover-color);
+    background: var(--color-hover);
 }
 
 .nav-bar-link::after {
@@ -74,7 +75,7 @@
     display: block;
     width: 0%;
     height: 2px;
-    background: var(--hover-color);
+    background: var(--color-hover);
     margin-top: 0.5rem;
     transition: width 0.3s ease;
 }
@@ -84,7 +85,7 @@
 }
 
 .nav-bar-link:hover {
-    color: var(--hover-color);
+    color: var(--color-hover);
 }
 
 .nav-nar-right {
@@ -92,7 +93,12 @@
 }
 
 #active {
-    color: var(--hover-color);
+    color: var(--color-hover);
+}
+
+body {
+    background-color: var(--priamry-color);
+    color: var(--secondary-color);
 }
 
 .foot {

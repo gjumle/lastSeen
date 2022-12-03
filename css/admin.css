@@ -1,5 +1,9 @@
+.root {
+    --color-hover: #00ff00;
+}
+
 .dark-theme {
     --primary-color: #00ff15;
     --secondary-color: #000106;
-    --hover-color: #00ff00;
+    --color-hover: #00ff00;
 }
