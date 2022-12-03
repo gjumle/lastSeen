@@ -65,6 +65,14 @@
                     </div>
                 </div>
                 <div class="register-field">
+                    <div class="lable">
+                        <label for="">Admin</label>
+                    </div>
+                    <div class="input">
+                        <input type="checkbox" name="admin" id="admin" value="1">
+                    </div>
+                </div>
+                <div class="register-field">
                     <input type="submit" value="Register" href='./register.php?action=insertUser'>
                 </div>
                 <?php
