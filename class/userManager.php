@@ -1,6 +1,5 @@
 <?php
 class UserManager {
-    private $users = array();
 
     public static function renderDatatable() {
         self::formHandler();
@@ -13,7 +12,16 @@ class UserManager {
         return $ret . "</table>";
     }
 
-    public static function getAllInstancesAsArray() {
+    private static function renderAllAsTableRow() {
+        $users = self::getAllInstancesAsArray();
+        $ret = "";
+        foreach ($users as $user) {
+            $ret .= $user->renderAsRowTable();
+        }
+        return $ret;
+    }
+
+    private static function getAllInstancesAsArray() {
         $condition = $userID > 0 ? "u_id = " . $userID : "1";
 
         $conn = DB::connect();
@@ -28,12 +36,12 @@ class UserManager {
         return $ret;
     }
 
-    public static function getOneInstance($userID) {
+    private static function getOneInstance($userID) {
         $user = self::getAllInstancesAsArray($userID);
         return $user[0];
     }
 
-    public static function formHandler() {
+    private static function formHandler() {
         if (isset($_POST['insertNewUser'])) {
             $conn = DB::connect();
             $sql = "INSERT INTO users (name, password, admin, last_seen) VALUES ('" . $_POST['username'] . "', '" . $_POST['password'] . "', '" . $_POST['admin'] . "', '" . $_POST['lastSeen'] . "')";
