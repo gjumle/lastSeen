@@ -7,6 +7,7 @@
 :root {
     --primary-color: #000106;
     --secondary-color: #fff;
+    --hover-color: #a91b60;
 }
 
 .dark-theme {
@@ -40,11 +41,11 @@
 }
 
 .nav-bar-link:hover {
-    color: #a91b60;
+    color: var(--hover-color);
 }
 
 .nav-bar-link.active {
-    color: #a91b60;
+    color: var(--hover-color);
 }
 
 .nav-bar-link.active::after {
@@ -61,11 +62,11 @@
 }
 
 .nav-bar-link.active:hover {
-    color: #a91b60;
+    color: var(--hover-color);
 }
 
 .nav-bar-link:hover::after {
-    background: #a91b60;
+    background: var(--hover-color);
 }
 
 .nav-bar-link::after {
@@ -73,7 +74,7 @@
     display: block;
     width: 0%;
     height: 2px;
-    background: #a91b60;
+    background: var(--hover-color);
     margin-top: 0.5rem;
     transition: width 0.3s ease;
 }
@@ -83,7 +84,7 @@
 }
 
 .nav-bar-link:hover {
-    color: #a91b60;
+    color: var(--hover-color);
 }
 
 .nav-nar-right {
@@ -91,7 +92,7 @@
 }
 
 #active {
-    color: #a91b60;
+    color: var(--hover-color);
 }
 
 .foot {

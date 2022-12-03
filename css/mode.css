@@ -2,6 +2,7 @@
 :root.light {
 	--color-bg: #fff;
 	--color-fg: #333;
+    --color-hover: #a91b60;
 }
 
 :root.dark {
@@ -22,6 +23,6 @@ body {
 }
 
 #mode:hover {
-    color: #a91b60;
+    color: var(--color-hover);
     cursor: pointer;
 }

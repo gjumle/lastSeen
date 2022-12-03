@@ -20,6 +20,7 @@ if (currentTheme == "dark") {
 btn.addEventListener("click", function() {
     document.body.classList.toggle("dark-theme");
     let theme = "light";
+    mode.innerHTML = "Dark Mode";
     if (document.body.classList.contains("dark-theme")) {
         mode.innerHTML = "Light Mode";
         theme = "dark";
