@@ -43,7 +43,9 @@ spl_autoload_register("autoloadModel");
             </div>
        </div>
        <div class="admin-card">
-
+        <?php
+        
+        ?>
        </div>
        <script src='./js/mode.js'></script>
        <footer class='foot'>

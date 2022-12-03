@@ -65,8 +65,11 @@
                     </div>
                 </div>
                 <div class="register-field">
-                    <input type="submit" value="Register" href='./profile.php'>
+                    <input type="submit" value="Register" href='./profile.php?action=isnertUser'>
                 </div>
+                <?php
+
+                ?>
             </form>
        </div>
        <script src='./js/mode.js'></script>
