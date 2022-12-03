@@ -42,18 +42,18 @@ class UserManager {
     }
 
     private static function formHandler() {
-        if (isset($_POST['insertNewUser'])) {
+        if (isset($_GET['action']) && $_GET['action'] == "insertUser") {
             $conn = DB::connect();
             $sql = "INSERT INTO users (name, password, admin, last_seen) VALUES ('" . $_POST['username'] . "', '" . $_POST['password'] . "', '" . $_POST['admin'] . "', '" . $_POST['lastSeen'] . "')";
             $conn->query($sql);
-        } else if (isset($_POST['updateUser'])) {
-            $user = self::getOneInstance($_POST['uid']);
+        } else if (isset($_GET['action']) && $_GET['action'] == "updateUser") {
+            $user = self::getOneInstance($_POST['u_id']);
             $user->username = $_POST['username'];
             $user->password = $_POST['password'];
             $user->admin = $_POST['admin'];
             $user->lastSeen = $_POST['lastSeen'];
             $user->saveToDB();
-        } else if (isset($_GET['delete'])) {
+        } else if (isset($_GET['action']) && $_GET['action'] == "deleteUser") {
             $user = self::getOneInstance($_GET['delete']);
             $user->deleteFromDB();
         }

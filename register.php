@@ -65,10 +65,12 @@
                     </div>
                 </div>
                 <div class="register-field">
-                    <input type="submit" value="Register" href='./profile.php?action=isnertUser'>
+                    <input type="submit" value="Register" href='./register.php?action=insertUser'>
                 </div>
                 <?php
-
+                    if (isset($_GET['action'])) {
+                        $user = userManager::formHandler();
+                    }
                 ?>
             </form>
        </div>
