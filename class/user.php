@@ -14,7 +14,7 @@ class User {
         $this->lastSeen = $lastSeen;
     }
 
-    public function renderFomr() {
+    public function renderForm() {
         if ($this->uid > 0) {
             $userID == $this->uid;
             $userName == $this->username;
@@ -63,7 +63,7 @@ class User {
         }
     }
 
-    public static function renderDataTalbeHead() {
+    public static function renderDataTableHead() {
         return "
         <tr>
             <th>ID</th>
