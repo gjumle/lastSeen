@@ -12,7 +12,7 @@ class UserManager {
         return $ret . "</table>";
     }
 
-    private static function renderAllAsTableRow() {
+    public static function renderAllAsTableRow() {
         $users = self::getAllInstancesAsArray();
         $ret = "";
         foreach ($users as $user) {
@@ -21,8 +21,8 @@ class UserManager {
         return $ret;
     }
 
-    private static function getAllInstancesAsArray() {
-        $condition = $userID > 0 ? "u_id = " . $userID : "1";
+    public static function getAllInstancesAsArray() {
+        $condition = $uid > 0 ? "u_id = " . $uid : "1";
 
         $conn = DB::connect();
         $sql = "SELECT * FROM users WHERE " . $condition . " ORDER BY name ASC";
@@ -36,12 +36,12 @@ class UserManager {
         return $ret;
     }
 
-    private static function getOneInstance($userID) {
+    public static function getOneInstance($userID) {
         $user = self::getAllInstancesAsArray($userID);
         return $user[0];
     }
 
-    private static function formHandler() {
+    public static function formHandler() {
         if (isset($_GET['action']) && $_GET['action'] == "insertUser") {
             $conn = DB::connect();
             $sql = "INSERT INTO users (name, password, admin) VALUES ('" . $_POST['username'] . "', '" . $_POST['password'] . "', '" . $_POST['admin'] . "', '" . $_POST['lastSeen'] . "')";

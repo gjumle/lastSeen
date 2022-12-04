@@ -82,11 +82,10 @@ spl_autoload_register("autoloadModel");
                     <input type="submit" value="Register" href='./register.php?action=insertUser'>
                 </div>
                 <?php
-                    if (isset($_GET['action'])) {
-                        $user = new User();
-                        $user = UserManager::getOneInstance();
-                        UserManager::formHandler();
-                    }
+                    $user = new User();
+                    $user = UserManager::getAllInstancesAsArray();
+                    $user = UserManager::getOneInstance($user->uid);
+                    UserManager::formHandler();
                 ?>
             </form>
        </div>
