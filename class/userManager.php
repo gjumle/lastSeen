@@ -44,7 +44,7 @@ class UserManager {
     private static function formHandler() {
         if (isset($_GET['action']) && $_GET['action'] == "insertUser") {
             $conn = DB::connect();
-            $sql = "INSERT INTO users (name, password, admin, last_seen) VALUES ('" . $_POST['username'] . "', '" . $_POST['password'] . "', '" . $_POST['admin'] . "', '" . $_POST['lastSeen'] . "')";
+            $sql = "INSERT INTO users (name, password, admin) VALUES ('" . $_POST['username'] . "', '" . $_POST['password'] . "', '" . $_POST['admin'] . "', '" . $_POST['lastSeen'] . "')";
             $conn->query($sql);
         } else if (isset($_GET['action']) && $_GET['action'] == "updateUser") {
             $user = self::getOneInstance($_POST['u_id']);
