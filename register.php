@@ -77,7 +77,7 @@
                 </div>
                 <?php
                     if (isset($_GET['action'])) {
-                        $user = new User();
+                        $user = UserManager::getOneInstance();
                         $user = UserManager::formHandler();
 
                     }
