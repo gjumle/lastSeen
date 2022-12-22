@@ -74,12 +74,19 @@ spl_autoload_register("autoloadModel");
                     <input type="submit" value="Register" href='./register.php?action=insertUser'>
                 </div>
                 <?php
-                /*
-                    $user = new User();
-                    $user = UserManager::getAllInstancesAsArray();
-                    $user = UserManager::getOneInstance($user->uid);
-                    UserManager::formHandler();
-                */
+                if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['password2'])) {
+                    $username = $_POST['username'];
+                    $password = $_POST['password'];
+                    $password2 = $_POST['password2'];
+                    if ($password == $password2) {
+                        $user = new User();
+                        $user->setUsername($username);
+                        $user->setPassword($password);
+                        $user->insertUser();
+                    } else {
+                        echo "<p>Passwords do not match</p>";
+                    }
+                }
                 ?>
             </form>
        </div>
