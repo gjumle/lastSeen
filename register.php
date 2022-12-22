@@ -79,10 +79,8 @@ spl_autoload_register("autoloadModel");
                     $password = $_POST['password'];
                     $password2 = $_POST['password2'];
                     if ($password == $password2) {
-                        $user = new User();
-                        $user->setUsername($username);
-                        $user->setPassword($password);
-                        $user->insertUser();
+                        $user = new User($username, $password);
+                        $user->insertToDB();
                     } else {
                         echo "<p>Passwords do not match</p>";
                     }
