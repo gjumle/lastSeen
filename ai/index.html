@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Profil uživatele - lastSeen</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 80%;
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: white;
+      border: 1px solid lightgrey;
+      border-radius: 5px;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+    .profile {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .contacts {
+      width: 100%;
+      text-align: center;
+    }
+    h1 {
+      color: blue;
+      margin-top: 0;
+    }
+    p {
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      display: inline-block;
+      margin-right: 10px;
+      font-size: 14px;
+    }
+    /* ... styling from previous example ... */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #333;
+      color: white;
+      padding: 0 20px;
+      transition: background-color 0.2s;
+    }
+    .nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      margin-right: 10px;
+    }
+    .nav:hover {
+      background-color: #444;
+    }
+    .container {
+      /* ... styling from previous example ... */
+      animation: fadein 0.5s;
+    }
+    @keyframes fadein {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="nav">
+    <a href="#">Home</a>
+    <a href="#">Profile</a>
+    <a href="#">Contacts</a>
+    <a href="#">Settings</a>
+  </div>
+  <div class="container">
+    <!-- ... content from previous example ... -->
+    <div class="profile">
+      <h1>Můj profil</h1>
+      <p>Jméno: John Smith</p>
+      <p>Email: john.smith@example.com</p>
+      <p>Telefon: 555-555-1234</p>
+    </div>
+    <div class="contacts">
+      <h2>Mé kontakty</h2>
+      <ul>
+        <li>Jane Doe</li>
+        <li>Bob Smith</li>
+        <li>Mary Johnson</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
