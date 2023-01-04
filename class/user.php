@@ -74,4 +74,11 @@ class User {
         $conn->query($sql);
         $conn->close();
     }
+
+    public function delefeFromDB() {
+        $conn = DB::connect();
+        $sql = 'DELETE FROM users WHERE u_id=' . $uid;
+        $conn->query($sql);
+        $conn->close();
+    }
 }
