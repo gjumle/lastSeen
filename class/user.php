@@ -8,12 +8,51 @@ class User {
     private $admin;
     private $city;
 
-    private function __construct($uid = null, $username = null, $password = null, $email = null, $admin = null, $city = null) {
+    public function __construct($uid = null, $username = null, $password = null, $email = null, $admin = null, $city = null) {
         $this->uid = $uid;
         $this->usermame = $username;
         $this->password = $password;
         $this->email = $email;
         $this->admin = $admin;
         $this->city = $city;
+    }
+
+    public static function renderForm() {
+        if (isset($_POST['edit'])) {
+            $uid = $this->uid;
+            $username = $this->username;
+            $password = $this->password;
+            $email = $this->email;
+            $admin = $this->admin;
+            $city = $this->city;
+        } else {
+            $uid = '';
+            $username = '';
+            $password = '';
+            $email = '';
+            $admin = '';
+            $city = '';
+        }
+        return "
+            <form action='' method='post'>
+                <label for=uid>#UID</label>
+                <input type=text name=uid id=uid value=" . $uid . "></input>
+
+                <label for=username>Username</label>
+                <input type=text name=username id=username value=" . $username . "></input>
+
+                <label for=password>Password</label>
+                <input type=password name=password id=password value=" . $password . "></input>
+
+                <labe for=email>E-Mail</label>
+                <input type=text name=email id=email value=" . $email . "></input>
+
+                <label for=admin>Admin</label>
+                <input type=text name=admin id=admin value=" . $admin . "></input>
+
+                <label for=city>City</label>
+                <input type=text name=city id=city value=" . $city . "></label>
+            </form>
+        ";
     }
 }
