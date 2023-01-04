@@ -1,16 +1,15 @@
 <?php
 
 class DB {
-    private $host = 'localhost';
-    private $user = 'lsa';
-    private $pswd = 'lsa';
-    private $db = 'ls';
+    static $conn = null;
 
-    private static function connect() {
-        $conn = new mysqli($host, $user, $pswd, $db);
-        if (!$conn) {
-            die ('Connection failed: ' . $conn->connect_error);
+    static function connect() {
+        if (self::$conn == null) {
+            $db = new mysqli('localhost', 'lsa', 'lsa', 'ls');
+            self::$conn = $db;
+        } else {
+            $db = self::$conn;
         }
-        echo 'Connected successfully';
+        return $db;
     }
 }

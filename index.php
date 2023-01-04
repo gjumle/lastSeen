@@ -7,3 +7,5 @@ function autoloadModel($className) {
     }
 }
 spl_autoload_register("autoloadModel");
+
+$conn = DB::connect();
