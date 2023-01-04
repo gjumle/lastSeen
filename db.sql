@@ -15,6 +15,17 @@ CREATE TABLE users (
     city VARCHAR(50) NOT NULL
 ) DEFAULT CHARACTER SET utf8;
 
++----------+-------------+------+-----+---------+----------------+
+| Field    | Type        | Null | Key | Default | Extra          |
++----------+-------------+------+-----+---------+----------------+
+| u_id     | int(11)     | NO   | PRI | NULL    | auto_increment |
+| username | varchar(50) | NO   |     | NULL    |                |
+| password | varchar(50) | NO   |     | NULL    |                |
+| email    | varchar(50) | NO   |     | NULL    |                |
+| admin    | int(1)      | NO   |     | 0       |                |
+| city     | varchar(50) | NO   |     | NULL    |                |
++----------+-------------+------+-----+---------+----------------+
+
 CREATE TABLE meetings (
     m_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     user_id_a INT NOT NULL,
@@ -25,3 +36,14 @@ CREATE TABLE meetings (
     FOREIGN KEY (user_id_a) REFERENCES users(u_id),
     FOREIGN KEY (user_id_b) REFERENCES users(u_id)
 ) DEFAULT CHARACTER SET utf8;
+
++-----------+-------------+------+-----+---------+----------------+
+| Field     | Type        | Null | Key | Default | Extra          |
++-----------+-------------+------+-----+---------+----------------+
+| m_id      | int(11)     | NO   | PRI | NULL    | auto_increment |
+| user_id_a | int(11)     | NO   | MUL | NULL    |                |
+| user_id_b | int(11)     | NO   | MUL | NULL    |                |
+| place     | varchar(50) | NO   |     | NULL    |                |
+| datetime  | datetime    | NO   |     | NULL    |                |
+| duration  | time        | NO   |     | NULL    |                |
++-----------+-------------+------+-----+---------+----------------+
