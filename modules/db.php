@@ -2,9 +2,9 @@
 
 class DB {
     private $host = 'localhost';
-    private $user = 'last_seen_admin';
+    private $user = 'lsa';
     private $pswd = 'lsa';
-    private $db = 'last_seen';
+    private $db = 'ls';
 
     private static function connect() {
         $conn = new mysqli($host, $user, $pswd, $db);
