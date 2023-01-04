@@ -22,5 +22,6 @@ CREATE TABLE meetings (
     place VARCHAR(50) NOT NULL,
     datetime DATETIME NOT NULL,
     duration TIME NOT NULL,
-    
-)
+    FOREIGN KEY (user_id_a) REFERENCES users(u_id),
+    FOREIGN KEY (user_id_b) REFERENCES users(u_id)
+) DEFAULT CHARSET='latin1';
