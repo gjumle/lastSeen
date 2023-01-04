@@ -25,6 +25,7 @@ class User {
             $email = $this->email;
             $admin = $this->admin;
             $city = $this->city;
+            $action = 'edit';
         } else {
             $uid = '';
             $username = '';
@@ -32,6 +33,7 @@ class User {
             $email = '';
             $admin = '';
             $city = '';
+            $action = '';
         }
         return "
             <form action='' method='post'>
@@ -52,6 +54,8 @@ class User {
 
                 <label for=city>City</label>
                 <input type=text name=city id=city value=" . $city . "></label>
+
+                <input type=submit name=" . $action . " id=submit value=Save></input>
             </form>
         ";
     }
