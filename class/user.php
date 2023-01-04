@@ -26,7 +26,7 @@ class User {
     }
 
     public static function renderRegisterForm() {
-        if (isset($_POST['edit'])) {
+        if (isset($_GET['edit'])) {
             $uid = $this->uid;
             $username = $this->username;
             $password = $this->password;
