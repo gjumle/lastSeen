@@ -20,4 +20,8 @@ class UserManager {
     public static function renderAllAsTableRow() {
         // Function to render all the stuff
     }
+
+    public static function formHandler() {
+        // Function to handle data from form
+    }
 }
