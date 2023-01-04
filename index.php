@@ -8,8 +8,3 @@ function autoloadModel($className) {
 }
 spl_autoload_register("autoloadModel");
 
-$conn = DB::connect();
-
-$admin = new User('', 'admin', 'admin', 'admin@lsa.com', '1', 'Brno');
-
-echo User::renderForm();

@@ -33,7 +33,7 @@ class User {
             $email = '';
             $admin = '';
             $city = '';
-            $action = '';
+            $action = 'insert';
         }
         return "
             <form action='' method='post'>
@@ -59,4 +59,6 @@ class User {
             </form>
         ";
     }
+
+    
 }
