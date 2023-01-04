@@ -43,6 +43,7 @@ class User {
             $city = '';
             $action = 'insert';
         }
+        //TODO: Reform the form into table with headher
         return "
             <h1>Registration</h1>
             <form action='' method='post'>
@@ -67,6 +68,10 @@ class User {
                 <input type=submit name=" . $action . " id=submit value=Save></input>
             </form>
         ";
+    }
+
+    public static function renderAsTableRow() {
+        // Function to render data from DB as table
     }
 
     public function insertToDB() {
