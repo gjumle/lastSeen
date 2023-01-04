@@ -70,6 +70,10 @@ class User {
         ";
     }
 
+    public static function renderLoginForm() {
+        // Function to render login
+    }
+
     public static function renderAsTableRow() {
         // Function to render data from DB as table
     }
