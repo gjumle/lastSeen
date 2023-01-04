@@ -17,7 +17,7 @@ class User {
         $this->city = $city;
     }
 
-    public static function renderForm() {
+    public static function renderRegisterForm() {
         if (isset($_POST['edit'])) {
             $uid = $this->uid;
             $username = $this->username;
@@ -36,6 +36,7 @@ class User {
             $action = 'insert';
         }
         return "
+            <h1>Registration</h1>
             <form action='' method='post'>
                 <label for=uid>#UID</label>
                 <input type=text name=uid id=uid value=" . $uid . "></input>
@@ -60,5 +61,17 @@ class User {
         ";
     }
 
-    
+    public function insertToDB() {
+        $conn = DB::connect();
+        $sql = 'INSERT INTO users VALUES (' . $uid . ', "' . $username . '", "' . $password . '", "' . $email . '", ' . $admin . ', "' . $city . '")';
+        $conn->query($sql);
+        $conn->close();
+    }
+
+    public function saveToDB() {
+        $conn = DB::connect();
+        $sql = '';
+        $conn->query($sql);
+        $conn->close();
+    }
 }
