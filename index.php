@@ -1,7 +1,7 @@
 <?php
 
 function autoloadModel($className) {
-    $filename = "modules/" . $className . ".php";
+    $filename = "class/" . $className . ".php";
     if (is_readable($filename)) {
         require $filename;
     }
