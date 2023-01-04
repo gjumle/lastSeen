@@ -74,6 +74,10 @@ class User {
         // Function to render data from DB as table
     }
 
+    public static function renderHead() {
+        // Function to render table head
+    }
+
     public function insertToDB() {
         $conn = DB::connect();
         $sql = 'INSERT INTO users VALUES (' . $uid . ', "' . $username . '", "' . $password . '", "' . $email . '", ' . $admin . ', "' . $city . '")';
