@@ -13,7 +13,7 @@ CREATE TABLE users (
     email VARCHAR(50) NOT NULL,
     admin INT(1) NOT NULL DEFAULT 0,
     city VARCHAR(50) NOT NULL
-) DEFAULT CHARSET='latin1';
+) DEFAULT CHARACTER SET utf8;
 
 CREATE TABLE meetings (
     m_id INT NOT NULL AUTO_INCREMENT,
@@ -24,4 +24,4 @@ CREATE TABLE meetings (
     duration TIME NOT NULL,
     FOREIGN KEY (user_id_a) REFERENCES users(u_id),
     FOREIGN KEY (user_id_b) REFERENCES users(u_id)
-) DEFAULT CHARSET='latin1';
+) DEFAULT CHARACTER SET utf8;
