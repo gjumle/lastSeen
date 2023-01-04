@@ -17,5 +17,7 @@ class UserManager {
         // Function to load only one user
     }
 
-    public static function 
+    public static function renderAllAsTableRow() {
+        // Function to render all the stuff
+    }
 }
