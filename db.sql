@@ -7,7 +7,7 @@ CREATE USER 'lsa'@'localhost' IDENTIFIED BY 'lsa';
 GRANT ALL ON ls.* TO 'lsa'@'localhost';
 
 CREATE TABLE users (
-    u_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    uid INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     username VARCHAR(50) NOT NULL,
     password VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
