@@ -8,4 +8,5 @@ function autoloadModel($className) {
 }
 spl_autoload_register("autoloadModel");
 
+echo NavBar::render();
 echo User::renderForm();
