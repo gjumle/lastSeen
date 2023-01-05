@@ -43,7 +43,6 @@ class User {
             $city = '';
             $action = 'insert';
         }
-        //TODO: Reform the form into table with headher
         return "
             <h1>Registration</h1>
             <form action='' method='post'>
