@@ -82,7 +82,7 @@ class User {
 
     public function saveToDB() {
         $conn = DB::connect();
-        $sql = '';
+        $sql = 'UPDATE users SET username ="' . $username . '", password ="' . $password . '", email = "' . $admin . '", city = "' . $city . '" WHERE u_id = ' . $uid;
         $conn->query($sql);
         $conn->close();
     }
