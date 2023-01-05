@@ -44,28 +44,30 @@ class User {
             $action = 'insert';
         }
         return "
-            <h1>Registration</h1>
-            <form action='' method='post'>
-                <label for=uid>#UID</label>
-                <input type=text name=uid id=uid value=" . $uid . "></input>
+            <div class='registration-form'>
+                <h1>Registration</h1>
+                <form action='' method='post'>
+                    <label for=uid>#UID</label>
+                    <input type=text name=uid id=uid value=" . $uid . "></input>
 
-                <label for=username>Username</label>
-                <input type=text name=username id=username value=" . $username . "></input>
+                    <label for=username>Username</label>
+                    <input type=text name=username id=username value=" . $username . "></input>
 
-                <label for=password>Password</label>
-                <input type=password name=password id=password value=" . $password . "></input>
+                    <label for=password>Password</label>
+                    <input type=password name=password id=password value=" . $password . "></input>
 
-                <labe for=email>E-Mail</label>
-                <input type=text name=email id=email value=" . $email . "></input>
+                    <labe for=email>E-Mail</label>
+                    <input type=text name=email id=email value=" . $email . "></input>
 
-                <label for=admin>Admin</label>
-                <input type=text name=admin id=admin value=" . $admin . "></input>
+                    <label for=admin>Admin</label>
+                    <input type=text name=admin id=admin value=" . $admin . "></input>
 
-                <label for=city>City</label>
-                <input type=text name=city id=city value=" . $city . "></label>
+                    <label for=city>City</label>
+                    <input type=text name=city id=city value=" . $city . "></label>
 
-                <input type=submit name=" . $action . " id=submit value=Save></input>
-            </form>
+                    <input type=submit name=" . $action . " id=submit value=Save></input>
+                </form>
+            </div>
         ";
     }
 
