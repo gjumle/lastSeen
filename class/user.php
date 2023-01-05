@@ -1,13 +1,5 @@
 <?php
 
-function autoloadModel($className) {
-    $filename = "class/" . $className . ".php";
-    if (is_readable($filename)) {
-        require $filename;
-    }
-}
-spl_autoload_register("autoloadModel");
-
 class User {
     private $uid;
     private $username;
@@ -25,7 +17,7 @@ class User {
         $this->city = $city;
     }
 
-    public static function renderRegisterForm() {
+    public static function renderForm() {
         if (isset($_GET['register'])) {
             return "
                 <div class='registration-form'>
@@ -49,9 +41,6 @@ class User {
                 </div>
             ";
         }
-    }
-
-    public static function renderLoginForm() {
         if (isset($_GET['login'])) {
             return "
                 <div class='login-form'>
