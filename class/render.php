@@ -1,19 +1,20 @@
 <?php
 
-function autoloadModel($className) {
-    $filename = "class/" . $className . ".php";
-    if (is_readable($filename)) {
-        require $filename;
+class NavBar {
+    protected static $navLinks = array();
+    
+    public static function addLink($text, $url) {
+        self::$navLinks[] = array('text' => $text, 'url' => $url);
     }
+    
+    public static function render() {
+        echo '<ul>';
+        foreach(self::$navLinks as $link) {
+        echo "<li><a href='{$link['url']}'>{$link['text']}</a></li>";
+        }
+        echo '</ul>';
+    } 
 }
-spl_autoload_register("autoloadModel");
 
-class Render {
-    public  static function renderRegsiter() {
-        // Register functions
-    }
-
-    public static function renderLogin() {
-        // Login functios
-    }
-}
+NavBar::addLink('Login', '/login');
+NavBar::addLink('Register', '/register');
