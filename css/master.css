@@ -29,9 +29,11 @@
     align-items: center;
     justify-content: space-around;
     color: var(--fg-color);
+    transition: 0.5s;
 }
 
 .nav-link:hover {
     background-color: var(--fg-color);
     color: var(--bg-color);
+
 }
