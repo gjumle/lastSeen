@@ -75,21 +75,21 @@ class User {
 
     public function insertToDB() {
         $conn = DB::connect();
-        $sql = 'INSERT INTO users VALUES (' . $uid . ', "' . $username . '", "' . $password . '", "' . $email . '", ' . $admin . ', "' . $city . '")';
+        $sql = 'INSERT INTO users (uid, username, password, email, admin, city) VALUES (' . $uid . ', "' . $username . '", "' . $password . '", "' . $email . '", ' . $admin . ', "' . $city . '")';
         $conn->query($sql);
         $conn->close();
     }
 
     public function saveToDB() {
         $conn = DB::connect();
-        $sql = 'UPDATE users SET username ="' . $username . '", password ="' . $password . '", email = "' . $admin . '", city = "' . $city . '" WHERE u_id = ' . $uid;
+        $sql = 'UPDATE users SET username ="' . $username . '", password ="' . $password . '", email = "' . $admin . '", city = "' . $city . '" WHERE uid = ' . $uid;
         $conn->query($sql);
         $conn->close();
     }
 
     public function delefeFromDB() {
         $conn = DB::connect();
-        $sql = 'DELETE FROM users WHERE u_id=' . $uid;
+        $sql = 'DELETE FROM users WHERE uid=' . $uid;
         $conn->query($sql);
         $conn->close();
     }
