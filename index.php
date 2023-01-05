@@ -10,3 +10,17 @@ spl_autoload_register("autoloadModel");
 
 echo NavBar::render();
 echo User::renderForm();
+
+
+?>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf8'></meta>
+        <meta lang='en'></meta>
+    </head>
+    <body>
+        
+    </body>
+</html>
