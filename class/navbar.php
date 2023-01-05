@@ -19,5 +19,7 @@ class NavBar {
     }
   }  
 
-NavBar::addLink('Login', '/login');
-NavBar::addLink('Register', '/register');
+NavBar::addLink('About', '?about');
+NavBar::addLink('Home', '?home');
+NavBar::addLink('Login', '?login');
+NavBar::addLink('Register', '?register');
