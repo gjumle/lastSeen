@@ -26,53 +26,49 @@ class User {
     }
 
     public static function renderRegisterForm() {
-        if (isset($_GET['edit'])) {
-            $uid = $this->uid;
-            $username = $this->username;
-            $password = $this->password;
-            $email = $this->email;
-            $admin = $this->admin;
-            $city = $this->city;
-            $action = 'edit';
-        } else {
-            $uid = '';
-            $username = '';
-            $password = '';
-            $email = '';
-            $admin = '';
-            $city = '';
-            $action = 'insert';
+        if (isset($_GET['register'])) {
+            return "
+                <div class='registration-form'>
+                    <h1>Registration</h1>
+                    <form action='' method='post'>
+
+                        <label for=username>Username</label>
+                        <input type=text name=username id=username></input>
+
+                        <label for=password>Password</label>
+                        <input type=password name=password id=password></input>
+
+                        <labe for=email>E-Mail</label>
+                        <input type=text name=email id=email></input>
+
+                        <label for=city>City</label>
+                        <input type=text name=city id=city></label>
+
+                        <input type=submit name=submit id=submit value=submit></input>
+                    </form>
+                </div>
+            ";
         }
-        return "
-            <div class='registration-form'>
-                <h1>Registration</h1>
-                <form action='' method='post'>
-                    <label for=uid>#UID</label>
-                    <input type=text name=uid id=uid value=" . $uid . "></input>
-
-                    <label for=username>Username</label>
-                    <input type=text name=username id=username value=" . $username . "></input>
-
-                    <label for=password>Password</label>
-                    <input type=password name=password id=password value=" . $password . "></input>
-
-                    <labe for=email>E-Mail</label>
-                    <input type=text name=email id=email value=" . $email . "></input>
-
-                    <label for=admin>Admin</label>
-                    <input type=text name=admin id=admin value=" . $admin . "></input>
-
-                    <label for=city>City</label>
-                    <input type=text name=city id=city value=" . $city . "></label>
-
-                    <input type=submit name=" . $action . " id=submit value=Save></input>
-                </form>
-            </div>
-        ";
     }
 
     public static function renderLoginForm() {
-        // Function to render login
+        if (isset($_GET['login'])) {
+            return "
+                <div class='login-form'>
+                    <h1>Login</h1>
+                    <form action='' method='post'>
+
+                        <label for=username>Username</label>
+                        <input type=text name=username id=username></input>
+
+                        <label for=password>Password</label>
+                        <input type=password name=password id=password></input>
+
+                        <input type=submit name=submit id=submit value=submit></input>
+                    </form>
+                </div>
+            ";
+        }
     }
 
     public function insertToDB() {
