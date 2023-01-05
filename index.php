@@ -19,8 +19,12 @@ echo User::renderForm();
     <head>
         <meta charset='utf8'></meta>
         <meta lang='en'></meta>
+        <link type=text/css href='./css/master.css'>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300&display=swap" rel="stylesheet">
+        <style> @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300&display=swap'); </style>
     </head>
     <body>
-        
+
     </body>
 </html>
