@@ -9,11 +9,11 @@ class NavBar {
   
     public static function render() {
       $html = '<div class="nav-bar">';
-      $html .= '<ul>';
+      $html .= '<div class="nav-links">';
       foreach(self::$navLinks as $link) {
-        $html .= "<li><a href='{$link['url']}'>{$link['text']}</a></li>";
+        $html .= "<a class='nav-link' href='{$link['url']}'>{$link['text']}</a>";
       }
-      $html .= '</ul>';
+      $html .= '</div>';
       $html .= '</div>';
       return $html;
     }
