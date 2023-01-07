@@ -1,19 +1,3 @@
-<?php
-
-function autoloadModel($className) {
-    $filename = "class/" . $className . ".php";
-    if (is_readable($filename)) {
-        require $filename;
-    }
-}
-spl_autoload_register("autoloadModel");
-
-echo NavBar::render();
-echo User::renderForm();
-
-
-?>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -27,6 +11,20 @@ echo User::renderForm();
         <style> @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300&display=swap'); </style>
     </head>
     <body>
+    <?php
 
+        function autoloadModel($className) {
+            $filename = "class/" . $className . ".php";
+            if (is_readable($filename)) {
+                require $filename;
+            }
+        }
+        spl_autoload_register("autoloadModel");
+
+        echo NavBar::render();
+        echo User::renderForm();
+
+
+    ?>
     </body>
 </html>
