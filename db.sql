@@ -27,7 +27,7 @@ CREATE TABLE users (
 +----------+-------------+------+-----+---------+----------------+
 
 CREATE TABLE meetings (
-    m_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    mid INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     user_id_a INT NOT NULL,
     user_id_b INT NOT NULL,
     place VARCHAR(50) NOT NULL,
