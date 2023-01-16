@@ -67,20 +67,25 @@ class User {
         return $hash;
     }
 
+    public static function verifyHashPassword($password) {
+        $password = $_POST['password'];
+        $hashed_password = self::getPassword();
+        return crypt($password, $hashed_password) === $hashed_password ? true : false;
+    }
+
     public static function handleForm() {
         if (isset($_POST['submit'])) {
             if (isset($_GET['register'])) {
                 $password = self::hashPassword($_POST['password']);
                 $user = new User (null, $_POST['username'], $password, $_POST['email'], 0, $_POST['city']);
-                var_dump($user);
                 $user->insertToDB();
                 echo 'New user registerd';
             }
             if (isset($_GET['login'])) {
-                $password = self::hashPassword($_POST['password']);
+                $password = 
                 $user = new User (null, $_POST['username'], $password, null, null, null);
-                $u_id = $user->checkUserLogin();
-                if ($u_id) {
+                $uid = $user->checkUserLogin();
+                if ($uid) {
                     echo 'User successfuly logged in';
                 } else {
                     echo 'Incorrect username or password';
@@ -91,8 +96,7 @@ class User {
 
     public function insertToDB() {
         $conn = DB::connect();
-        $sql = 'INSERT INTO users (uid, username, password, email, admin, city) VALUES (' . $this->uid . ', "' . $this->username . '", "' . $this->password . '", "' . $this->email . '", ' . $this->admin . ', "' . $this->city . '")';
-        echo $sql;
+        $sql = 'INSERT INTO users (username, password, email, admin, city) VALUES ("' . $this->username . '", "' . $this->password . '", "' . $this->email . '", ' . $this->admin . ', "' . $this->city . '")';
         $conn->query($sql);
         $conn->close();
     }
@@ -114,6 +118,13 @@ class User {
     public function checkUserLogin() {
         $conn = DB::connect();
         $sql = 'SELECT uid FROM users WHERE username ="' . $this->username . '" AND password ="' . $this->password . '"';
+        $conn->query($sql);
+        $conn->close();
+    }
+
+    public function getPassword() {
+        $conn = DB::connect();
+        $sql = 'SELECT password FROM users WHERE username ="' . $this->username . '"';
         $conn->query($sql);
         $conn->close();
     }
