@@ -60,7 +60,7 @@ class User {
         }
     }
 
-    public function hashPassword($password) {
+    public static function hashPassword($password) {
         $password = $_POST['password'];
         $hash = password_hash($password, PASSWORD_DEFAULT);
         return $hash;
@@ -69,13 +69,13 @@ class User {
     public static function handleForm() {
         if (isset($_POST['submit'])) {
             if (isset($_GET['register'])) {
-                $password = hashPassword($_POST['password']);
+                $password = self::hashPassword($_POST['password']);
                 $user = new User ($_POST['username'], $password, $_POST['email'], $_POST['admin'], $_POST['city']);
                 $user->insertToDB();
                 echo 'New user registerd';
             }
             if (isset($_GET['login'])) {
-                $password = hashPassword($_POST['password']);
+                $password = self::hashPassword($_POST['password']);
                 $user = new User ($_POST['username'], $password);
                 $u_id = $user->checkUserLogin();
                 if ($u_id) {
