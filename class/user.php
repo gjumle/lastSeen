@@ -61,7 +61,7 @@ class User {
     }
 
     public static function hashPassword($password, $salt = null) {
-        $salt = "$2y$10$" . substr(strtr(base64_encode(random_bytes(16)), '+', '.'),0,22);
+        $salt = "$2y$10$" . strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.');
         $hash = crypt($password, $salt);
         return $hash;
     }
