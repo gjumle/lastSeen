@@ -92,7 +92,6 @@ class User {
     public function insertToDB() {
         $conn = DB::connect();
         $sql = 'INSERT INTO users (username, password, email, admin, city) VALUES ("' . $this->username . '", "' . $this->password . '", "' . $this->email . '", ' . $this->admin . ', "' . $this->city . '")';
-        echo $sql;
         $conn->query($sql);
         $conn->close();
     }
