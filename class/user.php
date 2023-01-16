@@ -36,7 +36,7 @@ class User {
                         <label for=city>City</label>
                         <input type=text name=city id=city></label>
 
-                        <input type=submit name=submit id=submit value=submit></input>
+                        <input type=submit name=register id=submit value=submit></input>
                     </form>
                 </div>
             ";
@@ -53,10 +53,34 @@ class User {
                         <label for=password>Password</label>
                         <input type=password name=password id=password></input>
 
-                        <input type=submit name=submit id=submit value=submit></input>
+                        <input type=submit name=login id=submit value=submit></input>
                     </form>
                 </div>
             ";
+        }
+    }
+
+    public static function hashPassword($password) {
+        $password = $_POST['password'];
+        $hash = md5($password);
+        return $hash;
+    }
+
+    public function handleForm() {
+        if (isset($_POST['register'])) {
+            $password = hashPassword($_POST['password']);
+            $user = new User ($_POST['username'], $password, $_POST['email'], $_POST['admin'], $_POST['city']);
+            $user->insertToDB();
+        }
+        if (isset($_POST['login'])) {
+            $password = hashPassword($_POST['password']);
+            $user = new User ($_POST['username'], $password);
+            $u_id = $user->checkUserLogin();
+            if ($u_id) {
+                echo 'User successfuly logged in!';
+            } else {
+                echo 'Incorrect username or password';
+            }
         }
     }
 
@@ -77,6 +101,13 @@ class User {
     public function delefeFromDB() {
         $conn = DB::connect();
         $sql = 'DELETE FROM users WHERE uid=' . $uid;
+        $conn->query($sql);
+        $conn->close();
+    }
+
+    public function checkUserLogin() {
+        $conn = DB::connect();
+        $sql = 'SELECT u_id FROM users WHERE username ="' . $user->username . '" AND password ="' . $user->password . '"';
         $conn->query($sql);
         $conn->close();
     }
