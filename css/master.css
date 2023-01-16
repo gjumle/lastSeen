@@ -1,6 +1,6 @@
 :root {
-    --bg-color: #fb6f92;
-    --fg-color: #ffe5ec;
+    --bg-color: white;
+    --fg-color: black;
 }
 
 * {
@@ -11,7 +11,7 @@
 
 .nav-bar {
     display: flex;
-    height: 6vh;
+    height: 3vh;
     justify-content: center;
     background-color: var(--bg-color);
 }
@@ -33,7 +33,5 @@
 }
 
 .nav-link:hover {
-    background-color: var(--fg-color);
-    color: var(--bg-color);
-
+    background-color: lightgrey;
 }
