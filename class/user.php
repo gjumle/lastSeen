@@ -71,13 +71,14 @@ class User {
         if (isset($_POST['submit'])) {
             if (isset($_GET['register'])) {
                 $password = self::hashPassword($_POST['password']);
-                $user = new User ($_POST['username'], $password, $_POST['email'], $_POST['admin'], $_POST['city']);
+                $user = new User (null, $_POST['username'], $password, $_POST['email'], null, $_POST['city']);
+                var_dump($user);
                 $user->insertToDB();
                 echo 'New user registerd';
             }
             if (isset($_GET['login'])) {
                 $password = self::hashPassword($_POST['password']);
-                $user = new User ($_POST['username'], $password);
+                $user = new User (null, $_POST['username'], $password, null, null, null);
                 $u_id = $user->checkUserLogin();
                 if ($u_id) {
                     echo 'User successfuly logged in';
@@ -90,28 +91,29 @@ class User {
 
     public function insertToDB() {
         $conn = DB::connect();
-        $sql = 'INSERT INTO users (uid, username, password, email, admin, city) VALUES (' . $uid . ', "' . $username . '", "' . $password . '", "' . $email . '", ' . $admin . ', "' . $city . '")';
+        $sql = 'INSERT INTO users (username, password, email, admin, city) VALUES ("' . $this->username . '", "' . $this->password . '", "' . $this->email . '", ' . $this->admin . ', "' . $this->city . '")';
+        echo $sql;
         $conn->query($sql);
         $conn->close();
     }
 
     public function saveToDB() {
         $conn = DB::connect();
-        $sql = 'UPDATE users SET username ="' . $username . '", password ="' . $password . '", email = "' . $admin . '", city = "' . $city . '" WHERE uid = ' . $uid;
+        $sql = 'UPDATE users SET username ="' . $this->username . '", password ="' . $this->password . '", email = "' . $this->admin . '", city = "' . $this->city . '" WHERE uid = ' . $this->uid;
         $conn->query($sql);
         $conn->close();
     }
 
     public function delefeFromDB() {
         $conn = DB::connect();
-        $sql = 'DELETE FROM users WHERE uid=' . $uid;
+        $sql = 'DELETE FROM users WHERE uid=' . $this->uid;
         $conn->query($sql);
         $conn->close();
     }
 
     public function checkUserLogin() {
         $conn = DB::connect();
-        $sql = 'SELECT uid FROM users WHERE username ="' . $user->username . '" AND password ="' . $user->password . '"';
+        $sql = 'SELECT uid FROM users WHERE username ="' . $this->username . '" AND password ="' . $this->password . '"';
         $conn->query($sql);
         $conn->close();
     }
