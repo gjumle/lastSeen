@@ -111,7 +111,7 @@ class User {
 
     public function checkUserLogin() {
         $conn = DB::connect();
-        $sql = 'SELECT u_id FROM users WHERE username ="' . $user->username . '" AND password ="' . $user->password . '"';
+        $sql = 'SELECT uid FROM users WHERE username ="' . $user->username . '" AND password ="' . $user->password . '"';
         $conn->query($sql);
         $conn->close();
     }
