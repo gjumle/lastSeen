@@ -60,17 +60,14 @@ class User {
         }
     }
 
-    public static function hashPassword($password) {
-        $password = $_POST['password'];
-        $salt = "$2y$10$" . strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.');
+    public static function hashPassword($password, $salt = null) {
+        $salt = "$2y$10$" . substr(strtr(base64_encode(random_bytes(16)), '+', '.'),0,22);
         $hash = crypt($password, $salt);
         return $hash;
     }
 
-    public static function verifyHashPassword($password) {
-        $password = $_POST['password'];
-        $hashed_password = self::getPassword();
-        return crypt($password, $hashed_password) === $hashed_password ? true : false;
+    public static function verifyHashPassword($password, $hashed_password) {
+        return crypt($password, $hashed_password) === $hashed_password ? $hashed_password : false;
     }
 
     public static function handleForm() {
@@ -82,11 +79,15 @@ class User {
                 echo 'New user registerd';
             }
             if (isset($_GET['login'])) {
-                $password = 
-                $user = new User (null, $_POST['username'], $password, null, null, null);
-                $uid = $user->checkUserLogin();
-                if ($uid) {
+                $user = new User (null, $_POST['username'], null, null, null, null);
+                $hashed_password = $user->getPassword();
+                $hashed_password = self::verifyHashPassword($_POST['password'], $hashed_password);
+                $user->password = $hashed_password;
+                var_dump($user);
+                $user->uid = $user->checkUserLogin();
+                if ($uid = $user->uid) {
                     echo 'User successfuly logged in';
+                    echo $uid;
                 } else {
                     echo 'Incorrect username or password';
                 }
@@ -118,14 +119,22 @@ class User {
     public function checkUserLogin() {
         $conn = DB::connect();
         $sql = 'SELECT uid FROM users WHERE username ="' . $this->username . '" AND password ="' . $this->password . '"';
-        $conn->query($sql);
+        $result = $conn->query($sql);
+        while ($row = $result->fetch_assoc()) {
+            $uid = $row['uid'];
+        }
         $conn->close();
+        return $uid;
     }
 
     public function getPassword() {
         $conn = DB::connect();
         $sql = 'SELECT password FROM users WHERE username ="' . $this->username . '"';
-        $conn->query($sql);
+        $result = $conn->query($sql);
+        while ($row = $result->fetch_assoc()) {
+            $password = $row['password'];
+        }
         $conn->close();
+        return $password;
     }
 }
