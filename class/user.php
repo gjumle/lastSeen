@@ -72,7 +72,7 @@ class User {
                 $password = hashPassword($_POST['password']);
                 $user = new User ($_POST['username'], $password, $_POST['email'], $_POST['admin'], $_POST['city']);
                 $user->insertToDB();
-                echo 'New user registerd'
+                echo 'New user registerd';
             }
             if (isset($_GET['login'])) {
                 $password = hashPassword($_POST['password']);
