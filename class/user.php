@@ -62,7 +62,7 @@ class User {
 
     public static function hashPassword($password) {
         $password = $_POST['password'];
-        $hash = md5($password);
+        $hash = password_hash($password, PASSWORD_DEFAULT);
         return $hash;
     }
 
