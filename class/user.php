@@ -62,7 +62,8 @@ class User {
 
     public static function hashPassword($password) {
         $password = $_POST['password'];
-        $hash = password_hash($password, PASSWORD_DEFAULT);
+        $salt = "$2y$10$" . strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.');
+        $hash = crypt($password, $salt);
         return $hash;
     }
 
