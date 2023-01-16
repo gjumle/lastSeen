@@ -23,6 +23,7 @@
 
         echo NavBar::render();
         echo User::renderForm();
+        echo User::handleForm();
 
 
     ?>
