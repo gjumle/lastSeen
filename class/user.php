@@ -71,7 +71,7 @@ class User {
         if (isset($_POST['submit'])) {
             if (isset($_GET['register'])) {
                 $password = self::hashPassword($_POST['password']);
-                $user = new User (null, $_POST['username'], $password, $_POST['email'], null, $_POST['city']);
+                $user = new User (null, $_POST['username'], $password, $_POST['email'], 0, $_POST['city']);
                 var_dump($user);
                 $user->insertToDB();
                 echo 'New user registerd';
@@ -91,7 +91,8 @@ class User {
 
     public function insertToDB() {
         $conn = DB::connect();
-        $sql = 'INSERT INTO users (username, password, email, admin, city) VALUES ("' . $this->username . '", "' . $this->password . '", "' . $this->email . '", ' . $this->admin . ', "' . $this->city . '")';
+        $sql = 'INSERT INTO users (uid, username, password, email, admin, city) VALUES (' . $this->uid . ', "' . $this->username . '", "' . $this->password . '", "' . $this->email . '", ' . $this->admin . ', "' . $this->city . '")';
+        echo $sql;
         $conn->query($sql);
         $conn->close();
     }
