@@ -36,7 +36,7 @@ class User {
                         <label for=city>City</label>
                         <input type=text name=city id=city></label>
 
-                        <input type=submit name=register id=submit value=submit></input>
+                        <input type=submit name=submit id=submit value=submit></input>
                     </form>
                 </div>
             ";
@@ -53,7 +53,7 @@ class User {
                         <label for=password>Password</label>
                         <input type=password name=password id=password></input>
 
-                        <input type=submit name=login id=submit value=submit></input>
+                        <input type=submit name=submit id=submit value=submit></input>
                     </form>
                 </div>
             ";
@@ -66,13 +66,13 @@ class User {
         return $hash;
     }
 
-    public function handleForm() {
-        if (isset($_POST['register'])) {
+    public static function handleForm() {
+        if (isset($_GET['register'])) {
             $password = hashPassword($_POST['password']);
             $user = new User ($_POST['username'], $password, $_POST['email'], $_POST['admin'], $_POST['city']);
             $user->insertToDB();
         }
-        if (isset($_POST['login'])) {
+        if (isset($_GET['login'])) {
             $password = hashPassword($_POST['password']);
             $user = new User ($_POST['username'], $password);
             $u_id = $user->checkUserLogin();
