@@ -8,7 +8,7 @@ GRANT ALL ON ls.* TO 'lsa'@'localhost';
 
 CREATE TABLE users (
     uid INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    username VARCHAR(50) NOT NULL,
+    username VARCHAR(50) NOT NULL UNIQUE,
     password VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
     admin INT(1) NOT NULL DEFAULT 0,
