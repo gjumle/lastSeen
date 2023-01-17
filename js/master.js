@@ -8,7 +8,7 @@ $(document).ready(function() {
     });
 
     $(".registration-form form").on("submit", function(e){
-        e.preventDefault(); // prevent form from submitting
+        e.preventDefault();
 
         var isValid = true;
         $(".registration-form form input").each(function() {
@@ -19,7 +19,6 @@ $(document).ready(function() {
         });
 
         if(isValid) {
-            // create an object to hold the form data
             var data = {
                 "username": $("#username").val(),
                 "password": $("#password").val(),
@@ -27,10 +26,9 @@ $(document).ready(function() {
                 "city": $("#city").val()
             };
 
-            // send the request using jQuery's ajax method
             $.ajax({
                 type: "POST",
-                url: "your-server-script-url.php",
+                url: "index.php?register",
                 data: data,
                 success: function(response) {
                     if(response.status === "success") {
@@ -72,7 +70,7 @@ $(document).ready(function() {
 
             $.ajax({
                 type: 'POST',
-                url: 'your-server-script-url.php',
+                url: 'idex.php?login',
                 data: data,
                 success: function(response) {
                     if(response.status === 'success') {
