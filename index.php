@@ -21,7 +21,7 @@
         }
         spl_autoload_register("autoloadModel");
 
-        echo NavBar::render();
+        echo NavBar::display();
         echo User::renderForm();
         echo User::handleForm();
 
