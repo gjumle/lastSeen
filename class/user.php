@@ -45,16 +45,12 @@ class User {
                 <div class='login-form'>
                     <h1>Login</h1>
                     <form action='' method='post'>
-                        <div class='form-group'>
-                            <label for='username'>Username</label>
-                            <input type='text' id='username' name='username'>
-                            <span class='error-message'></span>
-                        </div>
-                        <div class='form-group'>
-                            <label for='password'>Password</label>
-                            <input type='password' id='password' name='password'>
-                            <span class='error-message'></span>
-                        </div>
+                        <label for='username'>Username</label>
+                        <input type='text' id='username' name='username'>
+                        <span class='error-message'></span>
+                        <label for='password'>Password</label>
+                        <input type='password' id='password' name='password'>
+                        <span class='error-message'></span>
                         <input type='submit' id='submit' value='submit'>
                     </form>
                 </div>
