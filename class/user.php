@@ -75,10 +75,10 @@ class User {
                 $password_hash = self::hashPassword($_POST['password']);
                 $user->password = $password_hash;
                 $user->uid = $user->checkUserLogin();
-                if ($uid = $user->uid) {
-                    echo 'User successfuly logged in';
-                } else {
-                    echo 'Incorrect username or password';
+                if ($uid) {
+                    setcookie("logged_in", true, time() + (86400 * 30)); // expires in 30 days
+                    $_SESSION['logged_in'] = true;
+                    header("Location: index.php");
                 }
             }
         }
