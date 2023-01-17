@@ -44,3 +44,45 @@ $(document).ready(function() {
     });
 });
 
+$(document).ready(function() {
+    $('.login-form form input').on('focusout', function() {
+        if($(this).val() === '') {
+            $(this).next('.error-message').html('This field is required').css('display', 'block');
+        } else {
+            $(this).next('.error-message').html('').css('display', 'none');
+        }
+    });
+
+    $('.login-form form').on('submit', function(e) {
+        e.preventDefault();
+
+        var isValid = true;
+        $('.login-form form input').each(function() {
+            if($(this).val() === '') {
+                isValid = false;
+                $(this).next('.error-message').html('This field is required').css('display', 'block');
+            }
+        });
+
+        if(isValid) {
+            var data = {
+                'username': $('#username').val(),
+                'password': $('#password').val()
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: 'your-server-script-url.php',
+                data: data,
+                success: function(response) {
+                    if(response.status === 'success') {
+                        alert('Login successful!');
+                    } else {
+                        alert('Login failed: ' + response.message);
+                    }
+                }
+            });
+        }
+    });
+});
+
