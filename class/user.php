@@ -60,30 +60,22 @@ class User {
         }
     }
 
-    public static function hashPassword($password, $salt = null) {
-        $salt = "$2y$10$" . strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.');
-        $hash = crypt($password, $salt);
-        return $hash;
-    }
-
-    public static function verifyHashPassword($password, $hashed_password) {
-        return crypt($password, $hashed_password) === $hashed_password ? $hashed_password : false;
+    public static function hashPassword($password) {
+        return md5($password);
     }
 
     public static function handleForm() {
         if (isset($_POST['submit'])) {
             if (isset($_GET['register'])) {
-                $password = self::hashPassword($_POST['password']);
-                $user = new User (null, $_POST['username'], $password, $_POST['email'], 0, $_POST['city']);
+                $password_hash = self::hashPassword($_POST['password']);
+                $user = new User (null, $_POST['username'], $password_hash, $_POST['email'], 0, $_POST['city']);
                 $user->insertToDB();
                 echo 'New user registerd';
             }
             if (isset($_GET['login'])) {
                 $user = new User (null, $_POST['username'], null, null, null, null);
-                $hashed_password = $user->getPassword();
-                $hashed_password = self::verifyHashPassword($_POST['password'], $hashed_password);
-                $user->password = $hashed_password;
-                var_dump($user);
+                $password_hash = self::hashPassword($_POST['password']);
+                $user->password = $password_hash;
                 $user->uid = $user->checkUserLogin();
                 if ($uid = $user->uid) {
                     echo 'User successfuly logged in';
