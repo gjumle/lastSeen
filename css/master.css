@@ -178,3 +178,8 @@ nav .dropdown:hover .dropdown-content {
     display: none;
 }
 
+.form-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+

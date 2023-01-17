@@ -1,30 +1,36 @@
 $(document).ready(function() {
+    $(".registration-form form input").on("focusout", function() {
+        if($(this).val() === "") {
+            $(this).next(".error-message").html("This field is required").css("display", "block");
+        } else {
+            $(this).next(".error-message").html("").css("display", "none");
+        }
+    });
+
     $(".registration-form form").on("submit", function(e){
         e.preventDefault(); // prevent form from submitting
-        var username = $("#username").val();
-        var password = $("#password").val();
-        var email = $("#email").val();
-        var city = $("#city").val();
 
-        if(username === "") {
-            $("#username").next(".error-message").html("Please enter a username").css("display", "block");
-        } else if(password === "") {
-            $("#password").next(".error-message").html("Please enter a password").css("display", "block");
-        } else if(email === "") {
-            $("#email").next(".error-message").html("Please enter an email").css("display", "block");
-        } else if(city === "") {
-            $("#city").next(".error-message").html("Please enter a city").css("display", "block");
-        } else {
+        var isValid = true;
+        $(".registration-form form input").each(function() {
+            if($(this).val() === "") {
+                isValid = false;
+                $(this).next(".error-message").html("This field is required").css("display", "block");
+            }
+        });
+
+        if(isValid) {
+            // create an object to hold the form data
             var data = {
-                "username": username,
-                "password": password,
-                "email": email,
-                "city": city
+                "username": $("#username").val(),
+                "password": $("#password").val(),
+                "email": $("#email").val(),
+                "city": $("#city").val()
             };
 
+            // send the request using jQuery's ajax method
             $.ajax({
                 type: "POST",
-                url: "index.php?register",
+                url: "your-server-script-url.php",
                 data: data,
                 success: function(response) {
                     if(response.status === "success") {
@@ -37,3 +43,4 @@ $(document).ready(function() {
         }
     });
 });
+

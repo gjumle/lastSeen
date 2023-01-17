@@ -23,24 +23,19 @@ class User {
                 <div class='registration-form'>
                     <h1>Registration</h1>
                     <form action='' method='post'>
-
-                        <label for=username>Username</label>
-                        <input type=text name=username id=username></input>
+                        <label for='username'>Username</label>
+                        <input type='text' name='username' id='username'>
                         <span class='error-message'></span>
-
-                        <label for=password>Password</label>
-                        <input type=password name=password id=password></input>
+                        <label for='password'>Password</label>
+                        <input type='password' name='password' id='password'>
                         <span class='error-message'></span>
-
-                        <labe for=email>E-Mail</label>
-                        <input type=text name=email id=email></input>
+                        <label for='email'>E-Mail</label>
+                        <input type='text' name='email' id='email'>
                         <span class='error-message'></span>
-
-                        <label for=city>City</label>
-                        <input type=text name=city id=city></label>
+                        <label for='city'>City</label>
+                        <input type='text' name='city' id='city'>
                         <span class='error-message'></span>
-
-                        <input type=submit name=submit id=submit value=submit></input>
+                        <input type='submit' name='submit' id='submit' value='submit'>
                     </form>
                 </div>
             ";
