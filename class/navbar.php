@@ -1,25 +1,32 @@
 <?php
 
 class NavBar {
-    protected static $navLinks = array();
-  
-    public static function addLink($text, $url) {
-      self::$navLinks[] = array('text' => $text, 'url' => $url);
-    }
-  
-    public static function render() {
-      $html = '<div class="nav-bar">';
-      $html .= '<div class="nav-links">';
-      foreach(self::$navLinks as $link) {
-        $html .= "<a class='nav-link' href='{$link['url']}'>{$link['text']}</a>";
-      }
-      $html .= '</div>';
-      $html .= '</div>';
-      return $html;
-    }
-  }  
+    private static $links = [
+        'Home' => 'index.php',
+        'About' => '?about',
+    ];
 
-NavBar::addLink('About', '?about');
-NavBar::addLink('Home', '?home');
-NavBar::addLink('Login', '?login');
-NavBar::addLink('Register', '?register');
+    public static function display() {
+        $current_page = $_SERVER['REQUEST_URI'];
+        $html = '<nav>';
+        $html .= '<ul>';
+        foreach(self::$links as $name => $url) {
+            $html .= '<li><a href="'.$url.'"'.($current_page == $url ? ' class="active"' : '').'>'.$name.'</a></li>';
+        }
+        $html .= '<li class="dropdown" style="float:right">';
+        $html .= '<a href="#">Account</a>';
+        $html .= '<div class="dropdown-content">';
+        if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
+            $html .= '<a href="?account">My Account</a>';
+            $html .= '<a href="?logout">Logout</a>';
+        } else {
+            $html .= '<a href="?login">Login</a>';
+            $html .= '<a href="?register">Register</a>';
+        }
+        $html .= '</div>';
+        $html .= '</li>';
+        $html .= '</ul>';
+        $html .= '</nav>';
+        return $html;
+    }
+}
