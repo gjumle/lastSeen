@@ -26,15 +26,19 @@ class User {
 
                         <label for=username>Username</label>
                         <input type=text name=username id=username></input>
+                        <span class='error-message'></span>
 
                         <label for=password>Password</label>
                         <input type=password name=password id=password></input>
+                        <span class='error-message'></span>
 
                         <labe for=email>E-Mail</label>
                         <input type=text name=email id=email></input>
+                        <span class='error-message'></span>
 
                         <label for=city>City</label>
                         <input type=text name=city id=city></label>
+                        <span class='error-message'></span>
 
                         <input type=submit name=submit id=submit value=submit></input>
                     </form>
