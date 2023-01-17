@@ -17,45 +17,44 @@ class User {
         $this->city = $city;
     }
 
-    public static function renderForm() {
-        if (isset($_GET['register'])) {
-            return "
-                <div class='registration-form'>
-                    <h1>Registration</h1>
-                    <form action='' method='post'>
-                        <label for='username'>Username</label>
-                        <input type='text' name='username' id='username'>
-                        <span class='error-message'></span>
-                        <label for='password'>Password</label>
-                        <input type='password' name='password' id='password'>
-                        <span class='error-message'></span>
-                        <label for='email'>E-Mail</label>
-                        <input type='text' name='email' id='email'>
-                        <span class='error-message'></span>
-                        <label for='city'>City</label>
-                        <input type='text' name='city' id='city'>
-                        <span class='error-message'></span>
-                        <input type='submit' name='submit' id='submit' value='submit'>
-                    </form>
-                </div>
-            ";
-        }
-        if (isset($_GET['login'])) {
-            return "
-                <div class='login-form'>
-                    <h1>Login</h1>
-                    <form action='' method='post'>
-                        <label for='username'>Username</label>
-                        <input type='text' id='username' name='username'>
-                        <span class='error-message'></span>
-                        <label for='password'>Password</label>
-                        <input type='password' id='password' name='password'>
-                        <span class='error-message'></span>
-                        <input type='submit' id='submit' value='submit'>
-                    </form>
-                </div>
-            ";
-        }
+    public static function registerForm() {
+        return "
+            <div class='registration-form'>
+                <h1>Registration</h1>
+                <form action='register.php' method='post'>
+                    <label for='username'>Username</label>
+                    <input type='text' name='username' id='username'>
+                    <span class='error-message'></span>
+                    <label for='password'>Password</label>
+                    <input type='password' name='password' id='password'>
+                    <span class='error-message'></span>
+                    <label for='email'>E-Mail</label>
+                    <input type='text' name='email' id='email'>
+                    <span class='error-message'></span>
+                    <label for='city'>City</label>
+                    <input type='text' name='city' id='city'>
+                    <span class='error-message'></span>
+                    <input type='submit' name='register' id='submit' value='submit'>
+                </form>
+            </div>
+        ";
+    }
+
+    public static function loginForm() {
+        return "
+        <div class='login-form'>
+            <h1>Login</h1>
+            <form action='login.php' method='post'>
+                <label for='username'>Username</label>
+                <input type='text' id='username' name='username'>
+                <span class='error-message'></span>
+                <label for='password'>Password</label>
+                <input type='password' id='password' name='password'>
+                <span class='error-message'></span>
+                <input type='submit' name='login' id='submit' value='submit'>
+            </form>
+        </div>
+    ";
     }
 
     public static function hashPassword($password) {
@@ -64,21 +63,21 @@ class User {
 
     public static function handleForm() {
         if (isset($_POST['submit'])) {
-            if (isset($_GET['register'])) {
+            if (isset($_POST['register'])) {
                 $password_hash = self::hashPassword($_POST['password']);
                 $user = new User (null, $_POST['username'], $password_hash, $_POST['email'], 0, $_POST['city']);
                 $user->insertToDB();
                 echo 'New user registerd';
             }
-            if (isset($_GET['login'])) {
+            if (isset($_POST['login'])) {
                 $user = new User (null, $_POST['username'], null, null, null, null);
                 $password_hash = self::hashPassword($_POST['password']);
                 $user->password = $password_hash;
                 $user->uid = $user->checkUserLogin();
                 if ($uid) {
-                    setcookie("logged_in", true, time() + (86400 * 30)); // expires in 30 days
+                    setcookie("logged_in", true, time() + (86400 * 30));
                     $_SESSION['logged_in'] = true;
-                    header("Location: index.php");
+                    header("Location: account.php");
                 }
             }
         }

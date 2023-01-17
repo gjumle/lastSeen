@@ -28,7 +28,7 @@ $(document).ready(function() {
 
             $.ajax({
                 type: "POST",
-                url: "index.php?register",
+                url: "./register.php",
                 data: data,
                 success: function(response) {
                     if(response.status === "success") {
@@ -70,7 +70,7 @@ $(document).ready(function() {
 
             $.ajax({
                 type: 'POST',
-                url: 'idex.php?login',
+                url: './login.php',
                 data: data,
                 success: function(response) {
                     if(response.status === 'success') {

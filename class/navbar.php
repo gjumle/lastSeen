@@ -3,7 +3,7 @@
 class NavBar {
     private static $links = [
         'Home' => 'index.php',
-        'About' => '?about',
+        'About' => 'about.php',
     ];
 
     public static function display() {
@@ -17,11 +17,11 @@ class NavBar {
         $html .= '<a href="#">Account</a>';
         $html .= '<div class="dropdown-content">';
         if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
-            $html .= '<a href="?account">My Account</a>';
-            $html .= '<a href="?logout">Logout</a>';
+            $html .= '<a href="./account.php">My Account</a>';
+            $html .= '<a href="./logout.php">Logout</a>';
         } else {
-            $html .= '<a href="?login">Login</a>';
-            $html .= '<a href="?register">Register</a>';
+            $html .= '<a href="./login.php">Login</a>';
+            $html .= '<a href="./register.php">Register</a>';
         }
         $html .= '</div>';
         $html .= '</li>';
