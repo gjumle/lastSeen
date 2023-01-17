@@ -79,7 +79,6 @@ class User {
                 $user->uid = $user->checkUserLogin();
                 if ($uid = $user->uid) {
                     echo 'User successfuly logged in';
-                    echo $uid;
                 } else {
                     echo 'Incorrect username or password';
                 }
