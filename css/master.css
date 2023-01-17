@@ -1,43 +1,66 @@
-:root {
-    --bg-color: white;
-    --fg-color: black;
-}
-
 * {
     font-family: 'Rajdhani', sans-serif;
     padding: 0;
     margin: 0;
 }
 
-.nav-bar {
-    display: flex;
-    justify-content: center;
-    
-    height: 3vh;
-
-    background-color: var(--bg-color);
+nav {
+    background-color: #333;
+    overflow: hidden;
 }
 
-.nav-links {
-    width: 75%;
-    display: flex;
-
-    background-color: var(--bg-color);
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
-.nav-link {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+nav li {
+    float: left;
+}
 
-    width: 100%;
-
-    color: var(--fg-color);
+nav a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
     text-decoration: none;
-    font-size: 150%;
-    transition: 0.2s;
 }
 
-.nav-link:hover {
-    background-color: lightgrey;
+nav a:hover {
+    background-color: #111;
 }
+
+nav .active {
+    background-color: #4CAF50;
+}
+
+nav .dropdown {
+    float: right;
+}
+
+nav .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+nav .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+nav .dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+nav .dropdown:hover .dropdown-content {
+    display: block;
+}
+
