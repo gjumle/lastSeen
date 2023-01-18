@@ -62,23 +62,21 @@ class User {
     }
 
     public static function handleForm() {
-        if (isset($_POST['submit'])) {
-            if (isset($_POST['register'])) {
-                $password_hash = self::hashPassword($_POST['password']);
-                $user = new User (null, $_POST['username'], $password_hash, $_POST['email'], 0, $_POST['city']);
-                $user->insertToDB();
-                echo 'New user registerd';
-            }
-            if (isset($_POST['login'])) {
-                $user = new User (null, $_POST['username'], null, null, null, null);
-                $password_hash = self::hashPassword($_POST['password']);
-                $user->password = $password_hash;
-                $user->uid = $user->checkUserLogin();
-                if ($uid) {
-                    setcookie("logged_in", true, time() + (86400 * 30));
-                    $_SESSION['logged_in'] = true;
-                    header("Location: account.php");
-                }
+        if (isset($_POST['register'])) {
+            $password_hash = self::hashPassword($_POST['password']);
+            $user = new User (null, $_POST['username'], $password_hash, $_POST['email'], 0, $_POST['city']);
+            $user->insertToDB();
+            echo 'New user registerd';
+        }
+        if (isset($_POST['login'])) {
+            $user = new User (null, $_POST['username'], null, null, null, null);
+            $password_hash = self::hashPassword($_POST['password']);
+            $user->password = $password_hash;
+            $user->uid = $user->checkUserLogin();
+            if ($user->uid) {
+                setcookie("logged_in", true, time() + (86400 * 30));
+                $_SESSION['logged_in'] = true;
+                header("Location: account.php");
             }
         }
     }

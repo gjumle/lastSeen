@@ -43,7 +43,7 @@ $(document).ready(function() {
 
 $(document).ready(function() {
     $('.login-form form input').on('focusout', function() {
-        if($(this).val() === '') {
+        if($(thi`s`).val() === '') {
             $(this).next('.error-message').html('This field is required').css('display', 'block');
         } else {
             $(this).next('.error-message').html('').css('display', 'none');

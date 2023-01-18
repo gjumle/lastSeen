@@ -3,6 +3,9 @@
     <head>
         <meta charset='utf8'></meta>
         <meta lang='en'></meta>
+        
+        <link rel="icon" type="image/x-icon" href="./svg/favicon.ico">
+        
         <link rel=stylesheet href='./css/master.css'>
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
