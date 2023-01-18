@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 class NavBar {
     private static $links = [
         'Home' => 'index.php',
