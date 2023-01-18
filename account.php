@@ -7,6 +7,7 @@
         <link rel="icon" type="image/x-icon" href="./svg/favicon.ico">
 
         <link rel=stylesheet href='./css/master.css'>
+        <link rel=stylesheet href='./css/account.css'>
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
