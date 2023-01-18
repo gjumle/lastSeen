@@ -19,7 +19,7 @@ class NavBar {
         $html .= '<a href="#">Account</a>';
         $html .= '<div class="dropdown-content">';
         if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
-            $html .= '<a href="./account.php">My Account</a>';
+            $html .= '<a href="./account.php">' . $_SESSION['username'] .'</a>';
             $html .= '<a href="./logout.php">Logout</a>';
         } else {
             $html .= '<a href="./login.php">Login</a>';
