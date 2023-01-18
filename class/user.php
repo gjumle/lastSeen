@@ -129,7 +129,7 @@ class User {
 
     public function getAdmin() {
         $conn = DB::connect();
-        $sql = 'SELECT admin FROM users WHERE username ="' . $this->username . '"';
+        $sql = 'SELECT admin FROM users WHERE uid ="' . $this->uid . '"';
         $result = $conn->query($sql);
         while ($row = $result->fetch_assoc()) {
             $admin = $row['admin'];
