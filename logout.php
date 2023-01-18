@@ -13,6 +13,7 @@ echo NavBar::display();
 setcookie("logged_in", "", time() - 3600);
 setcookie("username", "", time() - 3600);
 setcookie("uid", "", time() - 3600);
+setcookie("admin", "", time() - 3600);
 header("Refresh: 5; url=index.php");
 
 ?>

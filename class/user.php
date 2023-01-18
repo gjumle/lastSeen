@@ -73,10 +73,12 @@ class User {
             $password_hash = self::hashPassword($_POST['password']);
             $user->password = $password_hash;
             $user->uid = $user->checkUserLogin();
+            $user->admin = $user->getAdmin();
             if ($user->uid) {
                 setcookie("logged_in", true, time() + (86400 * 30));
                 setcookie("uid", $user->uid, time() + (86400 * 30));
                 setcookie("username", $user->username, time() + (86400 * 30));
+                setcookie("admin", $user->admin, time() + (86400 * 30));
                 header("Location: account.php");
             }
         }
@@ -123,5 +125,16 @@ class User {
         }
         $conn->close();
         return $password;
+    }
+
+    public function getAdmin() {
+        $conn = DB::connect();
+        $sql = 'SELECT admin FROM users WHERE username ="' . $this->username . '"';
+        $result = $conn->query($sql);
+        while ($row = $result->fetch_assoc()) {
+            $admin = $row['admin'];
+        }
+        $conn->close();
+        return $admin;
     }
 }
