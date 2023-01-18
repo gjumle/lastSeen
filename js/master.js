@@ -7,7 +7,7 @@ $(document).ready(function() {
         }
     });
 
-    $(".registration-form form").on("submit", function(e){
+    $(".registration-form form").on("register", function(e){
         e.preventDefault();
 
         var isValid = true;
@@ -25,7 +25,6 @@ $(document).ready(function() {
                 "email": $("#email").val(),
                 "city": $("#city").val()
             };
-
             $.ajax({
                 type: "POST",
                 url: "./register.php",
@@ -51,7 +50,7 @@ $(document).ready(function() {
         }
     });
 
-    $('.login-form form').on('submit', function(e) {
+    $('.login-form form').on('login', function(e) {
         e.preventDefault();
 
         var isValid = true;
