@@ -73,7 +73,6 @@ class User {
             $password_hash = self::hashPassword($_POST['password']);
             $user->password = $password_hash;
             $user->uid = $user->checkUserLogin();
-            $user->admin = $user->getAdmin();
             if ($user->uid) {
                 setcookie("logged_in", true, time() + (86400 * 30));
                 setcookie("uid", $user->uid, time() + (86400 * 30));
