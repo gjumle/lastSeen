@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 class NavBar {
     private static $links = [
         'Home' => 'index.php',
@@ -18,8 +16,10 @@ class NavBar {
         $html .= '<li class="dropdown" style="float:right">';
         $html .= '<a href="#">Account</a>';
         $html .= '<div class="dropdown-content">';
-        if(isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true) {
-            $html .= '<a href="./account.php">' . $_SESSION['username'] .'</a>';
+        if(isset($_COOKIE['logged_in']) && $_COOKIE['logged_in'] == true) {
+            if(isset($_COOKIE['username'])) {
+                $html .= '<a href="./account.php?username='.$_COOKIE['username'].'">'.$_COOKIE['username'].'</a>';
+            }            
             $html .= '<a href="./logout.php">Logout</a>';
         } else {
             $html .= '<a href="./login.php">Login</a>';

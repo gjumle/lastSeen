@@ -75,9 +75,8 @@ class User {
             $user->uid = $user->checkUserLogin();
             if ($user->uid) {
                 setcookie("logged_in", true, time() + (86400 * 30));
-                $_SESSION['logged_in'] = true;
-                $_SESSION['uid'] = $user->uid;
-                $_SESSION['username'] = $user->username;
+                setcookie("uid", $user->uid, time() + (86400 * 30));
+                setcookie("username", $user->username, time() + (86400 * 30));
                 header("Location: account.php");
             }
         }
