@@ -108,32 +108,36 @@ class User {
         $conn = DB::connect();
         $sql = 'SELECT uid FROM users WHERE username ="' . $this->username . '" AND password ="' . $this->password . '"';
         $result = $conn->query($sql);
-        while ($row = $result->fetch_assoc()) {
-            $uid = $row['uid'];
-        }
+        $data = $result->fetch_assoc();
         $conn->close();
-        return $uid;
+        return $data;
     }
 
     public function getPassword() {
         $conn = DB::connect();
         $sql = 'SELECT password FROM users WHERE username ="' . $this->username . '"';
         $result = $conn->query($sql);
-        while ($row = $result->fetch_assoc()) {
-            $password = $row['password'];
-        }
+        $data = $result->fetch_assoc();
         $conn->close();
-        return $password;
+        return $data;
     }
 
     public function getAdmin() {
         $conn = DB::connect();
         $sql = 'SELECT admin FROM users WHERE uid ="' . $this->uid . '"';
         $result = $conn->query($sql);
-        while ($row = $result->fetch_assoc()) {
-            $admin = $row['admin'];
-        }
+        $data = $result->fetch_assoc();
         $conn->close();
-        return $admin;
+        return $data;
     }
+
+    public function getUserData() {
+        $conn = DB::connect();
+        $sql = 'SELECT username, email, city FROM users WHERE uid = '.$this->uid;
+        $result = $conn->query($sql);
+        $data = $result->fetch_assoc();
+        $conn->close();
+        return $data;
+    }
+    
 }
