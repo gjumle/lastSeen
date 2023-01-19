@@ -73,6 +73,7 @@ class User {
             $password_hash = self::hashPassword($_POST['password']);
             $user->password = $password_hash;
             $user->uid = $user->checkUserLogin();
+            $user = $user->getUserData();
             if ($user->uid) {
                 setcookie("logged_in", true, time() + (86400 * 30));
                 setcookie("uid", $user->uid, time() + (86400 * 30));
@@ -108,36 +109,22 @@ class User {
         $conn = DB::connect();
         $sql = 'SELECT uid FROM users WHERE username ="' . $this->username . '" AND password ="' . $this->password . '"';
         $result = $conn->query($sql);
-        $data = $result->fetch_assoc();
+        while ($row = $result->fetch_assoc()) {
+            $uid = $row['uid'];
+        }
         $conn->close();
-        return $data;
-    }
-
-    public function getPassword() {
-        $conn = DB::connect();
-        $sql = 'SELECT password FROM users WHERE username ="' . $this->username . '"';
-        $result = $conn->query($sql);
-        $data = $result->fetch_assoc();
-        $conn->close();
-        return $data;
-    }
-
-    public function getAdmin() {
-        $conn = DB::connect();
-        $sql = 'SELECT admin FROM users WHERE uid ="' . $this->uid . '"';
-        $result = $conn->query($sql);
-        $data = $result->fetch_assoc();
-        $conn->close();
-        return $data;
+        return $uid;
     }
 
     public function getUserData() {
         $conn = DB::connect();
-        $sql = 'SELECT username, email, city FROM users WHERE uid = '.$this->uid;
+        $sql = 'SELECT uid, password, email, admin, city FROM users WHERE username = '.$this->username;
         $result = $conn->query($sql);
         $data = $result->fetch_assoc();
+        while ($row = $resul->fetch_assoc()) {
+            $user = new User ($row['uid'], $this->username, $row['password'], $row['email'], $row['admin'], $row['city']);
+        }
         $conn->close();
-        return $data;
+        return $user;
     }
-    
 }
