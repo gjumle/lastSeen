@@ -118,10 +118,9 @@ class User {
 
     public function getUserData() {
         $conn = DB::connect();
-        $sql = 'SELECT uid, password, email, admin, city FROM users WHERE username = '.$this->username;
+        $sql = 'SELECT uid, password, email, admin, city FROM users WHERE username = "'.$this->username . '"';
         $result = $conn->query($sql);
-        $data = $result->fetch_assoc();
-        while ($row = $resul->fetch_assoc()) {
+        while ($row = $result->fetch_assoc()) {
             $user = new User ($row['uid'], $this->username, $row['password'], $row['email'], $row['admin'], $row['city']);
         }
         $conn->close();
