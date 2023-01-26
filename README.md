@@ -1,2 +1,2 @@
 # lastSeen
- idk yet
+ Web app for time managment
