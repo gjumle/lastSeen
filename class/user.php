@@ -129,9 +129,8 @@ class User {
             $this->admin = $row['admin'];
             $this->city = $row['city'];
         }
-    
         $stmt->close();
         $conn->close();
         return $this;
-    }    
+    }
 }
