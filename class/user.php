@@ -57,73 +57,99 @@ class User {
     ";
     }
 
-    public static function hashPassword($password) {
-        return md5($password);
-    }
-
     public static function handleForm() {
         if (isset($_POST['register'])) {
             $password_hash = self::hashPassword($_POST['password']);
             $user = new User (null, $_POST['username'], $password_hash, $_POST['email'], 0, $_POST['city']);
             $user->insertToDB();
             echo 'New user registerd';
-        }
-        if (isset($_POST['login'])) {
+        } elseif (isset($_POST['login'])) {
             $user = new User (null, $_POST['username'], null, null, null, null);
             $password_hash = self::hashPassword($_POST['password']);
             $user->password = $password_hash;
             $user->uid = $user->checkUserLogin();
-            $user = $user->getUserData();
             if ($user->uid) {
+                $user = $user->getUserData();
                 setcookie("logged_in", true, time() + (86400 * 30));
                 setcookie("uid", $user->uid, time() + (86400 * 30));
                 setcookie("username", $user->username, time() + (86400 * 30));
                 setcookie("admin", $user->admin, time() + (86400 * 30));
                 header("Location: account.php");
+            } else {
+                echo 'Login Failed';
             }
         }
     }
+    
+    
+    public static function hashPassword($password) {
+        return md5($password);
+    }
+    
 
     public function insertToDB() {
         $conn = DB::connect();
-        $sql = 'INSERT INTO users (username, password, email, admin, city) VALUES ("' . $this->username . '", "' . $this->password . '", "' . $this->email . '", ' . $this->admin . ', "' . $this->city . '")';
-        $conn->query($sql);
+        $stmt = $conn->prepare("INSERT INTO users (username, password, email, admin, city) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssds", $this->username, $this->password, $this->email, $this->admin, $this->city);
+        $stmt->execute();
+        $stmt->close();
         $conn->close();
     }
-
+    
     public function saveToDB() {
         $conn = DB::connect();
-        $sql = 'UPDATE users SET username ="' . $this->username . '", password ="' . $this->password . '", email = "' . $this->admin . '", city = "' . $this->city . '" WHERE uid = ' . $this->uid;
-        $conn->query($sql);
+        $stmt = $conn->prepare("UPDATE users SET username=?, password=?, email=?, city=? WHERE uid=?");
+        $stmt->bind_param("ssssi", $this->username, $this->password, $this->email, $this->city, $this->uid);
+        $stmt->execute();
+        $stmt->close();
         $conn->close();
     }
-
-    public function delefeFromDB() {
+    
+    public function deleteFromDB() {
         $conn = DB::connect();
-        $sql = 'DELETE FROM users WHERE uid=' . $this->uid;
-        $conn->query($sql);
+        $stmt = $conn->prepare("DELETE FROM users WHERE uid=?");
+        $stmt->bind_param("i", $this->uid);
+        $stmt->execute();
+        $stmt->close();
         $conn->close();
     }
+    
 
     public function checkUserLogin() {
         $conn = DB::connect();
-        $sql = 'SELECT uid FROM users WHERE username ="' . $this->username . '" AND password ="' . $this->password . '"';
-        $result = $conn->query($sql);
-        while ($row = $result->fetch_assoc()) {
+        $sql = 'SELECT uid FROM users WHERE username = ? AND password = ?';
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('ss', $this->username, $this->password);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($row = $result->fetch_assoc()) {
             $uid = $row['uid'];
         }
+        $stmt->close();
         $conn->close();
         return $uid;
     }
-
+    
     public function getUserData() {
         $conn = DB::connect();
-        $sql = 'SELECT uid, password, email, admin, city FROM users WHERE username = "'.$this->username . '"';
-        $result = $conn->query($sql);
-        while ($row = $result->fetch_assoc()) {
-            $user = new User ($row['uid'], $this->username, $row['password'], $row['email'], $row['admin'], $row['city']);
+        $sql = 'SELECT * FROM users WHERE uid = ?';
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('i', $this->uid);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $this->uid = $row['uid'];
+            $this->username = $row['username'];
+            $this->password = $row['password'];
+            $this->email = $row['email'];
+            $this->admin = $row['admin'];
+            $this->city = $row['city'];
         }
+        $stmt->close();
         $conn->close();
-        return $user;
+        return $this;
     }
+      
 }
