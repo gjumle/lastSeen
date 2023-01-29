@@ -64,12 +64,11 @@ class User {
             $user->insertToDB();
             echo 'New user registerd';
         } elseif (isset($_POST['login'])) {
-            $user = new User (null, $_POST['username'], null, null, null, null);
             $password_hash = self::hashPassword($_POST['password']);
-            $user->password = $password_hash;
-            $user->uid = $user->checkUserLogin();
+            $user = new User (null, $_POST['username'], $password_hash, null, null, null);
+            $user = $user->getUser();
+            var_dump($user);
             if ($user->uid) {
-                $user = $user->getUserData();
                 setcookie("logged_in", true, time() + (86400 * 30));
                 setcookie("uid", $user->uid, time() + (86400 * 30));
                 setcookie("username", $user->username, time() + (86400 * 30));
@@ -80,7 +79,6 @@ class User {
             }
         }
     }
-    
     
     public static function hashPassword($password) {
         return md5($password);
@@ -113,28 +111,12 @@ class User {
         $stmt->close();
         $conn->close();
     }
-    
 
-    public function checkUserLogin() {
+    public function getUser() {
         $conn = DB::connect();
-        $sql = 'SELECT uid FROM users WHERE username = ? AND password = ?';
+        $sql = 'SELECT * FROM users WHERE username = ? AND password = ?';
         $stmt = $conn->prepare($sql);
         $stmt->bind_param('ss', $this->username, $this->password);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        if ($row = $result->fetch_assoc()) {
-            $uid = $row['uid'];
-        }
-        $stmt->close();
-        $conn->close();
-        return $uid;
-    }
-    
-    public function getUserData() {
-        $conn = DB::connect();
-        $sql = 'SELECT * FROM users WHERE uid = ?';
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param('i', $this->uid);
         $stmt->execute();
         $result = $stmt->get_result();
     
@@ -147,9 +129,9 @@ class User {
             $this->admin = $row['admin'];
             $this->city = $row['city'];
         }
+    
         $stmt->close();
         $conn->close();
         return $this;
-    }
-      
+    }    
 }
