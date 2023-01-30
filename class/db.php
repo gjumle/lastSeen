@@ -1,14 +1,10 @@
 <?php
-
 class DB {
     static $conn = null;
 
-    public static function connect() {
+    static function getConnection() {
         if (self::$conn == null) {
-            $db = new mysqli('localhost', 'lsa', 'lsa', 'ls');
-            if ($db->connect_error) {
-                die("Connection failed: " . $db->connect_error);
-            }
+            $db = new mysqli('localhost', 'ocf', 'ocf', 'ocf');
             self::$conn = $db;
         } else {
             $db = self::$conn;
