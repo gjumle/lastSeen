@@ -68,7 +68,7 @@ class UserManager {
 
     public static function renderAsSelect($edit) {
         $users = self::getUsers();
-        $select = "<select name='user'><option value=''>---user---</option>";
+        $select = "<select name='user'><option>---user---</option>";
         foreach ($users as $user) {
             $select .= $user->renderAsOption($edit);
         }
