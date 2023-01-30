@@ -10,7 +10,7 @@ class User {
     public function __construct($id = null, $name = null, $password = null, $admin = null, $email = null, $city = null) {
         $this->id = $id;
         $this->name = $name;
-        $this->pasword = $password;
+        $this->password = $password;
         $this->admin = $admin ? $admin : 0;
         $this->email = $email;
         $this->city = $city;
