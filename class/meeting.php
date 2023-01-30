@@ -15,4 +15,12 @@ class Meeting {
         $this->location = $location;
         $this->uid = $uid;
     }
+
+    public function getId() {
+        return $this->mid;
+    }
+
+    public function getName() {
+        return $this->name;
+    }
 }
