@@ -38,7 +38,7 @@ class UserManager {
         if (isset($_POST['insert'])) {
             $insertUser = new User (null, $_POST['name'], $_POST['password'], $admin, $_POST['email'], $_POST['city']);
             $insertUser->insertToDB();
-            echo "<script type='text/javascript'>window.location.replace('userManger.php');</script>";
+            echo "<script type='text/javascript'>window.location.replace('userManager.php');</script>";
         }
     }
 
