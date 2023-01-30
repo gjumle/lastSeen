@@ -1,14 +1,14 @@
 <?php
 class Meeting {
-    private $id;
+    private $mid;
     private $name;
     private $desctiption;
     private $date;
     private $location;
     private $uid;
 
-    public function __construct($id = null, $name = null, $desctiption = null, $date = null, $location = null, $uid = null) {
-        $this->id = $id;
+    public function __construct($mid = null, $name = null, $desctiption = null, $date = null, $location = null, $uid = null) {
+        $this->mid = $mid;
         $this->name = $name;
         $this->description = $desctiption;
         $this->date = $date;
