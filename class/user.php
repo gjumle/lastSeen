@@ -1,14 +1,14 @@
 <?php
 class User {
-    private $id;
+    private $uid;
     private $name;
     private $password;
     private $admin;
     private $email;
     private $city;
 
-    public function __construct($id = null, $name = null, $password = null, $admin = null, $email = null, $city = null) {
-        $this->id = $id;
+    public function __construct($uid = null, $name = null, $password = null, $admin = null, $email = null, $city = null) {
+        $this->uid = $uid;
         $this->name = $name;
         $this->password = $password;
         $this->admin = $admin ? $admin : 0;
@@ -16,8 +16,8 @@ class User {
         $this->city = $city;
     }
 
-    public function getId() {
-        return $this->id;
+    public function getuid() {
+        return $this->uid;
     }
 
     public function getName() {
@@ -37,8 +37,8 @@ class User {
     }
 
     public function renderForm() {
-        if ($this->id > 0) {
-            $id = $this->id;
+        if ($this->uid > 0) {
+            $uid = $this->uid;
             $name = $this->name;
             $password = $this->password;
             $admin = $this->getAdmin();
@@ -46,7 +46,7 @@ class User {
             $city = $this->city;
             $btnName = "edit";
         } else {
-            $id = "";
+            $uid = "";
             $name = "";
             $password = "";
             $admin = "";
@@ -57,7 +57,7 @@ class User {
         return "
             <form action='' method='post' class=table>
                 <tr>
-                    <td><input type='hidden' name='id' value='" . $id . "'></td>
+                    <td><input type='hidden' name='uid' value='" . $uid . "'></td>
                     <td><input type='text' name='name' value='" . $name . "'></td>
                     <td><input type='password' name='password' value='" . $password . "'></td>
                     <td><input type='checkbox' name='admin' value='1' " . $admin . "></td>
@@ -69,19 +69,19 @@ class User {
     }
 
     public function renderAsRowTable() {
-        if (isset($_GET['edit']) && $_GET['edit'] == $this->id) {
+        if (isset($_GET['edit']) && $_GET['edit'] == $this->uid) {
             return $this->renderForm();
         } else {
             return "
                 <tr>
-                    <td>#" . $this->id . "</td>
+                    <td>#" . $this->uid . "</td>
                     <td>" . $this->name . "</td>
                     <td>" . $this->password . "</td>
                     <td>" . $this->getAdmin() . "</td>
                     <td>" . $this->email . "</td>
                     <td>" . $this->city . "</td>
-                    <td><a href='?edit=" . $this->id . "'>Edit</a></td>
-                    <td><a href='?delete=" . $this->id . "'>Delete</a></td>
+                    <td><a href='?edit=" . $this->uid . "'>Edit</a></td>
+                    <td><a href='?delete=" . $this->uid . "'>Delete</a></td>
                 </tr>";
         }
     }
@@ -100,8 +100,8 @@ class User {
     }
 
     public function renderAsOption($edit = null) {
-        $selected = ($edit == $this->id) ? "selected='selected'" : "";
-        return "<option value='" . $this->id . "' " . $selected . ">" . $this->name . "</option>";
+        $selected = ($edit == $this->uid) ? "selected='selected'" : "";
+        return "<option value='" . $this->uid . "' " . $selected . ">" . $this->name . "</option>";
     }
 
     public function insertToDB() {
@@ -112,13 +112,13 @@ class User {
 
     public function saveToDB() {
         $conn = DB::getConnection();
-        $sql = "UPDATE users SET name = '" . $this->name . "', password = '" . $this->password . "', admin = '" . $this->admin . "', email = '" . $this->email . "', city = '" . $this->city . "' WHERE uid = " . $this->id;
+        $sql = "UPDATE users SET name = '" . $this->name . "', password = '" . $this->password . "', admin = '" . $this->admin . "', email = '" . $this->email . "', city = '" . $this->city . "' WHERE uid = " . $this->uid;
         $result = $conn->query($sql);
     }
     
     public function deleteFromDB() {
         $conn = DB::getConnection();
-        $sql = "DELETE FROM users WHERE uid = " . $this->id;
+        $sql = "DELETE FROM users WHERE uid = " . $this->uid;
         $result = $conn->query($sql);
     }
 }

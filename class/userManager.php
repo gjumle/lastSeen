@@ -1,8 +1,8 @@
 <?php
 class UserManager {
 
-    private static function getUsers($id = null) {
-        $condition = ($id == null) ? "" : "WHERE uid = " . $id;
+    private static function getUsers($uid = null) {
+        $condition = ($uid == null) ? "" : "WHERE uid = " . $uid;
 
         $conn = DB::getConnection();
         $sql = "SELECT * FROM users " . $condition . " ORDER BY name ASC";
@@ -18,8 +18,8 @@ class UserManager {
         return $users;
     }
 
-    public static function getUser($id) {
-        $users = self::getUsers($id);
+    public static function getUser($uid) {
+        $users = self::getUsers($uid);
         return $users[0];
     }
 
@@ -27,7 +27,7 @@ class UserManager {
         $admin = (isset($_POST['admin'])) ? $_POST['admin'] : 0;
         $password = (isset($_POST['password'])) ? md5($_POST['password']) : "";
         if (isset($_POST['edit'])) {
-            $editUser = new User ($_POST['id'], $_POST['name'], $password, $admin, $_POST['email'], $_POST['city']);
+            $editUser = new User ($_POST['uid'], $_POST['name'], $password, $admin, $_POST['email'], $_POST['city']);
             $editUser->saveToDB();
             echo "<script type='text/javascript'>window.location.replace('userManager.php');</script>";        
         }
