@@ -46,7 +46,7 @@ class User {
             $city = $this->city;
             $btnName = "edit";
         } else {
-            $id = 0;
+            $id = "";
             $name = "";
             $password = "";
             $admin = "";
@@ -57,13 +57,13 @@ class User {
         return "
             <form action='' method='post' class=table>
                 <tr>
-                    <td><input tyep='hidden' name='id' value='" . $id . "'></td>
+                    <td><input type='hidden' name='id' value='" . $id . "'></td>
                     <td><input type='text' name='name' value='" . $name . "'></td>
                     <td><input type='password' name='password' value='" . $password . "'></td>
                     <td><input type='checkbox' name='admin' value='1' " . $admin . "></td>
                     <td><input type='text' name='email' value='" . $email . "'></td>
                     <td><input type='text' name='city' value='" . $city . "'></td>
-                    <td colspan='2'><input type='submit' name='" . $btnName . "' value='Save'></td>
+                    <td colspan='2'><input type='submit' name='" . $btnName . "'></td>
                 </tr>
             </form>";
     }
@@ -80,10 +80,8 @@ class User {
                     <td>" . $this->getAdmin() . "</td>
                     <td>" . $this->email . "</td>
                     <td>" . $this->city . "</td>
-                    <td>
-                        <a href='?edit=" . $this->id . "'>Edit</a>
-                        <a href='?delete=" . $this->id . "'>Delete</a>
-                    </td>
+                    <td><a href='?edit=" . $this->id . "'>Edit</a></td>
+                    <td><a href='?delete=" . $this->id . "'>Delete</a></td>
                 </tr>";
         }
     }
@@ -121,6 +119,6 @@ class User {
     public function deleteFromDB() {
         $conn = DB::getConnection();
         $sql = "DELETE FROM users WHERE uid = " . $this->id;
-
+        $result = $conn->query($sql);
     }
 }

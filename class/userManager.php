@@ -28,12 +28,12 @@ class UserManager {
         if (isset($_POST['edit'])) {
             $editUser = new User ($_POST['id'], $_POST['name'], $_POST['password'], $admin, $_POST['email'], $_POST['city']);
             $editUser->saveToDB();
-            echo "<script type='text/javascript'>window.location.replace('userManger.php');</script>";        
+            echo "<script type='text/javascript'>window.location.replace('userManager.php');</script>";        
         }
         if (isset($_GET['delete'])) {
             $deleteUser = self::getUser($_GET['delete']);
             $deleteUser->deleteFromDB();
-            echo "<script type='text/javascript'>window.location.replace('userManger.php');</script>";
+            echo "<script type='text/javascript'>window.location.replace('userManager.php');</script>";
         }
         if (isset($POST['insert'])) {
             $insertUser = new User (null, $_POST['name'], $_POST['password'], $admin, $_POST['email'], $_POST['city']);
