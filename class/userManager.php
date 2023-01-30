@@ -25,7 +25,7 @@ class UserManager {
 
     private static function formHandler() {
         $admin = (isset($_POST['admin'])) ? $_POST['admin'] : 0;
-        $password = (isset($_POST['password'])) ? md5($_POST['password']) : null;
+        $password = (isset($_POST['password'])) ? md5($_POST['password']) : "";
         if (isset($_POST['edit'])) {
             $editUser = new User ($_POST['id'], $_POST['name'], $password, $admin, $_POST['email'], $_POST['city']);
             $editUser->saveToDB();
@@ -37,7 +37,7 @@ class UserManager {
             echo "<script type='text/javascript'>window.location.replace('userManager.php');</script>";
         }
         if (isset($_POST['insert'])) {
-            $insertUser = new User (null, $_POST['name'], $_POST['password'], $admin, $_POST['email'], $_POST['city']);
+            $insertUser = new User ($id = null, $_POST['name'], $password, $admin, $_POST['email'], $_POST['city']);
             $insertUser->insertToDB();
             echo "<script type='text/javascript'>window.location.replace('userManager.php');</script>";
         }
