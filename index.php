@@ -14,6 +14,7 @@ spl_autoload_register("autoloadModel");
         <h1>Rozcestnik</h1>
         <ul>
             <li><a href="./userManager.php">User</a></li>
+            <li><a href="./meetingManager.php">Meeting</a></li>
         </ul>        
     </body>
 </html>
