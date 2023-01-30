@@ -4,7 +4,7 @@ class DB {
 
     static function getConnection() {
         if (self::$conn == null) {
-            $db = new mysqli('localhost', 'ocf', 'ocf', 'ocf');
+            $db = new mysqli('localhost', 'lsa', 'lsa', 'ls');
             self::$conn = $db;
         } else {
             $db = self::$conn;

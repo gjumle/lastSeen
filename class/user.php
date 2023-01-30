@@ -28,6 +28,10 @@ class User {
         return $this->password;
     }
 
+    private function getAdmin() {
+        return ($this->admin == 1) ? "Yes" : "No";
+    }
+
     public function getAdminAsChecked() {
         return ($this->admin == 1) ? "checked='checked'" : "";
     }
