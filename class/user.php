@@ -57,17 +57,39 @@ class User {
     ";
     }
 
+    public static function editForm() {
+        return "
+            <div class='registration-form'>
+                <h1>Edit</h1>
+                <form action='edit-account.php' method='post'>
+                    <label for='username'>Username</label>
+                    <input type='text' name='username' id='username'>
+                    <span class='error-message'></span>
+                    <label for='password'>Password</label>
+                    <input type='password' name='password' id='password'>
+                    <span class='error-message'></span>
+                    <label for='email'>E-Mail</label>
+                    <input type='text' name='email' id='email'>
+                    <span class='error-message'></span>
+                    <label for='city'>City</label>
+                    <input type='text' name='city' id='city'>
+                    <span class='error-message'></span>
+                    <input type='submit' name='register' id='submit' value='submit'>
+                </form>
+            </div>
+        ";
+    }
+
     public static function handleForm() {
         if (isset($_POST['register'])) {
             $password_hash = self::hashPassword($_POST['password']);
             $user = new User (null, $_POST['username'], $password_hash, $_POST['email'], 0, $_POST['city']);
             $user->insertToDB();
-            echo 'New user registerd';
+            echo 'New user registered';
         } elseif (isset($_POST['login'])) {
             $password_hash = self::hashPassword($_POST['password']);
             $user = new User (null, $_POST['username'], $password_hash, null, null, null);
-            $user = $user->getUser();
-            var_dump($user);
+            $user = $user->getData();
             if ($user->uid) {
                 setcookie("logged_in", true, time() + (86400 * 30));
                 setcookie("uid", $user->uid, time() + (86400 * 30));
@@ -77,8 +99,13 @@ class User {
             } else {
                 echo 'Login Failed';
             }
+        } elseif (isset($_POST['edit'])) {
+            $user = User::getData();
+            $user->updateData($_POST['email'], $_POST['password'], $_POST['city']);
+            header("Location: account.php");
         }
     }
+    
     
     public static function hashPassword($password) {
         return md5($password);
@@ -112,7 +139,7 @@ class User {
         $conn->close();
     }
 
-    public function getUser() {
+    public function getData() {
         $conn = DB::connect();
         $sql = 'SELECT * FROM users WHERE username = ? AND password = ?';
         $stmt = $conn->prepare($sql);
@@ -133,4 +160,35 @@ class User {
         $conn->close();
         return $this;
     }
+
+    static function renderAccount() {
+        $conn = DB::connect();
+        if (isset($_COOKIE['uid'])) {
+            $user_id = $_COOKIE['uid'];
+            $sql = 'SELECT * FROM users WHERE uid = ?';
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param('i', $user_id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                $username = $row['username'];
+                $email = $row['email'];
+                $city = $row['city'];
+            }
+            $stmt->close();
+        }
+        $conn->close();
+    
+        $output = '<table class="user-table">';
+        $output .= '<tr><th>Username</th><td>' . $username . '</td></tr>';
+        $output .= '<tr><th>Email</th><td>' . $email . '</td></tr>';
+        $output .= '<tr><th>City</th><td>' . $city . '</td></tr>';
+        $output .= '<tr><td colspan="2"><a href="edit-account.php" class="edit-button">Edit</a></td></tr>';
+        $output .= '</table>';
+    
+        return $output;
+    }
+
+    
 }
