@@ -28,12 +28,20 @@ class User {
         return $this->password;
     }
 
-    private function getAdmin() {
+    public function getAdmin() {
         return ($this->admin == 1) ? "Yes" : "No";
     }
 
     public function getAdminAsChecked() {
         return ($this->admin == 1) ? "checked='checked'" : "";
+    }
+
+    public function getEmail() {
+        return $this->email;
+    }
+
+    public function getCity() {
+        return $this->city;
     }
 
     public function renderForm() {
@@ -120,5 +128,15 @@ class User {
         $conn = DB::getConnection();
         $sql = "DELETE FROM users WHERE uid = " . $this->uid;
         $result = $conn->query($sql);
+    }
+
+    public function checkDB() {
+        $conn = DB::getConnection();
+        $sql = "SELECT uid FROM users WHERE name = '". $this->name . "' AND password = '" . $this->password . "'";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_all(MYSQLI_ASSOC);
+            return $row['uid'];
+        }
     }
 }
