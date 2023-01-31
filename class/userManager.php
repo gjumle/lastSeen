@@ -11,7 +11,7 @@ class UserManager {
         if ($result->num_rows > 0) {
             $rows = $result->fetch_all(MYSQLI_ASSOC);
             foreach ($rows as $row) {
-                $user = new User($row['uid'], $row['name'], $row['password'], $row['admin'], $row['email'], $row['city']);
+                $user = new User ($row['uid'], $row['name'], $row['password'], $row['admin'], $row['email'], $row['city']);
                 array_push($users, $user);
             }
         }
