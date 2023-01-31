@@ -26,7 +26,7 @@ class Login {
             setcookie('email', '', time() - 3600);
             setcookie('city', '', time() - 3600);
             return "<span>Logout success</span>";
-        } else {
+        } elseif (isset($_GET['action']) && $_GET['action'] == 'login') {
             return "
                 <form action='' method='post'>
                     <label for='name'>Name:</label>
@@ -45,6 +45,7 @@ class Login {
         if (isset($_POST['register'])) {
             $registerUser = new User (null, $_POST['name'], $password, null, $_POST['email'], $_POST['city']);
             $registerUser->insertToDB();
+            echo "<script type='text/javascript'>window.location.replace('account.php');</script>";
         }
         if (isset($_POST['login'])) {
             $loginUser = new User (null, $_POST['name'], $password, null, null, null);
@@ -55,6 +56,7 @@ class Login {
                 setcookie('admin', $loginUser->getAdmin(), time() + (86400 * 30), '/');
                 setcookie('email', $loginUser->getEmail(), time() + (86400 * 30), '/');
                 setcookie('city', $loginUser->getCity(), time() + (86400 * 30), '/');
+                echo "<script type='text/javascript'>window.location.replace('account.php');</script>";
             } else {
                 return "<span>Inccorect name or password";
             }

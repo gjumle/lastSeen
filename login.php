@@ -12,7 +12,7 @@ spl_autoload_register("autoloadModel");
 <html>
     <body>
         <h1>Login</h1>
-        <p>Go to <a href='./index.php'>menu</a>  Register <a href="?action=new">here</a> Logout <a href="?action=logout">here</a></p>       
+        <p>Go to <a href='./index.php'>menu</a> Login <a href="?action=login">here</a> Register <a href="?action=new">here</a> Logout <a href="?action=logout">here</a></p>       
     </body>
 </html>
 
