@@ -16,7 +16,7 @@ class User {
         $this->city = $city;
     }
 
-    public function getuid() {
+    public function getId() {
         return $this->uid;
     }
 
@@ -100,7 +100,7 @@ class User {
     }
 
     public function renderAsOption($edit = null) {
-        $selected = ($edit == $this->uid) ? "selected='selected'" : "";
+        $selected = ($edit != null && $this->uid == $edit->id) ? "selected='selected'" : "";
         return "<option value='" . $this->uid . "' " . $selected . ">" . $this->name . "</option>";
     }
 

@@ -1,5 +1,5 @@
 <?php
-class MeetingManger {
+class MeetingManager {
 
     private static function getMeetings($mid = null) {
         $condition = ($mid == null) ? "" : "WHERE mid = " . $mid;
@@ -7,10 +7,11 @@ class MeetingManger {
         $conn = DB::getConnection();
         $sql = "SELECT * FROM meetings " . $condition . " ORDER BY name ASC";
         $result = $conn->query($sql);
+        $meetings = array();
         if ($result->num_rows > 0) {
             $rows = $result->fetch_all(MYSQLI_ASSOC);
             foreach ($rows as $row) {
-                $meeting = new Meeting ($row['mid'], $row['name'], $row['description'], $row['date'], $row['location'], $row['uid']);
+                $meeting = new Meeting ($row['mid'], $row['name'], $row['description'], $row['date'], $row['location'], UserManager::getUser($row['uid']));
                 array_push($meetings, $meeting);
             }
         }
@@ -24,7 +25,7 @@ class MeetingManger {
 
     private static function formHandler() {
         if (isset($_POST['edit'])) {
-            $editMeeting = new Meeting ($_POST['mid'], $_POST['name'], $_POST['description'], $_POST['date'], $_POST['location'], $_POST['user']);
+            $editMeeting = new Meeting ($_POST['mid'], $_POST['name'], $_POST['description'], $_POST['date'], $_POST['location'], UserManager::getUser($_POST['user']));
             $editMeeting->saveToDB();
             echo "<script type='text/javascript'>window.location.replace('meetingManager.php');</script>";
         }
@@ -34,7 +35,7 @@ class MeetingManger {
             echo "<script type='text/javascript'>window.location.replace('meetingManager.php');</script>";
         }
         if (isset($_POST['insert'])) {
-            $isnertMeeting = new Meeting (null, $_POST['name'], $_POST['description'], $_POST['date'], $_POST['location'], $_POST['user']);
+            $isnertMeeting = new Meeting (null, $_POST['name'], $_POST['description'], $_POST['date'], $_POST['location'], UserManager::getUser($_POST['user']));
             $isnertMeeting->insertToDB();
             echo "<script type='text/javascript'>window.location.replace('meetingManager.php');</script>";
         }
