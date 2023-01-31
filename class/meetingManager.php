@@ -21,4 +21,46 @@ class MeetingManger {
         $meetings = self::getMeetings();
         return $meeting[0];
     }
+
+    private static function formHandler() {
+        if (isset($_POST['edit'])) {
+            $editMeeting = new Meeting ($_POST['mid'], $_POST['name'], $_POST['description'], $_POST['date'], $_POST['location'], $_POST['user']);
+            $editMeeting->saveToDB();
+            echo "<script type='text/javascript'>window.location.replace('meetingManager.php');</script>";
+        }
+        if (isset($_GET['delete'])) {
+            $deleteMeeting = self::getMeeting($_GET['delete']);
+            $deleteMeeting->deleteFromDB(); 
+            echo "<script type='text/javascript'>window.location.replace('meetingManager.php');</script>";
+        }
+        if (isset($_POST['insert'])) {
+            $isnertMeeting = new Meeting (null, $_POST['name'], $_POST['description'], $_POST['date'], $_POST['location'], $_POST['user']);
+            $isnertMeeting->insertToDB();
+            echo "<script type='text/javascript'>window.location.replace('meetingManager.php');</script>";
+        }
+    }
+
+    private static function renderAllAsTableRow() {
+        $meetings = self::getMeetings();
+        $table = "";
+        foreach ($meetings as $meeting) {
+            $table .= $meeting->renderAsRowTable();
+        }
+        return $table;
+    }
+
+    public static function renderDataTable() {
+        self::formHandler();
+        $table = "<table border='1'>";
+        $table .= Meeting::renderHead();
+
+        if (isset($_GET['action']) && ($_GET['action'] == 'new')) {
+            $meeting = new Meeting();
+            $table .= $meeting->renderForm();
+        }
+        $table .= self::renderAllAsTableRow();
+        $table .= "</table>";
+
+        return $table;
+    }
 }
