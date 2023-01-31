@@ -48,13 +48,16 @@ class Login {
         }
         if (isset($_POST['login'])) {
             $loginUser = new User (null, $_POST['name'], $password, null, null, null);
-            $loginUser = UserManager::getUser($loginUser->checkDB());
-            var_dump($loginUser);
-            setcookie('uid', $loginUser->getId(), time() + (86400 * 30), '/');
-            setcookie('password', $loginUser->getPassword(), time() + (86400 * 30), '/');
-            setcookie('admin', $loginUser->getAdmin(), time() + (86400 * 30), '/');
-            setcookie('email', $loginUser->getEmail(), time() + (86400 * 30), '/');
-            setcookie('city', $loginUser->getCity(), time() + (86400 * 30), '/');
+            if ($loginUser->checkDB() > 0) {
+                $loginUser = UserManager::getUser($loginUser->checkDB());
+                setcookie('uid', $loginUser->getId(), time() + (86400 * 30), '/');
+                setcookie('password', $loginUser->getPassword(), time() + (86400 * 30), '/');
+                setcookie('admin', $loginUser->getAdmin(), time() + (86400 * 30), '/');
+                setcookie('email', $loginUser->getEmail(), time() + (86400 * 30), '/');
+                setcookie('city', $loginUser->getCity(), time() + (86400 * 30), '/');
+            } else {
+                return "<span>Inccorect name or password";
+            }
         }
     }
 

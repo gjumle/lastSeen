@@ -135,8 +135,9 @@ class User {
         $sql = "SELECT uid FROM users WHERE name = '". $this->name . "' AND password = '" . $this->password . "'";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
-            $row = $result->fetch_all(MYSQLI_ASSOC);
-            return $row['uid'];
+            while($row = $result->fetch_assoc()) {
+                return $row['uid'];
+            }
         }
     }
 }
