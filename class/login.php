@@ -65,7 +65,7 @@ class Login {
 
     public static function renderLoginForm() {
         self::formHandler();
-        $form = Login::renderForm();
+        $form = self::renderForm();
 
         return $form;
     }
