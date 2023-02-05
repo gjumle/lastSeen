@@ -1,8 +1,8 @@
 <?php
-class Login {
+class Account {
 
     public static function renderForm() {
-        if (isset($_GET['action']) && $_GET['action'] == "new") {
+        if (isset($_GET['action']) && $_GET['action'] == "register") {
             return "
                 <form action='' method='post'>
                     <label for='name'>Name:</label>

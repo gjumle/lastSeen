@@ -15,7 +15,7 @@ spl_autoload_register("autoloadModel");
         <ul>
             <li><a href="./userManager.php">UserManager</a></li>
             <li><a href="./meetingManager.php">MeetingManager</a></li>
-            <li><a href="./login.php">Login</a></li>
+            <li><a href="./account.php">Account</a></li>
         </ul>        
     </body>
 </html>
