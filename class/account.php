@@ -19,13 +19,6 @@ class Account {
 
                     <input type='submit' name='register'>
                 </form>";
-        } elseif (isset($_GET['action']) && $_GET['action'] == 'logout') {
-            setcookie('uid', '', time() - 3600);
-            setcookie('password', '', time() - 3600);
-            setcookie('admin', '', time() - 3600);
-            setcookie('email', '', time() - 3600);
-            setcookie('city', '', time() - 3600);
-            return "<span>Logout success</span>";
         } elseif (isset($_GET['action']) && $_GET['action'] == 'login') {
             return "
                 <form action='' method='post'>
@@ -56,7 +49,7 @@ class Account {
                 setcookie('admin', $loginUser->getAdmin(), time() + (86400 * 30), '/');
                 setcookie('email', $loginUser->getEmail(), time() + (86400 * 30), '/');
                 setcookie('city', $loginUser->getCity(), time() + (86400 * 30), '/');
-                echo "<script type='text/javascript'>window.location.replace('account.php');</script>";
+                echo "<script type='text/javascript'>window.location.replace('account.php?logedin=1');</script>";
             } else {
                 return "<span>Inccorect name or password";
             }
