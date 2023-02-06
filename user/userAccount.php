@@ -11,6 +11,6 @@ spl_autoload_register("autoloadModel");
 
 <html>
     <body>
-        <h1><?php echo $_COOKIE['username'] ?></h1>
+        <h1><?php echo $_COOKIE['name'] ?></h1>
     </body>
 </html>

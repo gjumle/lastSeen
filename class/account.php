@@ -50,7 +50,7 @@ class Account {
                 $loginUser = UserManager::getUser($loginUser->checkDB());
                 setcookie('logged_in', true, time() + (86400 * 30));
                 setcookie('uid', $loginUser->getId(), time() + (86400 * 30));
-                setcookie('name', $this->name, time() + (86400 * 30));
+                setcookie('name', $loginUser->getName(), time() + (86400 * 30));
                 setcookie('password', $loginUser->getPassword(), time() + (86400 * 30));
                 setcookie('admin', $loginUser->getAdmin(), time() + (86400 * 30));
                 setcookie('email', $loginUser->getEmail(), time() + (86400 * 30));
