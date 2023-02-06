@@ -58,34 +58,34 @@ class User {
     }
 
     public static function editForm() {
-        // Get the current user's data
-        $user = User::getData();
-    
+        // Get the data from the cookies
+        $username = $_COOKIE['username'];
+        $password = $_COOKIE['password'];
+        $email = $_COOKIE['email'];
+        $city = $_COOKIE['city'];
+        
         return "
             <div class='registration-form'>
                 <h1>Edit</h1>
                 <form action='edit-account.php' method='post'>
                     <label for='username'>Username</label>
-                    <input type='text' name='username' id='username'>
-                    <input type='text' name='username' id='username' value='".$user['username']."'>
+                    <input type='text' name='username' id='username' value='$username'>
                     <span class='error-message'></span>
                     <label for='password'>Password</label>
-                    <input type='password' name='password' id='password'>
-                    <input type='password' name='password' id='password' value='".$user['password']."'>
+                    <input type='password' name='password' id='password' value='".$password."'>
                     <span class='error-message'></span>
                     <label for='email'>E-Mail</label>
-                    <input type='text' name='email' id='email'>
-                    <input type='text' name='email' id='email' value='".$user['email']."'>
+                    <input type='text' name='email' id='email' value='$email'>
                     <span class='error-message'></span>
                     <label for='city'>City</label>
-                    <input type='text' name='city' id='city'>
-                    <input type='text' name='city' id='city' value='".$user['city']."'>
+                    <input type='text' name='city' id='city' value='$city'>
                     <span class='error-message'></span>
                     <input type='submit' name='register' id='submit' value='submit'>
                 </form>
             </div>
         ";
     }
+    
     
 
     public static function handleForm() {
