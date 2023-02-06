@@ -23,7 +23,7 @@ class Account {
             </div>";
         } elseif (isset($_GET['action']) && $_GET['action'] == 'login') {
             return "
-            <div class='account-form>
+            <div class='account-form'>
                 <form action='' method='post'>
                     <label for='name'>Name:</label>
                     <input type='text' name='name'>
