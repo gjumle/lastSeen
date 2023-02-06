@@ -7,16 +7,10 @@ function autoloadModel($className) {
 }
 spl_autoload_register("autoloadModel");
 
-
 ?>
 
 <html>
     <body>
-        <h1>Meeting Manager</h1>
-        <p>Go to <a href='./index.php'>menu</a>  Add new record <a href="?action=new">here</a></p>
+        <h1><?php echo $_COOKIE['username'] ?></h1>
     </body>
 </html>
-
-<?php
-echo MeetingManager::renderDataTable();
-?>

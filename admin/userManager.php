@@ -13,7 +13,7 @@ spl_autoload_register("autoloadModel");
 <html>
     <body>
         <h1>User Manager</h1>
-        <p>Go to <a href='./index.php'>menu</a>  Add new record <a href="?action=new">here</a></p>
+        <p>Go to <a href='../index.php'>menu</a>  Add new record <a href="?action=new">here</a></p>
     </body>
 </html>
 

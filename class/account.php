@@ -42,18 +42,20 @@ class Account {
         if (isset($_POST['register'])) {
             $registerUser = new User (null, $_POST['name'], $password, null, $_POST['email'], $_POST['city']);
             $registerUser->insertToDB();
-            echo "<script type='text/javascript'>window.location.replace('account.php');</script>";
+            echo "<script type='text/javascript'>window.location.replace('userAccount.php');</script>";
         }
         if (isset($_POST['login'])) {
             $loginUser = new User (null, $_POST['name'], $password, null, null, null);
             if ($loginUser->checkDB() > 0) {
                 $loginUser = UserManager::getUser($loginUser->checkDB());
+                setcookie('logged_in', true, time() + (86400 * 30));
                 setcookie('uid', $loginUser->getId(), time() + (86400 * 30));
+                setcookie('name', $this->name, time() + (86400 * 30));
                 setcookie('password', $loginUser->getPassword(), time() + (86400 * 30));
                 setcookie('admin', $loginUser->getAdmin(), time() + (86400 * 30));
                 setcookie('email', $loginUser->getEmail(), time() + (86400 * 30));
                 setcookie('city', $loginUser->getCity(), time() + (86400 * 30));
-                echo "<script type='text/javascript'>window.location.replace('account.php?logedin=1');</script>";
+                echo "<script type='text/javascript'>window.location.replace('userAccount.php');</script>";
             } else {
                 return "<span>Inccorect name or password";
             }
