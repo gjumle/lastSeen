@@ -7,15 +7,16 @@ function autoloadModel($className) {
 }
 spl_autoload_register("autoloadModel");
 
+
 ?>
 
 <html>
     <body>
-        <h1>Account</h1>
-        <p>Go to <a href='../index.php'>menu</a> Login <a href="?action=login">here</a> Register <a href="?action=register">here</a> Logout <a href="./logout.php">here</a></p>       
+        <h1>Meeting Manager</h1>
+        <p>Go to <a href='./index.php'>menu</a>  Add new record <a href="?action=new">here</a></p>
     </body>
 </html>
 
 <?php
-echo Account::renderLoginForm();
+echo MeetingManager::renderDataTable();
 ?>
