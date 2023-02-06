@@ -4,6 +4,7 @@ class Account {
     public static function renderForm() {
         if (isset($_GET['action']) && $_GET['action'] == "register") {
             return "
+            <div class='account-form'>
                 <form action='' method='post'>
                     <label for='name'>Name:</label>
                     <input type='text' name='name'>
@@ -18,9 +19,11 @@ class Account {
                     <input type='text' name='city'>
 
                     <input type='submit' name='register'>
-                </form>";
+                </form>
+            </div>";
         } elseif (isset($_GET['action']) && $_GET['action'] == 'login') {
             return "
+            <div class='account-form>
                 <form action='' method='post'>
                     <label for='name'>Name:</label>
                     <input type='text' name='name'>
@@ -29,7 +32,8 @@ class Account {
                     <input type='password' name='password'>
 
                     <input type='submit' name='login'>
-                </form>";
+                </form>
+            </div>";
         }
     }
 
