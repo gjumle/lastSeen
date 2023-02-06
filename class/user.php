@@ -58,27 +58,35 @@ class User {
     }
 
     public static function editForm() {
+        // Get the current user's data
+        $user = User::getData();
+    
         return "
             <div class='registration-form'>
                 <h1>Edit</h1>
                 <form action='edit-account.php' method='post'>
                     <label for='username'>Username</label>
                     <input type='text' name='username' id='username'>
+                    <input type='text' name='username' id='username' value='".$user['username']."'>
                     <span class='error-message'></span>
                     <label for='password'>Password</label>
                     <input type='password' name='password' id='password'>
+                    <input type='password' name='password' id='password' value='".$user['password']."'>
                     <span class='error-message'></span>
                     <label for='email'>E-Mail</label>
                     <input type='text' name='email' id='email'>
+                    <input type='text' name='email' id='email' value='".$user['email']."'>
                     <span class='error-message'></span>
                     <label for='city'>City</label>
                     <input type='text' name='city' id='city'>
+                    <input type='text' name='city' id='city' value='".$user['city']."'>
                     <span class='error-message'></span>
                     <input type='submit' name='register' id='submit' value='submit'>
                 </form>
             </div>
         ";
     }
+    
 
     public static function handleForm() {
         if (isset($_POST['register'])) {
@@ -101,7 +109,7 @@ class User {
             }
         } elseif (isset($_POST['edit'])) {
             $user = User::getData();
-            $user->updateData($_POST['email'], $_POST['password'], $_POST['city']);
+            $user->saveToDB($_POST['email'], $_POST['password'], $_POST['city']);
             header("Location: account.php");
         }
     }
@@ -188,7 +196,5 @@ class User {
         $output .= '</table>';
     
         return $output;
-    }
-
-    
+    } 
 }
