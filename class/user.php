@@ -19,26 +19,26 @@ class User {
 
     public static function registerForm() {
         return "
-            <div class='registration-form'>
-                <h1>Registration</h1>
-                <form action='register.php' method='post'>
-                    <label for='username'>Username</label>
-                    <input type='text' name='username' id='username'>
-                    <span class='error-message'></span>
-                    <label for='password'>Password</label>
-                    <input type='password' name='password' id='password'>
-                    <span class='error-message'></span>
-                    <label for='email'>E-Mail</label>
-                    <input type='text' name='email' id='email'>
-                    <span class='error-message'></span>
-                    <label for='city'>City</label>
-                    <input type='text' name='city' id='city'>
-                    <span class='error-message'></span>
-                    <input type='submit' name='register' id='submit' value='submit'>
-                </form>
-            </div>
-        ";
+        <div class='registration-form'>
+            <h1>Registration</h1>
+            <form action='register.php' method='post'>
+                <label for='username'>Username</label>
+                <input type='text' name='username' id='username'>
+                <span class='error-message username-error'></span>
+                <label for='password'>Password</label>
+                <input type='password' name='password' id='password'>
+                <span class='error-message password-error'></span>
+                <label for='email'>E-Mail</label>
+                <input type='text' name='email' id='email'>
+                <span class='error-message email-error'></span>
+                <label for='city'>City</label>
+                <input type='text' name='city' id='city'>
+                <span class='error-message city-error'></span>
+                <input type='submit' name='register' id='submit' value='submit'>
+            </form>
+        </div>";
     }
+
 
     public static function loginForm() {
         return "
@@ -93,7 +93,8 @@ class User {
             $password_hash = self::hashPassword($_POST['password']);
             $user = new User (null, $_POST['username'], $password_hash, $_POST['email'], 0, $_POST['city']);
             $user->insertToDB();
-            echo 'New user registered';
+            echo '<span style="color: green;">New user registered</span>';
+            header("Refresh: 5; url=login.php");
         } elseif (isset($_POST['login'])) {
             $password_hash = self::hashPassword($_POST['password']);
             $user = new User (null, $_POST['username'], $password_hash, null, null, null);
@@ -105,7 +106,7 @@ class User {
                 setcookie("admin", $user->admin, time() + (86400 * 30));
                 header("Location: account.php");
             } else {
-                echo 'Login Failed';
+                echo '<span style="color: red;">Login Failed</span>';
             }
         } elseif (isset($_POST['edit'])) {
             $user = User::getData();
@@ -113,6 +114,7 @@ class User {
             header("Location: account.php");
         }
     }
+    
     
     
     public static function hashPassword($password) {
