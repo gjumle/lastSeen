@@ -5,7 +5,10 @@ class NavBar {
         'Home' => './index.php',
         'UserManager' => './userManager.php',
         'MeetingsManager' => './meetingManager.php',
-        'Account' => './account.php'
+        'Login' => './account.php?action=login',
+        'Register' => './account.php?action=register',
+        'User' => './userAccount.php',
+        'Logout' => './logout.php'
     );
 
     public static function renderAllLinks() {

@@ -19,5 +19,8 @@ spl_autoload_register("autoloadModel");
     </head>
     <body>
         <?php echo NavBar::renderAllLinks() ?>
+        <div class="wellcome">
+            <h1>Wellcome to lastSeen</h1>
+        </div>
     </body>
 </html>
