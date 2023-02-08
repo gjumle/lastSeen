@@ -20,7 +20,11 @@ spl_autoload_register("autoloadModel");
     <body>
         <?php echo NavBar::renderAllLinks() ?>
         <div class="heading">
-            <h1>Wellcome to lastSeen</h1>
+            <h1>About lastSeen</h1>
+        </div>
+        <div class="text">
+            <p>Last seen was create as school project.</p>
+            <p>Created by <i>gjumle</i></p>
         </div>
     </body>
 </html>

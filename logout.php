@@ -20,8 +20,17 @@ header("Refresh: 5; url=index.php");
 ?>
 
 <html>
+    <head>
+        <meta lang="en">
+        <meta charset="UTF-8">
+        
+        <link rel="stylesheet" href="./css/master.css">
+        <link rel="stylesheet" href="./css/navbar.css">
+    </head>
     <body>
-        <h1>Logout</h1>
-        <p>Logout successfull</p>
+        <?php echo NavBar::renderAllLinks() ?>
+        <div class="heading">
+            <h1>Logging out . . . </h1>
+        </div>
     </body>
 </html>

@@ -13,17 +13,32 @@
     padding: 0;
 }
 
-.wellcome {
+.heading {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
 
-.wellcome h1 {
+.heading h1 {
     background-color: black;
     color: white;
     font-size: 5vh;
+
+    padding: 10px;
+}
+
+.text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.text p {
+    background-color: black;
+    color: white;
+    font-size: 2vh;
 
     padding: 10px;
 }
