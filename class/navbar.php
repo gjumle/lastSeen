@@ -7,7 +7,7 @@ class NavBar {
     ];
 
     public static function display() {
-        $current_page = $_SERVER['REQUEST_URI'];
+        $current_page = basename($_SERVER['PHP_SELF']);
         $html = '<nav>';
         $html .= '<ul>';
         foreach(self::$links as $name => $url) {
