@@ -1,9 +1,5 @@
 <?php
 
-<<<<<<< HEAD
-class Navbar {
-    private static 
-=======
 class NavBar {
     private static $links = [
         'Home' => 'index.php',
@@ -45,5 +41,4 @@ class NavBar {
         $html .= '</nav>';
         return $html;
     }
->>>>>>> parent of e3ed010 (chat)
 }
