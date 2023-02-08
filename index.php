@@ -18,19 +18,6 @@ spl_autoload_register("autoloadModel");
         <link rel="stylesheet" href="./css/navbar.css">
     </head>
     <body>
-        <div class="nav-bar">
-            <div class="nav-bar-item">
-                <h1>LastSeen</h1>
-            </div>
-            <div class="nav-bar-item">
-                <a href="./userManager.php">UserManager</a>
-            </div>
-            <div class="nav-bar-item">
-                <a href="./meetingManager.php">MeetingManager</a>
-            </div>
-            <div class="nav-bar-item">
-                <a href="./account.php">Account</a>
-            </div>                 
-        </div>
+        <?php echo NavBar::renderAllLinks() ?>
     </body>
 </html>
