@@ -10,12 +10,14 @@ spl_autoload_register("autoloadModel");
 ?>
 
 <html>
+    <head>
+        <meta lang="en">
+        <meta charset="UTF-8">
+        
+        <link rel="stylesheet" href="./css/master.css">
+        <link rel="stylesheet" href="./css/navbar.css">
+    </head>
     <body>
-        <h1>Hello, <?php echo $_COOKIE['name'] ?></h1>
-        <p>Go to <a href='./index.php'>menu</a>  Add new record <a href="?action=new">here</a></p>
+        <?php echo NavBar::renderAllLinks() ?>
     </body>
 </html>
-
-<?php 
-echo UserManager::renderDataTable();
-?>

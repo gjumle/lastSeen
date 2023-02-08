@@ -10,12 +10,18 @@ spl_autoload_register("autoloadModel");
 ?>
 
 <html>
+    <head>
+        <meta lang="en">
+        <meta charset="UTF-8">
+        
+        <link rel="stylesheet" href="./css/master.css">
+        <link rel="stylesheet" href="./css/navbar.css">
+        <link rel="stylesheet" href="./css/account.css">
+    </head>
     <body>
-        <h1>Account</h1>
-        <p>Go to <a href='./index.php'>menu</a> Login <a href="?action=login">here</a> Register <a href="?action=register">here</a> Logout <a href="./logout.php">here</a></p>       
+        <?php
+            echo NavBar::renderAllLinks();
+            echo Account::renderLoginForm();
+        ?>
     </body>
 </html>
-
-<?php
-echo Account::renderLoginForm();
-?>

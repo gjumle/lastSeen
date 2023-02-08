@@ -16,50 +16,52 @@ class Account {
                 <form action='' method='post'>
                     <div class='form-field'>
                         <label for='name'>Name:</label>
-                        <input type='text' name='name'>
                         <span class='error'>*" . self::$nameErr . "</span>
-                    <div>
+                        <input type='text' name='name'>
+                    </div>
                     
                     <div class='form-field'>
                         <label for='password'>Password:</label>
-                        <input type='password' name='password'>
                         <span class='error'>*" . self::$passwordErr . "</span>
-                    <div>
+                        <input type='password' name='password'>
+                    </div>
                     
                     <div class='form-field'>
                         <label for='email'>E-mail:</label>
-                        <input type='email' name='email'>
                         <span class='error'>*" . self::$emailErr . "</span>
-                    <div>
-                    
-                    <div class='form-field'>
-                        <label for='city'>City:</label>
-                        <input type='text' name='city'>
-                        <span class='error'>*" . self::$cityErr . "</span>
-                    <div>
+                        <input type='email' name='email'>    
+                    </div>
 
                     <div class='form-field'>
+                        <label for='city'>City:</label>
+                        <span class='error'>*" . self::$cityErr . "</span>
+                        <input type='text' name='city'> 
+                    </div>
+
+                    <div class='form-field'>
+                        <label for='city'>Register:</label>
                         <input type='submit' name='register'>
-                    <div>
+                    </div>
                 </form>
             </div>";
         } elseif (isset($_GET['action']) && $_GET['action'] == 'login') {
             return "
-            <div class='account-form'>
+            <div class='account-form-login'>
                 <form action='" . htmlspecialchars($_SERVER['PHP_SELF']) . "' method='post'>
                     <div class='form-field'>
                         <label for='name'>Name:</label>
-                        <input type='text' name='name'>
                         <span class='error'>*" . self::$nameErr . "</span>
+                        <input type='text' name='name'>
                     </div>
 
                     <div class='form-field'>
                         <label for='password'>Password:</label>
-                        <input type='password' name='password'>
                         <span class='error'>*" . self::$passwordErr . "</span>
+                        <input type='password' name='password'>
                     </div>
 
                     <div class='form-field'>
+                        <label for='password'>Login:</label>
                         <input type='submit' name='login'>
                     </div>
                 </form>
@@ -141,5 +143,9 @@ class Account {
         $form = self::renderForm();
 
         return $form;
+    }
+
+    public static function renderAccountInfo() {
+
     }
 }

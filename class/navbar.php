@@ -8,7 +8,8 @@ class NavBar {
         'Login' => './account.php?action=login',
         'Register' => './account.php?action=register',
         'User' => './userAccount.php',
-        'Logout' => './logout.php'
+        'Logout' => './logout.php',
+        'About' => './about.php'
     );
 
     public static function renderAllLinks() {
