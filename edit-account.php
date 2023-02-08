@@ -1,33 +1,13 @@
-<<<<<<< HEAD
-<?php
-function autoloadModel($className) {
-    $filename = "class/" . $className . ".php";
-    if (is_readable($filename)) {
-        require $filename;
-    }
-}
-spl_autoload_register("autoloadModel");
-
-?>
-
-<html>
-    <body>
-        <h1>Rozcestnik</h1>
-        <ul>
-            <li><a href="./userManager.php">UserManager</a></li>
-            <li><a href="./meetingManager.php">MeetingManager</a></li>
-            <li><a href="./account.php">Account</a></li>
-        </ul>
-=======
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset='utf8'></meta>
         <meta lang='en'></meta>
-        
+
         <link rel="icon" type="image/x-icon" href="./svg/favicon.ico">
-        
+
         <link rel=stylesheet href='./css/master.css'>
+        <link rel=stylesheet href='./css/account.css'>
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,9 +28,10 @@ spl_autoload_register("autoloadModel");
         spl_autoload_register("autoloadModel");
 
         echo NavBar::display();
+        echo User::editForm();
+        echo User::handleForm();
 
     ?>
     <script src='./js/master.js'></script>
->>>>>>> parent of e3ed010 (chat)
     </body>
 </html>

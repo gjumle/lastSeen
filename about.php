@@ -1,24 +1,3 @@
-<<<<<<< HEAD
-<?php
-function autoloadModel($className) {
-    $filename = "class/" . $className . ".php";
-    if (is_readable($filename)) {
-        require $filename;
-    }
-}
-spl_autoload_register("autoloadModel");
-
-?>
-
-<html>
-    <body>
-        <h1>Rozcestnik</h1>
-        <ul>
-            <li><a href="./userManager.php">UserManager</a></li>
-            <li><a href="./meetingManager.php">MeetingManager</a></li>
-            <li><a href="./account.php">Account</a></li>
-        </ul>
-=======
 <!DOCTYPE html>
 <html>
     <head>
@@ -51,6 +30,5 @@ spl_autoload_register("autoloadModel");
 
     ?>
     <script src='./js/master.js'></script>
->>>>>>> parent of e3ed010 (chat)
     </body>
 </html>

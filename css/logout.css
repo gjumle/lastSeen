@@ -1,0 +1,29 @@
+.logout-message {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 30px;
+    color: #4CAF50;
+}
+
+body {
+    background-color: #f1f1f1;
+  }
+  
+  .redirect-message{
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 20px;
+    color: #333;
+}
+
+.redirect-btn {
+    text-align: center;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+}  
+  
