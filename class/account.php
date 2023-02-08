@@ -146,7 +146,7 @@ class Account {
     }
 
     public static function renderAccountInfo() {
-        $user = User::getUser($_COOKIE['uid']);
-        
+        $user = UserManager::getUser($_COOKIE['uid']);
+        // Render data for user
     }
 }

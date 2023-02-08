@@ -16,6 +16,7 @@ spl_autoload_register("autoloadModel");
         
         <link rel="stylesheet" href="./css/master.css">
         <link rel="stylesheet" href="./css/navbar.css">
+        <link rel="stylesheet" href="./css/manager.css">
     </head>
     <body>
         <?php

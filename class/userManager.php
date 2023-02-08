@@ -54,7 +54,7 @@ class UserManager {
 
     public static function renderDataTable() {
         self::formHandler();
-        $table = "<table border='1'>";
+        $table = "<table class='table-data'>";
         $table .= User::renderHead();
 
         if (isset($_GET['action']) && ($_GET['action'] == 'new')) {

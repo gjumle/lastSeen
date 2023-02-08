@@ -1,0 +1,22 @@
+.table-data {
+    display: block;
+    height: auto;
+    width: 750px;
+    margin: 20 auto;
+    border: 1px solid #000;
+    overflow: hidden;
+    background: #fff;
+    padding: 10px;
+    box-shadow: 0 0 10px #000;
+    border-radius: 5px;
+}
+
+.table-row {
+    display: inline-block;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid #000;
+    overflow: hidden;
+}
