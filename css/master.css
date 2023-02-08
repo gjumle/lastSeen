@@ -1,0 +1,14 @@
+:root {
+    --fg-color: black;
+    --bg-color: white;
+}
+
+* {
+    font-family: monospace;
+    
+    color: var(--fg-color);
+    background-color: var(--bg-color);
+
+    margin: 0;
+    padding: 0;
+}
