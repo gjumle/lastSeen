@@ -63,15 +63,15 @@ class User {
             $btnName = "insert";
         }
         return "
-            <form action='' method='post' class=table>
+            <form action='" . htmlspecialchars($_SERVER['PHP_SELF']) . "' method='post' class=table>
                 <tr>
-                    <td><input type='hidden' name='uid' value='" . $uid . "'></td>
-                    <td><input type='text' name='name' value='" . $name . "'></td>
-                    <td><input type='password' name='password' value='" . $password . "'></td>
-                    <td><input type='checkbox' name='admin' value='1' " . $admin . "></td>
-                    <td><input type='text' name='email' value='" . $email . "'></td>
-                    <td><input type='text' name='city' value='" . $city . "'></td>
-                    <td colspan='2'><input type='submit' name='" . $btnName . "'></td>
+                    <td><input type='hidden' name='uid' id='uid' value='" . $uid . "'></td>
+                    <td><input type='text' name='name' id='name' value='" . $name . "'></td>
+                    <td><input type='password' name='password' id='password' value='" . $password . "'></td>
+                    <td><input type='checkbox' name='admin' id='admin' value='1' " . $admin . "></td>
+                    <td><input type='text' name='email' id='email' value='" . $email . "'></td>
+                    <td><input type='text' name='city' id='city' value='" . $city . "'></td>
+                    <td colspan='2'><input type='submit' name='" . $btnName . "' id='submit'></td>
                 </tr>
             </form>";
     }
