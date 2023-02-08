@@ -1,32 +1,46 @@
 <?php
 class Account {
+    private static $name;
+    private static $password;
+    private static $email;
+    private static $city;
+    private static $nameErr;
+    private static $passwordErr;
+    private static $emailErr;
+    private static $cityErr;
 
     public static function renderForm() {
         if (isset($_GET['action']) && $_GET['action'] == "register") {
             return "
             <div class='account-form'>
                 <form action='' method='post'>
-                    <label for='name'>Name:</label>
-                    <input type='text' name='name'>
-                    <span class='error'>*" . $nameErr . "</span>
-                    <br><br>
+                    <div class='form-field>
+                        <label for='name'>Name:</label>
+                        <input type='text' name='name'>
+                        <span class='error'>*" . self::$nameErr . "</span>
+                    <div>
                     
-                    <label for='password'>Password:</label>
-                    <input type='password' name='password'>
-                    <span class='error'>*" . $passwordErr . "</span>
-                    <br><br>
+                    <div class='form-field>
+                        <label for='password'>Password:</label>
+                        <input type='password' name='password'>
+                        <span class='error'>*" . self::$passwordErr . "</span>
+                    <div>
                     
-                    <label for='email'>E-mail:</label>
-                    <input type='email' name='email'>
-                    <span class='error'>*" . $emailErr . "</span>
-                    <br><br>
+                    <div class='form-field>
+                        <label for='email'>E-mail:</label>
+                        <input type='email' name='email'>
+                        <span class='error'>*" . self::$emailErr . "</span>
+                    <div>
                     
-                    <label for='city'>City:</label>
-                    <input type='text' name='city'>
-                    <span class='error'>*" . $cityErr . "</span>
-                    <br><br>
+                    <div class='form-field>
+                        <label for='city'>City:</label>
+                        <input type='text' name='city'>
+                        <span class='error'>*" . self::$cityErr . "</span>
+                    <div>
 
-                    <input type='submit' name='register'>
+                    <div class='form-field>
+                        <input type='submit' name='register'>
+                    <div>
                 </form>
             </div>";
         } elseif (isset($_GET['action']) && $_GET['action'] == 'login') {
@@ -46,41 +60,38 @@ class Account {
     }
 
     public static function formHandler() {
-        $nameErr = $passwordErr = $emailErr = $cityErr = '';
-        $name = $password = $email = $city = '';
-
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (empty($_POST['name'])) {
-                $nameErr = 'Name is required';
+                self::$nameErr = 'Name is required';
             } else {
-                $name = trim($_POST['name']);
+                self::$name = trim($_POST['name']);
             }
 
             if (empty($_POST['password'])) {
-                $passwordErr = 'Password is required';
+                self::$passwordErr = 'Password is required';
             } else {
-                $password = md5($_POST['password']);
+                self::$password = md5($_POST['password']);
             }
 
             if (empty($_POST['email'])) {
-                $emailErr = 'Email is required';
+                self::$emailErr = 'Email is required';
             } else {
-                $email = $_POST['email'];
+                self::$email = $_POST['email'];
             }
 
             if (empty($_POST['city'])) {
-                $cityErr = 'City is required';
+                self::$cityErr = 'City is required';
             } else {
-                $city = $_POST['city'];
+                self::$city = $_POST['city'];
             }
 
         }
         if (isset($_POST['register'])) {
-            $registerUser = new User (null, $name, $password, null, $email, $city);
+            $registerUser = new User (null, self::$name, self::$password, null, self::$email, self::$city);
             $registerUser->insertToDB();
         }
         if (isset($_POST['login'])) {
-            $loginUser = new User (null, $name, $password, null, null, null);
+            $loginUser = new User (null, self::$name, self::$password, null, null, null);
             if ($loginUser->checkDB() > 0) {
                 $loginUser = UserManager::getUser($loginUser->checkDB());
                 setcookie('logged_in', true, time() + (86400 * 30));
