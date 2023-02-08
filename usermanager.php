@@ -27,6 +27,7 @@
         spl_autoload_register("autoloadModel");
 
         echo NavBar::display();
+        echo UserManager::display();
 
     ?>
     <script src='./js/master.js'></script>
