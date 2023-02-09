@@ -5,7 +5,7 @@ class Meeting {
     private $description;
     private $date;
     private $location;
-    private $uid;
+    private $user;
 
     public function __construct($mid = null, $name = null, $description = null, $date = null, $location = null, $user = null) {
         $this->mid = $mid;
@@ -37,7 +37,7 @@ class Meeting {
     }
 
     public function getuid() {
-        return $this->uid;
+        return $this->user;
     }
 
     public function renderForm() {

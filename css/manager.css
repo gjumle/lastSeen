@@ -1,22 +1,35 @@
 .table-data {
     display: block;
+    margin: 200 auto;
+    width: 900px;
     height: auto;
-    width: 750px;
-    margin: 20 auto;
-    border: 1px solid #000;
-    overflow: hidden;
-    background: #fff;
-    padding: 10px;
-    box-shadow: 0 0 10px #000;
-    border-radius: 5px;
+    border-collapse: collapse;
+}
+.table-data th {
+    border: 1px solid black;
+    padding: 0.3em;
+    caption-side: bottom;
+}
+.table-data td {
+    border: 1px solid black;
+    padding: 0.3em;
 }
 
-.table-row {
-    display: inline-block;
-    width: 100%;
+.add-record {
+    display: block;
+    margin: 100 auto;
+    width: 100px;
+    color: black;
+    border: 1px solid black;
     height: auto;
-    margin: 0;
-    padding: 0;
-    border-bottom: 1px solid #000;
-    overflow: hidden;
+}
+
+.add-record a {
+    color: black;
+    text-decoration: none;
+}
+
+.add-record:hover, .add-record a:hover {
+    background-color: black;
+    color: white;
 }

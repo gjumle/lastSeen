@@ -20,7 +20,7 @@ class MeetingManager {
 
     public static function getMeeting($mid) {
         $meetings = self::getMeetings();
-        return $meeting[0];
+        return $meetings[0];
     }
 
     private static function formHandler() {
@@ -52,7 +52,7 @@ class MeetingManager {
 
     public static function renderDataTable() {
         self::formHandler();
-        $table = "<table border='1'>";
+        $table = "<table class='table-data'>";
         $table .= Meeting::renderHead();
 
         if (isset($_GET['action']) && ($_GET['action'] == 'new')) {

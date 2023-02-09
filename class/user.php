@@ -81,7 +81,7 @@ class User {
             return $this->renderForm();
         } else {
             return "
-                <tr class='table-row'>
+                <tr>
                     <td>#" . $this->uid . "</td>
                     <td>" . $this->name . "</td>
                     <td>" . $this->password . "</td>

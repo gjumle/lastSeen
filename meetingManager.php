@@ -16,8 +16,10 @@ spl_autoload_register("autoloadModel");
         
         <link rel="stylesheet" href="./css/master.css">
         <link rel="stylesheet" href="./css/navbar.css">
+        <link rel="stylesheet" href="./css/manager.css">
     </head>
     <body>
+        <button class="add-record" type="button"><a href="?action=new">Add record</a></button>
         <?php
             echo NavBar::renderAllLinks();
             echo MeetingManager::renderDataTable();
