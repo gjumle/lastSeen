@@ -7,7 +7,6 @@ class NavBar {
         'MeetingsManager' => './meetingManager.php',
         'Login' => './account.php?action=login',
         'Register' => './account.php?action=register',
-        'User' => './userAccount.php',
         'Logout' => './logout.php',
         'About' => './about.php'
     );

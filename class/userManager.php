@@ -44,7 +44,7 @@ class UserManager {
     }
 
     private static function renderAllAsTableRow() {
-        $users = self::getUsers();
+        $users = self::getUsers($_COOKIE['uid']);
         $table = "";
         foreach ($users as $user) {
             $table .= $user->renderAsRowTable();

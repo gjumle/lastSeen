@@ -7,6 +7,12 @@ function autoloadModel($className) {
 }
 spl_autoload_register("autoloadModel");
 
+if ($_COOKIE['admin'] == "Yes") {
+    $button = "<button class='add-record' type='button'><a href='?action=new'>Add record</a></button>";
+} else {
+    $button = null;
+}
+
 ?>
 
 <html>

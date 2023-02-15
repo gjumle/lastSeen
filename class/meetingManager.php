@@ -1,11 +1,12 @@
 <?php
 class MeetingManager {
 
-    private static function getMeetings($mid = null) {
+    private static function getMeetings($mid = null, $uid = null) {
         $condition = ($mid == null) ? "" : "WHERE mid = " . $mid;
-
+        $condition .= ($mid == null && $uid != null) ? "" : " AND "; 
+        $condition .= ($uid == null) ? "" : "WHERE uid = " . $uid;
         $conn = DB::getConnection();
-        $sql = "SELECT * FROM meetings " . $condition . " ORDER BY name ASC";
+        $sql = "SELECT * FROM meetings " . $condition . " ORDER BY date ASC";
         $result = $conn->query($sql);
         $meetings = array();
         if ($result->num_rows > 0) {
@@ -42,7 +43,7 @@ class MeetingManager {
     }
 
     private static function renderAllAsTableRow() {
-        $meetings = self::getMeetings();
+        $meetings = self::getMeetings(null, $_COOKIE['uid']);
         $table = "";
         foreach ($meetings as $meeting) {
             $table .= $meeting->renderAsRowTable();

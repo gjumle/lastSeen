@@ -130,7 +130,7 @@ class Account {
                     setcookie('admin', $loginUser->getAdmin(), time() + (86400 * 30));
                     setcookie('email', $loginUser->getEmail(), time() + (86400 * 30));
                     setcookie('city', $loginUser->getCity(), time() + (86400 * 30));
-                    echo "<script type='text/javascript'>window.location.replace('userAccount.php');</script>";
+                    echo "<script type='text/javascript'>window.location.replace('index.php');</script>";
                 } else {
                     return "<span>Inccorect name or password";
                 }
@@ -143,10 +143,5 @@ class Account {
         $form = self::renderForm();
 
         return $form;
-    }
-
-    public static function renderAccountInfo() {
-        $user = UserManager::getUser($_COOKIE['uid']);
-        // Render data for user
     }
 }
