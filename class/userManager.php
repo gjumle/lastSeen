@@ -1,11 +1,12 @@
 <?php
 class UserManager {
 
-    private static function getUsers($uid = null) {
-        $condition = ($uid == null) ? "" : "WHERE uid = " . $uid;
+    private static function getUsers($uid = null, $admin = null) {
+        $condition = ($admin == 'Yes') ? "" : "WHERE uid = " . $uid;
 
         $conn = DB::getConnection();
         $sql = "SELECT * FROM users " . $condition . " ORDER BY name ASC";
+        echo $sql;
         $result = $conn->query($sql);
         $users = array();
         if ($result->num_rows > 0) {
@@ -44,7 +45,9 @@ class UserManager {
     }
 
     private static function renderAllAsTableRow() {
-        $users = self::getUsers($_COOKIE['uid']);
+        $uid = ($_COOKIE['uid'] == null) ? null : $_COOKIE['uid'];
+        $admin = ($_COOKIE['admin'] == 'No') ? null : $_COOKIE['admin'];
+        $users = self::getUsers($uid, $admin);
         $table = "";
         foreach ($users as $user) {
             $table .= $user->renderAsRowTable();

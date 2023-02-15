@@ -1,7 +1,7 @@
 <?php
 class MeetingManager {
 
-    private static function getMeetings($mid = null, $uid = null) {
+    private static function getMeetings($mid = null, $uid = null, $admin = null) {
         $condition = ($mid == null) ? "" : "WHERE mid = " . $mid;
         $condition .= ($mid == null && $uid != null) ? "" : " AND "; 
         $condition .= ($uid == null) ? "" : "WHERE uid = " . $uid;

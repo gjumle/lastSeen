@@ -25,9 +25,9 @@ if ($_COOKIE['admin'] == "Yes") {
         <link rel="stylesheet" href="./css/manager.css">
     </head>
     <body>
-        <button class="add-record" type="button"><a href="?action=new">Add record</a></button>
         <?php
             echo NavBar::renderAllLinks();
+            echo $button;
             echo UserManager::renderDataTable();
         ?>
     </body>
