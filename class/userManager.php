@@ -6,7 +6,6 @@ class UserManager {
 
         $conn = DB::getConnection();
         $sql = "SELECT * FROM users " . $condition . " ORDER BY name ASC";
-        echo $sql;
         $result = $conn->query($sql);
         $users = array();
         if ($result->num_rows > 0) {
