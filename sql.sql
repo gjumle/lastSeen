@@ -24,3 +24,11 @@ CREATE TABLE meetings (
     uid INT NOT NULL,
     FOREIGN KEY (uid) REFERENCES users(uid)
 ) DEFAULT CHARACTER SET utf8;
+
+CREATE TABLE contacts (
+    cid INT NOT NULL AUTO_INCREMENT,
+    f_name VARCHAR(50) NOT NULL,
+    l_name VARCHAR(50) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    city VARCHAR(50) NOT NULL
+)
