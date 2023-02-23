@@ -12,7 +12,6 @@ class User {
         $this->password = $password;
         $this->admin = $admin ? $admin : 0;
         $this->email = $email;
-
     }
 
     public function getId() {

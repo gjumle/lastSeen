@@ -4,7 +4,6 @@ class NavBar {
     private static $links = array(
         'Home' => './index.php',
         'UserManager' => './userManager.php',
-        'MeetingsManager' => './meetingManager.php',
         'Login' => './account.php?action=login',
         'Register' => './account.php?action=register',
         'Logout' => './logout.php',
