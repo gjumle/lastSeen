@@ -115,6 +115,7 @@ class Account {
                 $registerUser = new User (null, self::$name, self::$password, null, self::$email, self::$city);
                 // Save user to DB
                 $registerUser->insertToDB();
+                echo "<script type='text/javascript'>window.location.replace('login.php');</script>";
             }
             if (isset($_POST['login'])) {
                 // Form validation

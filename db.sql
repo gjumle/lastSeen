@@ -4,7 +4,11 @@ CREATE DATABASE ls DEFAULT CHARSET='utf8';
 
 CREATE USER 'lsa'@'localhost' IDENTIFIED BY 'lsa';
 
+CREATE USER 'lsa'@'127.0.0.1' IDENTIFIED BY 'lsa';
+
 GRANT ALL ON ls.* TO 'lsa'@'localhost';
+
+GRANT ALL ON ls.* TO 'lsa'@'127.0.0.1';
 
 CREATE TABLE users (
     uid INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
