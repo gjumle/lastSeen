@@ -91,6 +91,7 @@ class User {
         $stmt = $db->prepare($sql);
         $stmt->bind_param("s", $_POST['name']);
         $stmt->execute();
+        var_dump($stmt);
         $result = $stmt->get_result();
         $stmt->close();
         $db->close();
