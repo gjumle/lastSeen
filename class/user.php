@@ -5,15 +5,14 @@ class User {
     private $password;
     private $admin;
     private $email;
-    private $city;
 
-    public function __construct($uid = null, $name = null, $password = null, $admin = null, $email = null, $city = null) {
+    public function __construct($uid = null, $name = null, $password = null, $admin = null, $email = null) {
         $this->uid = $uid;
         $this->name = $name;
         $this->password = $password;
         $this->admin = $admin ? $admin : 0;
         $this->email = $email;
-        $this->city = $city;
+
     }
 
     public function getId() {
@@ -40,10 +39,6 @@ class User {
         return $this->email;
     }
 
-    public function getCity() {
-        return $this->city;
-    }
-
     public function renderForm() {
         if ($this->uid > 0) {
             $uid = $this->uid;
@@ -51,7 +46,6 @@ class User {
             $password = $this->password;
             $admin = $this->getAdmin();
             $email = $this->email;
-            $city = $this->city;
             $btnName = "edit";
         } else {
             $uid = "";
@@ -59,7 +53,6 @@ class User {
             $password = "";
             $admin = "";
             $email = "";
-            $city = "";
             $btnName = "insert";
         }
         return "
@@ -70,7 +63,6 @@ class User {
                     <td><input type='password' name='password' id='password' value='" . $password . "'></td>
                     <td><input type='checkbox' name='admin' id='admin' value='1' " . $admin . "></td>
                     <td><input type='text' name='email' id='email' value='" . $email . "'></td>
-                    <td><input type='text' name='city' id='city' value='" . $city . "'></td>
                     <td colspan='2'><input type='submit' name='" . $btnName . "' id='submit'></td>
                 </tr>
             </form>";
@@ -87,7 +79,6 @@ class User {
                     <td>" . $this->password . "</td>
                     <td>" . $this->getAdmin() . "</td>
                     <td>" . $this->email . "</td>
-                    <td>" . $this->city . "</td>
                     <td><a href='?edit=" . $this->uid . "'>Edit</a></td>
                     <td><a href='?delete=" . $this->uid . "'>Delete</a></td>
                 </tr>";
@@ -114,13 +105,13 @@ class User {
 
     public function insertToDB() {
         $conn = DB::getConnection();
-        $sql = "INSERT INTO users (name, password, admin, email, city) VALUES ('" . $this->name . "', '" . $this->password . "', '" . $this->admin . "', '" . $this->email . "', '" . $this->city . "')";
+        $sql = "INSERT INTO users (name, password, admin, email, city) VALUES ('" . $this->name . "', '" . $this->password . "', '" . $this->admin . "', '" . $this->email . ")";
         $result = $conn->query($sql);
     }
 
     public function saveToDB() {
         $conn = DB::getConnection();
-        $sql = "UPDATE users SET name = '" . $this->name . "', password = '" . $this->password . "', admin = '" . $this->admin . "', email = '" . $this->email . "', city = '" . $this->city . "' WHERE uid = " . $this->uid;
+        $sql = "UPDATE users SET name = '" . $this->name . "', password = '" . $this->password . "', admin = '" . $this->admin . "', email = '" . $this->email . "' WHERE uid = " . $this->uid;
         $result = $conn->query($sql);
     }
     
