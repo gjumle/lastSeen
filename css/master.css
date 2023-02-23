@@ -2,5 +2,125 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    color: #242428;
+    fill: currentColor;
+    font-size: 14px;
+    line-height: 1.45;
+
+    font-family: "MaisonNeue", "Segoe UI", "Helvetica Neue", -apple-system, system-ui, BlinkMacSystemFont, Roboto, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-weight: inherit;
+}
+
+#global-header {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.025);
+    border-bottom: 1px solid #f0f0f5;
+    background-color: #fff;
+    height: 55px;
+    line-height: 18px;
+    padding: relative;
+    z-index: 50;
+}
+
+.nav-bar {
+    height: 55px;
+    position: relative;
+}
+
+.branding {
+    height: 20px;
+    width: 95px;
+    float: left;
+    margin-top: 17.5px;
+}
+
+.container {
+    padding-left: 16px;
+    padding-right: 16px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.nav-container {
+    display: block;
+}
+
+.user-nav {
+    float: right;
+}
+
+.nav-group {
+    position: relative;
+    z-index: 11;
+    margin-top: 0;
+    margin-bottom: 0;
+    height: 55px;
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-object-group {
+    display: inline-flex;
+    flex-direction: row;
+    padding-left: 12px;
+    padding-right: 12px;
+    align-items: center;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.btn {
+    height: auto;
+    font-size: 12px;
+    padding: 6px 16px;
+    min-height: unset;
+    line-height: normal;
+
+    text-align: center;
+
+    border: 1px solid #dfdfe8;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    user-select: none;
+    transition: border-color 0.1s linear 0.1s, color 0.1s linear;
+    font-weight: 700;
+}
+
+.btn-primary {
+    color: #fff;
+}
+
+.btn.btn-primary {
+    background-color: #fc5200;
+    border-color: #fc5200;
+}
+
+a.btn {
+    text-decoration: none;
+
+}
+
+.branding {
+    background-image: url(https://d3nn82uaxijpm6.cloudfront.net/assets/svg/strava-logo-69e7bbe1120a5f841f19d61f14fa66c0cfd2ae5b22673c643032d1890baa5ee7.svg);
+    background-size: cover;
+    background-position: 0 0;
+}
+
+@media (min-width: 768px) {
+    .container {
+        width: 752px;
+    }
 }
