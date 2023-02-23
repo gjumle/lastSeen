@@ -1,8 +1,8 @@
 <?php
 class UserManager {
 
-    private static function getUsers($uid = null, $admin = null) {
-        $condition = ($admin == 'Yes') ? "" : "WHERE uid = " . $uid;
+    private static function getUsers($uid = null) {
+        $condition = ($uid == null) ? "" : "WHERE uid = " . $uid;
 
         $conn = DB::getConnection();
         $sql = "SELECT * FROM users " . $condition . " ORDER BY name ASC";
@@ -44,9 +44,7 @@ class UserManager {
     }
 
     private static function renderAllAsTableRow() {
-        $uid = ($_COOKIE['uid'] == null) ? null : $_COOKIE['uid'];
-        $admin = ($_COOKIE['admin'] == 'No') ? null : $_COOKIE['admin'];
-        $users = self::getUsers($uid, $admin);
+        $users = self::getUsers();
         $table = "";
         foreach ($users as $user) {
             $table .= $user->renderAsRowTable();

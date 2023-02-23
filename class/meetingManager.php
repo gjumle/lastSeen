@@ -1,10 +1,8 @@
 <?php
 class MeetingManager {
 
-    private static function getMeetings($mid = null, $uid = null, $admin = null) {
+    private static function getMeetings($mid = null) {
         $condition = ($mid == null) ? "" : "WHERE mid = " . $mid;
-        $condition .= ($mid == null && $uid != null) ? "" : " AND "; 
-        $condition .= ($uid == null) ? "" : "WHERE uid = " . $uid;
         $conn = DB::getConnection();
         $sql = "SELECT * FROM meetings " . $condition . " ORDER BY date ASC";
         $result = $conn->query($sql);
@@ -20,7 +18,7 @@ class MeetingManager {
     }
 
     public static function getMeeting($mid) {
-        $meetings = self::getMeetings();
+        $meetings = self::getMeetings($mid);
         return $meetings[0];
     }
 
