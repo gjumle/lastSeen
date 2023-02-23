@@ -2,7 +2,7 @@
 class DB {
     static $conn = null;
 
-    static function getConnection() {
+    static function connect() {
         if (self::$conn == null) {
             $db = new mysqli('localhost', 'lsa', 'lsa', 'ls');
             self::$conn = $db;
