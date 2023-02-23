@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+:any-link {
+    cursor: pointer;
+}
+
 body {
     color: #242428;
     fill: currentColor;
@@ -34,6 +38,28 @@ body {
     width: 95px;
     float: left;
     margin-top: 17.5px;
+}
+
+.branding-content a {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+.str-only {
+    position: absolute !important;
+    clip: rect(0, 0, 0, 0);
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden;
+    border: 0;
+}
+
+#global-header a {
+    font-size: 14px;
+    line-height: 18px;
 }
 
 .container {
@@ -97,6 +123,8 @@ body {
     user-select: none;
     transition: border-color 0.1s linear 0.1s, color 0.1s linear;
     font-weight: 700;
+
+    padding-inline: 4px;
 }
 
 .btn-primary {
@@ -108,6 +136,16 @@ body {
     border-color: #fc5200;
 }
 
+.btn:hover {
+    text-decoration: none;
+}
+
+.btn.btn-primary:hover {
+    color: #fff;
+    background-color: #e34a00;
+    border-color: #e34a00;
+}
+
 a.btn {
     text-decoration: none;
 
@@ -115,6 +153,7 @@ a.btn {
 
 .branding {
     background-image: url(https://d3nn82uaxijpm6.cloudfront.net/assets/svg/strava-logo-69e7bbe1120a5f841f19d61f14fa66c0cfd2ae5b22673c643032d1890baa5ee7.svg);
+    /*background-image: url(/svg/logo.svg);*/
     background-size: cover;
     background-position: 0 0;
 }
@@ -128,6 +167,26 @@ a.btn {
     border-radius: 3px;
 }
 
+.registration-panel h1 {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 3px;
+    display: block;
+    padding: 20px 50px;
+
+}
+
+.registration-panel .btn {
+    border-radius: 3px;
+    display: flex;
+    line-height: inherit;
+    min-height: 40px;
+    width: 100%;
+}
+
+h1:first-child {
+    margin-top: 0;
+}
+
 .mt-0 {
     margin-top: 0;
 }
@@ -136,15 +195,61 @@ a.btn {
     margin-bottom: 0;
 }
 
-.fieldset {
+h1 {
+    margin-block-start: .67em;
+    margin-block-end: .67em;
+
+    word-break: break-word;
+
+    font-size: 34px;
+    font-weight: 700;
+    line-height: 41px;
+
+    font-family: inherit;
+    color: inherit;
+}
+
+fieldset {
     border: none;
     margin: 24px 0;
     padding: 0;
     min-width: 0;
+
+    display: block;
+    margin-inline: 2px;
+    padding-block: 0.35em 0.625em;
+    min-inline-size: min-content;
+
+    unicode-bidi: isolate;
 }
 
 .registration-panel form {
     padding: 50px;
+}
+
+.registration-panel input[type="email"], .registration-panel input[type="text"], .registration-panel input[type="password"] {
+    background:rgba(0, 0, 0, 0.5);
+    border: 1px solid #666;
+    color: #CCC;
+}
+
+form {
+    padding: 50px;
+    box-sizing: border-box;
+    display: block;
+}
+
+input {
+    text-align: initial;
+    text-indent: initial;
+    text-shadow: initial;
+    text-transform: initial;
+    word-spacing: initial;
+    letter-spacing: initial;
+
+    appearance: auto;
+    text-rendering: optimizeLegibility;
+    cursor: text;
 }
 
 .form-group {
@@ -163,6 +268,58 @@ a.btn {
     border-radius: 4px;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.form-control::placeholder {
+    color: #dfdfe8;
+    opacity: 1;
+}
+
+input::placeholder {
+    word-wrap: normal;
+    white-space: pre;
+}
+
+::placeholder {
+    display: inline-block;
+    resize: none;
+    overflow: hidden;
+    pointer-events: none;
+    user-select: none;
+
+    border: 0;
+    padding: inherit;
+    margin: 0;
+    text-decoration: inherit;
+    ime-mode: inherit;
+    scrollbar-width: iniherit;
+    visibility: hidden;
+}
+
+::selection {
+    background-color: #fc5200;
+    color: #fff;
+    text-shadow: none;
+}
+
+.registration-panel .reset-password {
+    padding: 10px 30px 10px;
+    border-top: 1px solid rgba(60, 60, 60, 0.75);
+    margin: 30px -30px -30px;
+
+    box-sizing: border-box;
+    display: block;
+}
+
+b {
+    font-weight: bolder;
+}
+
+.registration-panel a:not(.btn) {
+    color: #fff;
+    text-decoration: none;
+
+    box-sizing: border-box;
 }
 
 @media (min-width: 768px) {

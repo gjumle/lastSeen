@@ -23,12 +23,16 @@ spl_autoload_register("autoloadModel");
         <div class="view">
             <header id="global-header">
                 <nav class="nav-bar container" role="navigation">
-                    <div class="branding" title="Return to the home page"></div>
+                    <div class="branding" title="Return to the home page">
+                        <a href="/" class="branding-content">
+                            <span class="str-only">lastSeen</span>
+                        </a>
+                    </div>
                     <div id="nav-container" class="container-nav">
                         <ul class="user-nav nav-group">
                             <li class="nav-object-group">
                                 <div class="nav-item logged-out-nav">
-                                    <a href="/login.php" class="btn btn-primary btn-signup">Login</a>
+                                    <a href="./register.php" class="btn btn-primary btn-signup">Sing Up</a>
                                 </div>
                             </li>
                         </ul>
@@ -46,7 +50,13 @@ spl_autoload_register("autoloadModel");
                             <div class="form-group">
                             <input id="password" class="form-control" type="password" name="password" value="" placeholder="Your Password" autofocus="autofocus">
                             </div>
+                            <button id="login-button" class="btn btn-primary" type="submit">Log In</button>
                         </fieldset>
+                        <div class="reset-password">
+                            <b>
+                                <a id="forgot-password" href="#">Forgot Your Password?</a>
+                            </b>
+                        </div>
                     </form>
                 </div>
             </div>
