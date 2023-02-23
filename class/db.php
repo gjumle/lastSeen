@@ -4,7 +4,7 @@ class DB {
 
     static function connect() {
         if (self::$conn == null) {
-            $db = new mysqli('localhost', 'lsa', 'lsa', 'ls');
+            $db = new mysqli('localhost', 'root', '', 'ls');
             self::$conn = $db;
         } else {
             $db = self::$conn;

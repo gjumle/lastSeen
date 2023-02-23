@@ -9,3 +9,4 @@ function autoloadModel($className) {
 spl_autoload_register("autoloadModel");
 
 echo User::registerForm();
+User::handleForm();

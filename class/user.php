@@ -67,9 +67,9 @@ class User {
 
     public function insertToDB() {
         $db = DB::connect();
-        $sql = "INSERT INTO users (name, password, admin, email) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO users (name, password, email) VALUES (?, ?, ?)";
         $stmt = $db->prepare($sql);
-        $stmt->bind_param("ssis", $this->name, $this->password, $this->admin, $this->email);
+        $stmt->bind_param("sss", $this->name, $this->password, $this->email);
         $stmt->execute();
         $stmt->close();
         $db->close();
@@ -77,9 +77,9 @@ class User {
 
     public function saveToDB() {
         $db = DB::connect();
-        $sql = "UPDATE users SET name = ?, password = ?, admin = ?, email = ? WHERE uid = ?";
+        $sql = "UPDATE users SET name = ?, password = ?, email = ? WHERE uid = ?";
         $stmt = $db->prepare($sql);
-        $stmt->bind_param("ssisi", $this->name, $this->password, $this->admin, $this->email, $this->uid);
+        $stmt->bind_param("sssi", $this->name, $this->password, $this->email, $this->uid);
         $stmt->execute();
         $stmt->close();
         $db->close();
@@ -108,7 +108,7 @@ class User {
 
     public static function registerForm() {
         return "
-            <form action='index.php' method='post'>
+            <form action='' method='post'>
                 <input type='hidden' name='action' value='register'>
                 <input type='text' name='name' placeholder='Name' required>
                 <input type='password' name='password' placeholder='Password' required>
@@ -119,7 +119,7 @@ class User {
 
     public static function loginForm() {
         return "
-            <form action='index.php' method='post'>
+            <form action='' method='post'>
                 <input type='hidden' name='action' value='login'>
                 <input type='text' name='name' placeholder='Name' required>
                 <input type='password' name='password' placeholder='Password' required>
@@ -129,7 +129,7 @@ class User {
 
     public static function logoutForm() {
         return "
-            <form action='index.php' method='post'>
+            <form action='' method='post'>
                 <input type='hidden' name='action' value='logout'>
                 <input type='submit' value='Logout'>
             </form>";
