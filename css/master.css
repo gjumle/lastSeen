@@ -45,12 +45,24 @@ body {
     border-bottom: 1px solid#fc5200;
 }
 
+#global-header .nav-bar .nav-item {
+    display: flex;
+    justify-content: center;
+}
+
 .drop-down-menu {
     position: relative;
 }
 
 .drop-down-menu .selection {
     position: relative;
+}
+
+.drop-down-menu .selection:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    margin-top: -2px;
 }
 
 .app-icon-wrapper {
@@ -76,6 +88,19 @@ body {
 ul {
     padding: 0;
     list-style: none;
+}
+
+li {
+    text-align: match-parent;
+}
+
+#global-header .nav-bar .nav-link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    height: 100%;
+    padding: 0 12px;
 }
 
 #global-header .nav-group .drop-down-menu .accessible-nav-arrow {
@@ -188,7 +213,6 @@ nav {
 
 .nav-item {
     display: flex;
-    flex-direction: column;
     justify-content: center;
 }
 
