@@ -32,7 +32,7 @@ spl_autoload_register("autoloadModel");
                         <ul class="user-nav nav-group">
                             <li class="nav-object-group">
                                 <div class="nav-item logged-out-nav">
-                                    <a href="./register.php" class="btn btn-primary btn-signup">Sing Up</a>
+                                    <a href="./register.php" class="btn btn-primary btn-signup">Sign Up</a>
                                 </div>
                             </li>
                         </ul>

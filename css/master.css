@@ -28,6 +28,90 @@ body {
     z-index: 50;
 }
 
+#global-header .nav-bar {
+    height: 55px;
+    position: relative;
+    z-index: 11;
+
+    margin-top: 0;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+#global-header .nav-bar .selected.nav-bar {
+    box-shadow: inset 0 -2px 0 #fc5200;
+}
+
+#global-header .nav-group .drop-down-menu {
+    z-index: 109 !important;
+}
+
+#global-header .nav-bar .accessible-nav-dropdown {
+    flex-direction: row;
+}
+
+#global-header .nav-item.selected {
+    border-bottom: #fc5200;
+}
+
+.drop-down-menu {
+    position: relative;
+}
+
+.drop-down-menu .selection {
+    position: relative;
+}
+
+.app-icon-wrapper {
+    display: inline-block;
+    line-height: 1;
+    vertical-align: middle;
+}
+
+#global-header .nav-group .drop-down-menu .accessible-nav-arrow .app-icon {
+    height: 14px;
+    width: 14px;
+}
+
+.app-icon.icon-caret-down {
+    background-image: url(data:image/svg+xml,%3Csvg%20fill%3D%22none%22%20height%3D%2296%22%20viewBox%3D%220%200%2024%2096%22%20width%3D%2224%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22m24%206.25v1.92l-12.05%2012.04-11.95-12v-1.92l11.95%2012.01z%22%20fill%3D%22%236d6d78%22%2F%3E%3Cpath%20d%3D%22m24%2030.25v1.92l-12.05%2012.04-11.95-12v-1.92l11.95%2012.01z%22%20fill%3D%22%23242428%22%2F%3E%3Cpath%20d%3D%22m24%2054.25v1.92l-12.05%2012.04-11.95-12v-1.92l11.95%2012.01z%22%20fill%3D%22%23fff%22%2F%3E%3Cpath%20d%3D%22m24%2078.25v1.92l-12.05%2012.04-11.95-12v-1.92l11.95%2012.01z%22%20fill%3D%22%23fc5200%22%2F%3E%3C%2Fsvg%3E);
+}
+
+.app-icon.icon-dark {
+    background-position: 0 33.333%;
+    fill: #242428;
+}
+
+ul {
+    padding: 0;
+    list-style: none;
+}
+
+#global-header .nav-group .drop-down-menu .accessible-nav-arrow {
+    border-left: transparent;
+    color: #494950;
+    cursor: default;
+    min-width: auto !important;
+    padding-left: 5px;
+}
+
+#global-header .nav-group .drop-down-menu .selection {
+    background: transparent;
+    border-top: none;
+    border-right: 1px solid #fff;
+    border-bottom: 1px solid transparent;
+    transition: none;
+}
+
+#global-header .nav-bar .nav-item > button {
+    height: auto;
+    font-size: 12px;
+    padding: 6px 16px;
+    min-height: unset;
+    line-height: normal;
+}
+
 .nav-bar {
     height: 55px;
     position: relative;
@@ -68,7 +152,6 @@ body {
 
     margin-left: auto;
     margin-right: auto;
-
 }
 
 .nav-container {
@@ -77,6 +160,11 @@ body {
 
 .user-nav {
     float: right;
+}
+
+.global-nav {
+    margin-left: 20px;
+    float: left;
 }
 
 .nav-group {
@@ -103,6 +191,13 @@ body {
     justify-content: center;
 }
 
+.nav-link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
 .btn {
     height: auto;
     font-size: 12px;
@@ -125,6 +220,10 @@ body {
     font-weight: 700;
 
     padding-inline: 4px;
+}
+
+.btn, select {
+    text-transform: none;
 }
 
 .btn-primary {
