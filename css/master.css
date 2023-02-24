@@ -26,6 +26,7 @@ body {
     line-height: 18px;
     position: relative;
     z-index: 50;
+    box-sizing: border-box;
 }
 
 #global-header .nav-bar {
@@ -112,6 +113,10 @@ ul {
     line-height: normal;
 }
 
+nav {
+    display: block;
+}
+
 .nav-bar {
     height: 55px;
     position: relative;
@@ -155,19 +160,21 @@ ul {
     margin-right: auto;
 }
 
-.container-nav {
+.nav-container {
     display: block; 
 }
 
+/*
 .collapse {
     display: none;
 }
+*/
 
 #global-header .user-nav {
     float: right;
 }
 
-.global-nav {
+#global-header .global-nav {
     margin-left: 20px;
     float: left;
 }
@@ -439,5 +446,11 @@ b {
 @media (min-width: 1200px) {
     .container {
         width: 1172px;
+    }
+}
+
+@media (min-width: 1250px) {
+    .container {
+        width: 1248px;
     }
 }
