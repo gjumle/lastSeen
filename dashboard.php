@@ -28,7 +28,7 @@ spl_autoload_register("autoloadModel");
                             <span class="str-only">lastSeen</span>
                         </a>
                     </div>
-                    <div id="nav-container" class="container-nav">
+                    <div id="nav-container" class="container-nav collapese">
                         <ul class="global-nav nav-group">
                             <li class="nav-item drop-down-menu accessible-nav-dropwdown selected enable" data-log-category="dashboard" data-log-page="dashboard">
                                 <a href="./dashboard.php" class="selection nav-link accessible-link">Dashboard</a>

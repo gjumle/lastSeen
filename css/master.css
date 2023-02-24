@@ -154,8 +154,12 @@ ul {
     margin-right: auto;
 }
 
-.nav-container {
+.container-nav {
     display: block;
+}
+
+.collapse {
+    display: none;
 }
 
 .user-nav {
