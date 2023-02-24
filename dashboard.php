@@ -15,7 +15,7 @@ spl_autoload_register("autoloadModel");
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta lang="en">
 
-        <title>Home</title>
+        <title>lastSeen | Dashboard</title>
 
         <link rel="stylesheet" type="text/css" href="css/master.css">
     </head>

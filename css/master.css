@@ -245,9 +245,13 @@ ul {
     border-color: #e34a00;
 }
 
+a {
+    color: #007FB6;
+    text-decoration: none;
+}
+
 a.btn {
     text-decoration: none;
-
 }
 
 .branding {
