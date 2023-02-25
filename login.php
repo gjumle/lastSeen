@@ -43,15 +43,17 @@ spl_autoload_register("autoloadModel");
             <div class="page container">
                 <div class="registration-panel">
                     <h1 class="mb-o">Log In</h1>
-                    <form id="login-form" action="/session" class="website" method="post" accept-charset="UTF-8">
+                    <form id="login-form" action="" class="website" method="post" accept-charset="UTF-8">
                         <fieldset class="mt-0 mb-0">
                             <div class="form-group">
                                 <input id="email" class="form-control" type="text" name="email" value="" placeholder="Your Email" autofocus="autofocus">
+                                <span id="email-error" class="error-message"></span>
                             </div>
                             <div class="form-group">
-                            <input id="password" class="form-control" type="password" name="password" value="" placeholder="Your Password" autofocus="autofocus">
+                                <input id="password" class="form-control" type="password" name="password" value="" placeholder="Your Password" autofocus="autofocus">
+                                <span id="password-error" class="error-message"></span>
                             </div>
-                            <button id="login-button" class="btn btn-primary" type="submit">Log In</button>
+                            <button id="login-button" class="btn btn-primary" type="submit" value="login">Log In</button>
                         </fieldset>
                         <div class="reset-password">
                             <b>

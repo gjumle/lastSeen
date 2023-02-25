@@ -72,6 +72,7 @@ class User {
         $stmt->bind_param("sss", $this->name, $this->password, $this->email);
         $stmt->execute();
         $stmt->close();
+        var_dump($stmt);
         $db->close();
     }
 
@@ -85,77 +86,44 @@ class User {
         $db->close();
     }
 
-    public static function loginUser() {
+    public function login() {
         $db = DB::connect();
-        $sql = "SELECT * FROM users WHERE name = ?";
+        $sql = "SELECT * FROM users WHERE email = ?";
         $stmt = $db->prepare($sql);
-        $stmt->bind_param("s", $_POST['name']);
+        $stmt->bind_param("s", $this->email);
         $stmt->execute();
-        var_dump($stmt);
         $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
         $stmt->close();
         $db->close();
-        if ($result->num_rows == 1) {
-            $row = $result->fetch_assoc();
-            if (password_verify($_POST['password'], $row['password'])) {
-                $_SESSION['uid'] = $row['uid'];
-                $_SESSION['name'] = $row['name'];
-                $_SESSION['admin'] = $row['admin'];
-                return true;
-            }
+
+        if (password_verify($this->password, $row['password'])) {
+            $_SESSION['uid'] = $row['uid'];
+            $_SESSION['name'] = $row['name'];
+            $_SESSION['email'] = $row['email'];
+            $_SESSION['admin'] = $row['admin'];
+            header("Location: ./dashboard.php");
+        } else {
+            echo "Wrong password";
         }
-        return false;
     }
 
-    public static function registerForm() {
-        return "
-            <form action='' method='post'>
-                <input type='hidden' name='action' value='register'>
-                <input type='text' name='name' placeholder='Name' required>
-                <input type='password' name='password' placeholder='Password' required>
-                <input type='email' name='email' placeholder='Email' required>
-                <input type='submit' value='Register'>
-            </form>";
-    }
+    public function register() {
+        $db = DB::connect();
+        $sql = "SELECT * FROM users WHERE email = ?";
+        $stmt = $db->prepare($sql);
+        $stmt->bind_param("s", $this->email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        $stmt->close();
+        $db->close();
 
-    public static function loginForm() {
-        return "
-            <form action='' method='post'>
-                <input type='hidden' name='action' value='login'>
-                <input type='text' name='name' placeholder='Name' required>
-                <input type='password' name='password' placeholder='Password' required>
-                <input type='submit' value='Login'>
-            </form>";
-    }
-
-    public static function logoutForm() {
-        return "
-            <form action='' method='post'>
-                <input type='hidden' name='action' value='logout'>
-                <input type='submit' value='Logout'>
-            </form>";
-    }
-
-    public static function handleForm() {
-        if (isset($_POST['action'])) {
-            switch ($_POST['action']) {
-                case 'register':
-                    $user = new User(null, $_POST['name'], $_POST['password'], 0, $_POST['email']);
-                    $user->insertToDB();
-                    header("Location: login.php");
-                    break;
-                case 'login':
-                    if (User::loginUser()) {
-                        header("Location: account.php");
-                    } else {
-                        echo "Login failed";
-                    }
-                    break;
-                case 'logout':
-                    session_destroy();
-                    header("Location: login.php");
-                    break;
-            }
+        if ($row['email'] == $this->email) {
+            echo "Email already exists";
+        } else {
+            $this->insertToDB();
+            header("Location: ./login.php");
         }
     }
 }

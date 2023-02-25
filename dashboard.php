@@ -44,7 +44,7 @@ spl_autoload_register("autoloadModel");
                         <ul class="user-nav nav-group">
                             <li class="nav-object-group">
                                 <div class="nav-item logged-out-nav">
-                                    <a href="./subscription.php" class="btn btn-primary btn-signup">Start Trial</a>
+                                    <a href="./subscription.php" class="btn btn-primary btn-signup" type="sumbit" value="logout">Logout</a>
                                 </div>
                             </li>
                         </ul>

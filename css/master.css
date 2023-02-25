@@ -321,6 +321,12 @@ input {
     cursor: text;
 }
 
+.error-message {
+    color: red;
+    font-size: 0.8em;
+    display: none;
+}  
+
 .form-group {
     margin-bottom: 20px;
 }
@@ -384,7 +390,6 @@ b {
 
     box-sizing: border-box;
 }
-
 @media (min-width: 768px) {
     .container {
         width: 752px;
