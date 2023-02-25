@@ -24,7 +24,8 @@ spl_autoload_register("autoloadModel");
             <header id="global-header">
                 <nav class="nav-bar container" role="navigation">
                     <div class="branding" title="Return to the home page">
-                        <a href="/" class="branding-content">
+                        <a href="./index.php" class="branding-content">
+                            <img src="./svg/logo.svg" alt="">
                             <span class="str-only">lastSeen</span>
                         </a>
                     </div>
@@ -32,7 +33,10 @@ spl_autoload_register("autoloadModel");
                         <ul class="user-nav nav-group">
                             <li class="nav-object-group">
                                 <div class="nav-item logged-out-nav">
-                                    <a href="./login.php" class="btn btn-primary btn-signup">Login</a>
+                                    <a href="./login.php" class="btn btn-primary btn-login">Login</a>
+                                </div>
+                                <div class="nav-item logged-out-nav">
+                                    <a href="./register.php" class="btn btn-primary btn-signup">Join For Free</a>
                                 </div>
                             </li>
                         </ul>

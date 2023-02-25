@@ -24,7 +24,8 @@ spl_autoload_register("autoloadModel");
             <header id="global-header">
                 <nav class="nav-bar container" role="navigation">
                     <div class="branding" title="Return to the home page">
-                        <a href="/" class="branding-content">
+                        <a href="./index.php" class="branding-content">
+                            <img src="./svg/logo.svg" alt="">
                             <span class="str-only">lastSeen</span>
                         </a>
                     </div>

@@ -206,14 +206,14 @@ nav {
 .nav-object-group {
     display: inline-flex;
     flex-direction: row;
-    padding-left: 12px;
-    padding-right: 12px;
+    padding: 6px 24px;
     align-items: center;
 }
 
 .nav-item {
     display: flex;
     justify-content: center;
+    margin: 0 12px;
 }
 
 .nav-link {
@@ -246,7 +246,6 @@ nav {
 
     padding-inline: 4px;
 }
-
 .btn, select {
     text-transform: none;
 }
@@ -260,14 +259,24 @@ nav {
     border-color: #fc5200;
 }
 
+.btn.btn-primary.btn-login {
+    color: #fc5200;
+    background-color: #fff;
+    border: 1px solid black transparent;
+}
+
 .btn:hover {
     text-decoration: none;
 }
 
-.btn.btn-primary:hover {
+.btn.btn-primary.btn-signup:hover {
     color: #fff;
     background-color: #e34a00;
     border-color: #e34a00;
+}
+
+.btn.btn-primary.btn-login:hover {
+    background-color: #ebebeb;
 }
 
 a {
@@ -279,11 +288,9 @@ a.btn {
     text-decoration: none;
 }
 
-.branding {
-    background-image: url(https://d3nn82uaxijpm6.cloudfront.net/assets/svg/strava-logo-69e7bbe1120a5f841f19d61f14fa66c0cfd2ae5b22673c643032d1890baa5ee7.svg);
-    /*background-image: url(/svg/logo.svg);*/
-    background-size: cover;
-    background-position: 0 0;
+.branding img {
+    height: 100%;
+    width: 100%;
 }
 
 .registration-panel {
