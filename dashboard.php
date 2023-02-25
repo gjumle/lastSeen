@@ -60,6 +60,35 @@ if (isset($_GET['logout'])) {
                     </div>
                 </nav>
             </header>
+            <div class="page container">
+                <div class="row">
+                    <div id="dashboard-sidebar" class="sidebar col-lg-3 col-md-4">
+                        <div class="container">
+                            <div class="fixed-sidebar-container">
+                                <div class="col-lg-3 col-md-4">
+                                    <div id="sidebar-profile" class="card sidebar-profile">
+                                        <div class="card-body text-center">
+                                            <a href="./profile.php">
+                                                <h2 class="text-title2 mt-sm mb-md">
+                                                    <div class="progile-name"><?php echo $_COOKIE['name'] ?></div>
+                                                </h2>
+                                            </a>
+                                            <ul class="list-stats text-center">
+                                                <li>
+                                                    <a href="#" class="stat">
+                                                        <div class="stat-subtext">Contacts</div>
+                                                        <b class="stat-text">5</b>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>

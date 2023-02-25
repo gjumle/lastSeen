@@ -215,6 +215,7 @@ nav {
 a {
     color: #007FB6;
     text-decoration: none;
+    background-color: transparent;
 }
 
 a.btn {
@@ -382,6 +383,7 @@ input::placeholder {
 
 b {
     font-weight: bolder;
+    color: #242428;
 }
 
 .registration-panel a:not(.btn) {
@@ -390,6 +392,168 @@ b {
 
     box-sizing: border-box;
 }
+
+.page {
+    margin-top: 0;
+    margin-bottom: 0;
+    overflow: hidden;
+    flex: 1 1 auto;
+    position: relative;
+}
+
+.page > .row {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+}
+
+.row {
+    margin-left: -16px;
+    margin-right: -16px;
+}
+
+.sidebar {
+    z-index: 1;
+    overflow: hidden;
+}
+
+.col-lg-3 {
+    width: 25%;
+    float: left;
+    position: relative;
+    min-height: 1px;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+#dashboard-sidebar .container {
+    padding-top: 0;
+    padding-bottom: 24px;
+}
+
+.fixed-sidebar-container {
+    margin-right: 0;
+    margin-left: -30;
+}
+
+#sidebar-profile {
+    padding-top: 24px;
+    margin-top: 64px;
+}
+
+.card:first-child {
+    margin-top: 0;
+}
+
+.card {
+    border: none;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    background-color: #fff;
+
+    box-shadow: 0px 8px 24px rgba(13,13,18,0.04);
+    border-radius: 4px;
+    position: relative;
+}
+
+.card .card-body {
+    padding: 6px 16px 16px;
+    padding: 16px;
+    clear: both;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-title2 {
+    font-size: 22px;
+    line-height: 28px;
+}
+
+.mt-sm {
+    margin-top: 12px;
+}
+
+.mb-md {
+    margin-bottom: 16px;
+}
+
+h2 {
+    font-weight: 700;
+    word-break: break-word;
+    font-family: inherit;
+    color: #242428;
+}
+
+#sidebar-profile .profile-name {
+    line-height: 1.25;
+}
+
+.profile-name {
+    word-break: break-word;
+}
+
+#sidebar-profile .list-stats li {
+  width: 33.333%;
+  margin: 0;
+  padding: 0;
+}
+
+.list-stats .text-center {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: stretch;
+    list-style: none;
+    margin-bottom: 0;
+    padding-left: 0;
+    flex-wrap: wrap;
+}
+
+.list-stats .stat {
+    display: flex;
+    flex-direction: column;
+}
+
+.list-stats li {
+    display: flex;
+}
+
+li {
+    display: list-item;
+    text-align: match-parent;
+}
+
+.list-stats .text-center li {
+    justify-content: center;
+}
+
+.list-stats .stat:last-child {
+    margin-right: 0;
+}
+
+.list-stats li, .list-stats .stat {
+    display: flex;
+}
+
+.stat {
+    font-size: 20px;
+}
+
+.stat-subtext {
+    font-size: 12px;
+    font-weight: 400;
+    color: #494950;
+    line-height: 1.2;
+}
+
+.stat-text {
+    font-weight: 400;
+    line-height: 1;
+    white-space: nowrap;
+}
+
 @media (min-width: 768px) {
     .container {
         width: 752px;
