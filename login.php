@@ -7,6 +7,17 @@ function autoloadModel($className) {
 }
 spl_autoload_register("autoloadModel");
 
+if (isset($_POST['login'])) {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $user = new User();
+    $user->setEmail($email);
+    $user->setPassword($password);
+
+    $user->login();
+}
+
 ?>
 
 <html>

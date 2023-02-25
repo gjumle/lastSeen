@@ -7,6 +7,19 @@ function autoloadModel($className) {
 }
 spl_autoload_register("autoloadModel");
 
+if (isset($_POST['register'])) {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $user = new User();
+    $user->setName($name);
+    $user->setEmail($email);
+    $user->setPassword($password);
+
+    $user->register();
+}
+
 ?>
 
 <html>
@@ -54,7 +67,7 @@ spl_autoload_register("autoloadModel");
                             <div class="form-group">
                             <input id="password" class="form-control" type="password" name="password" value="" placeholder="Your Password" autofocus="autofocus">
                             </div>
-                            <button id="register-button" class="btn btn-primary" type="submit" value="register">Sign Up</button>
+                            <button id="register-button" class="btn btn-primary" type="submit" name="register">Sign Up</button>
                         </fieldset>
                     </form>
                 </div>

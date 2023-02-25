@@ -70,9 +70,9 @@ class User {
         $sql = "INSERT INTO users (name, password, email) VALUES (?, ?, ?)";
         $stmt = $db->prepare($sql);
         $stmt->bind_param("sss", $this->name, $this->password, $this->email);
+        var_dump($stmt);
         $stmt->execute();
         $stmt->close();
-        var_dump($stmt);
         $db->close();
     }
 
