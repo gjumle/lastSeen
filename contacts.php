@@ -31,10 +31,10 @@ spl_autoload_register("autoloadModel");
                     </div>
                     <div id="container-nav" class="nav-container">
                         <ul class="global-nav nav-group">
-                            <li class="nav-item selected" data-log-category="dashboard" data-log-page="dashboard">
+                            <li class="nav-item" data-log-category="dashboard" data-log-page="dashboard">
                                 <a href="./dashboard.php" class="selection nav-link">Dashboard</a>
                             </li>
-                            <li class="nav-item" data-log-category="dashboard" data-log-page="dashboard">
+                            <li class="nav-item selected" data-log-category="dashboard" data-log-page="dashboard">
                                 <a href="./contacts.php" class="selection nav-link">Contacts</a>
                             </li>
                             <li class="nav-item" data-log-category="dashboard" data-log-page="dashboard">
