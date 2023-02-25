@@ -500,9 +500,16 @@ h2 {
   padding: 0;
 }
 
-.list-stats .text-center {
+.list-stats {
     display: flex;
     justify-content: center;
+}
+
+.list-stats li {
+    justify-content: center;
+}
+
+.list-stats {
     flex-direction: row;
     align-items: stretch;
     list-style: none;
@@ -552,6 +559,119 @@ li {
     font-weight: 400;
     line-height: 1;
     white-space: nowrap;
+}
+
+.card-footer {
+    border-top: 1px solid #f0f0f5;
+    padding: 16px;
+    clear: both;
+}
+
+.card-body {
+    padding: 16px;
+    clear: both;
+}
+
+.card {
+    padding: 16px;
+}
+
+.card-section:first-of-type {
+    padding-top: 0;
+    border-top: none;
+}
+
+.card-section {
+    padding-top: 16px;
+    border-top: 1px solid #f0f0f5;
+    padding-bottom: 16px;
+}
+
+.card-section:last-child {
+    padding-bottom: 0;
+}
+
+.mb-8px {
+    margin-bottom: 8px;
+}
+
+.text-small {
+    font-size: 12px;
+}
+
+.text-medium {
+    font-size: 14px;
+}
+
+.text-large {
+    font-size: 16px;
+}
+
+strong {
+    font-weight: bold;
+}
+
+.timestamp {
+    margin: 0;
+    white-space: nowrap;
+}
+
+.btn-card-link {
+    padding: 0;
+    border: none;
+    background: none;
+    color: #242428;
+    font-size: 14px;
+    font-weight: 400;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.media {
+    display: flex;
+    flex-direction: row;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.media-middle {
+    align-items: center;
+}
+
+.media-body {
+    flex: 1 1;
+}
+
+.media-right {
+    padding-left: 15px;
+}
+
+.app-icon-wrapper {
+    display: inline-block;
+    line-height: 1;
+    vertical-align: middle;
+}
+
+.app-icon {
+    position: relative;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    text-align: left;
+    text-indent: -999em;
+    line-height: 1;
+    height: 16px;
+    width: 16px;
+}
+
+.icon-caret-right {
+    background-image: url(data:image/svg+xml,%3Csvg%20fill%3D%22none%22%20height%3D%2296%22%20viewBox%3D%220%200%2024%2096%22%20width%3D%2224%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22m18.71%2012.05-12%2011.95h-1.92l12.01-11.95-12.05-12.05h1.92z%22%20fill%3D%22%236d6d78%22%2F%3E%3Cpath%20d%3D%22m18.71%2036.05-12%2011.95h-1.92l12.01-11.95-12.05-12.05h1.92z%22%20fill%3D%22%23242428%22%2F%3E%3Cpath%20d%3D%22m18.71%2060.05-12%2011.95h-1.92l12.01-11.95-12.05-12.05h1.92z%22%20fill%3D%22%23fff%22%2F%3E%3Cpath%20d%3D%22m18.71%2084.05-12%2011.95h-1.92l12.01-11.95-12.05-12.05h1.92z%22%20fill%3D%22%23fc5200%22%2F%3E%3C%2Fsvg%3E);
+}
+
+.icon-dark {
+    background-position: 0 33.333%;
+    fill: #242428;
 }
 
 @media (min-width: 768px) {

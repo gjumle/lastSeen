@@ -75,12 +75,44 @@ if (isset($_GET['logout'])) {
                                             </a>
                                             <ul class="list-stats text-center">
                                                 <li>
-                                                    <a href="#" class="stat">
+                                                    <a href="./contacts.php" class="stat">
                                                         <div class="stat-subtext">Contacts</div>
                                                         <b class="stat-text">5</b>
                                                     </a>
                                                 </li>
+                                                <li>
+                                                    <a href="#" class="stat">
+                                                        <div class="stat-subtext">Meetings</div>
+                                                        <b class="stat-text">4</b>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="stat">
+                                                        <div class="stat-subtext">Status</div>
+                                                        <b class="stat-text">76</b>
+                                                    </a>
+                                                </li>
                                             </ul>
+                                        </div>
+                                        <div class="card-footer">
+                                            <div class="card-section">
+                                                <div class="text-label text-small mb-8px">Last seen</div>
+                                                <a href="#" class="text-large hover-orange">
+                                                    <strong>Patrik</strong>
+                                                    *
+                                                    <time class="timestamp text-medium" datetime="2023-02-24 00-15-30 UTC">Feburary 24, 2023</time>
+                                                </a>
+                                            </div>
+                                            <div class="card-section">
+                                                <a href="#" class="btn-card-link media media-middle">
+                                                    <div class="media-body">Your Meeting Log</div>
+                                                    <div class="media-right">
+                                                        <span class="app-icon-wrapper">
+                                                            <span class="app-icon icon-caret-right icon-dark"></span>
+                                                        </span>
+                                                    </div>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
