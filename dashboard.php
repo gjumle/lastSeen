@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 function autoloadModel($className) {
     $filename = "class/" . $className . ".php";
     if (is_readable($filename)) {
@@ -11,7 +9,10 @@ function autoloadModel($className) {
 spl_autoload_register("autoloadModel");
 
 if (isset($_GET['logout'])) {
-    session_destroy();
+    setcookie('uid', '', time() - 3600, '/');
+    setcookie('name', '', time() - 3600, '/');
+    setcookie('email', '', time() - 3600, '/');
+    setcookie('admin', '', time() - 3600, '/');
     header("Location: ./login.php");
 }
 

@@ -88,10 +88,10 @@ class User {
 
 
         if (password_verify($this->password, $row['password'])) {
-            $_SESSION['uid'] = $row['uid'];
-            $_SESSION['name'] = $row['name'];
-            $_SESSION['email'] = $row['email'];
-            $_SESSION['admin'] = $row['admin'];
+            setcookie('uid', $row['uid'], time() + (86400 * 30), '/');
+            setcookie('name', $row['name'], time() + (86400 * 30), '/');
+            setcookie('email', $row['email'], time() + (86400 * 30), '/');
+            setcookie('admin', $row['admin'], time() + (86400 * 30), '/');
             header("Location: ./dashboard.php");
         } else {
             echo "Wrong password";

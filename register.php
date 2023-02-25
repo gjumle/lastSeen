@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 function autoloadModel($className) {
     $filename = "class/" . $className . ".php";
     if (is_readable($filename)) {
