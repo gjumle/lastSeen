@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 function autoloadModel($className) {
     $filename = "class/" . $className . ".php";
     if (is_readable($filename)) {
@@ -6,6 +9,8 @@ function autoloadModel($className) {
     }
 }
 spl_autoload_register("autoloadModel");
+
+
 
 if (isset($_POST['login'])) {
     $email = $_POST['email'];
@@ -64,7 +69,7 @@ if (isset($_POST['login'])) {
                                 <input id="password" class="form-control" type="password" name="password" value="" placeholder="Your Password" autofocus="autofocus">
                                 <span id="password-error" class="error-message"></span>
                             </div>
-                            <button id="login-button" class="btn btn-primary" type="submit" value="login">Log In</button>
+                            <button id="login-button" class="btn btn-primary" type="submit" name="login">Log In</button>
                         </fieldset>
                         <div class="reset-password">
                             <b>

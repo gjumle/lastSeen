@@ -10,7 +10,7 @@ class User {
     public function __construct($uid = null, $name = null, $password = null, $admin = null, $email = null) {
         $this->uid = $uid;
         $this->name = $name;
-        $this->password = password_hash($password, PASSWORD_DEFAULT);
+        $this->password = $password;
         $this->admin = $admin;
         $this->email = $email;
     }
@@ -44,7 +44,7 @@ class User {
     }
 
     public function setPassword($password) {
-        $this->password = password_hash($password, PASSWORD_DEFAULT);
+        $this->password = $password;
     }
 
     public function setAdmin($admin) {
@@ -67,6 +67,8 @@ class User {
         $pdo = DB::connectPDO();
         $sql = "INSERT INTO users (name, password, email) VALUES (?, ?, ?)";
         $stmt = $pdo->prepare($sql);
+
+        $this->password = password_hash($this->password, PASSWORD_DEFAULT);
         $stmt->execute([$this->name, $this->password, $this->email]);
     }
 
@@ -83,6 +85,7 @@ class User {
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$this->email]);
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
 
         if (password_verify($this->password, $row['password'])) {
             $_SESSION['uid'] = $row['uid'];

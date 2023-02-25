@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 function autoloadModel($className) {
     $filename = "class/" . $className . ".php";
     if (is_readable($filename)) {
@@ -6,6 +9,11 @@ function autoloadModel($className) {
     }
 }
 spl_autoload_register("autoloadModel");
+
+if (isset($_GET['logout'])) {
+    session_destroy();
+    header("Location: ./login.php");
+}
 
 ?>
 
@@ -31,10 +39,10 @@ spl_autoload_register("autoloadModel");
                     </div>
                     <div id="container-nav" class="nav-container">
                         <ul class="global-nav nav-group">
-                            <li class="nav-item" data-log-category="dashboard" data-log-page="dashboard">
+                            <li class="nav-item selected" data-log-category="dashboard" data-log-page="dashboard">
                                 <a href="./dashboard.php" class="selection nav-link">Dashboard</a>
                             </li>
-                            <li class="nav-item selected" data-log-category="dashboard" data-log-page="dashboard">
+                            <li class="nav-item" data-log-category="dashboard" data-log-page="dashboard">
                                 <a href="./contacts.php" class="selection nav-link">Contacts</a>
                             </li>
                             <li class="nav-item" data-log-category="dashboard" data-log-page="dashboard">
@@ -44,7 +52,7 @@ spl_autoload_register("autoloadModel");
                         <ul class="user-nav nav-group">
                             <li class="nav-object-group">
                                 <div class="nav-item logged-out-nav">
-                                    <a href="./subscription.php" class="btn btn-primary btn-signup">Start Trial</a>
+                                    <a href="?logout" class="btn btn-primary btn-signup" type="sumbit" name="logout">Logout</a>
                                 </div>
                             </li>
                         </ul>
