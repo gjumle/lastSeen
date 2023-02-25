@@ -47,7 +47,7 @@ if (isset($_GET['logout'])) {
                                 <a href="./contacts.php" class="selection nav-link">Contacts</a>
                             </li>
                             <li class="nav-item" data-log-category="dashboard" data-log-page="dashboard">
-                                <a href="./account.php" class="selection nav-link">Profile</a>
+                                <a href="./profile.php" class="selection nav-link">Profile</a>
                             </li>
                         </ul>
                         <ul class="user-nav nav-group">
@@ -69,6 +69,15 @@ if (isset($_GET['logout'])) {
                                     <div id="sidebar-profile" class="card sidebar-profile">
                                         <div class="card-body text-center">
                                             <a href="./profile.php">
+                                                <div class="avatar avatar-profile avatar-lg">
+                                                    <div class="avatar-content">
+                                                        <div class="avatar-img-wrapper">
+                                                            <div class="avatar-img">
+                                                                <img src="./svg/avatar.svg" alt="avatar">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <h2 class="text-title2 mt-sm mb-md">
                                                     <div class="progile-name"><?php echo $_COOKIE['name'] ?></div>
                                                 </h2>
@@ -89,7 +98,7 @@ if (isset($_GET['logout'])) {
                                                 <li>
                                                     <a href="#" class="stat">
                                                         <div class="stat-subtext">Status</div>
-                                                        <b class="stat-text">76</b>
+                                                        <b class="stat-text">10</b>
                                                     </a>
                                                 </li>
                                             </ul>
@@ -112,6 +121,24 @@ if (isset($_GET['logout'])) {
                                                         </span>
                                                     </div>
                                                 </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="tab-contents">
+                                            <div class="card-body">
+                                                <div class="media upsell">
+                                                    <div class="media-body pl-sm">
+                                                        Subscribe to stay motivated with custom progress, segment and power goals. 
+                                                        <a href="./subscription">Upgrade</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body text-center">
+                                                <h4 class="h6 mt-0">THIS WEEK</h4>
+                                                <div class="primary-stats">
+                                                    <span class="actual">44 m</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
