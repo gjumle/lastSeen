@@ -1,15 +1,15 @@
 <?php
 
 class DB {
-    static $conn = null;
+    private static $host = "localhost";
+    private static $username = "lsa";
+    private static $password = "lsa";
+    private static $dbname = "ls";
 
-    static function connect() {
-        if (self::$conn == null) {
-            $db = new mysqli('localhost', 'lsa', 'lsa', 'ls');
-            self::$conn = $db;
-        } else {
-            $db = self::$conn;
-        }
-        return $db;
+    public static function connectPDO() {
+        $dsn = "mysql:host=".self::$host.";dbname=".self::$dbname;
+        $pdo = new PDO($dsn, self::$username, self::$password);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        return $pdo;
     }
 }

@@ -55,47 +55,34 @@ class User {
         $this->email = $email;
     }
 
+
     public function deleteFromDB() {
-        $db = DB::connect();
+        $pdo = DB::connectPDO();
         $sql = "DELETE FROM users WHERE uid = ?";
-        $stmt = $db->prepare($sql);
-        $stmt->bind_param("i", $this->uid);
-        $stmt->execute();
-        $stmt->close();
-        $db->close();
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$this->uid]);
     }
 
     public function insertToDB() {
-        $db = DB::connect();
+        $pdo = DB::connectPDO();
         $sql = "INSERT INTO users (name, password, email) VALUES (?, ?, ?)";
-        $stmt = $db->prepare($sql);
-        $stmt->bind_param("sss", $this->name, $this->password, $this->email);
-        var_dump($stmt);
-        $stmt->execute();
-        $stmt->close();
-        $db->close();
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$this->name, $this->password, $this->email]);
     }
 
     public function saveToDB() {
-        $db = DB::connect();
+        $pdo = DB::connectPDO();
         $sql = "UPDATE users SET name = ?, password = ?, email = ? WHERE uid = ?";
-        $stmt = $db->prepare($sql);
-        $stmt->bind_param("sssi", $this->name, $this->password, $this->email, $this->uid);
-        $stmt->execute();
-        $stmt->close();
-        $db->close();
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$this->name, $this->password, $this->email, $this->uid]);
     }
 
     public function login() {
-        $db = DB::connect();
+        $pdo = DB::connectPDO();
         $sql = "SELECT * FROM users WHERE email = ?";
-        $stmt = $db->prepare($sql);
-        $stmt->bind_param("s", $this->email);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $row = $result->fetch_assoc();
-        $stmt->close();
-        $db->close();
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$this->email]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if (password_verify($this->password, $row['password'])) {
             $_SESSION['uid'] = $row['uid'];
@@ -109,15 +96,11 @@ class User {
     }
 
     public function register() {
-        $db = DB::connect();
+        $pdo = DB::connectPDO();
         $sql = "SELECT * FROM users WHERE email = ?";
-        $stmt = $db->prepare($sql);
-        $stmt->bind_param("s", $this->email);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $row = $result->fetch_assoc();
-        $stmt->close();
-        $db->close();
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$this->email]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($row['email'] == $this->email) {
             echo "Email already exists";
