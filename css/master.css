@@ -853,6 +853,10 @@ main {
     display: flex;
 }
 
+.feed-ui-media-body-header a {
+    color: inherit;
+}
+
 .feed-ui-media-body {
     flex: 1 1;
     color: #242428;
@@ -931,7 +935,7 @@ main {
     width: 24px;
 }
 
-.h3 {
+.feed-ui-media-body h3 {
     margin-bottom: 9px;
     font-size: 22px;
     line-height: 28px;
@@ -998,6 +1002,124 @@ abbr[title] {
 abbr {
     border: none;
     font-style: normal;
+}
+
+.col-md-3 {
+    width: 25%;
+    position: relative;
+    min-height: 1px;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+#rgiht-sidebar .container {
+    padding-top: 0;
+}
+
+.fixed-sidebar-top {
+    position: fixed;
+    z-index: 2;
+}
+
+.section:first-child {
+    margin-top: 64px;
+    padding-top: 0;
+    border-top: none;
+}
+
+.section {
+    border-top: 1px solid #f0f0f5;
+    padding-top: 24px;
+    padding-bottom: 24px;
+}
+
+.media-object {
+    margin-right: 12px;
+    padding-right: 0;
+}
+
+.media-img {
+    display: block;
+    width: 48px;
+    height: 48px;
+}
+
+.media-title {
+    margin-top: 0;
+}
+
+.media-text {
+    font-size: 12px;
+    line-height: 16px;
+    margin-bottom: 6px;
+}
+
+p {
+    margin: 0 0 1.23em;
+}
+
+.text-subhead {
+    font-size: 15px;
+    line-height: 20px;
+}
+
+.btn-link {
+    color: #fc5200;
+    font-size: 12px;
+    font-weight: 700;
+    will-change: color;
+    transition: color 0.15s ease;
+
+    background-color: transparent;
+    border-color: transparent;
+    padding: 0;
+}
+
+.media-body h3 {
+    margin-bottom: 9px;
+    word-break: break-word;
+    font-weight: 400;
+}
+
+.section-title {
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.text-callout {
+    font-size: 16px;
+    line-height: 21px;
+}
+
+.contact-name {
+    display: inline-block;
+    font-weight: 700;
+    color: inherit;
+}
+
+.location {
+    line-height: 16px;
+}
+
+.sidebar-footer {
+    font-size: 12px;
+}
+
+.mt-md {
+    margin-top: 16px;
+}
+
+.sidebar-footer > ul > li {
+    display: inline-block;
+    margin: 0 1em 6px 0;
+}
+
+.sidebar-footer > ul > li a{
+    color: inherit;
+}
+
+.copyright {
+    color: #494950;
 }
 
 @media (min-width: 768px) {

@@ -80,7 +80,7 @@ if (isset($_GET['logout'])) {
                                                     </div>
                                                 </div>
                                                 <h2 class="text-title2 mt-sm mb-md">
-                                                    <div class="progile-name"><?php echo $_COOKIE['name'] ?></div>
+                                                    <div class="progile-name">Leoš Gjumija</div>
                                                 </h2>
                                             </a>
                                             <ul class="list-stats text-center">
@@ -241,6 +241,91 @@ if (isset($_GET['logout'])) {
                                         </div>
                                     </div>
                                 </main>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="right-sidebar" class="sidebar col-md-3">
+                        <div class="container fixed-sidebar-top">
+                            <div class="fixed-sidebar-container">
+                                <div class="col-md-3">
+                                    <div id="your-chalenges" class="section">
+                                        <div class="media">
+                                            <div class="media-object">
+                                                <img alt="Challenges Icon" class="media-img" src="https://d3nn82uaxijpm6.cloudfront.net/assets/application/dashboard/sidebar-badge-challenges-9908f45d44160c600a4f9d788795b180a74001daae32461705f5f57d90a7c651.png">
+                                            </div>
+                                            <div class="media-body">
+                                                <h3 class="text-subhead media-title">Challenges</h3>
+                                                <p class="media-text">
+                                                    Join a Challenge to stay on top of your game, earn new achievements and see how you stack up.
+                                                </p>
+                                                <a href="#" class="btn btn-link btn-sm">View All Challenges</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="your-clubs" class="section">
+                                        <div class="media">
+                                            <div class="media-object">
+                                                <img alt="Challenges Icon" class="media-img" src="https://d3nn82uaxijpm6.cloudfront.net/assets/application/dashboard/sidebar-badge-clubs-dda5c075f23e3f2ced7d0e4b2afb87df988978962b6de33c7a232be53b6a75ca.png">
+                                            </div>
+                                            <div class="media-body">
+                                                <h3 class="text-subhead media-title">Clubs</h3>
+                                                <p class="media-text">
+                                                    Why do it alone? Get more out of your Strava experience by joining or creating a Club. 
+                                                </p>
+                                                <a href="#" class="btn btn-link btn-sm">View All Clubs</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="your-privacy" class="section">
+                                        <div class="media">
+                                            <div class="media-object">
+                                                <img alt="Challenges Icon" class="media-img" src="https://d3nn82uaxijpm6.cloudfront.net/assets/application/dashboard/sidebar-badge-prompt-privacy-0fc1803e5bfe7def07ad5be716aa653371be602b5fbda57a49c7dc894a9c07d2.png">
+                                            </div>
+                                            <div class="media-body">
+                                                <h3 class="text-subhead media-title">Privacy</h3>
+                                                <p class="media-text">
+                                                    You can hide the location of your home, office or other private places in your activities. 
+                                                </p>
+                                                <a href="#" class="btn btn-link btn-sm">Review Your Privacy Settings</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="suggested-contacts" class="section">
+                                        <h3 class="text-callout section-title">Suggested Contacts</h3>
+                                        <ul class="list-media">
+                                            <li>
+                                                <div class="media">
+                                                    <div class="media-object">
+                                                        <div class="feed-ui-icon-container">
+                                                            <a href="#" class="ui-avatar">
+                                                                <div class="ui-img-wrapper">
+                                                                    <img class="avatar-img" src="./svg/avatar.svg" alt="avatar">
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <a href="#" class="media-title contact-name">Dominik</a>
+                                                        <div class="location text-small">Ceska, Brno, Czech Republic</div>
+                                                        <div class="action">
+                                                            <a href="#" class="btn btn-link btn-sm">Contact detail</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="section sidebar-footer">
+                                        <ul class="mt-md mb-sm">
+                                            <li><a href="#">Support</a></li>
+                                            <li><a href="#">Subscription</a></li>
+                                            <li><a href="#">Student Discount</a></li>
+                                            <li><a href="#">Terms of Service</a></li>
+                                            <li><a href="#">Privacy Policy</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="copyright mt-md md-md">© 2023 lastSeen</div>
+                                </div>
                             </div>
                         </div>
                     </div>
