@@ -1122,6 +1122,241 @@ p {
     color: #494950;
 }
 
+.profile-heading {
+    z-index: 3;
+}
+
+.profile-heading .avatar {
+    float: none;
+    margin-bottom: 20px;
+}
+
+.avatar-xl, .avatar-xl .avatar-img {
+    height: 128px;
+    width: 128px;
+}
+
+.spans5 {
+    width: 31.25%;
+}
+
+.spans10 {
+    width: 62.5%;
+}
+
+.row [class*="spans"] {
+    box-sizing: border-box;
+    float: left;
+    padding-left: 15px;
+    padding-right: 15px;
+    position: relative;
+}
+
+.activity-summary {
+    display: flex;
+    margin-top: 16px;
+    padding-bottom: 0;
+}
+
+.activity-count {
+    text-align: center;
+    margin-right: 90px;
+    float: left;
+}
+
+.count-header {
+    font-size: 14px;
+}
+
+.count-total {
+    margin: 0;
+    text-align: center;
+}
+
+.text-display5 {
+    font-size: 72px;
+    font-weight: 700;
+    line-height: 88px;
+}
+
+.count-label {
+    color: #6d6d78;
+    font-size: 12px;
+}
+
+.activity-calendar {
+    margin-right: 32px;
+    float: left;
+}
+
+.vh {
+    position: absolute !important;
+    clip: rect(0, 0, 0, 0);
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden;
+    border: 0;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0px;
+    padding: 0;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+caption {
+    text-align: left;
+}
+
+thead {
+    display: table-header-group;
+    vertical-align: middle;
+}
+
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+}
+
+tr {
+    display: table-row;
+    vertical-align: inherit;
+}
+
+th {
+    font-weight: normal;
+    font-size: 14px;
+    padding: 0 10px;
+    text-align: center;
+    border: none;
+    vertical-align: bottom;
+    display: table-cell;
+}
+
+.activity-indicator {
+    background-color: #a1a1aa;
+    height: 2px;
+    width: 2px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    opacity: 1;
+    transform: translate(-50%, -50%);
+    border-radius: 100%;
+    transition: opacity 0.2s linear;
+}
+
+.day-wrapper {
+    position: relative;
+    height: 32px;
+    width: 32px;
+    cursor: pointer;
+}
+
+.weekday {
+    height: 24px;
+    margin-bottom: 10px;
+}
+
+.day {
+    border-bottom: 2px solid #242428;
+    font-weight: bold;
+    padding-bottom: 2px;
+    opacity: 0;
+    -webkit-transition: opacity 0.2s linear;
+    transition: opacity 0.2s linear;
+    color: #242428;
+}
+
+.text-title1 {
+    font-size: 28px;
+    line-height: 34px;
+}
+
+.app-icon.icon-location {
+    background-image: url(//d3nn82uaxijpm6.cloudfront.net/assets/svg/icon-location-2db32fc1656d27ef4e265124a9473e28ac03e4dd7b874b1dba5db86a5279cfab.svg);
+}
+
+.app-icon {
+    position: relative;
+    display: inline-block;
+    background-size: cover;
+    vertical-align: middle;
+    height: 24px;
+    width: 24px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    text-align: left;
+    text-indent: -999em;
+}
+
+.activity-breakdown {
+    float: left;
+}
+
+figure {
+    margin: 0;
+}
+
+figcaption {
+    display: block;
+}
+
+.legend {
+    margin: 0 0 10px 0;
+}
+
+dl {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+}
+
+dt {
+    color: #999;
+    font-weight: 600;
+    margin-top: 1.4em;
+    display: inline;
+}
+
+dd {
+    margin-left: 15px;
+    margin-right: 20px;
+    display: inline;
+}
+
+.hours {
+    display: flex;
+    height: 16px;
+    margin: 0 0 0 0;
+    padding: 8px 0;
+}
+
+.app-icon.icon-ride-v3 {
+    background-image: url(//d3nn82uaxijpm6.cloudfront.net/assets/sports_bike_normal_small-ef5a2a75852e7725220dc2a9dd3a3aa4e104f4e0e64010e876ca27ede7d4e729.svg) !important;
+}
+
+.icon-sm {
+    height: 24px;
+    width: 24px;
+}
+
+.profile-heading .app-icon {
+    margin: 0 3px 2px 0;
+}
+
+.icon-xs {
+    height: 16px;
+    width: 16px;
+}
+
 @media (min-width: 768px) {
     .container {
         width: 752px;
