@@ -7,7 +7,9 @@ function autoloadModel($className) {
 }
 spl_autoload_register("autoloadModel");
 
-session_start();
+if (isset($_COOKIE['logged_in'])) {
+    header("Location: ./dashboard.php");
+}
 
 ?>
 

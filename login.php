@@ -8,8 +8,9 @@ function autoloadModel($className) {
 }
 spl_autoload_register("autoloadModel");
 
-
-
+if (isset($_COOKIE['logged_in'])) {
+    header("Location: ./dashboard.php");
+}
 if (isset($_POST['login'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];

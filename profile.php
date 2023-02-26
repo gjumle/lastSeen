@@ -13,6 +13,7 @@ if (isset($_GET['logout'])) {
     setcookie('name', '', time() - 3600, '/');
     setcookie('email', '', time() - 3600, '/');
     setcookie('admin', '', time() - 3600, '/');
+    setcookie('logged_in', '', time() - 3600, '/');
     header("Location: ./login.php");
 }
 

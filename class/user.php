@@ -92,6 +92,7 @@ class User {
             setcookie('name', $row['name'], time() + (86400 * 30), '/');
             setcookie('email', $row['email'], time() + (86400 * 30), '/');
             setcookie('admin', $row['admin'], time() + (86400 * 30), '/');
+            setckoie('logged_in', true, time() + (86400 * 30), '/');
             header("Location: ./dashboard.php");
         } else {
             echo "Wrong password";
