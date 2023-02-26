@@ -142,6 +142,18 @@ if (isset($_GET['logout'])) {
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="card-footer">
+                                            <div class="card-section">
+                                                <a href="#" class="btn-card-link media media-middle">
+                                                    <div class="media-body">Manager Your Goals</div>
+                                                    <div class="media-right">
+                                                        <span class="app-icon-wrapper">
+                                                            <span class="app-icon icon-caret-right icon-dark"></span>
+                                                        </span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
