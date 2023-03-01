@@ -25,7 +25,7 @@ if (isset($_GET['logout'])) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta lang="en">
 
-        <title>lastSeen | Dashboard</title>
+        <title>lastSeen | Contacts</title>
 
         <link rel="stylesheet" type="text/css" href="css/master.css">
     </head>
@@ -257,7 +257,7 @@ if (isset($_GET['logout'])) {
                                                                                 Date Added
                                                                             </span>
                                                                             <div class="stat-value">
-                                                                                2š. Feburary 2023
+                                                                                22. Feburary 2023
                                                                             </div>
                                                                         </div>
                                                                     </li>
