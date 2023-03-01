@@ -83,7 +83,7 @@ if (isset($_GET['logout'])) {
                                 <div class="activity-count">
                                     <h3 class="count-header">Last 4 Weeks</h3>
                                     <div class="count-total">
-                                        <div class="count text-display5">0</div>
+                                        <div class="count text-display5">1</div>
                                         <div class="count-label">Total Activities</div>
                                     </div>
                                 </div>
