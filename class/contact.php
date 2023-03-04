@@ -10,7 +10,7 @@ class Contact {
     private $count_seen;
     private $duration_seen;
 
-    public function __construct($cid, $user_id, $f_name, $l_name, $email, $last_seen, $count_seen, $duration_seen) {
+    public function __construct($cid = null, $user_id = null, $f_name = null, $l_name = null, $email = null, $last_seen = null, $count_seen = null, $duration_seen = null) {
         $this->cid = $cid;
         $this->user_id = $user_id;
         $this->f_name = $f_name;
@@ -42,21 +42,18 @@ class Contact {
         $stmt->execute([$this->user_id, $this->f_name, $this->l_name, $this->email, $this->last_seen, $this->count_seen, $this->duration_seen, $this->cid]);
     }
 
-    public static function renderHead() {
-        return  "
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Address</th>
-            <th>City</th>
-            <th>State</th>
-            <th>Zip</th>
-            <th>Country</th>
-            <th>Notes</th>
-            <th>Status</th>
-            <th>Last Seen</th>
-            <th>Count Seen</th>
-            <th>Duration Seen</th>";
+    public static function add($user_id, $f_name, $l_name, $email, $last_seen, $count_seen, $duration_seen) {
+        $contact = new Contact(null, $user_id, $f_name, $l_name, $email, $last_seen, $count_seen, $duration_seen);
+        $contact->insertToDB();
+    }
+
+    public static function delete($cid) {
+        $contact = new Contact($cid, null, null, null, null, null, null, null);
+        $contact->deleteFromDB();
+    }
+
+    public static function edit($cid, $user_id, $f_name, $l_name, $email, $last_seen, $count_seen, $duration_seen) {
+        $contact = new Contact($cid, $user_id, $f_name, $l_name, $email, $last_seen, $count_seen, $duration_seen);
+        $contact->saveToDB();
     }
 }

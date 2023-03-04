@@ -60,15 +60,6 @@ class Render {
             </div>";
     }
 
-    public static function renderContacts() {
-        return
-            "<div class='container'>
-                <div class='contacts'>
-                    <h1>Contacts</h1>
-                </div>
-            </div>";
-    }
-
     public static function renderMeetings() {
         return
             "<div class='container'>
@@ -95,7 +86,7 @@ class Render {
     public static function renderContactsPage() {
         self::renderHeader("Contacts");
         echo self::renderNav();
-        echo self::renderContacts();
+        echo ContactsManager::renderContacts();
         self::renderFooter();
     }
 
