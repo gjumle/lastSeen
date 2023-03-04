@@ -108,12 +108,66 @@ class Render {
     }
 
     public static function renderProfile() {
-        return
-            "<div class='container'>
-                <div class='profile'>
-                    <h1>Profile</h1>
-                </div>
-            </div>";
+        if (isset($_GET['edit'])) {
+            return
+                "<div class='container'>
+                    <div class='profile'>
+                        <h1>Profile</h1>
+                    </div>
+                    <table>
+                        <tr>
+                            <th>Username</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Password</th>
+                            <th>Admin</th>
+                            <th>Actions</th>
+                        </tr>
+                        <tr>
+                            <form action='profile.php' method='POST'>
+                                <td><input type='text' name='username' value='" . $_COOKIE['username'] . "'</td>
+                                <td><input type='text' name='f_name' value='" . $_COOKIE['f_name'] . "'</td>
+                                <td><input type='text' name='l_name' value='" . $_COOKIE['l_name'] . "'</td>
+                                <td><input type='email' name='email' value='" . $_COOKIE['email'] . "'</td>
+                                <td><input type='password' name='password'</td>
+                                <td>" . User::getAdminString($_COOKIE['admin']) . "</td>
+                                <td><input type='submit' value='Save'></td>
+                            </form>
+                        </tr>
+                </div>";
+        } else {
+            return
+                "<div class='container'>
+                    <div class='profile'>
+                        <h1>Profile</h1>
+                    </div>
+                    <table>
+                        <tr>
+                            <th>Username</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Password</th>
+                            <th>Admin</th>
+                            <th>Actions</th>
+                        </tr>
+                        <tr>
+                            <td>" . $_COOKIE['username'] . "</td>
+                            <td>" . $_COOKIE['f_name'] . "</td>
+                            <td>" . $_COOKIE['l_name'] . "</td>
+                            <td>" . $_COOKIE['email'] . "</td>
+                            <td>******</td>
+                            <td>" . User::getAdminString($_COOKIE['admin']) . "</td>
+                            <td><a href='?edit=" . $_COOKIE['uid'] . "'>Edit</a></td>
+                        </tr>
+                </div>";
+        }
+        
+    }
+
+    public static function renderProfileEdit() {
+        
     }
 
     public static function renderIndexPage() {

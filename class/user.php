@@ -19,12 +19,20 @@ class User {
         $this->email = $email;
     }
 
-    public function getAdminString() {
-        if ($this->admin == 1) {
+    public static function getAdminString($admin) {
+        if ($admin == 1) {
             return "Yes";
         } else {
             return "No";
         }
+    }
+
+    public static function getPasswordStealth($password) {
+        $stealth = "";
+        for ($i = 0; $i < strlen($password); $i++) {
+            $stealth .= "*";
+        }
+        return $stealth;
     }
 
     public function deleteFromDB() {
@@ -69,7 +77,10 @@ class User {
         if (password_verify($user->password, $row['password'])) {
             setcookie('uid', $row['uid'], time() + 3600, '/');
             setcookie('username', $row['username'], time() + 3600, '/');
+            setcookie('f_name', $row['f_name'], time() + 3600, '/');
+            setcookie('l_name', $row['l_name'], time() + 3600, '/');
             setcookie('email', $row['email'], time() + 3600, '/');
+            setcookie('password', $row['password'], time() + 3600, '/');
             setcookie('admin', $row['admin'], time() + 3600, '/');
             setcookie('logged_in', true, time() + 3600, '/');
             header("Location: ./dashboard.php");
@@ -83,8 +94,11 @@ class User {
     public static function logout() {
         if (isset($_GET['logout'])) {
             setcookie('uid', '', time() - 3600, '/');
-            setcookie('name', '', time() - 3600, '/');
+            setcookie('username', '', time() - 3600, '/');
+            setcookie('f_name', '', time() - 3600, '/');
+            setcookie('l_name', '', time() - 3600, '/');
             setcookie('email', '', time() - 3600, '/');
+            setcookie('password', '', time() - 3600, '/');
             setcookie('admin', '', time() - 3600, '/');
             setcookie('logged_in', '', time() - 3600, '/');
             header("Location: ./login.php");
@@ -95,5 +109,11 @@ class User {
         $user = new User(NULL, $username, $f_name, $l_name, password_hash($password, PASSWORD_DEFAULT), 0, $email);
         $user->insertToDB();
         header("Location: ./login.php");
+    }
+
+    public static function edit($uid, $username, $f_name, $l_name, $password, $email) {
+        $user = new User($uid, $username, $f_name, $l_name, password_hash($password, PASSWORD_DEFAULT), 0, $email);
+        $user->saveToDB();
+        header("Location: ./dashboard.php");
     }
 }
