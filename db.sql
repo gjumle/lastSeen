@@ -1,4 +1,4 @@
-"C:\Program Files (x86)\EasyPHP-Devserver-17\eds-binaries\dbserver\mysql5717x86x230304150727\bin\mysql.exe" -u lsa -p
+"C:\Program Files (x86)\EasyPHP-Devserver-17\eds-binaries\dbserver\mysql5717x86x230304194046\bin\mysql.exe" -u lsa -p
 
 CREATE DATABASE ls DEFAULT CHARSET='utf8';
 
