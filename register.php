@@ -8,75 +8,8 @@ function autoloadModel($className) {
 }
 spl_autoload_register("autoloadModel");
 
-if (isset($_COOKIE['logged_in'])) {
-    header("Location: ./dashboard.php");
+if (isset($_POST['username']) && isset($_POST['f_name']) && isset($_POST['l_name']) && isset($_POST['password']) && isset($_POST['email'])) {
+    User::register($_POST['username'], $_POST['f_name'], $_POST['l_name'], $_POST['password'], $_POST['email']);
 }
 
-if (isset($_POST['register'])) {
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-
-    $user = new User();
-    $user->setName($name);
-    $user->setEmail($email);
-    $user->setPassword($password);
-
-    $user->register();
-}
-
-?>
-
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta lang="en">
-
-        <title>Home</title>
-
-        <link rel="stylesheet" type="text/css" href="css/master.css">
-    </head>
-    <body>
-        <div class="view">
-            <header id="global-header">
-                <nav class="nav-bar container" role="navigation">
-                    <div class="branding" title="Return to the home page">
-                        <a href="./index.php" class="branding-content">
-                            <img src="./svg/logo.svg" alt="">
-                            <span class="str-only">lastSeen</span>
-                        </a>
-                    </div>
-                    <div id="nav-container" class="container-nav">
-                        <ul class="user-nav nav-group">
-                            <li class="nav-object-group">
-                                <div class="nav-item logged-out-nav">
-                                    <a href="./login.php" class="btn btn-primary btn-signup">Log In</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            </header>
-            <div class="page container">
-                <div class="registration-panel">
-                    <h1 class="mb-o">Sign Up</h1>
-                    <form id="register-form" action="" class="website" method="post" accept-charset="UTF-8">
-                        <fieldset class="mt-0 mb-0">
-                            <div class="form-group">
-                                <input id="name" class="form-control" type="text" name="name" value="" placeholder="Your Name" autofocus="autofocus">
-                            </div>
-                            <div class="form-group">
-                                <input id="email" class="form-control" type="text" name="email" value="" placeholder="Your Email" autofocus="autofocus">
-                            </div>
-                            <div class="form-group">
-                            <input id="password" class="form-control" type="password" name="password" value="" placeholder="Your Password" autofocus="autofocus">
-                            </div>
-                            <button id="register-button" class="btn btn-primary" type="submit" name="register">Sign Up</button>
-                        </fieldset>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </body>
-</html> 
+Render::renderRegisterPage();

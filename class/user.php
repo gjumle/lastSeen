@@ -2,33 +2,21 @@
 
 class User {
     private $uid;
-    private $name;
+    private $username;
+    private $f_name;
+    private $l_name;
     private $password;
     private $admin;
     private $email;
 
-    public function __construct($uid = null, $name = null, $password = null, $admin = null, $email = null) {
+    public function __construct($uid = null, $username = null, $f_name = null, $l_name = null, $password = null, $admin = null, $email = null) {
         $this->uid = $uid;
-        $this->name = $name;
+        $this->username = $username;
+        $this->f_name = $f_name;
+        $this->l_name = $l_name;
         $this->password = $password;
         $this->admin = $admin;
         $this->email = $email;
-    }
-
-    public function getUid() {
-        return $this->uid;
-    }
-
-    public function getName() {
-        return $this->name;
-    }
-
-    public function getPassword() {
-        return $this->password;
-    }
-
-    public function getAdmin() {
-        return $this->admin;
     }
 
     public function getAdminString() {
@@ -39,31 +27,6 @@ class User {
         }
     }
 
-    public function getEmail() {
-        return $this->email;
-    }
-
-    public function setUid($uid) {
-        $this->uid = $uid;
-    }
-
-    public function setName($name) {
-        $this->name = $name;
-    }
-
-    public function setPassword($password) {
-        $this->password = $password;
-    }
-
-    public function setAdmin($admin) {
-        $this->admin = $admin;
-    }
-
-    public function setEmail($email) {
-        $this->email = $email;
-    }
-
-
     public function deleteFromDB() {
         $pdo = DB::connectPDO();
         $sql = "DELETE FROM users WHERE uid = ?";
@@ -73,37 +36,47 @@ class User {
 
     public function insertToDB() {
         $pdo = DB::connectPDO();
-        $sql = "INSERT INTO users (name, password, email) VALUES (?, ?, ?)";
+        $sql = "INSERT INTO users (username, f_name, l_name, password, admin, email) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $pdo->prepare($sql);
-
-        $this->password = password_hash($this->password, PASSWORD_DEFAULT);
-        $stmt->execute([$this->name, $this->password, $this->email]);
+        $stmt->execute([$this->username, $this->f_name, $this->l_name, $this->password, $this->admin, $this->email]);
     }
 
     public function saveToDB() {
         $pdo = DB::connectPDO();
-        $sql = "UPDATE users SET name = ?, password = ?, email = ? WHERE uid = ?";
+        $sql = "UPDATE users SET username = ?, f_name = ?, l_name = ?, password = ?, admin = ?, email = ? WHERE uid = ?";
         $stmt = $pdo->prepare($sql);
-        $stmt->execute([$this->name, $this->password, $this->email, $this->uid]);
+        $stmt->execute([$this->username, $this->f_name, $this->l_name, $this->password, $this->admin, $this->email, $this->uid]);
     }
 
-    public function login() {
+    public static function login($email, $password) {
+        if (isset($_COOKIE['logged_in'])) {
+            header("Location: ./dashboard.php");
+        }
+        $user = new User();
+        $user->email = $email;
+        $user->password = $password;
         $pdo = DB::connectPDO();
         $sql = "SELECT * FROM users WHERE email = ?";
         $stmt = $pdo->prepare($sql);
-        $stmt->execute([$this->email]);
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt->execute([$user->email]);
+        $row = $stmt->fetch();
 
+        if ($row == null) {
+            echo "Wrong email";
+            return;
+        }
 
-        if (password_verify($this->password, $row['password'])) {
-            setcookie('uid', $row['uid'], time() + (86400 * 30), '/');
-            setcookie('name', $row['name'], time() + (86400 * 30), '/');
-            setcookie('email', $row['email'], time() + (86400 * 30), '/');
-            setcookie('admin', $row['admin'], time() + (86400 * 30), '/');
-            setcookie('logged_in', true, time() + (86400 * 30), '/');
+        if (password_verify($user->password, $row['password'])) {
+            setcookie('uid', $row['uid'], time() + 3600, '/');
+            setcookie('username', $row['username'], time() + 3600, '/');
+            setcookie('email', $row['email'], time() + 3600, '/');
+            setcookie('admin', $row['admin'], time() + 3600, '/');
+            setcookie('logged_in', true, time() + 3600, '/');
             header("Location: ./dashboard.php");
-        } else {
+        }
+        else {
             echo "Wrong password";
+            return;
         }
     }
 
@@ -118,18 +91,9 @@ class User {
         }
     }
 
-    public function register() {
-        $pdo = DB::connectPDO();
-        $sql = "SELECT * FROM users WHERE email = ?";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$this->email]);
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if ($row['email'] == $this->email) {
-            echo "Email already exists";
-        } else {
-            $this->insertToDB();
-            header("Location: ./login.php");
-        }
+    public static function register($username, $f_name, $l_name, $password, $email) {
+        $user = new User(NULL, $username, $f_name, $l_name, password_hash($password, PASSWORD_DEFAULT), 0, $email);
+        $user->insertToDB();
+        header("Location: ./login.php");
     }
 }
