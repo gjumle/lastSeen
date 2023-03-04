@@ -33,9 +33,8 @@ CREATE TABLE meetings (
     mid INT NOT NULL AUTO_INCREMENT,
     user_id INT NOT NULL,
     contact_id INT NOT NULL,
-    date DATETIME NOT NULL,
-    duration INT NOT NULL,
     location VARCHAR(50) NOT NULL,
     start_time DATETIME NOT NULL,
+    end_time DATETIME NOT NULL,
     PRIMARY KEY (mid)
 ) DEFAULT CHARACTER SET utf8;

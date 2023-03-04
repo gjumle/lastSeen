@@ -115,4 +115,94 @@ Class Contact {
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$this->user_id, $this->f_name, $this->l_name, $this->email, $this->status, $this->last_seen, $this->count_seen, $this->duration_seen, $this->cid]);
     }
+
+    public function getTimeSeenSum() {
+        $pdo = DB::connectPDO();
+        $sql = "SELECT SUM(duration_seen) FROM contacts WHERE user_id = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$this->user_id]);
+        $result = $stmt->fetch();
+        return $result[0];
+    }
+
+    public function getCountSeenSum() {
+        $pdo = DB::connectPDO();
+        $sql = "SELECT SUM(count_seen) FROM contacts WHERE user_id = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$this->user_id]);
+        $result = $stmt->fetch();
+        return $result[0];
+    }
+
+    public function getDurationSeenAvg() {
+        $pdo = DB::connectPDO();
+        $sql = "SELECT AVG(duration_seen) FROM contacts WHERE user_id = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$this->user_id]);
+        $result = $stmt->fetch();
+        return $result[0];
+    }
+
+    public function getContacts() {
+        $pdo = DB::connectPDO();
+        $sql = "SELECT * FROM contacts WHERE user_id = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$this->user_id]);
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+
+    public function getContact() {
+        $pdo = DB::connectPDO();
+        $sql = "SELECT * FROM contacts WHERE cid = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$this->cid]);
+        $result = $stmt->fetch();
+        return $result;
+    }
+
+    public function getContactsCount() {
+        $pdo = DB::connectPDO();
+        $sql = "SELECT COUNT(*) FROM contacts WHERE user_id = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$this->user_id]);
+        $result = $stmt->fetch();
+        return $result[0];
+    }
+
+    public function getContactByEmail() {
+        $pdo = DB::connectPDO();
+        $sql = "SELECT * FROM contacts WHERE email = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$this->email]);
+        $result = $stmt->fetch();
+        return $result;
+    }
+
+    public function getContactByFName() {
+        $pdo = DB::connectPDO();
+        $sql = "SELECT * FROM contacts WHERE f_name = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$this->f_name]);
+        $result = $stmt->fetch();
+        return $result;
+    }
+
+    public function getContactByLName() {
+        $pdo = DB::connectPDO();
+        $sql = "SELECT * FROM contacts WHERE l_name = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$this->l_name]);
+        $result = $stmt->fetch();
+        return $result;
+    }
+
+    public function getContactByFNameAndLName() {
+        $pdo = DB::connectPDO();
+        $sql = "SELECT * FROM contacts WHERE f_name = ? AND l_name = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$this->f_name, $this->l_name]);
+        $result = $stmt->fetch();
+        return $result;
+    }
 }
