@@ -95,7 +95,7 @@ class Render {
     public static function renderContactsPage() {
         self::renderHeader("Contacts");
         echo self::renderNav();
-        echo Contact::renderContacts();
+        echo self::renderContacts();
         self::renderFooter();
     }
 
@@ -109,7 +109,7 @@ class Render {
     public static function renderProfilePage() {
         self::renderHeader("Profile");
         echo self::renderNav();
-        echo User::renderProfile();
+        echo UserManager::renderProfile();
         self::renderFooter();
     }
 

@@ -19,6 +19,34 @@ class User {
         $this->email = $email;
     }
 
+    public function getUid() {
+        return $this->uid;
+    }
+
+    public function getUsername() {
+        return $this->username;
+    }
+
+    public function getFName() {
+        return $this->f_name;
+    }
+
+    public function getLName() {
+        return $this->l_name;
+    }
+
+    public function getPassword() {
+        return $this->password;
+    }
+
+    public function getAdmin() {
+        return $this->admin;
+    }
+
+    public function getEmail() {
+        return $this->email;
+    }
+
     public static function getAdminString($admin) {
         if ($admin == 1) {
             return "Yes";
@@ -113,25 +141,6 @@ class User {
         }
     }
 
-    public static function getUsers($uid = null) {
-        $pdo = DB::connectPDO();
-        $conndition = ($uid == null) ? "" : "WHERE uid = ?";
-        $sql = "SELECT * FROM users $conndition";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$uid]);
-        $rows = $stmt->fetchAll();
-        $users = [];
-        foreach ($rows as $row) {
-            $user = new User($row['uid'], $row['username'], $row['f_name'], $row['l_name'], $row['password'], $row['admin'], $row['email']);
-            $users[] = $user;
-        }
-        return $users;
-    }
-
-    public static function getUser($uid) {
-        return self::getUsers($uid)[0];
-    }
-
     public static function register($username, $f_name, $l_name, $password, $email) {
         $user = new User(NULL, $username, $f_name, $l_name, password_hash($password, PASSWORD_DEFAULT), 0, $email);
         $user->insertToDB();
@@ -171,64 +180,5 @@ class User {
                     </form>
                 </div>
             </div>";
-    }
-
-    public static function renderProfile() {
-        $user = self::getUser($_COOKIE['uid']);
-        if (isset($_GET['edit'])) {
-            return
-                "<div class='container'>
-                    <div class='profile'>
-                        <h1>Profile</h1>
-                    </div>
-                    <table>
-                        <tr>
-                            <th>Username</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Email</th>
-                            <th>Password</th>
-                            <th>Admin</th>
-                            <th>Actions</th>
-                        </tr>
-                        <tr>
-                            <form action='profile.php' method='POST'>
-                                <td><input type='text' name='username' value='" . $user->username . "'</td>
-                                <td><input type='text' name='f_name' value='" . $user->f_name . "'</td>
-                                <td><input type='text' name='l_name' value='" . $user->l_name . "'</td>
-                                <td><input type='email' name='email' value='" . $user->email . "'</td>
-                                <td><input type='password' name='password'</td>
-                                <td>" . User::getAdminString($user->admin) . "</td>
-                                <td><input type='submit' value='Save'></td>
-                            </form>
-                        </tr>
-                </div>";
-        } else {
-            return
-                "<div class='container'>
-                    <div class='profile'>
-                        <h1>Profile</h1>
-                    </div>
-                    <table>
-                        <tr>
-                            <th>Username</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Email</th>
-                            <th>Password</th>
-                            <th>Admin</th>
-                            <th>Actions</th>
-                        </tr>
-                        <tr>
-                            <td>" . $user->username . "</td>
-                            <td>" . $user->f_name . "</td>
-                            <td>" . $user->l_name . "</td>
-                            <td>" . $user->email . "</td>
-                            <td>******</td>
-                            <td>" . User::getAdminString($user->admin) . "</td>
-                            <td><a href='?edit=" . $user->uid . "'>Edit</a></td>
-                        </tr>
-                </div>";
-        }
     }
 }
