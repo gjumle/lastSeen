@@ -42,35 +42,6 @@ class Render {
         }
     }
 
-    public static function renderLogin() {
-        return
-            "<div class='container'>
-                <div class='login'>
-                    <form action='login.php' method='POST'>
-                        <input type='email' name='email' placeholder='Email'>
-                        <input type='password' name='password' placeholder='Password'>
-                        <input type='submit' value='Login'>
-                    </form>
-                </div>
-            </div>";
-    }
-
-    public static function renderRegister() {
-        return 
-            "<div class='container'>
-                <div class='register'>
-                    <form action='register.php' method='POST'>
-                        <input type='text' name='username' placeholder='User Name'>
-                        <input type='text' name='f_name' placeholder='First Name'>
-                        <input type='text' name='l_name' placeholder='Last Name'>
-                        <input type='email' name='email' placeholder='Email'>
-                        <input type='password' name='password' placeholder='Password'>
-                        <input type='submit' value='Register'>
-                    </form>
-                </div>
-            </div>";
-    }
-
     public static function renderIndex() {
         return
             "<div class='container'>
@@ -90,98 +61,13 @@ class Render {
     }
 
     public static function renderContacts() {
-        $html =
+        return
             "<div class='container'>
                 <div class='contacts'>
                     <h1>Contacts</h1>
                 </div>
 
             </div>";
-        $html .= self::addContactForm();
-        $html .= self::renderContactCard();
-        return $html;
-    }
-
-    public static function renderContactCard() {
-        $contacts = Contact::getContacts(NULL);
-        foreach ($contacts as $contact) {
-            echo
-                "<div class='contact-card'>
-                    <p>" . $contact['id'] . "</p>
-                    <h2>" . $contact['f_name'] . " " . $contact['l_name'] . "</h2>
-                    <p>" . $contact['email'] . "</p>
-                    <p>" . $contact['phone'] . "</p>
-                    <p>" . $contact['address'] . "</p>
-                    <p>" . $contact['city'] . "</p>
-                    <p>" . $contact['state'] . "</p>
-                    <p>" . $contact['zip'] . "</p>
-                    <p>" . $contact['country'] . "</p>
-                    <p>" . $contact['notes'] . "</p>
-                    <p>" . $contact['status'] . "</p>
-                    <p>" . $contact['last_seen'] . "</p>
-                    <p>" . $contact['count_seen'] . "</p>
-                    <p>" . $contact['duration_seen'] . "</p>
-                    <a href='?edit=" . $contact['id'] . "'>Edit</a>
-                    <a href='?delete=" . $contact['id'] . "'>Delete</a>
-                </div>";
-        }
-    }
-
-    public static function addContactForm() {
-        $html = "<button><a href='?add'>Add Contact</a></button>";
-        if (isset($_GET['add'])) {
-            $html .=
-            "<div class='container'>
-                <div class='add-contact'>
-                    <form action='contacts.php' method='POST'>
-                        <input type='text' name='f_name' placeholder='First Name'>
-                        <input type='text' name='l_name' placeholder='Last Name'>
-                        <input type='email' name='email' placeholder='Email'>
-                        <input type='text' name='phone' placeholder='Phone'>
-                        <input type='text' name='address' placeholder='Address'>
-                        <input type='text' name='city' placeholder='City'>
-                        <input type='text' name='state' placeholder='State'>
-                        <input type='text' name='zip' placeholder='Zip'>
-                        <input type='text' name='country' placeholder='Country'>
-                        <input type='text' name='notes' placeholder='Notes'>
-                        <input type='text' name='status' placeholder='Status'>
-                        <input type='submit' name='add' value='Add Contact'>
-                    </form>
-                </div>
-            </div>";   
-        }
-        if (isset($_GET['edit'])) {
-            $html .=
-            "<div class='container'>
-                <div class='edit-contact'>
-                    <form action='contacts.php' method='POST'>
-                        <input type='text' name='f_name' placeholder='First Name'>
-                        <input type='text' name='l_name' placeholder='Last Name'>
-                        <input type='email' name='email' placeholder='Email'>
-                        <input type='text' name='phone' placeholder='Phone'>
-                        <input type='text' name='address' placeholder='Address'>
-                        <input type='text' name='city' placeholder='City'>
-                        <input type='text' name='state' placeholder='State'>
-                        <input type='text' name='zip' placeholder='Zip'>
-                        <input type='text' name='country' placeholder='Country'>
-                        <input type='text' name='notes' placeholder='Notes'>
-                        <input type='text' name='status' placeholder='Status'>
-                        <input type='submit' name='edit' value='Edit Contact'>
-                    </form>
-                </div>
-            </div>";   
-        }
-        if (isset($_GET['delete'])) {
-            $html .=
-            "<div class='container'>
-                <div class='delete-contact'>
-                    <form action='contacts.php' method='POST'>
-                        <input type='submit' name='delete' value='Delete Contact'>
-                    </form>
-                </div>
-            </div>";   
-        }
-        return $html;
     }
 
     public static function renderMeetings() {
@@ -191,65 +77,6 @@ class Render {
                     <h1>Meetings</h1>
                 </div>
             </div>";
-    }
-
-    public static function renderProfile() {
-        if (isset($_GET['edit'])) {
-            return
-                "<div class='container'>
-                    <div class='profile'>
-                        <h1>Profile</h1>
-                    </div>
-                    <table>
-                        <tr>
-                            <th>Username</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Email</th>
-                            <th>Password</th>
-                            <th>Admin</th>
-                            <th>Actions</th>
-                        </tr>
-                        <tr>
-                            <form action='profile.php' method='POST'>
-                                <td><input type='text' name='username' value='" . $_COOKIE['username'] . "'</td>
-                                <td><input type='text' name='f_name' value='" . $_COOKIE['f_name'] . "'</td>
-                                <td><input type='text' name='l_name' value='" . $_COOKIE['l_name'] . "'</td>
-                                <td><input type='email' name='email' value='" . $_COOKIE['email'] . "'</td>
-                                <td><input type='password' name='password'</td>
-                                <td>" . User::getAdminString($_COOKIE['admin']) . "</td>
-                                <td><input type='submit' value='Save'></td>
-                            </form>
-                        </tr>
-                </div>";
-        } else {
-            return
-                "<div class='container'>
-                    <div class='profile'>
-                        <h1>Profile</h1>
-                    </div>
-                    <table>
-                        <tr>
-                            <th>Username</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Email</th>
-                            <th>Password</th>
-                            <th>Admin</th>
-                            <th>Actions</th>
-                        </tr>
-                        <tr>
-                            <td>" . $_COOKIE['username'] . "</td>
-                            <td>" . $_COOKIE['f_name'] . "</td>
-                            <td>" . $_COOKIE['l_name'] . "</td>
-                            <td>" . $_COOKIE['email'] . "</td>
-                            <td>******</td>
-                            <td>" . User::getAdminString($_COOKIE['admin']) . "</td>
-                            <td><a href='?edit=" . $_COOKIE['uid'] . "'>Edit</a></td>
-                        </tr>
-                </div>";
-        }
-        
     }
 
     public static function renderIndexPage() {
@@ -283,21 +110,21 @@ class Render {
     public static function renderProfilePage() {
         self::renderHeader("Profile");
         echo self::renderNav();
-        echo self::renderProfile();
+        echo User::renderProfile();
         self::renderFooter();
     }
 
     public static function renderRegisterPage() {
         self::renderHeader("Register");
         echo self::renderNav();
-        echo self::renderRegister();
+        echo User::renderRegister();
         self::renderFooter();
     }
 
     public static function renderLoginPage() {
         self::renderHeader("Login");
         echo self::renderNav();
-        echo self::renderLogin();
+        echo User::renderLogin();
         self::renderFooter();
     }
 }

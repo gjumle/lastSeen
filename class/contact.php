@@ -12,12 +12,13 @@ class Contact {
     private $state;
     private $zip;
     private $country;
+    private $notes;
     private $status;
     private $last_seen;
     private $count_seen;
     private $duration_seen;
 
-    public function __construct($cid, $user_id, $f_name, $l_name, $email, $phone, $address, $city, $state, $zip, $country, $status, $last_seen, $count_seen, $duration_seen) {
+    public function __construct($cid, $user_id, $f_name, $l_name, $email, $phone, $address, $city, $state, $zip, $country, $notes, $status, $last_seen, $count_seen, $duration_seen) {
         $this->cid = $cid;
         $this->user_id = $user_id;
         $this->f_name = $f_name;
@@ -29,6 +30,7 @@ class Contact {
         $this->state = $state;
         $this->zip = $zip;
         $this->country = $country;
+        $this->notes = $notes;
         $this->status = $status;
         $this->last_seen = $last_seen;
         $this->count_seen = $count_seen;
@@ -63,31 +65,14 @@ class Contact {
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$cid]);
         $contacts = [];
-        while ($row = $stmt->fetch()) {
-            $contacts[] = new Contact($row['cid'], $row['user_id'], $row['f_name'], $row['l_name'], $row['email'], $row['phone'], $row['address'], $row['city'], $row['state'], $row['zip'], $row['country'], $row['status'], $row['last_seen'], $row['count_seen'], $row['duration_seen']);
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $contact = new Contact($row['cid'], $row['user_id'], $row['f_name'], $row['l_name'], $row['email'], $row['phone'], $row['address'], $row['city'], $row['state'], $row['zip'], $row['country'], $row['notes'], $row['status'], $row['last_seen'], $row['count_seen'], $row['duration_seen']);
+            $contacts[] = $contact;
         }
-        return $contacts;
     }
 
     public static function getContact($cid) {
         $contacts = self::getContacts($cid);
         return $contacts[0];
-    }
-
-    public function addSeen($duration) {
-        $this->count_seen++;
-        $this->duration_seen += $duration;
-        $this->last_seen = date("Y-m-d H:i:s");
-        $this->saveToDB();
-    }
-
-    public static function add($user_id, $f_name, $l_name, $email, $phone, $address, $city, $state, $zip, $country, $notes, $status, $last_seen, $count_seen, $duration_seen) {
-        $contact = new Contact(null, $user_id, $f_name, $l_name, $email, $phone, $address, $city, $state, $zip, $country, $status, $last_seen, $count_seen, $duration_seen);
-        $contact->insertToDB();
-    }
-
-    public static function edit($cid, $user_id, $f_name, $l_name, $email, $phone, $address, $city, $state, $zip, $country, $notes, $status, $last_seen, $count_seen, $duration_seen) {
-        $contact = new Contact($cid, $user_id, $f_name, $l_name, $email, $phone, $address, $city, $state, $zip, $country, $status, $last_seen, $count_seen, $duration_seen);
-        $contact->saveToDB();
     }
 }
