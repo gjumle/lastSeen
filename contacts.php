@@ -8,4 +8,8 @@ function autoloadModel($className) {
 }
 spl_autoload_register("autoloadModel");
 
+if () {
+    Contact::login($_POST['email'], $_POST['password']);
+}
+
 Render::renderContactsPage();

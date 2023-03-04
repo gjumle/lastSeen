@@ -90,12 +90,98 @@ class Render {
     }
 
     public static function renderContacts() {
-        return
+        $html =
             "<div class='container'>
                 <div class='contacts'>
                     <h1>Contacts</h1>
                 </div>
+
             </div>";
+        $html .= self::addContactForm();
+        $html .= self::renderContactCard();
+        return $html;
+    }
+
+    public static function renderContactCard() {
+        $contacts = Contact::getContacts(NULL);
+        foreach ($contacts as $contact) {
+            echo
+                "<div class='contact-card'>
+                    <p>" . $contact['id'] . "</p>
+                    <h2>" . $contact['f_name'] . " " . $contact['l_name'] . "</h2>
+                    <p>" . $contact['email'] . "</p>
+                    <p>" . $contact['phone'] . "</p>
+                    <p>" . $contact['address'] . "</p>
+                    <p>" . $contact['city'] . "</p>
+                    <p>" . $contact['state'] . "</p>
+                    <p>" . $contact['zip'] . "</p>
+                    <p>" . $contact['country'] . "</p>
+                    <p>" . $contact['notes'] . "</p>
+                    <p>" . $contact['status'] . "</p>
+                    <p>" . $contact['last_seen'] . "</p>
+                    <p>" . $contact['count_seen'] . "</p>
+                    <p>" . $contact['duration_seen'] . "</p>
+                    <a href='?edit=" . $contact['id'] . "'>Edit</a>
+                    <a href='?delete=" . $contact['id'] . "'>Delete</a>
+                </div>";
+        }
+    }
+
+    public static function addContactForm() {
+        $html = "<button><a href='?add'>Add Contact</a></button>";
+        if (isset($_GET['add'])) {
+            $html .=
+            "<div class='container'>
+                <div class='add-contact'>
+                    <form action='contacts.php' method='POST'>
+                        <input type='text' name='f_name' placeholder='First Name'>
+                        <input type='text' name='l_name' placeholder='Last Name'>
+                        <input type='email' name='email' placeholder='Email'>
+                        <input type='text' name='phone' placeholder='Phone'>
+                        <input type='text' name='address' placeholder='Address'>
+                        <input type='text' name='city' placeholder='City'>
+                        <input type='text' name='state' placeholder='State'>
+                        <input type='text' name='zip' placeholder='Zip'>
+                        <input type='text' name='country' placeholder='Country'>
+                        <input type='text' name='notes' placeholder='Notes'>
+                        <input type='text' name='status' placeholder='Status'>
+                        <input type='submit' name='add' value='Add Contact'>
+                    </form>
+                </div>
+            </div>";   
+        }
+        if (isset($_GET['edit'])) {
+            $html .=
+            "<div class='container'>
+                <div class='edit-contact'>
+                    <form action='contacts.php' method='POST'>
+                        <input type='text' name='f_name' placeholder='First Name'>
+                        <input type='text' name='l_name' placeholder='Last Name'>
+                        <input type='email' name='email' placeholder='Email'>
+                        <input type='text' name='phone' placeholder='Phone'>
+                        <input type='text' name='address' placeholder='Address'>
+                        <input type='text' name='city' placeholder='City'>
+                        <input type='text' name='state' placeholder='State'>
+                        <input type='text' name='zip' placeholder='Zip'>
+                        <input type='text' name='country' placeholder='Country'>
+                        <input type='text' name='notes' placeholder='Notes'>
+                        <input type='text' name='status' placeholder='Status'>
+                        <input type='submit' name='edit' value='Edit Contact'>
+                    </form>
+                </div>
+            </div>";   
+        }
+        if (isset($_GET['delete'])) {
+            $html .=
+            "<div class='container'>
+                <div class='delete-contact'>
+                    <form action='contacts.php' method='POST'>
+                        <input type='submit' name='delete' value='Delete Contact'>
+                    </form>
+                </div>
+            </div>";   
+        }
+        return $html;
     }
 
     public static function renderMeetings() {
@@ -163,10 +249,6 @@ class Render {
                         </tr>
                 </div>";
         }
-        
-    }
-
-    public static function renderProfileEdit() {
         
     }
 
