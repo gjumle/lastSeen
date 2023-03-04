@@ -58,7 +58,7 @@ class Contact {
         $stmt->execute([$this->user_id, $this->f_name, $this->l_name, $this->email, $this->phone, $this->address, $this->city, $this->state, $this->zip, $this->country, $this->status, $this->last_seen, $this->count_seen, $this->duration_seen, $this->cid]);
     }
 
-    public static function getContacts($cid) {
+    public static function getContacts($cid = null) {
         $pdo = DB::connectPDO();
         $condition = ($cid == null) ? "" : " WHERE cid = ?";
         $sql = "SELECT * FROM contacts $condition";
@@ -74,5 +74,113 @@ class Contact {
     public static function getContact($cid) {
         $contacts = self::getContacts($cid);
         return $contacts[0];
+    }
+
+    public static function add($user_id, $f_name, $l_name, $email, $phone, $address, $city, $state, $zip, $country, $notes, $status, $last_seen, $count_seen, $duration_seen) {
+        $contact = new Contact(null, $user_id, $f_name, $l_name, $email, $phone, $address, $city, $state, $zip, $country, $notes, $status, $last_seen, $count_seen, $duration_seen);
+        $contact->insertToDB();
+    }
+
+    public static function edit($cid, $user_id, $f_name, $l_name, $email, $phone, $address, $city, $state, $zip, $country, $notes, $status, $last_seen, $count_seen, $duration_seen) {
+        $contact = new Contact($cid, $user_id, $f_name, $l_name, $email, $phone, $address, $city, $state, $zip, $country, $notes, $status, $last_seen, $count_seen, $duration_seen);
+        $contact->saveToDB();
+    }
+
+    public static function delete($cid) {
+        $contact = self::getContact($cid);
+        $contact->deleteFromDB();
+    }
+
+    public static function renderHead() {
+        return  "
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip</th>
+            <th>Country</th>
+            <th>Notes</th>
+            <th>Status</th>
+            <th>Last Seen</th>
+            <th>Count Seen</th>
+            <th>Duration Seen</th>";
+    }
+
+    public static function renderContacts($contacts = null) {
+        $html = "<table>";
+        $html .= Contact::renderHead();
+        $contacts = ($contacts == null) ? self::getContacts() : $contacts;
+        foreach ($contacts as $contact) {
+            $html .= "<tr>";
+            $html .= "<td>" . $contact->f_name . "</td>";
+            $html .= "<td>" . $contact->l_name . "</td>";
+            $html .= "<td>" . $contact->email . "</td>";
+            $html .= "<td>" . $contact->phone . "</td>";
+            $html .= "<td>" . $contact->address . "</td>";
+            $html .= "<td>" . $contact->city . "</td>";
+            $html .= "<td>" . $contact->state . "</td>";
+            $html .= "<td>" . $contact->zip . "</td>";
+            $html .= "<td>" . $contact->country . "</td>";
+            $html .= "<td>" . $contact->notes . "</td>";
+            $html .= "<td>" . $contact->status . "</td>";
+            $html .= "<td>" . $contact->last_seen . "</td>";
+            $html .= "<td>" . $contact->count_seen . "</td>";
+            $html .= "<td>" . $contact->duration_seen . "</td>";
+            $html .= "<td><a href='?edit=" . $contact->cid . "'>Edit</a></td>";
+            $html .= "<td><a href='?delete=" . $contact->cid . "'>Delete</a></td>";
+            $html .= "</tr>";
+        }
+        return $html;
+    }
+
+    public static function renderForm() {
+        echo "<button type='submit' name='add'>Add</button>";
+        if (isset($_GET['add'])) {
+             return "
+                <form action='contact.php' method='post'>
+                    <tr>
+                        <td><input type='text' name='f_name' placeholder='First Name'></td>
+                        <td><input type='text' name='l_name' placeholder='Last Name'></td>
+                        <td><input type='text' name='email' placeholder='Email'></td>
+                        <td><input type='text' name='phone' placeholder='Phone'></td>
+                        <td><input type='text' name='address' placeholder='Address'></td>
+                        <td><input type='text' name='city' placeholder='City'></td>
+                        <td><input type='text' name='state' placeholder='State'></td>
+                        <td><input type='text' name='zip' placeholder='Zip'></td>
+                        <td><input type='text' name='country' placeholder='Country'></td>
+                        <td><input type='text' name='notes' placeholder='Notes'></td>
+                        <td><input type='text' name='status' placeholder='Status'></td>
+                        <td><input type='text' name='last_seen' placeholder='Last Seen'></td>
+                        <td><input type='text' name='count_seen' placeholder='Count Seen'></td>
+                        <td><input type='text' name='duration_seen' placeholder='Duration Seen'></td>
+                        <td><input type='submit' name='submit' value='Add'></td>
+                </form>";
+        }
+        if (isset($_GET['edit'])) {
+            $cid = $_GET['edit'];
+            $contact = self::getContact($cid);
+            return "
+                <form action='contact.php' method='post'>
+                    <tr>
+                        <td><input type='text' name='f_name' value='" . $contact->f_name . "'></td>
+                        <td><input type='text' name='l_name' value='" . $contact->l_name . "'></td>
+                        <td><input type='text' name='email' value='" . $contact->email . "'></td>
+                        <td><input type='text' name='phone' value='" . $contact->phone . "'></td>
+                        <td><input type='text' name='address' value='" . $contact->address . "'></td>
+                        <td><input type='text' name='city' value='" . $contact->city . "'></td>
+                        <td><input type='text' name='state' value='" . $contact->state . "'></td>
+                        <td><input type='text' name='zip' value='" . $contact->zip . "'></td>
+                        <td><input type='text' name='country' value='" . $contact->country . "'></td>
+                        <td><input type='text' name='notes' value='" . $contact->notes . "'></td>
+                        <td><input type='text' name='status' value='" . $contact->status . "'></td>
+                        <td><input type='text' name='last_seen' value='" . $contact->last_seen . "'></td>
+                        <td><input type='text' name='count_seen' value='" . $contact->count_seen . "'></td>
+                        <td><input type='text' name='duration_seen' value='" . $contact->duration_seen . "'></td>
+                        <td><input type='submit' name='submit' value='Edit'></td>
+                </form>";
+        }
     }
 }

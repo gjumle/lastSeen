@@ -66,7 +66,6 @@ class Render {
                 <div class='contacts'>
                     <h1>Contacts</h1>
                 </div>
-
             </div>";
     }
 
@@ -96,7 +95,7 @@ class Render {
     public static function renderContactsPage() {
         self::renderHeader("Contacts");
         echo self::renderNav();
-        echo self::renderContacts();
+        echo Contact::renderContacts();
         self::renderFooter();
     }
 

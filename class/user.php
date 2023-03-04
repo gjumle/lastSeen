@@ -113,7 +113,7 @@ class User {
         }
     }
 
-    public static function getUsers($uid) {
+    public static function getUsers($uid = null) {
         $pdo = DB::connectPDO();
         $conndition = ($uid == null) ? "" : "WHERE uid = ?";
         $sql = "SELECT * FROM users $conndition";
