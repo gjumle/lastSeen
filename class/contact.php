@@ -42,18 +42,18 @@ class Contact {
         $stmt->execute([$this->user_id, $this->f_name, $this->l_name, $this->email, $this->last_seen, $this->count_seen, $this->duration_seen, $this->cid]);
     }
 
-    public static function add($user_id, $f_name, $l_name, $email, $last_seen, $count_seen, $duration_seen) {
-        $contact = new Contact(null, $user_id, $f_name, $l_name, $email, $last_seen, $count_seen, $duration_seen);
+    public static function add($user_id, $f_name, $l_name, $email) {
+        $contact = new Contact(null, $user_id, $f_name, $l_name, $email);
         $contact->insertToDB();
     }
 
     public static function delete($cid) {
-        $contact = new Contact($cid, null, null, null, null, null, null, null);
+        $contact = new Contact($cid);
         $contact->deleteFromDB();
     }
 
-    public static function edit($cid, $user_id, $f_name, $l_name, $email, $last_seen, $count_seen, $duration_seen) {
-        $contact = new Contact($cid, $user_id, $f_name, $l_name, $email, $last_seen, $count_seen, $duration_seen);
+    public static function edit($cid, $user_id, $f_name, $l_name, $email) {
+        $contact = new Contact($cid, $user_id, $f_name, $l_name, $email);
         $contact->saveToDB();
     }
 }
