@@ -1,6 +1,6 @@
 <?php
 
-Class Contact {
+class Contact {
     private $cid;
     private $user_id;
     private $f_name;
@@ -20,78 +20,6 @@ Class Contact {
         $this->status = $status;
         $this->last_seen = $last_seen;
         $this->count_seen = $count_seen;
-        $this->duration_seen = $duration_seen;
-    }
-
-    public function getCid() {
-        return $this->cid;
-    }
-
-    public function getUserId() {
-        return $this->user_id;
-    }
-
-    public function getFName() {
-        return $this->f_name;
-    }
-
-    public function getLName() {
-        return $this->l_name;
-    }
-
-    public function getEmail() {
-        return $this->email;
-    }
-
-    public function getStatus() {
-        return $this->status;
-    }
-
-    public function getLastSeen() {
-        return $this->last_seen;
-    }
-
-    public function getCountSeen() {
-        return $this->count_seen;
-    }
-
-    public function getDurationSeen() {
-        return $this->duration_seen;
-    }
-
-    public function setCid($cid) {
-        $this->cid = $cid;
-    }
-
-    public function setUserId($user_id) {
-        $this->user_id = $user_id;
-    }
-
-    public function setFName($f_name) {
-        $this->f_name = $f_name;
-    }
-
-    public function setLName($l_name) {
-        $this->l_name = $l_name;
-    }
-
-    public function setEmail($email) {
-        $this->email = $email;
-    }
-
-    public function setStatus($status) {
-        $this->status = $status;
-    }
-
-    public function setLastSeen($last_seen) {
-        $this->last_seen = $last_seen;
-    }
-
-    public function setCountSeen($count_seen) {
-        $this->count_seen = $count_seen;
-    }
-
-    public function setDurationSeen($duration_seen) {
         $this->duration_seen = $duration_seen;
     }
 
@@ -116,107 +44,5 @@ Class Contact {
         $stmt->execute([$this->user_id, $this->f_name, $this->l_name, $this->email, $this->status, $this->last_seen, $this->count_seen, $this->duration_seen, $this->cid]);
     }
 
-    public function getTimeSeenSum() {
-        $pdo = DB::connectPDO();
-        $sql = "SELECT SUM(duration_seen) FROM contacts WHERE user_id = ?";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$this->user_id]);
-        $result = $stmt->fetch();
-        return $result[0];
-    }
-
-    public function getCountSeenSum() {
-        $pdo = DB::connectPDO();
-        $sql = "SELECT SUM(count_seen) FROM contacts WHERE user_id = ?";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$this->user_id]);
-        $result = $stmt->fetch();
-        return $result[0];
-    }
-
-    public function getDurationSeenAvg() {
-        $pdo = DB::connectPDO();
-        $sql = "SELECT AVG(duration_seen) FROM contacts WHERE user_id = ?";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$this->user_id]);
-        $result = $stmt->fetch();
-        return $result[0];
-    }
-
-    public function getContacts() {
-        $pdo = DB::connectPDO();
-        $sql = "SELECT * FROM contacts WHERE user_id = ?";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$this->user_id]);
-        $result = $stmt->fetchAll();
-        return $result;
-    }
-
-    public function getContact() {
-        $pdo = DB::connectPDO();
-        $sql = "SELECT * FROM contacts WHERE cid = ?";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$this->cid]);
-        $result = $stmt->fetch();
-        return $result;
-    }
-
-    public function getContactsCount() {
-        $pdo = DB::connectPDO();
-        $sql = "SELECT COUNT(*) FROM contacts WHERE user_id = ?";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$this->user_id]);
-        $result = $stmt->fetch();
-        return $result[0];
-    }
-
-    public function getContactByEmail() {
-        $pdo = DB::connectPDO();
-        $sql = "SELECT * FROM contacts WHERE email = ?";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$this->email]);
-        $result = $stmt->fetch();
-        return $result;
-    }
-
-    public function getContactByFName() {
-        $pdo = DB::connectPDO();
-        $sql = "SELECT * FROM contacts WHERE f_name = ?";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$this->f_name]);
-        $result = $stmt->fetch();
-        return $result;
-    }
-
-    public function getContactByLName() {
-        $pdo = DB::connectPDO();
-        $sql = "SELECT * FROM contacts WHERE l_name = ?";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$this->l_name]);
-        $result = $stmt->fetch();
-        return $result;
-    }
-
-    public function getContactByFNameAndLName() {
-        $pdo = DB::connectPDO();
-        $sql = "SELECT * FROM contacts WHERE f_name = ? AND l_name = ?";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$this->f_name, $this->l_name]);
-        $result = $stmt->fetch();
-        return $result;
-    }
-
-    public function addCountSeen() {
-        $pdo = DB::connectPDO();
-        $sql = "UPDATE contacts SET count_seen = count_seen + 1 WHERE cid = ?";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$this->cid]);
-    }
-
-    public function addDurationSeen($duration) {
-        $pdo = DB::connectPDO();
-        $sql = "UPDATE contacts SET duration_seen = duration_seen + ? WHERE cid = ?";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$duration, $this->cid]);
-    }
+    
 }
