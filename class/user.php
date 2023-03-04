@@ -35,6 +35,21 @@ class User {
         return $stealth;
     }
 
+    public static function updateCookies($uid) {
+        $pdo = DB::connectPDO();
+        $sql = "SELECT * FROM users WHERE uid = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$uid]);
+        $row = $stmt->fetch();
+        setcookie('uid', $row['uid'], time() + 3600, '/');
+        setcookie('username', $row['username'], time() + 3600, '/');
+        setcookie('f_name', $row['f_name'], time() + 3600, '/');
+        setcookie('l_name', $row['l_name'], time() + 3600, '/');
+        setcookie('email', $row['email'], time() + 3600, '/');
+        setcookie('password', $row['password'], time() + 3600, '/');
+        setcookie('admin', $row['admin'], time() + 3600, '/');
+    }
+
     public function deleteFromDB() {
         $pdo = DB::connectPDO();
         $sql = "DELETE FROM users WHERE uid = ?";
@@ -54,6 +69,7 @@ class User {
         $sql = "UPDATE users SET username = ?, f_name = ?, l_name = ?, password = ?, admin = ?, email = ? WHERE uid = ?";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$this->username, $this->f_name, $this->l_name, $this->password, $this->admin, $this->email, $this->uid]);
+        self::updateCookies($this->uid);
     }
 
     public static function login($email, $password) {
