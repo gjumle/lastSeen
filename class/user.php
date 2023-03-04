@@ -92,10 +92,21 @@ class User {
             setcookie('name', $row['name'], time() + (86400 * 30), '/');
             setcookie('email', $row['email'], time() + (86400 * 30), '/');
             setcookie('admin', $row['admin'], time() + (86400 * 30), '/');
-            setckoie('logged_in', true, time() + (86400 * 30), '/');
+            setcookie('logged_in', true, time() + (86400 * 30), '/');
             header("Location: ./dashboard.php");
         } else {
             echo "Wrong password";
+        }
+    }
+
+    public static function logout() {
+        if (isset($_GET['logout'])) {
+            setcookie('uid', '', time() - 3600, '/');
+            setcookie('name', '', time() - 3600, '/');
+            setcookie('email', '', time() - 3600, '/');
+            setcookie('admin', '', time() - 3600, '/');
+            setcookie('logged_in', '', time() - 3600, '/');
+            header("Location: ./login.php");
         }
     }
 

@@ -8,14 +8,7 @@ function autoloadModel($className) {
 }
 spl_autoload_register("autoloadModel");
 
-if (isset($_GET['logout'])) {
-    setcookie('uid', '', time() - 3600, '/');
-    setcookie('name', '', time() - 3600, '/');
-    setcookie('email', '', time() - 3600, '/');
-    setcookie('admin', '', time() - 3600, '/');
-    setcookie('logged_in', '', time() - 3600, '/');
-    header("Location: ./login.php");
-}
+User::logout();
 
 ?>
 
