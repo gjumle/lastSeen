@@ -92,4 +92,53 @@ Class Meeting {
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$this->user_id, $this->contact_id, $this->location, $this->start_time, $this->end_time, $this->mid]);
     }
+
+    public static function getMeetingById($mid) {
+        $pdo = DB::connectPDO();
+        $sql = "SELECT * FROM meetings WHERE mid = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$mid]);
+        $row = $stmt->fetch();
+        if ($row) {
+            return new Meeting($row['mid'], $row['user_id'], $row['contact_id'], $row['location'], $row['start_time'], $row['end_time']);
+        } else {
+            return null;
+        }
+    }
+
+    public static function getMeetingsByUserId($user_id) {
+        $pdo = DB::connectPDO();
+        $sql = "SELECT * FROM meetings WHERE user_id = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$user_id]);
+        $meetings = [];
+        while ($row = $stmt->fetch()) {
+            $meetings[] = new Meeting($row['mid'], $row['user_id'], $row['contact_id'], $row['location'], $row['start_time'], $row['end_time']);
+        }
+        return $meetings;
+    }
+
+    public static function getMeetingsByContactId($contact_id) {
+        $pdo = DB::connectPDO();
+        $sql = "SELECT * FROM meetings WHERE contact_id = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$contact_id]);
+        $meetings = [];
+        while ($row = $stmt->fetch()) {
+            $meetings[] = new Meeting($row['mid'], $row['user_id'], $row['contact_id'], $row['location'], $row['start_time'], $row['end_time']);
+        }
+        return $meetings;
+    }
+
+    public static function getMeetingsByUserIdAndContactId($user_id, $contact_id) {
+        $pdo = DB::connectPDO();
+        $sql = "SELECT * FROM meetings WHERE user_id = ? AND contact_id = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$user_id, $contact_id]);
+        $meetings = [];
+        while ($row = $stmt->fetch()) {
+            $meetings[] = new Meeting($row['mid'], $row['user_id'], $row['contact_id'], $row['location'], $row['start_time'], $row['end_time']);
+        }
+        return $meetings;
+    }
 }

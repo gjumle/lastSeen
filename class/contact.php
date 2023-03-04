@@ -205,4 +205,18 @@ Class Contact {
         $result = $stmt->fetch();
         return $result;
     }
+
+    public function addCountSeen() {
+        $pdo = DB::connectPDO();
+        $sql = "UPDATE contacts SET count_seen = count_seen + 1 WHERE cid = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$this->cid]);
+    }
+
+    public function addDurationSeen($duration) {
+        $pdo = DB::connectPDO();
+        $sql = "UPDATE contacts SET duration_seen = duration_seen + ? WHERE cid = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$duration, $this->cid]);
+    }
 }
