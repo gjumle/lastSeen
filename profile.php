@@ -8,8 +8,314 @@ function autoloadModel($className) {
 }
 spl_autoload_register("autoloadModel");
 
-if (isset($_POST['username']) && isset($_POST['f_name']) && isset($_POST['l_name']) && isset($_POST['email']) && isset($_POST['password'])) {
-    User::edit($_COOKIE['uid'],$_POST['username'], $_POST['f_name'], $_POST['l_name'], $_POST['password'], $_COOKIE['email']);
-}
+User::logout();
 
-Render::renderProfilePage();
+?>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta lang="en">
+
+        <title>lastSeen | Profile</title>
+
+        <link rel="stylesheet" type="text/css" href="css/master.css">
+    </head>
+    <body>
+        <div class="view">
+            <header id="global-header">
+                <nav class="nav-bar container" role="navigation">
+                    <div class="branding" title="Return to the home page">
+                        <a href="./index.php" class="branding-content">
+                            <img src="./svg/logo.svg" alt="">
+                            <span class="str-only">lastSeen</span>
+                        </a>
+                    </div>
+                    <div id="container-nav" class="nav-container">
+                        <ul class="global-nav nav-group">
+                            <li class="nav-item" data-log-category="dashboard" data-log-page="dashboard">
+                                <a href="./dashboard.php" class="selection nav-link">Dashboard</a>
+                            </li>
+                            <li class="nav-item" data-log-category="dashboard" data-log-page="dashboard">
+                                <a href="./contacts.php" class="selection nav-link">Contacts</a>
+                            </li>
+                            <li class="nav-item selected" data-log-category="dashboard" data-log-page="dashboard">
+                                <a href="./profile.php" class="selection nav-link">Profile</a>
+                            </li>
+                        </ul>
+                        <ul class="user-nav nav-group">
+                            <li class="nav-object-group">
+                                <div class="nav-item logged-out-nav">
+                                    <a href="?logout" class="btn btn-primary btn-signup" type="sumbit" name="logout">Logout</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <div class="page container">
+                <div class="profile-heading profile section">
+                    <div class="avatar avatar-xl">
+                        <div class="avatar-content">
+                            <div class="avatar-img-wrapper">
+                                <img class="avatar-img" src="./svg/avatar.svg" alt="avatar">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="spans5">
+                            <h1 class="text-title1 profile-name">Leoš Gjumija</h1>
+                            <div class="location">
+                                <div class="app-icon icon-location icon-xs"></div>
+                                Brno, Czech Republic
+                            </div>
+                        </div>
+                        <div class="spans10">
+                            <section class="activity-summary">
+                                <div class="activity-count">
+                                    <h3 class="count-header">Last 4 Weeks</h3>
+                                    <div class="count-total">
+                                        <div class="count text-display5">1</div>
+                                        <div class="count-label">Total Activities</div>
+                                    </div>
+                                </div>
+                                <div class="activity-calendar">
+                                    <h3 class="vh">Calendar</h3>
+                                    <table>
+                                        <caption class="vh">Last four weeks of activity</caption>
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">
+                                                    <div class="weekday">M</div>
+                                                </th>
+                                                <th scope="col">
+                                                    <div class="weekday">T</div>
+                                                </th>
+                                                <th scope="col">
+                                                    <div class="weekday">W</div>
+                                                </th>
+                                                <th scope="col">
+                                                    <div class="weekday">T</div>
+                                                </th>
+                                                <th scope="col">
+                                                    <div class="weekday">F</div>
+                                                </th>
+                                                <th scope="col">
+                                                    <div class="weekday">S</div>
+                                                </th>
+                                                <th scope="col">
+                                                    <div class="weekday">S</div>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="day-wrapper">
+                                                    <span class="day">30</span>
+                                                    <span class="activity-indicator"></span>
+                                                    <div class="vh"></div>
+                                                </td>
+                                                <td class="day-wrapper">
+                                                    <span class="day">30</span>
+                                                    <span class="activity-indicator"></span>
+                                                    <div class="vh"></div>
+                                                </td>
+                                                <td class="day-wrapper">
+                                                    <span class="day">30</span>
+                                                    <span class="activity-indicator"></span>
+                                                    <div class="vh"></div>
+                                                </td>
+                                                <td class="day-wrapper">
+                                                    <span class="day">30</span>
+                                                    <span class="activity-indicator"></span>
+                                                    <div class="vh"></div>
+                                                </td>
+                                                <td class="day-wrapper">
+                                                    <span class="day">30</span>
+                                                    <span class="activity-indicator"></span>
+                                                    <div class="vh"></div>
+                                                </td>
+                                                <td class="day-wrapper">
+                                                    <span class="day">30</span>
+                                                    <span class="activity-indicator"></span>
+                                                    <div class="vh"></div>
+                                                </td>
+                                                <td class="day-wrapper">
+                                                    <span class="day">30</span>
+                                                    <span class="activity-indicator"></span>
+                                                    <div class="vh"></div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="day-wrapper">
+                                                    <span class="day">30</span>
+                                                    <span class="activity-indicator"></span>
+                                                    <div class="vh"></div>
+                                                </td>
+                                                <td class="day-wrapper">
+                                                    <span class="day">30</span>
+                                                    <span class="activity-indicator"></span>
+                                                    <div class="vh"></div>
+                                                </td>
+                                                <td class="day-wrapper">
+                                                    <span class="day">30</span>
+                                                    <span class="activity-indicator"></span>
+                                                    <div class="vh"></div>
+                                                </td>
+                                                <td class="day-wrapper">
+                                                    <span class="day">30</span>
+                                                    <span class="activity-indicator"></span>
+                                                    <div class="vh"></div>
+                                                </td>
+                                                <td class="day-wrapper">
+                                                    <span class="day">30</span>
+                                                    <span class="activity-indicator"></span>
+                                                    <div class="vh"></div>
+                                                </td>
+                                                <td class="day-wrapper">
+                                                    <span class="day">30</span>
+                                                    <span class="activity-indicator"></span>
+                                                    <div class="vh"></div>
+                                                </td>
+                                                <td class="day-wrapper">
+                                                    <span class="day">30</span>
+                                                    <span class="activity-indicator"></span>
+                                                    <div class="vh"></div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="day-wrapper">
+                                                    <span class="day">30</span>
+                                                    <span class="activity-indicator"></span>
+                                                    <div class="vh"></div>
+                                                </td>
+                                                <td class="day-wrapper">
+                                                    <span class="day">30</span>
+                                                    <span class="activity-indicator"></span>
+                                                    <div class="vh"></div>
+                                                </td>
+                                                <td class="day-wrapper">
+                                                    <span class="day">30</span>
+                                                    <span class="activity-indicator"></span>
+                                                    <div class="vh"></div>
+                                                </td>
+                                                <td class="day-wrapper">
+                                                    <span class="day">30</span>
+                                                    <span class="activity-indicator"></span>
+                                                    <div class="vh"></div>
+                                                </td>
+                                                <td class="day-wrapper">
+                                                    <span class="day">30</span>
+                                                    <span class="activity-indicator"></span>
+                                                    <div class="vh"></div>
+                                                </td>
+                                                <td class="day-wrapper">
+                                                    <span class="day">30</span>
+                                                    <span class="activity-indicator"></span>
+                                                    <div class="vh"></div>
+                                                </td>
+                                                <td class="day-wrapper">
+                                                    <span class="day">30</span>
+                                                    <span class="activity-indicator"></span>
+                                                    <div class="vh"></div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="day-wrapper">
+                                                    <span class="day">30</span>
+                                                    <span class="activity-indicator"></span>
+                                                    <div class="vh"></div>
+                                                </td>
+                                                <td class="day-wrapper">
+                                                    <span class="day">30</span>
+                                                    <span class="activity-indicator"></span>
+                                                    <div class="vh"></div>
+                                                </td>
+                                                <td class="day-wrapper">
+                                                    <span class="day">30</span>
+                                                    <span class="activity-indicator"></span>
+                                                    <div class="vh"></div>
+                                                </td>
+                                                <td class="day-wrapper">
+                                                    <span class="day">30</span>
+                                                    <span class="activity-indicator"></span>
+                                                    <div class="vh"></div>
+                                                </td>
+                                                <td class="day-wrapper">
+                                                    <span class="day">30</span>
+                                                    <span class="activity-indicator"></span>
+                                                    <div class="vh"></div>
+                                                </td>
+                                                <td class="day-wrapper">
+                                                    <span class="day">30</span>
+                                                    <span class="activity-indicator"></span>
+                                                    <div class="vh"></div>
+                                                </td>
+                                                <td class="day-wrapper">
+                                                    <span class="day">30</span>
+                                                    <span class="activity-indicator"></span>
+                                                    <div class="vh"></div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="activity-breakdown">
+                                    <figure>
+                                        <figcaption>
+                                            <dl class="legend">
+                                                <dt class="label"></dt>
+                                                <dd>
+                                                    <div class="app-icon icon-sm icon-dark icon-ride-v3" title="Cycling">
+                                                        <div class="vh">Cycling</div>
+                                                    </div>
+                                                </dd>
+                                                <dt class="label"></dt>
+                                                <dd>
+                                                    <div class="app-icon icon-sm icon-dark icon-ride-v3" title="Cycling">
+                                                        <div class="vh">Cycling</div>
+                                                    </div>
+                                                </dd>
+                                                <dt class="label"></dt>
+                                                <dd>
+                                                    <div class="app-icon icon-sm icon-dark icon-ride-v3" title="Cycling">
+                                                        <div class="vh">Cycling</div>
+                                                    </div>
+                                                </dd>
+                                                <dt class="label"></dt>
+                                                <dd>
+                                                    <div class="app-icon icon-sm icon-dark icon-ride-v3" title="Cycling">
+                                                        <div class="vh">Cycling</div>
+                                                    </div>
+                                                </dd>
+                                            </dl>
+                                        </figcaption>
+                                        <div class="week-breakdown">
+                                            <dt class="week vh"></dt>
+                                            <dd class="hours">
+                                                <div class="no-activity vh"></div>
+                                            </dd>
+                                            <dt class="week vh"></dt>
+                                            <dd class="hours">
+                                                <div class="no-activity vh"></div>
+                                            </dd>
+                                            <dt class="week vh"></dt>
+                                            <dd class="hours">
+                                                <div class="no-activity vh"></div>
+                                            </dd>
+                                            <dt class="week vh"></dt>
+                                            <dd class="hours">
+                                                <div class="no-activity vh"></div>
+                                            </dd>
+                                        </div>
+                                    </figure>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
