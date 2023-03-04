@@ -114,6 +114,6 @@ class User {
     public static function edit($uid, $username, $f_name, $l_name, $password, $email) {
         $user = new User($uid, $username, $f_name, $l_name, password_hash($password, PASSWORD_DEFAULT), 0, $email);
         $user->saveToDB();
-        header("Location: ./dashboard.php");
+        header("Location: ./profile.php");
     }
 }
