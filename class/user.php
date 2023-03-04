@@ -31,6 +31,14 @@ class User {
         return $this->admin;
     }
 
+    public function getAdminString() {
+        if ($this->admin == 1) {
+            return "Yes";
+        } else {
+            return "No";
+        }
+    }
+
     public function getEmail() {
         return $this->email;
     }
