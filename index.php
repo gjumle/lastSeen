@@ -7,4 +7,14 @@ function autoloadModel($className) {
 }
 spl_autoload_register("autoloadModel");
 
-Render::renderIndexPage();
+?>
+
+<html>
+    <body>
+        <h1>Rozcestnik</h1>
+        <ul>
+            <li><a href="./login.php">User</a></li>
+            <li><a href="./login.php">Register</a></li>
+        </ul>
+    </body>
+</html>
