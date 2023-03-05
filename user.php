@@ -11,11 +11,10 @@ spl_autoload_register("autoloadModel");
 
 <html>
     <body>
-        <h1>Menu</h1>
-        <ul>
-            <li><a href="./user.php">User</a></li>
-            <li><a href="./contacts.php">Contacts</a></li>
-            <li><a href="./contacts.php">Meetings</a></li>
-        </ul>
+        <h1>User</h1>
+        <p>Go to <a href='./index.php'>menu</a> Edit records <a href="?action=edit">here</a></p>
     </body>
 </html>
+
+<?php
+
