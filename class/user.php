@@ -124,4 +124,6 @@ class User {
             header("Location: ./login.php");
         }
     }
+
+    
 }

@@ -65,7 +65,7 @@ User::logout();
                     </div>
                     <div class="row">
                         <div class="spans5">
-                            <h1 class="text-title1 profile-name">Leoš Gjumija</h1>
+                            <h1 class="text-title1 profile-name"><?php echo $_COOKIE['name'] ?></h1>
                             <div class="location">
                                 <div class="app-icon icon-location icon-xs"></div>
                                 Brno, Czech Republic
@@ -312,6 +312,27 @@ User::logout();
                                     </figure>
                                 </div>
                             </section>
+                        </div>
+                    </div>
+                </div>
+                <div class="row no-margins">
+                    <div class="spans10 main">
+                        <ul class="tabs">
+                            <li class="selected">
+                                <a href="#" class="tab">Overview</a>
+                            </li>
+                            <li>
+                                <a href="#" class="tab">Contacts</a>
+                            </li>
+                            <li>
+                                <a href="#" class="tab">Meetings</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="section">
+                                <h2>Contacts</h2>
+                                
+                            </div>
                         </div>
                     </div>
                 </div>
