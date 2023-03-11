@@ -111,9 +111,6 @@ class User {
             return "<span class='error'>Wrong email</span>";
         }
 
-        var_dump($row['password']);
-        var_dump($this->password);
-
         if (password_verify($this->password, $row['password'])) {
             setcookie('uid', $row['uid'], time() + (86400 * 30), '/');
             setcookie('username', $row['username'], time() + (86400 * 30), '/');
@@ -148,10 +145,10 @@ class User {
         $stmt->execute([$this->email, $this->username]);
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($row['username'] == $this->username) {
+        if ($row['username'] == $this->username && $this->username != null) {
             return "<span class='error'>Username already exists</span>";
         } else
-        if ($row['email'] == $this->email) {
+        if ($row['email'] == $this->email && $this->email != null) {
             return "<span class='error'>Email already exists</span>";
         } else {
             $this->insertToDB();

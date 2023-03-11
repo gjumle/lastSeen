@@ -26,7 +26,7 @@ if (isset($_POST['register'])) {
     $user->setL_name($last_name);
     $user->setEmail($email);
     $user->setPassword(password_hash($password, PASSWORD_DEFAULT));
-    $user->register();
+    echo $user->register();
 }
 
 ?>
@@ -41,6 +41,8 @@ if (isset($_POST['register'])) {
     <title>Home</title>
 
     <link rel="stylesheet" type="text/css" href="css/master.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 </head>
 
 <body>
@@ -71,18 +73,23 @@ if (isset($_POST['register'])) {
                     <fieldset class="mt-0 mb-0">
                         <div class="form-group">
                             <input id="name" class="form-control" type="text" name="username" value="" placeholder="Your Username" autofocus="autofocus">
+                            <span id="username-error" class="error-message"></span>
                         </div>
                         <div class="form-group">
                             <input id="name" class="form-control" type="text" name="first_name" value="" placeholder="Your First Name" autofocus="autofocus">
+                            <span id="firs-name-error" class="error-message"></span>
                         </div>
                         <div class="form-group">
                             <input id="name" class="form-control" type="text" name="last_name" value="" placeholder="Your Last Name" autofocus="autofocus">
+                            <span id="last-name-error" class="error-message"></span>
                         </div>
                         <div class="form-group">
                             <input id="email" class="form-control" type="text" name="email" value="" placeholder="Your E-mail" autofocus="autofocus">
+                            <span id="email-error" class="error-message"></span>
                         </div>
                         <div class="form-group">
                             <input id="password" class="form-control" type="password" name="password" value="" placeholder="Your Password" autofocus="autofocus">
+                            <span id="email-error" class="error-message"></span>
                         </div>
                         <button id="register-button" class="btn btn-primary" type="submit" name="register">Sign Up</button>
                     </fieldset>
@@ -90,6 +97,7 @@ if (isset($_POST['register'])) {
             </div>
         </div>
     </div>
+    <script src="js/master.js"></script>
 </body>
 
 </html>
