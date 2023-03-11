@@ -12,14 +12,22 @@ if (isset($_COOKIE['logged_in'])) {
     header("Location: ./dashboard.php");
 }
 if (isset($_POST['login'])) {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    $email_username = $_POST['email_username'];
+    if (filter_var($_POST['email_username'], FILTER_VALIDATE_EMAIL)) {
+        $email = $_POST['email_username'];
+        $username = null;
+    } else {
+        $username = $_POST['email_username'];
+        $email = null;
+    }
 
     $user = new User();
     $user->setEmail($email);
+    $user->setUsername($username);
+    $password = $_POST['password'];
     $user->setPassword($password);
 
-    $user->login();
+    echo $user->login();
 }
 
 ?>
@@ -61,7 +69,7 @@ if (isset($_POST['login'])) {
                     <form id="login-form" action="" class="website" method="post" accept-charset="UTF-8">
                         <fieldset class="mt-0 mb-0">
                             <div class="form-group">
-                                <input id="email" class="form-control" type="text" name="email" value="" placeholder="Your Email" autofocus="autofocus">
+                                <input id="email" class="form-control" type="text" name="email_username" value="" placeholder="Your Email or Username" autofocus="autofocus">
                                 <span id="email-error" class="error-message"></span>
                             </div>
                             <div class="form-group">
@@ -72,7 +80,7 @@ if (isset($_POST['login'])) {
                         </fieldset>
                         <div class="reset-password">
                             <b>
-                                <a id="forgot-password" href="#">Forgot Your Password?</a>
+                                <a id="forgot-password" href="./password_reset.php">Forgot Your Password?</a>
                             </b>
                         </div>
                     </form>

@@ -1,4 +1,4 @@
-"C:\Program Files (x86)\EasyPHP-Devserver-17\eds-binaries\dbserver\mysql5717x86x230306095345\bin\mysql.exe" -u lsa -p
+"C:\Program Files (x86)\EasyPHP-Devserver-17\eds-binaries\dbserver\mysql5717x86x230311153829\bin\mysql.exe" -u lsa -p
 
 CREATE DATABASE ls DEFAULT CHARSET='utf8';
 
@@ -8,7 +8,9 @@ GRANT ALL ON ls.* TO 'lsa'@'localhost';
 
 CREATE TABLE users (
     uid INT NOT NULL AUTO_INCREMENT,
-    name VARCHAR(50) NOT NULL UNIQUE,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    f_name VARCHAR(50) NOT NULL,
+    l_name VARCHAR(50) NOT NULL,
     password VARCHAR(255) NOT NULL,
     admin INT(1) NOT NULL DEFAULT 0,
     email VARCHAR(50) NOT NULL,
@@ -27,4 +29,17 @@ CREATE TABLE contacts (
     duration_seen INT NOT NULL DEFAULT 0,
     PRIMARY KEY (cid),
     FOREIGN KEY (user_id) REFERENCES users(uid)
+) DEFAULT CHARACTER SET utf8;
+
+CREATE TABLE meetings (
+    mid INT NOT NULL AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    contact_id INT NOT NULL,
+    start_time DATETIME NOT NULL,
+    end_time DATETIME NOT NULL,
+    location VARCHAR(50) NOT NULL,
+    description VARCHAR(255) NOT NULL,
+    PRIMARY KEY (mid),
+    FOREIGN KEY (user_id) REFERENCES users(uid),
+    FOREIGN KEY (contact_id) REFERENCES contacts(cid)
 ) DEFAULT CHARACTER SET utf8;
