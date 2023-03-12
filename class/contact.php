@@ -125,6 +125,14 @@ class Contact {
         return $row['f_name'] . " " . $row['l_name'];
     }
 
+    public static function getLeastSeenContactName($user_id) {
+        $pdo = DB::connectPDO();
+        $sql = "SELECT * FROM contacts WHERE user_id = ? ORDER BY count_seen ASC LIMIT 1";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$user_id]);
+        $row = $stmt->fetch();
+        return $row['f_name'] . " " . $row['l_name'];
+    }
 
     public function deleteFromDB() {
         $pdo = DB::connectPDO();

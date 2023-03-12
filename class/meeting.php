@@ -92,6 +92,19 @@ class Meeting {
         return $duration_in_minutes;
     }
 
+    public static function getAllDurationForLastWeek() {
+        $pdo = DB::connectPDO();
+        $sql = "SELECT start_time, end_time FROM meetings WHERE user_id = ? AND start_time >= DATE_SUB(NOW(), INTERVAL 7 DAY)";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$_COOKIE['uid']]);
+        $meetings = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $total_duration = 0;
+        foreach ($meetings as $meeting) {
+            $total_duration += self::getDuration_in_minutes($meeting['start_time'], $meeting['end_time']);
+        }
+        return $total_duration;
+    }
+
     public static function getDayTimeAsString($start_time, $end_time) {
         $start_time = strtotime($start_time);
         $end_time = strtotime($end_time);

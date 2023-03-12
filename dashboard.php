@@ -134,7 +134,7 @@ User::logout();
                                         <div class="card-body text-center">
                                             <h4 class="h6 mt-0">THIS WEEK</h4>
                                             <div class="primary-stats">
-                                                <span class="actual">44 <abbr title="metrics" class="unit">min</abbr></span>
+                                                <span class="actual"><?php echo Meeting::getAllDurationForLastWeek() ?><abbr title="metrics" class="unit"> min</abbr></span>
                                             </div>
                                         </div>
                                     </div>
@@ -221,7 +221,7 @@ User::logout();
                                                     </div>
                                                 </div>
                                                 <div class="media-body">
-                                                    <a href="#" class="media-title contact-name">Dominik</a>
+                                                    <a href="#" class="media-title contact-name"><? echo Contact::getLeastSeenContactName($_COOKIE['uid']) ?></a>
                                                     <div class="location text-small">Ceska, Brno, Czech Republic</div>
                                                     <div class="action">
                                                         <a href="#" class="btn btn-link btn-sm">Contact detail</a>
