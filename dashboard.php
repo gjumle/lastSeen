@@ -137,8 +137,8 @@ User::logout();
                                         </div>
                                         <div class="card-footer">
                                             <div class="card-section">
-                                                <a href="#" class="btn-card-link media media-middle">
-                                                    <div class="media-body">Manager Your Goals</div>
+                                                <a href="./profile.php" class="btn-card-link media media-middle">
+                                                    <div class="media-body">See your stats</div>
                                                     <div class="media-right">
                                                         <span class="app-icon-wrapper">
                                                             <span class="app-icon icon-caret-right icon-dark"></span>
