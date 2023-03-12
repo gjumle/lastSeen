@@ -97,13 +97,16 @@ class Contact {
 
     public static function getDateAsString($date) {
         $date = new DateTime($date);
-        return $date->format('d/m/Y');
+        return $date->format('d/m/y');
     }
 
     public static function getDurationAsString($duration) {
-        $duration = new DateTime($duration);
-        return $duration->format('H:i') . " hours";
+        $interval = new DateInterval("PT{$duration}S");
+        $zero = new DateTimeImmutable();
+        $duration = $zero->add($interval);
+        return $duration->format('H:i:s');
     }
+
 
     public function deleteFromDB() {
         $pdo = DB::connectPDO();
@@ -219,7 +222,7 @@ class Contact {
                                                                                 Duration Seen
                                                                             </span>
                                                                             <div class="stat-value">
-                                                                                ' . Contact::getDurationAsString($contact->getDuration_seen()) .'
+                                                                                ' . Contact::getDurationAsString($contact->getDuration_seen()) . '
                                                                             </div>
                                                                         </div>
                                                                     </li>
@@ -236,10 +239,10 @@ class Contact {
                                                                     <li class="feed-media-item">
                                                                         <div class="package-stat">
                                                                             <span class="stat-label">
-                                                                                ' . Contact::getDateAsString($contact->getLast_seen()) .'                
+                                                                                Last Seen            
                                                                             </span>
                                                                             <div class="stat-value">
-                                                                                2023-02-28
+                                                                                ' . Contact::getDateAsString($contact->getLast_seen()) . '
                                                                             </div>
                                                                         </div>
                                                                     </li>
