@@ -107,6 +107,24 @@ class Contact {
         return $duration->format('H:i:s');
     }
 
+    public static function getLastSeenContactTime($user_id) {
+        $pdo = DB::connectPDO();
+        $sql = "SELECT * FROM contacts WHERE user_id = ? ORDER BY last_seen DESC LIMIT 1";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$user_id]);
+        $row = $stmt->fetch();
+        return $row['last_seen'];
+    }
+
+    public static function getLastSeenContactName($user_id) {
+        $pdo = DB::connectPDO();
+        $sql = "SELECT * FROM contacts WHERE user_id = ? ORDER BY last_seen DESC LIMIT 1";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$user_id]);
+        $row = $stmt->fetch();
+        return $row['f_name'] . " " . $row['l_name'];
+    }
+
 
     public function deleteFromDB() {
         $pdo = DB::connectPDO();

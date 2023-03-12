@@ -75,6 +75,15 @@ class Meeting {
         $this->description = $description;
     }
 
+    public static function getMeetingsCount() {
+        $pdo = DB::connectPDO();
+        $sql = "SELECT COUNT(*) FROM meetings WHERE user_id = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$_COOKIE['uid']]);
+        $meetings_count = $stmt->fetchColumn();
+        return $meetings_count;
+    }
+
     public static function getDuration_in_minutes($start_time, $end_time) {
         $start_time = strtotime($start_time);
         $end_time = strtotime($end_time);

@@ -75,6 +75,15 @@ class User {
         $this->email = $email;
     }
 
+    public static function getContactsCount() {
+        $pdo = DB::connectPDO();
+        $sql = "SELECT COUNT(*) FROM contacts WHERE user_id = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$_COOKIE['uid']]);
+        $row = $stmt->fetch(PDO::FETCH_NUM);
+        return $row[0];
+    }
+
 
     public function deleteFromDB() {
         $pdo = DB::connectPDO();
