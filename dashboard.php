@@ -221,7 +221,7 @@ User::logout();
                                                     </div>
                                                 </div>
                                                 <div class="media-body">
-                                                    <a href="#" class="media-title contact-name"><? echo Contact::getLeastSeenContactName($_COOKIE['uid']) ?></a>
+                                                    <a href="#" class="media-title contact-name"><?php echo Contact::getLeastSeenContactName($_COOKIE['uid']) ?></a>
                                                     <div class="location text-small">Ceska, Brno, Czech Republic</div>
                                                     <div class="action">
                                                         <a href="#" class="btn btn-link btn-sm">Contact detail</a>
