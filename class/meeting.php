@@ -114,6 +114,11 @@ class Meeting {
         return $day_time;
     }
 
+    public static function getDayTimeAsStringLong($start_time) {
+        $start_time = strtotime($start_time);
+        return $start_time = date('F d, y', $start_time);
+    }
+
     public static function getContactName($contact_id) {
         $pdo = DB::connectPDO();
         $sql = "SELECT f_name, l_name FROM contacts WHERE cid = ?";
@@ -189,7 +194,7 @@ class Meeting {
                                             <a href="#">' . Meeting::getContactName($meeting->getContact_id()) . '</a>
                                         </div>
                                         <div class="feed-ui-media-body-subtitle-wrapper">
-                                            <time class="timestamp text-medium" datetime="2023-02-24 00-15-30 UTC">Feburary 24, 2023</time>
+                                            <time class="timestamp text-medium" datetime="2023-02-24 00-15-30 UTC">' . Meeting::getDayTimeAsStringLong($meeting->getStart_time()) . '</time>
                                         </div>
                                     </div>
                                     <div class="feed-ui-media-right">

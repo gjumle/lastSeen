@@ -97,7 +97,7 @@ class Contact {
 
     public static function getDateAsString($date) {
         $date = new DateTime($date);
-        return $date->format('d/m/y');
+        return $date->format('F d, Y');
     }
 
     public static function getDurationAsString($duration) {
@@ -113,7 +113,8 @@ class Contact {
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$user_id]);
         $row = $stmt->fetch();
-        return $row['last_seen'];
+        $last_seen = $row['last_seen'];
+        return Contact::getDateAsString($last_seen);
     }
 
     public static function getLastSeenContactName($user_id) {
@@ -201,7 +202,7 @@ class Contact {
                                                         <a href="./profile">' . $_COOKIE["f_name"], ' ' . $_COOKIE["l_name"] . '</a>
                                                     </div>
                                                     <div class="feed-ui-media-body-subtitle-wrapper">
-                                                        <time class="timestamp text-medium" datetime="2023-02-27 00-13-30 UTC">Feburary 24, 2023</time>
+                                                        <time class="timestamp text-medium" datetime="2023-02-27 00-13-30 UTC">'. Contact::getDateAsString($contact->getLast_seen()) .'</time>
                                                     </div>
                                                 </div>
                                                 <div class="feed-ui-media-right">
