@@ -202,17 +202,16 @@ class Contact {
                                                         <a href="./profile">' . $_COOKIE["f_name"], ' ' . $_COOKIE["l_name"] . '</a>
                                                     </div>
                                                     <div class="feed-ui-media-body-subtitle-wrapper">
-                                                        <time class="timestamp text-medium" datetime="2023-02-27 00-13-30 UTC">'. Contact::getDateAsString($contact->getLast_seen()) .'</time>
+                                                        <time class="timestamp text-medium" datetime="2023-02-27 00-13-30 UTC">'. Contact::getDateAsString($contact->getLast_seen()) . '</time>
                                                     </div>
                                                 </div>
                                                 <div class="feed-ui-media-right">
                                                     <div class="feed-ui-media-right-components">
-                                                        <div class="feed-media-right-component">
-                                                            <button class="package-ui-btn">
-                                                                <svg class="package-btn-svg">
-                                                                    <path class="btn-svg-path" d="M16 3.39V4.8l-8.02 8.03L0 4.81V3.39l7.98 8.02L16 3.39z" fill=""></path>
-                                                                </svg>
-                                                            </button>
+                                                        <div class="feed-ui-media-right-component">
+                                                            <a href="?edit=' . $contact->getCid() . '" class="btn btn-primary btn-edit" type="sumbit" name="logout">Edit</a>
+                                                        </div>
+                                                        <div class="feed-ui-media-right-component">
+                                                            <a href="?delete=' . $contact->getCid() . '" class="btn btn-primary btn-delete" type="sumbit" name="logout">Delete</a>
                                                         </div>
                                                     </div>
                                                 </div>
