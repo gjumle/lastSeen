@@ -208,12 +208,11 @@ class Meeting {
                                     </div>
                                     <div class="feed-ui-media-right">
                                         <div class="feed-ui-media-right-components">
-                                            <div class="feed-media-right-component">
-                                                <button class="package-ui-btn">
-                                                    <svg class="package-btn-svg">
-                                                        <path class="btn-svg-path" d="M16 3.39V4.8l-8.02 8.03L0 4.81V3.39l7.98 8.02L16 3.39z" fill=""></path>
-                                                    </svg>
-                                                </button>
+                                            <div class="feed-ui-media-right-component">
+                                                <a href="?edit=' . $meeting->getMid() .'" class="btn btn-primary btn-edit" type="sumbit" name="logout">Edit</a>
+                                            </div>
+                                            <div class="feed-ui-media-right-component">
+                                                <a href="?delete=' . $meeting->getMid() .'" class="btn btn-primary btn-delete" type="sumbit" name="logout">Delete</a>
                                             </div>
                                         </div>
                                     </div>

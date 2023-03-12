@@ -206,6 +206,17 @@ nav {
     background-color: #ebebeb;
 }
 
+.btn.btn-primary.btn-edit {
+    color: #fc5200;
+    background-color: #fff;
+    border: 1px solid black transparent;
+}
+
+.btn.btn-primary.btn-edit:hover {
+    background-color: #ebebeb;
+
+}
+
 a {
     color: #007FB6;
     text-decoration: none;
@@ -852,8 +863,9 @@ main {
 }
 
 .feed-ui-media-body {
-    flex: 1 1;
+    flex: 1 1 1;
     color: #242428;
+    width: 70%;
 }
 
 .feed-ui-media-body-subtitle-wrapper {
@@ -877,10 +889,12 @@ main {
 }
 
 .feed-ui-media-right-components {
+    display: flex;
     width: 36px;
 }
 
 .feed-ui-media-right-component {
+    margin-right: 6px;
     text-align: right;
     color: #242428;
     cursor: default;
@@ -891,6 +905,12 @@ main {
     background-color: #fff;
     border: none;
     border-radius: 4px;
+}
+
+.package-ui-btn:hover {
+    background-color: ButtonFace;
+    transition: .2s;
+    cursor: pointer;
 }
 
 .package-btn-svg {
