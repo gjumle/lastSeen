@@ -79,10 +79,18 @@ User::logout();
                             <div class="activity-count">
                                 <h3 class="count-header">Last 4 Weeks</h3>
                                 <div class="count-total">
-                                    <div class="count text-display5">1</div>
-                                    <div class="count-label">Total Activities</div>
+                                    <div class="count text-display5"><?php echo Meeting::getMeetingsCountLast4Weeks() ?></div>
+                                    <div class="count-label">Total Meetings</div>
                                 </div>
                             </div>
+                            <div class="activity-count">
+                                <h3 class="count-header">Last 4 Weeks</h3>
+                                <div class="count-total">
+                                    <div class="count text-display5"><?php echo Meeting::getAllDurationForLastWeek() ?></div>
+                                    <div class="count-label">Total Minutes</div>
+                                </div>
+                            </div>
+                            <!--
                             <div class="activity-calendar">
                                 <h3 class="vh">Calendar</h3>
                                 <table>
@@ -314,6 +322,7 @@ User::logout();
                                     </div>
                                 </figure>
                             </div>
+                            -->
                         </section>
                     </div>
                 </div>

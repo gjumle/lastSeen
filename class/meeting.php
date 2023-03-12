@@ -84,6 +84,15 @@ class Meeting {
         return $meetings_count;
     }
 
+    public static function getMeetingsCountLast4Weeks() {
+        $pdo = DB::connectPDO();
+        $sql = "SELECT COUNT(*) FROM meetings WHERE user_id = ? AND start_time >= DATE_SUB(NOW(), INTERVAL 4 WEEK)";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$_COOKIE['uid']]);
+        $meetings_count = $stmt->fetchColumn();
+        return $meetings_count;
+    }
+
     public static function getDuration_in_minutes($start_time, $end_time) {
         $start_time = strtotime($start_time);
         $end_time = strtotime($end_time);
