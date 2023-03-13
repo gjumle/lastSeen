@@ -183,7 +183,8 @@ class Meeting {
     public static function renderMeetings() {
         $meetings = Meeting::getMeetings($_COOKIE['uid']);
         foreach ($meetings as $meeting) {
-            echo '<div class="content">
+            if (isset($_GET['edit']) && $_GET['edit'] == $meeting->getMid()) {
+                echo '<div class="content">
                 <main id="main" class="feed-mfe">
                     <div class="package-feed-ui">
                         <div class="feed-ui-components">
@@ -209,10 +210,10 @@ class Meeting {
                                     <div class="feed-ui-media-right">
                                         <div class="feed-ui-media-right-components">
                                             <div class="feed-ui-media-right-component">
-                                                <a href="?edit=' . $meeting->getMid() .'" class="btn btn-primary btn-edit" type="sumbit" name="logout">Edit</a>
+                                                <a href="?delete=' . $meeting->getMid() . '" class="btn btn-primary btn-save" type="sumbit" name="save">Save</a>
                                             </div>
                                             <div class="feed-ui-media-right-component">
-                                                <a href="?delete=' . $meeting->getMid() .'" class="btn btn-primary btn-delete" type="sumbit" name="logout">Delete</a>
+                                                <a href="?delete=' . $meeting->getMid() . '" class="btn btn-primary btn-edit" type="sumbit" name="cancel">Cancel</a>
                                             </div>
                                         </div>
                                     </div>
@@ -229,7 +230,7 @@ class Meeting {
                                     </div>
                                     <div class="feed-ui-media-body">
                                         <div class="feed-ui-media-body-activity">
-                                            <h3 class="feed-body-header">'. Meeting::getDayTimeAsString($meeting->getStart_time(), $meeting->getEnd_time()) .' Meeting</h3>
+                                            <h3 class="feed-body-header"><input type="date" name="start_time" value="' . Meeting::getDayTimeAsString($meeting->getStart_time(), $meeting->getEnd_time()) . '"> Meeting</h3>
                                             <div class="feed-ui-media">
                                                 <div class="feed-ui-nmedia-body">
                                                     <ul class="feed-media-items">
@@ -239,7 +240,7 @@ class Meeting {
                                                                     Duration
                                                                 </span>
                                                                 <div class="stat-value">
-                                                                    ' . Meeting::getDuration_in_minutes($meeting->getStart_time(), $meeting->getEnd_time()) .'
+                                                                    <input type="number" name="duration" value="' . Meeting::getDuration_in_minutes($meeting->getStart_time(), $meeting->getEnd_time()) . '">
                                                                     <abbr title="metrics" class="unit">min</abbr>
                                                                 </div>
                                                             </div>
@@ -250,7 +251,7 @@ class Meeting {
                                                                     Location
                                                                 </span>
                                                                 <div class="stat-value">
-                                                                    ' . $meeting->getLocation() . '
+                                                                    <input type="text" name="location" value="' . $meeting->getLocation() . '">
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -260,7 +261,7 @@ class Meeting {
                                                                     Description
                                                                 </span>
                                                                 <div class="stat-value">
-                                                                    ' . $meeting->getDescription() . '
+                                                                    <input type="textarea" name="description" value="' . $meeting->getDescription() . '">
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -275,6 +276,100 @@ class Meeting {
                     </div>
                 </main>
             </div>';
+            } else {
+                echo '<div class="content">
+                    <main id="main" class="feed-mfe">
+                        <div class="package-feed-ui">
+                            <div class="feed-ui-components">
+                                <div class="feed-ui-header">
+                                    <div class="feed-ui-media">
+                                        <div class="feed-ui-media-left">
+                                            <div class="feed-ui-icon-container">
+                                                <a href="#" class="ui-avatar">
+                                                    <div class="ui-img-wrapper">
+                                                        <img src="./svg/avatar.svg" alt="avatar">
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="feed-ui-media-body">
+                                            <div class="feed-ui-media-body-header">
+                                                <a href="#">' . Meeting::getContactName($meeting->getContact_id()) . '</a>
+                                            </div>
+                                            <div class="feed-ui-media-body-subtitle-wrapper">
+                                                <time class="timestamp text-medium" datetime="2023-02-24 00-15-30 UTC">' . Meeting::getDayTimeAsStringLong($meeting->getStart_time()) . '</time>
+                                            </div>
+                                        </div>
+                                        <div class="feed-ui-media-right">
+                                            <div class="feed-ui-media-right-components">
+                                                <div class="feed-ui-media-right-component">
+                                                    <a href="?edit=' . $meeting->getMid() .'" class="btn btn-primary btn-edit" type="sumbit" name="logout">Edit</a>
+                                                </div>
+                                                <div class="feed-ui-media-right-component">
+                                                    <a href="?delete=' . $meeting->getMid() .'" class="btn btn-primary btn-delete" type="sumbit" name="logout">Delete</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="feed-body" class="feed-ui-body">
+                                    <div class="feed-ui-media">
+                                        <div class="feed-ui-media-left">
+                                            <div class="feed-ui-icon-activity">
+                                                <svg class="icon-activity">
+                                                    <path d="M19.99 13.33a3.7 3.7 0 01-3.32-2l-.17-.32h-1.01l-.17.32a3.763 3.763 0 01-6.65 0l-.17-.32H7.49l-.17.32a3.72 3.72 0 01-3.32 2 3.7 3.7 0 01-3.01-1.51v1.88a5.02 5.02 0 003.01.98 5.054 5.054 0 004-1.92 5.116 5.116 0 007.99 0 5.122 5.122 0 007.01.94v-1.88a3.71 3.71 0 01-3.01 1.51zm-7.99 8a3.725 3.725 0 01-3.33-2L8.49 19H7.5l-.18.33a3.7 3.7 0 01-3.32 2 3.7 3.7 0 01-3.01-1.51v1.89c.873.64 1.929.98 3.01.97a5.054 5.054 0 004-1.92 5.054 5.054 0 004 1.92 4.947 4.947 0 003-.98v-1.87a3.654 3.654 0 01-3 1.5zm8-16.02a3.735 3.735 0 01-3.33-2L16.51 3h-1.02l-.16.31a3.724 3.724 0 01-3.33 2 3.681 3.681 0 01-3-1.5V5.7a5.04 5.04 0 003 .96 5.024 5.024 0 004-1.92 5.023 5.023 0 004 1.92 5.124 5.124 0 003-.95v-1.9a3.654 3.654 0 01-3 1.5z" fill=""></path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <div class="feed-ui-media-body">
+                                            <div class="feed-ui-media-body-activity">
+                                                <h3 class="feed-body-header">'. Meeting::getDayTimeAsString($meeting->getStart_time(), $meeting->getEnd_time()) .' Meeting</h3>
+                                                <div class="feed-ui-media">
+                                                    <div class="feed-ui-nmedia-body">
+                                                        <ul class="feed-media-items">
+                                                            <li class="feed-media-item">
+                                                                <div class="package-stat">
+                                                                    <span class="stat-label">
+                                                                        Duration
+                                                                    </span>
+                                                                    <div class="stat-value">
+                                                                        ' . Meeting::getDuration_in_minutes($meeting->getStart_time(), $meeting->getEnd_time()) .'
+                                                                        <abbr title="metrics" class="unit">min</abbr>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li class="feed-media-item">
+                                                                <div class="package-stat">
+                                                                    <span class="stat-label">
+                                                                        Location
+                                                                    </span>
+                                                                    <div class="stat-value">
+                                                                        ' . $meeting->getLocation() . '
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li class="feed-media-item">
+                                                                <div class="package-stat">
+                                                                    <span class="stat-label">
+                                                                        Description
+                                                                    </span>
+                                                                    <div class="stat-value">
+                                                                        ' . $meeting->getDescription() . '
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                </div>';
+            }
         }
     }
 }
