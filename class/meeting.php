@@ -138,7 +138,7 @@ class Meeting {
         return $contact_name;
     }
 
-    public function delteFromDB() {
+    public function deleteFromDB() {
         $pdo = DB::connectPDO();
         $sql = "DELETE FROM meetings WHERE mid = ?";
         $stmt = $pdo->prepare($sql);

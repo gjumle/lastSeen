@@ -12,6 +12,11 @@ if (!isset($_COOKIE['logged_in'])) {
     header("Location: ./login.php");
 }
 
+if (isset($_GET['delete'])) {
+    $contact = new Contact();
+    $contact->setCid($_GET['delete']);
+    $contact->deleteFromDB();
+}
 
 User::logout();
 
