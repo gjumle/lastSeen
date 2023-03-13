@@ -1032,7 +1032,7 @@ abbr {
     /*make it look like a form*/
 }
 
-.main form input[type=number] {
+.main input[type=number] {
     width: 60px;
 }
     
