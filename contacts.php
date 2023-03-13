@@ -16,6 +16,7 @@ if (isset($_GET['delete'])) {
     $contact = new Contact();
     $contact->setCid($_GET['delete']);
     $contact->deleteFromDB();
+    header("Location: ./contacts.php");
 }
 
 User::logout();

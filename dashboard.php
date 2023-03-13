@@ -17,6 +17,7 @@ if (isset($_GET['delete'])) {
     $meeting = new Meeting();
     $meeting->setMid($_GET['delete']);
     $meeting->deleteFromDB();
+    header("Location: ./dashboard.php");
 }
 
 User::logout();
