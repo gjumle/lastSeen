@@ -9,6 +9,11 @@ function autoloadModel($className)
 }
 spl_autoload_register("autoloadModel");
 
+if (!isset($_COOKIE['logged_in'])) {
+    header("Location: ./login.php");
+}
+
+
 User::logout();
 
 ?>
