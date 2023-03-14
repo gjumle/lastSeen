@@ -156,7 +156,7 @@ class Meeting {
             $meeting = new Meeting();
             $meeting->setMid($_GET['delete']);
             $meeting->deleteFromDB();
-            //header("Location: ./dashboard.php");
+            header("Location: ./dashboard.php");
         }
         if (isset($_POST['save'])) {
             $meeting = Meeting::getMeeting($_GET['save']);
@@ -168,10 +168,10 @@ class Meeting {
             $meeting->setLocation($_POST['location']);
             $meeting->setDescription($_POST['description']);
             $meeting->saveToDB();
-            //header('Location: ./dashboard.php');
+            header('Location: ./dashboard.php');
         }
         if (isset($_GET['cancel'])) {
-            //header("Location: ./dashboard.php");
+            header("Location: ./dashboard.php");
         }
     }
 

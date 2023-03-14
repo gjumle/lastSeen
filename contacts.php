@@ -19,6 +19,8 @@ if (isset($_GET['delete'])) {
     header("Location: ./contacts.php");
 }
 
+Contact::handleForm();
+
 User::logout();
 
 ?>
