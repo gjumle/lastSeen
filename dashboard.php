@@ -13,6 +13,8 @@ if (!isset($_COOKIE['logged_in'])) {
     header("Location: ./login.php");
 }
 
+Meeting::handleForm();
+
 User::logout();
 
 ?>
