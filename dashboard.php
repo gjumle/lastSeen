@@ -13,8 +13,6 @@ if (!isset($_COOKIE['logged_in'])) {
     header("Location: ./login.php");
 }
 
-Meeting::handeForm();
-
 User::logout();
 
 ?>

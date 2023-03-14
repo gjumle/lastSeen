@@ -145,31 +145,6 @@ class Meeting {
         return $end_time;
     }
 
-    public static function handeForm() {
-        if (isset($_GET['delete'])) {
-            $meeting = new Meeting();
-            $meeting->setMid($_GET['delete']);
-            $meeting->deleteFromDB();
-            header("Location: ./dashboard.php");
-        }
-        if (isset($_GET['save'])) {
-            $meeting = new Meeting();
-            $meeting->setMid($_GET['save']);
-            $end_time = Meeting::sumDateAndDurtation($_POST['start_time'], $_POST['duration']);
-            echo $end_time;
-
-            $meeting->setStart_time($_POST['start_time']);
-            $meeting->setEnd_time($end_time);
-            $meeting->setLocation($_POST['location']);
-            $meeting->setDescription($_POST['description']);
-            $meeting->saveToDB();
-            header('Location: ./dashboard.php');
-        }
-        if (isset($_GET['cancel'])) {
-            header("Location: ./dashboard.php");
-        }
-    }
-
     public function deleteFromDB() {
         $pdo = DB::connectPDO();
         $sql = "DELETE FROM meetings WHERE mid = ?";
@@ -243,10 +218,10 @@ class Meeting {
                                     <div class="feed-ui-media-right">
                                         <div class="feed-ui-media-right-components">
                                             <div class="feed-ui-media-right-component">
-                                                <a href="?save=' . $meeting->getMid() . '" class="btn btn-primary btn-delete" type="submit" name="save">Save</a>
+                                                <a href="&save=' . $meeting->getMid() . '" class="btn btn-primary btn-delete" type="submit" name="save">Save</a>
                                             </div>
                                             <div class="feed-ui-media-right-component">
-                                                <a href="?cancel=' . $meeting->getMid() . '" class="btn btn-primary btn-edit" type="submit" name="cancel">Cancel</a>
+                                                <a href="&cancel=' . $meeting->getMid() . '" class="btn btn-primary btn-edit" type="submit" name="cancel">Cancel</a>
                                             </div>
                                         </div>
                                     </div>
@@ -404,6 +379,26 @@ class Meeting {
                         </div>
                     </main>
                 </div>';
+            }
+            if (isset($_GET['delete']) && $_GET['delete'] == $meeting->getMid()) {
+                $meeting = new Meeting();
+                $meeting->setMid($_GET['delete']);
+                $meeting->deleteFromDB();
+                header("Location: ./dashboard.php");
+            }
+            if (isset($_GET['save']) && $_GET['save'] == $meeting->getMid()) {
+                $meeting = Meeting::getMeeting($_GET['save']);
+                $end_time = Meeting::sumDateAndDurtation($_POST['start_time'], $_POST['duration']);
+
+                $meeting->setStart_time($_POST['start_time']);
+                $meeting->setEnd_time($end_time);
+                $meeting->setLocation($_POST['location']);
+                $meeting->setDescription($_POST['description']);
+                $meeting->saveToDB();
+                header('Location: ./dashboard.php');
+            }
+            if (isset($_GET['cancel'])) {
+                header("Location: ./dashboard.php");
             }
         }
     }
