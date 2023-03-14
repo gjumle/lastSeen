@@ -138,6 +138,38 @@ class Meeting {
         return $contact_name;
     }
 
+    public static function sumDateAndDurtation($start_time, $duration) {
+        $start_time = strtotime($start_time);
+        $end_time = $start_time + ($duration * 60);
+        $end_time = date('Y-m-d H:i:s', $end_time);
+        return $end_time;
+    }
+
+    public static function handeForm() {
+        if (isset($_GET['delete'])) {
+            $meeting = new Meeting();
+            $meeting->setMid($_GET['delete']);
+            $meeting->deleteFromDB();
+            header("Location: ./dashboard.php");
+        }
+        if (isset($_GET['save'])) {
+            $meeting = new Meeting();
+            $meeting->setMid($_GET['save']);
+            $end_time = Meeting::sumDateAndDurtation($_POST['start_time'], $_POST['duration']);
+            echo $end_time;
+
+            $meeting->setStart_time($_POST['start_time']);
+            $meeting->setEnd_time($end_time);
+            $meeting->setLocation($_POST['location']);
+            $meeting->setDescription($_POST['description']);
+            $meeting->saveToDB();
+            header('Location: ./dashboard.php');
+        }
+        if (isset($_GET['cancel'])) {
+            header("Location: ./dashboard.php");
+        }
+    }
+
     public function deleteFromDB() {
         $pdo = DB::connectPDO();
         $sql = "DELETE FROM meetings WHERE mid = ?";
@@ -187,6 +219,7 @@ class Meeting {
                 echo '<div class="content">
                 <main id="main" class="feed-mfe">
                     <div class="package-feed-ui">
+                        <form action="" method="post">
                         <div class="feed-ui-components">
                             <div class="feed-ui-header">
                                 <div class="feed-ui-media">
@@ -210,10 +243,10 @@ class Meeting {
                                     <div class="feed-ui-media-right">
                                         <div class="feed-ui-media-right-components">
                                             <div class="feed-ui-media-right-component">
-                                                <a href="?delete=' . $meeting->getMid() . '" class="btn btn-primary btn-save" type="sumbit" name="save">Save</a>
+                                                <a href="?save=' . $meeting->getMid() . '" class="btn btn-primary btn-delete" type="submit" name="save">Save</a>
                                             </div>
                                             <div class="feed-ui-media-right-component">
-                                                <a href="?delete=' . $meeting->getMid() . '" class="btn btn-primary btn-edit" type="sumbit" name="cancel">Cancel</a>
+                                                <a href="?cancel=' . $meeting->getMid() . '" class="btn btn-primary btn-edit" type="submit" name="cancel">Cancel</a>
                                             </div>
                                         </div>
                                     </div>
@@ -230,7 +263,7 @@ class Meeting {
                                     </div>
                                     <div class="feed-ui-media-body">
                                         <div class="feed-ui-media-body-activity">
-                                            <h3 class="feed-body-header"><input type="date" name="start_time" value="' . Meeting::getDayTimeAsString($meeting->getStart_time(), $meeting->getEnd_time()) . '"> Meeting</h3>
+                                            <h3 class="feed-body-header"><input type="datetime-local" name="start_time" value="' . Meeting::getDayTimeAsString($meeting->getStart_time(), $meeting->getEnd_time()) . '"> Meeting</h3>
                                             <div class="feed-ui-media">
                                                 <div class="feed-ui-nmedia-body">
                                                     <ul class="feed-media-items">
@@ -262,6 +295,7 @@ class Meeting {
                                                                 </span>
                                                                 <div class="stat-value">
                                                                     <input type="textarea" name="description" value="' . $meeting->getDescription() . '">
+                                                                    </form>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -273,6 +307,7 @@ class Meeting {
                                 </div>
                             </div>
                         </div>
+                        </form>
                     </div>
                 </main>
             </div>';
@@ -303,10 +338,10 @@ class Meeting {
                                         <div class="feed-ui-media-right">
                                             <div class="feed-ui-media-right-components">
                                                 <div class="feed-ui-media-right-component">
-                                                    <a href="?edit=' . $meeting->getMid() .'" class="btn btn-primary btn-edit" type="sumbit" name="logout">Edit</a>
+                                                    <a href="?edit=' . $meeting->getMid() .'" class="btn btn-primary btn-edit" type="submit" name="logout">Edit</a>
                                                 </div>
                                                 <div class="feed-ui-media-right-component">
-                                                    <a href="?delete=' . $meeting->getMid() .'" class="btn btn-primary btn-delete" type="sumbit" name="logout">Delete</a>
+                                                    <a href="?delete=' . $meeting->getMid() . '" class="btn btn-primary btn-delete" type="submit" name="logout">Delete</a>
                                                 </div>
                                             </div>
                                         </div>

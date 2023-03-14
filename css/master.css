@@ -217,12 +217,6 @@ nav {
 
 }
 
-.btn.btn-primary.btn-save {
-    color: #fff;
-    background-color: #38E54D;
-    border-color: #38E54D;
-}
-
 .btn.btn-primary.btn-save:hover {
     background-color: #2ecf3f;
 }
@@ -310,18 +304,14 @@ fieldset {
 
 .registration-panel form {
     padding: 50px;
+    box-sizing: border-box;
+    display: block;
 }
 
 .registration-panel input[type="email"], .registration-panel input[type="text"], .registration-panel input[type="password"] {
     background:rgba(0, 0, 0, 0.5);
     border: 1px solid #666;
     color: #CCC;
-}
-
-form {
-    padding: 50px;
-    box-sizing: border-box;
-    display: block;
 }
 
 input {
@@ -1028,11 +1018,7 @@ abbr {
     font-style: normal;
 }
 
-.main form {
-    /*make it look like a form*/
-}
-
-.main input[type=number] {
+.package-feed-ui input[type=number] {
     width: 60px;
 }
     
