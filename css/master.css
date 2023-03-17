@@ -314,7 +314,7 @@ fieldset {
     color: #CCC;
 }
 
-input {
+input, select, textarea {
     text-align: initial;
     text-indent: initial;
     text-shadow: initial;
@@ -1022,7 +1022,7 @@ abbr {
     width: 60px;
 }
     
-.feed-ui-body input {
+.feed-ui-body input, .feed-ui-body select {
     border: 1px solid #ccc;
     border-radius: 4px;
     padding: 8px;
