@@ -160,11 +160,14 @@ class Contact {
                 $contact->setL_name($_POST['l_name']);
                 $contact->setStatus($_POST['status']);
                 $contact->setEmail($_POST['email']);
+                $contact->setLast_seen(date("Y-m-d H:i:s"));
+                $contact->setCount_seen(0);
+                $contact->setDuration_seen(0);
 
                 $contact->insertToDB();
             }
 
-            //header('Location: ./contacts.php');
+            header('Location: ./contacts.php');
         }
         if (isset($_GET['cancel'])) {
             header("Location: ./contacts.php");
