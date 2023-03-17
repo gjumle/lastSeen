@@ -265,8 +265,9 @@ class Contact {
                                                                             </span>
                                                                             <div class="stat-value">
                                                                                 <select name="status">
-                                                                                    <option value="1">Family</option>
-                                                                                    <option value="2">Friend</option>
+                                                                                    <option value="">Select Status</option>
+                                                                                    <option value="0">Family</option>
+                                                                                    <option value="1">Friend</option>
                                                                                 </select>
                                                                             </div>
                                                                         </div>
@@ -359,37 +360,18 @@ class Contact {
                                                                                 Type
                                                                             </span>
                                                                             <div class="stat-value">
-                                                                                ' . $contact->getStatus() . '
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-                                                                    <li class="feed-media-item">
-                                                                        <div class="package-stat">
-                                                                            <span class="stat-label">
-                                                                                Duration Seen
-                                                                            </span>
-                                                                            <div class="stat-value">
-                                                                                ' . Contact::getDurationFromNumber($contact->getDuration_seen()) . '
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-                                                                    <li class="feed-media-item">
-                                                                        <div class="package-stat">
-                                                                            <span class="stat-label">
-                                                                                Count Seen
-                                                                            </span>
-                                                                            <div class="stat-value">
-                                                                                ' . $contact->getCount_seen() . '
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-                                                                    <li class="feed-media-item">
-                                                                        <div class="package-stat">
-                                                                            <span class="stat-label">
-                                                                                Last Seen            
-                                                                            </span>
-                                                                            <div class="stat-value">
-                                                                                ' . Contact::getDateAsString($contact->getLast_seen()) . '
+                                                                                <select name="status">';
+                                                                                if ($contact->getStatus() == 0) {
+                                                                                    echo '<option value="0" selected>Family</option>';
+                                                                                } else {
+                                                                                    echo '<option value="0">Family</option>';
+                                                                                }
+                                                                                if ($contact->getStatus() == 1) {
+                                                                                    echo '<option value="1" selected>Friend</option>';
+                                                                                } else {
+                                                                                    echo '<option value="1">Friend</option>';
+                                                                                }
+                                                                                echo '</select>
                                                                             </div>
                                                                         </div>
                                                                     </li>
