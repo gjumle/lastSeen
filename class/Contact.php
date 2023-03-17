@@ -281,8 +281,8 @@ class Contact {
                                                                             <div class="stat-value">
                                                                                 <select name="status">
                                                                                     <option value="">Select Status</option>
-                                                                                    <option value="0">Family</option>
-                                                                                    <option value="1">Friend</option>
+                                                                                    <option value="1">Family</option>
+                                                                                    <option value="0">Friend</option>
                                                                                 </select>
                                                                             </div>
                                                                         </div>
@@ -377,14 +377,14 @@ class Contact {
                                                                             <div class="stat-value">
                                                                                 <select name="status">';
                                                                                 if ($contact->getStatus() == 0) {
-                                                                                    echo '<option value="0" selected>Family</option>';
+                                                                                    echo '<option value="1" selected>Family</option>';
                                                                                 } else {
-                                                                                    echo '<option value="0">Family</option>';
+                                                                                    echo '<option value="1">Family</option>';
                                                                                 }
                                                                                 if ($contact->getStatus() == 1) {
-                                                                                    echo '<option value="1" selected>Friend</option>';
+                                                                                    echo '<option value="0" selected>Friend</option>';
                                                                                 } else {
-                                                                                    echo '<option value="1">Friend</option>';
+                                                                                    echo '<option value="0">Friend</option>';
                                                                                 }
                                                                                 echo '</select>
                                                                             </div>
