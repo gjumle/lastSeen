@@ -43,3 +43,31 @@ CREATE TABLE meetings (
     FOREIGN KEY (user_id) REFERENCES users(uid),
     FOREIGN KEY (contact_id) REFERENCES contacts(cid)
 ) DEFAULT CHARACTER SET utf8;
+
+DELIMITER $$
+CREATE TRIGGER t_contact_duration_insert
+AFTER INSERT ON meetings
+FOR EACH ROW
+BEGIN
+    DECLARE total_duration INT;
+    DECLARE last_meeting datetime;
+    SELECT SUM(TIMESTAMPDIFF(MINUTE,start_time,end_time)) INTO total_duration FROM meetings WHERE contact_id = NEW.contact_id;
+    SELECT MAX(end_time) INTO last_meeting FROM meetings WHERE contact_id = NEW.contact_id;
+    UPDATE contacts SET duration_seen = total_duration, last_seen = last_meeting WHERE cid = NEW.contact_id;
+END $$
+DELIMITER ;
+
+DELIMITER $$
+CREATE TRIGGER t_contact_duration_update
+AFTER UPDATE ON meetings
+FOR EACH ROW
+BEGIN
+    DECLARE total_duration INT;
+    DECLARE last_meeting datetime;
+    SELECT SUM(TIMESTAMPDIFF(MINUTE,start_time,end_time)) INTO total_duration FROM meetings WHERE contact_id = NEW.contact_id;
+    SELECT MAX(end_time) INTO last_meeting FROM meetings WHERE contact_id = NEW.contact_id;
+    UPDATE contacts SET duration_seen = total_duration, last_seen = last_meeting WHERE cid = NEW.contact_id;
+END $$
+DELIMITER ;
+
+
