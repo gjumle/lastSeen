@@ -145,14 +145,26 @@ class Contact {
             header("Location: ./contacts.php");
         }
         if (isset($_POST['save'])) {
-            $contact = Contact::getContact($_GET['save']);
+            if (isset($_GET['edit']) && !empty($_GET['edit'])) {
+                $contact = Contact::getContact($_GET['edit']);
+                $contact->setF_name($_POST['f_name']);
+                $contact->setL_name($_POST['l_name']);
+                $contact->setStatus($_POST['status']);
+                $contact->setEmail($_POST['email']);
 
-            $contact->setF_name($_POST['f_name']);
-            $contact->setL_name($_POST['l_name']);
-            $contact->setEmail($_POST['email']);
+                $contact->saveToDB();
+            } else {
+                $contact = new Contact();
+                $contact->setUser_id($_COOKIE['uid']);
+                $contact->setF_name($_POST['f_name']);
+                $contact->setL_name($_POST['l_name']);
+                $contact->setStatus($_POST['status']);
+                $contact->setEmail($_POST['email']);
 
-            $contact->saveToDB();
-            header('Location: ./contacts.php');
+                $contact->insertToDB();
+            }
+
+            //header('Location: ./contacts.php');
         }
         if (isset($_GET['cancel'])) {
             header("Location: ./contacts.php");
@@ -194,7 +206,7 @@ class Contact {
 
     public static function getContact($cid) {
         $pdo = DB::connectPDO();
-        $sql = "SELECT * FROM contact WHERE cid = ?";
+        $sql = "SELECT * FROM contacts WHERE cid = ?";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$cid]);
         $row = $stmt->fetch();
@@ -234,7 +246,7 @@ class Contact {
                                                 <div class="feed-ui-media-right">
                                                     <div class="feed-ui-media-right-components">
                                                        <div class="feed-ui-media-right-component">
-                                                            <a href="?save=' . $contact->getCid() . '" class="btn btn-primary btn-delete" type="submit" name="save">Save</a>
+                                                           <input type="submit" class="btn btn-primary btn-delete" type="submit" name="save" value="Save">
                                                         </div>
                                                         <div class="feed-ui-media-right-component">
                                                             <a href="?cancel=' . $contact->getCid() . '" class="btn btn-primary btn-edit" type="submit" name="cancel">Cancel</a>
@@ -330,7 +342,7 @@ class Contact {
                                                 <div class="feed-ui-media-right">
                                                     <div class="feed-ui-media-right-components">
                                                        <div class="feed-ui-media-right-component">
-                                                            <a href="?save=' . $contact->getCid() . '" class="btn btn-primary btn-delete" type="submit" name="save">Save</a>
+                                                            <input type="submit" class="btn btn-primary btn-delete" type="submit" name="save" value="Save">
                                                         </div>
                                                         <div class="feed-ui-media-right-component">
                                                             <a href="?cancel=' . $contact->getCid() . '" class="btn btn-primary btn-edit" type="submit" name="cancel">Cancel</a>
