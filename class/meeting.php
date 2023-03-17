@@ -347,9 +347,12 @@ class Meeting {
                                     </div>
                                     <div class="feed-ui-media-body">
                                         <div class="feed-ui-media-body-header">
-                                            <a href="#">' . (Meeting::getContactName($meeting->getContact_id())) ? Meeting::getContactName($meeting->getContact_id()) :
-                                                '<select name="contact_id" class="form-control">
+                                            <a href="#">
+                                                <select name="contact_id" class="form-control">
                                                     <option value="0">Select Contact</option>';
+                                                    if (Meeting::getContactName($meeting->getContact_id())) {
+                                                        echo '<option value="' . $meeting->getContact_id() . '" selected>' . Meeting::getContactName($meeting->getContact_id()) . '</option>';
+                                                    }
                                                     $contacts = Contact::getContacts($_COOKIE['uid']);
                                                     foreach ($contacts as $contact) {
                                                         echo '<option value="' . $contact->getCid() . '">' . $contact->getF_name() . ' ' . $contact->getL_name() . '</option>';
