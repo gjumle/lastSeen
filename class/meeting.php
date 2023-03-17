@@ -347,7 +347,15 @@ class Meeting {
                                     </div>
                                     <div class="feed-ui-media-body">
                                         <div class="feed-ui-media-body-header">
-                                            <a href="#">' . Meeting::getContactName($meeting->getContact_id()) . '</a>
+                                            <a href="#">' . (Meeting::getContactName($meeting->getContact_id())) ? Meeting::getContactName($meeting->getContact_id()) :
+                                                '<select name="contact_id" class="form-control">
+                                                    <option value="0">Select Contact</option>';
+                                                    $contacts = Contact::getContacts($_COOKIE['uid']);
+                                                    foreach ($contacts as $contact) {
+                                                        echo '<option value="' . $contact->getCid() . '">' . $contact->getF_name() . ' ' . $contact->getL_name() . '</option>';
+                                                    }
+                                                echo '</select>
+                                            </a>
                                         </div>
                                         <div class="feed-ui-media-body-subtitle-wrapper">
                                             <time class="timestamp text-medium" datetime="2023-02-24 00-15-30 UTC">' . Meeting::getDayTimeAsStringLong($meeting->getStart_time()) . '</time>
