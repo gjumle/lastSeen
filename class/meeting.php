@@ -161,6 +161,7 @@ class Meeting {
         if (isset($_POST['save'])) {
             if (isset($_GET['edit']) && !isset($_GET['save'])) {
                 $meeting = Meeting::getMeeting($_GET['save']);
+                $meeting->setContact_id($_POST['contact_id']);
                 $start_time = Meeting::dateTimeLocaltoDate($_POST['start_time']);
                 $end_time = Meeting::sumDateAndDurtation($start_time, $_POST['duration']);
                 $meeting->setStart_time($start_time);
@@ -170,6 +171,8 @@ class Meeting {
                 $meeting->saveToDB();
             } else {
                 $meeting = new Meeting();
+                $meeting->setUser_id($_COOKIE['uid']);
+                $meeting->setContact_id($_POST['contact_id']);
                 $start_time = Meeting::dateTimeLocaltoDate($_POST['start_time']);
                 $end_time = Meeting::sumDateAndDurtation($start_time, $_POST['duration']);
                 $meeting->setStart_time($start_time);
@@ -178,7 +181,7 @@ class Meeting {
                 $meeting->setDescription($_POST['description']);
                 $meeting->insertToDB();
             }
-            
+
             header('Location: ./dashboard.php');
         }
         if (isset($_GET['cancel'])) {
@@ -267,7 +270,7 @@ class Meeting {
                                     <div class="feed-ui-media-right">
                                         <div class="feed-ui-media-right-components">
                                             <div class="feed-ui-media-right-component">
-                                                <a href="?save=' . $meeting->getMid() . '" class="btn btn-primary btn-delete" type="submit" name="save">Save</a>
+                                                <input type="submit" class="btn btn-primary btn-delete" name="save" value="Save">
                                             </div>
                                             <div class="feed-ui-media-right-component">
                                                 <a href="?cancel=' . $meeting->getMid() . '" class="btn btn-primary btn-edit" type="submit" name="cancel">Cancel</a>
