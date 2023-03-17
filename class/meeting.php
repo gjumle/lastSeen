@@ -159,15 +159,26 @@ class Meeting {
             header("Location: ./dashboard.php");
         }
         if (isset($_POST['save'])) {
-            $meeting = Meeting::getMeeting($_GET['save']);
-            $start_time = Meeting::dateTimeLocaltoDate($_POST['start_time']);
-            $end_time = Meeting::sumDateAndDurtation($start_time, $_POST['duration']);
-
-            $meeting->setStart_time($start_time);
-            $meeting->setEnd_time($end_time);
-            $meeting->setLocation($_POST['location']);
-            $meeting->setDescription($_POST['description']);
-            $meeting->saveToDB();
+            if (isset($_GET['edit']) && !isset($_GET['save'])) {
+                $meeting = Meeting::getMeeting($_GET['save']);
+                $start_time = Meeting::dateTimeLocaltoDate($_POST['start_time']);
+                $end_time = Meeting::sumDateAndDurtation($start_time, $_POST['duration']);
+                $meeting->setStart_time($start_time);
+                $meeting->setEnd_time($end_time);
+                $meeting->setLocation($_POST['location']);
+                $meeting->setDescription($_POST['description']);
+                $meeting->saveToDB();
+            } else {
+                $meeting = new Meeting();
+                $start_time = Meeting::dateTimeLocaltoDate($_POST['start_time']);
+                $end_time = Meeting::sumDateAndDurtation($start_time, $_POST['duration']);
+                $meeting->setStart_time($start_time);
+                $meeting->setEnd_time($end_time);
+                $meeting->setLocation($_POST['location']);
+                $meeting->setDescription($_POST['description']);
+                $meeting->insertToDB();
+            }
+            
             header('Location: ./dashboard.php');
         }
         if (isset($_GET['cancel'])) {
