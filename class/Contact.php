@@ -416,7 +416,7 @@ class Contact {
                 </div>';
             } else {
             echo '<div id="dashboard-feed" class="main col-lg-6 col-md-8">
-                    <div class="feed-container">
+                    <div class="feed-container" id="' . $contact->getCid() . '">
                         <div class="content">
                             <main id="main" class="feed-mfe">
                                 <div class="package-feed-ui">
@@ -443,7 +443,7 @@ class Contact {
                                                 <div class="feed-ui-media-right">
                                                     <div class="feed-ui-media-right-components">
                                                         <div class="feed-ui-media-right-component">
-                                                            <a href="?edit=' . $contact->getCid() . '" class="btn btn-primary btn-edit" type="submit" name="logout">Edit</a>
+                                                            <a href="?edit=' . $contact->getCid() . '&#' . $contact->getCid() . '" class="btn btn-primary btn-edit" type="submit" name="logout">Edit</a>
                                                         </div>
                                                         <div class="feed-ui-media-right-component">
                                                             <a href="?delete=' . $contact->getCid() . '" class="btn btn-primary btn-delete" type="submit" name="logout">Delete</a>
