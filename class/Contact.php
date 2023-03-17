@@ -317,7 +317,7 @@ class Contact {
             if (isset($_GET['edit']) && $_GET['edit'] == $contact->getCid()) {
                 echo
                 '<div id="dashboard-feed" class="main col-lg-6 col-md-8">
-                    <div class="feed-container">
+                    <div class="feed-container" id="' . $contact->getCid() . '">
                         <div class="content">
                             <main id="main" class="feed-mfe">
                                 <div class="package-feed-ui">
@@ -376,12 +376,12 @@ class Contact {
                                                                             </span>
                                                                             <div class="stat-value">
                                                                                 <select name="status">';
-                                                                                if ($contact->getStatus() == 0) {
+                                                                                if ($contact->status == 1) {
                                                                                     echo '<option value="1" selected>Family</option>';
                                                                                 } else {
                                                                                     echo '<option value="1">Family</option>';
                                                                                 }
-                                                                                if ($contact->getStatus() == 1) {
+                                                                                if ($contact->status == 0) {
                                                                                     echo '<option value="0" selected>Friend</option>';
                                                                                 } else {
                                                                                     echo '<option value="0">Friend</option>';
