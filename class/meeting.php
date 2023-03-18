@@ -159,8 +159,8 @@ class Meeting {
             header("Location: ./dashboard.php");
         }
         if (isset($_POST['save'])) {
-            if (isset($_GET['edit']) && !isset($_GET['save'])) {
-                $meeting = Meeting::getMeeting($_GET['save']);
+            if (isset($_GET['edit']) && !isset($_GET['edit'])) {
+                $meeting = Meeting::getMeeting($_GET['edit']);
                 $meeting->setContact_id($_POST['contact_id']);
                 $start_time = Meeting::dateTimeLocaltoDate($_POST['start_time']);
                 $end_time = Meeting::sumDateAndDurtation($start_time, $_POST['duration']);
@@ -168,6 +168,7 @@ class Meeting {
                 $meeting->setEnd_time($end_time);
                 $meeting->setLocation($_POST['location']);
                 $meeting->setDescription($_POST['description']);
+                
                 $meeting->saveToDB();
             } else {
                 $meeting = new Meeting();
@@ -381,7 +382,7 @@ class Meeting {
                                     <div class="feed-ui-media-right">
                                         <div class="feed-ui-media-right-components">
                                             <div class="feed-ui-media-right-component">
-                                                <a href="?save=' . $meeting->getMid() . '" class="btn btn-primary btn-delete" type="submit" name="save">Save</a>
+                                                <input type="submit" class="btn btn-primary btn-delete" type="submit" name="save" value="Save">
                                             </div>
                                             <div class="feed-ui-media-right-component">
                                                 <a href="?cancel=' . $meeting->getMid() . '" class="btn btn-primary btn-edit" type="submit" name="cancel">Cancel</a>

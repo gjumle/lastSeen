@@ -10,6 +10,7 @@ class DB {
         $dsn = "mysql:host=".self::$host.";dbname=".self::$dbname;
         $pdo = new PDO($dsn, self::$username, self::$password);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $pdo->setAttribute(PDO::MYSQL_ATTR_INIT_COMMAND, "SET NAMES utf8");
         return $pdo;
     }
 }
