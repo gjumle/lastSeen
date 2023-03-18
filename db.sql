@@ -49,39 +49,91 @@ CREATE TRIGGER t_meeting_insert
 AFTER INSERT ON meetings
 FOR EACH ROW
 BEGIN
-    DECLARE total_duration TIME;
-    DECLARE last_meeting datetime;
-    SELECT COUNT(*) INTO @count FROM meetings WHERE contact_id = NEW.contact_id;
-    SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(end_time, start_time)))) INTO total_duration FROM meetings WHERE contact_id = NEW.contact_id;
-    SELECT MAX(end_time) INTO last_meeting FROM meetings WHERE contact_id = NEW.contact_id;
-    UPDATE contacts SET duration_seen = TIME_FORMAT(total_duration, '%i:%s'), last_seen = last_meeting, count_seen = @count WHERE cid = NEW.contact_id;
-END $$
+  DECLARE total_duration TIME;
+  DECLARE total_minutes INT;
+  DECLARE last_time_seen DATETIME;
+  DECLARE total_count_seen INT;
+
+  SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(end_time, start_time)))) INTO total_duration
+  FROM meetings
+  WHERE contact_id = NEW.contact_id;
+
+  SELECT TIMESTAMPDIFF(MINUTE, '2000-01-01', total_duration) INTO total_minutes;
+
+  SELECT MAX(end_time) INTO last_time_seen
+  FROM meetings
+  WHERE contact_id = NEW.contact_id;
+
+  SELECT COUNT(*) INTO total_count_seen
+  FROM meetings
+  WHERE contact_id = NEW.contact_id;
+
+  UPDATE contacts
+  SET duration_seen = total_minutes,
+      last_seen = last_time_seen,
+      count_seen = total_count_seen
+  WHERE cid = NEW.contact_id;
+END;
+
+DELIMITER $$
+CREATE TRIGGER insert_meeting_trigger
+AFTER INSERT ON meetings
+FOR EACH ROW
+BEGIN
+    UPDATE contacts
+    SET count_seen = count_seen + 1,
+        last_seen = NEW.end_time,
+        duration_seen = TIMESTAMPDIFF(MINUTE, start_time, end_time) + duration_seen
+    WHERE cid = NEW.contact_id;
+END$$
 DELIMITER ;
 
 DELIMITER $$
-CREATE TRIGGER t_meeting_update
+CREATE TRIGGER update_meeting_trigger
 AFTER UPDATE ON meetings
 FOR EACH ROW
 BEGIN
-    DECLARE total_duration TIME;
-    DECLARE last_meeting datetime;
-    SELECT COUNT(*) INTO @count FROM meetings WHERE contact_id = NEW.contact_id;
-    SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(end_time, start_time)))) INTO total_duration FROM meetings WHERE contact_id = NEW.contact_id;
-    SELECT MAX(end_time) INTO last_meeting FROM meetings WHERE contact_id = NEW.contact_id;
-    UPDATE contacts SET duration_seen = TIME_FORMAT(total_duration, '%i:%s'), last_seen = last_meeting, count_seen = @count WHERE cid = NEW.contact_id;
-END $$
+    UPDATE contacts
+    SET duration_seen = duration_seen - TIMESTAMPDIFF(MINUTE, old.start_time, old.end_time) + TIMESTAMPDIFF(MINUTE, new.start_time, new.end_time)
+    WHERE cid = NEW.contact_id;
+    
+    IF NOT (OLD.contact_id <=> NEW.contact_id) THEN
+        UPDATE contacts
+        SET count_seen = count_seen + 1,
+            last_seen = NEW.end_time
+        WHERE cid = NEW.contact_id;
+        
+        UPDATE contacts
+        SET count_seen = count_seen - 1
+        WHERE cid = OLD.contact_id;
+    ELSEIF NOT (OLD.end_time <=> NEW.end_time) THEN
+        UPDATE contacts
+        SET last_seen = NEW.end_time
+        WHERE cid = NEW.contact_id;
+    END IF;
+END$$
 DELIMITER ;
 
 DELIMITER $$
-CREATE TRIGGER t_meeting_delete
+CREATE TRIGGER delete_meeting_trigger
 AFTER DELETE ON meetings
 FOR EACH ROW
 BEGIN
-    DECLARE total_duration TIME;
-    DECLARE last_meeting datetime;
-    SELECT COUNT(*) INTO @count FROM meetings WHERE contact_id = OLD.contact_id;
-    SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(end_time, start_time)))) INTO total_duration FROM meetings WHERE contact_id = OLD.contact_id;
-    SELECT MAX(end_time) INTO last_meeting FROM meetings WHERE contact_id = OLD.contact_id;
-    UPDATE contacts SET duration_seen = TIME_FORMAT(total_duration, '%i:%s'), last_seen = last_meeting, count_seen = @count WHERE cid = OLD.contact_id;
-END $$
+    UPDATE contacts
+    SET count_seen = count_seen - 1,
+        duration_seen = duration_seen - TIMESTAMPDIFF(MINUTE, old.start_time, old.end_time)
+    WHERE cid = OLD.contact_id;
+    
+    IF NOT EXISTS (SELECT * FROM meetings WHERE contact_id = OLD.contact_id) THEN
+        UPDATE contacts
+        SET last_seen = NULL,
+            duration_seen = 0,
+            count_seen = 0
+        WHERE cid = OLD.contact_id;
+    ELSEIF NOT (SELECT MAX(end_time) FROM meetings WHERE contact_id = OLD.contact_id) <=> OLD.end_time THEN
+        UPDATE contacts
+        SET last_seen = (SELECT MAX(end_time) FROM meetings WHERE contact_id = OLD.contact_id)
+        WHERE cid = OLD.contact_id;
+    END IF;
+END$$
 DELIMITER ;
