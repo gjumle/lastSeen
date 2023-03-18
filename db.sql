@@ -45,29 +45,43 @@ CREATE TABLE meetings (
 ) DEFAULT CHARACTER SET utf8;
 
 DELIMITER $$
-CREATE TRIGGER t_contact_duration_insert
+CREATE TRIGGER t_meeting_insert
 AFTER INSERT ON meetings
 FOR EACH ROW
 BEGIN
-    DECLARE total_duration INT;
+    DECLARE total_duration TIME;
     DECLARE last_meeting datetime;
-    SELECT SUM(TIMESTAMPDIFF(MINUTE,start_time,end_time)) INTO total_duration FROM meetings WHERE contact_id = NEW.contact_id;
+    SELECT COUNT(*) INTO @count FROM meetings WHERE contact_id = NEW.contact_id;
+    SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(end_time, start_time)))) INTO total_duration FROM meetings WHERE contact_id = NEW.contact_id;
     SELECT MAX(end_time) INTO last_meeting FROM meetings WHERE contact_id = NEW.contact_id;
-    UPDATE contacts SET duration_seen = total_duration, last_seen = last_meeting WHERE cid = NEW.contact_id;
+    UPDATE contacts SET duration_seen = TIME_FORMAT(total_duration, '%i:%s'), last_seen = last_meeting, count_seen = @count WHERE cid = NEW.contact_id;
 END $$
 DELIMITER ;
 
 DELIMITER $$
-CREATE TRIGGER t_contact_duration_update
+CREATE TRIGGER t_meeting_update
 AFTER UPDATE ON meetings
 FOR EACH ROW
 BEGIN
-    DECLARE total_duration INT;
+    DECLARE total_duration TIME;
     DECLARE last_meeting datetime;
-    SELECT SUM(TIMESTAMPDIFF(MINUTE,start_time,end_time)) INTO total_duration FROM meetings WHERE contact_id = NEW.contact_id;
+    SELECT COUNT(*) INTO @count FROM meetings WHERE contact_id = NEW.contact_id;
+    SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(end_time, start_time)))) INTO total_duration FROM meetings WHERE contact_id = NEW.contact_id;
     SELECT MAX(end_time) INTO last_meeting FROM meetings WHERE contact_id = NEW.contact_id;
-    UPDATE contacts SET duration_seen = total_duration, last_seen = last_meeting WHERE cid = NEW.contact_id;
+    UPDATE contacts SET duration_seen = TIME_FORMAT(total_duration, '%i:%s'), last_seen = last_meeting, count_seen = @count WHERE cid = NEW.contact_id;
 END $$
 DELIMITER ;
 
-
+DELIMITER $$
+CREATE TRIGGER t_meeting_delete
+AFTER DELETE ON meetings
+FOR EACH ROW
+BEGIN
+    DECLARE total_duration TIME;
+    DECLARE last_meeting datetime;
+    SELECT COUNT(*) INTO @count FROM meetings WHERE contact_id = OLD.contact_id;
+    SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(end_time, start_time)))) INTO total_duration FROM meetings WHERE contact_id = OLD.contact_id;
+    SELECT MAX(end_time) INTO last_meeting FROM meetings WHERE contact_id = OLD.contact_id;
+    UPDATE contacts SET duration_seen = TIME_FORMAT(total_duration, '%i:%s'), last_seen = last_meeting, count_seen = @count WHERE cid = OLD.contact_id;
+END $$
+DELIMITER ;
