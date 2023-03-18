@@ -87,9 +87,7 @@ BEGIN
         duration_seen = TIMESTAMPDIFF(MINUTE, start_time, end_time) + duration_seen
     WHERE cid = NEW.contact_id;
 END$$
-DELIMITER ;
 
-DELIMITER $$
 CREATE TRIGGER update_meeting_trigger
 AFTER UPDATE ON meetings
 FOR EACH ROW
@@ -113,7 +111,6 @@ BEGIN
         WHERE cid = NEW.contact_id;
     END IF;
 END$$
-DELIMITER ;
 
 CREATE TRIGGER delete_meeting_trigger
 AFTER DELETE ON meetings
@@ -139,6 +136,7 @@ BEGIN
 
   UPDATE contacts SET duration_seen = 0 WHERE duration_seen < 0;
   UPDATE contacts SET count_seen = 0 WHERE count_seen < 0;
+  UPDATE contacts SET last_seen = 0 WHERE last_seen < 0;
 END$$
 
 DELIMITER ;
