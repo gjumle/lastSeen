@@ -76,6 +76,7 @@ BEGIN
 END;
 
 DELIMITER $$
+
 CREATE TRIGGER insert_meeting_trigger
 AFTER INSERT ON meetings
 FOR EACH ROW
@@ -114,26 +115,31 @@ BEGIN
 END$$
 DELIMITER ;
 
-DELIMITER $$
 CREATE TRIGGER delete_meeting_trigger
 AFTER DELETE ON meetings
 FOR EACH ROW
 BEGIN
-    UPDATE contacts
-    SET count_seen = count_seen - 1,
-        duration_seen = duration_seen - TIMESTAMPDIFF(MINUTE, old.start_time, old.end_time)
-    WHERE cid = OLD.contact_id;
-    
-    IF NOT EXISTS (SELECT * FROM meetings WHERE contact_id = OLD.contact_id) THEN
-        UPDATE contacts
-        SET last_seen = NULL,
-            duration_seen = 0,
-            count_seen = 0
-        WHERE cid = OLD.contact_id;
-    ELSEIF NOT (SELECT MAX(end_time) FROM meetings WHERE contact_id = OLD.contact_id) <=> OLD.end_time THEN
-        UPDATE contacts
-        SET last_seen = (SELECT MAX(end_time) FROM meetings WHERE contact_id = OLD.contact_id)
-        WHERE cid = OLD.contact_id;
-    END IF;
+  UPDATE contacts SET duration_seen = (
+    SELECT COALESCE(SUM(TIME_TO_SEC(TIMEDIFF(end_time, start_time))) / 60, 0) AS duration
+    FROM meetings
+    WHERE contact_id = OLD.contact_id
+  ) WHERE cid = OLD.contact_id;
+  
+  UPDATE contacts SET count_seen = (
+    SELECT COUNT(*) AS count
+    FROM meetings
+    WHERE contact_id = OLD.contact_id
+  ) WHERE cid = OLD.contact_id;
+  
+  UPDATE contacts SET last_seen = (
+    SELECT MAX(end_time) AS last_time
+    FROM meetings
+    WHERE contact_id = OLD.contact_id
+  ) WHERE cid = OLD.contact_id;
+
+  UPDATE contacts SET duration_seen = 0 WHERE duration_seen < 0;
+  UPDATE contacts SET count_seen = 0 WHERE count_seen < 0;
 END$$
+
 DELIMITER ;
+
