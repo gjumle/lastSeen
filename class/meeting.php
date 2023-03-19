@@ -156,6 +156,12 @@ class Meeting {
             $meeting = new Meeting();
             $meeting->setMid($_GET['delete']);
             $meeting->deleteFromDB();
+
+            $contact = Contact::getContact($meeting->getContact_id());
+            $contact->setLast_seen(NULL);
+            $contact->setCount_seen($contact->getCount_seen() - 1);
+            $contact->saveToDB();
+            
             header("Location: ./dashboard.php");
         }
         if (isset($_POST['save'])) {
@@ -167,9 +173,14 @@ class Meeting {
                 $meeting->setStart_time($start_time);
                 $meeting->setEnd_time($end_time);
                 $meeting->setLocation($_POST['location']);
-                $meeting->setDescription($_POST['description']);
-                
+                $meeting->setDescription($_POST['description']);                
                 $meeting->saveToDB();
+
+                $contact = Contact::getContact($meeting->getContact_id());
+                $contact->setLast_seen($meeting->getStart_time());
+                $contact->setCount_seen($contact->getCount_seen() + 1);
+                $contact->saveToDB();
+
             } else {
                 $meeting = new Meeting();
                 $meeting->setUser_id($_COOKIE['uid']);
@@ -181,6 +192,11 @@ class Meeting {
                 $meeting->setLocation($_POST['location']);
                 $meeting->setDescription($_POST['description']);
                 $meeting->insertToDB();
+
+                $contact = Contact::getContact($meeting->getContact_id());
+                $contact->setLast_seen($meeting->getStart_time());
+                $contact->setCount_seen($contact->getCount_seen() + 1);
+                $contact->saveToDB();
             }
 
             header('Location: ./dashboard.php');
