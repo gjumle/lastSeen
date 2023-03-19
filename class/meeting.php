@@ -168,7 +168,7 @@ class Meeting {
             header("Location: ./dashboard.php");
         }
         if (isset($_POST['save'])) {
-            if (isset($_GET['edit']) && !isset($_GET['edit'])) {
+            if (isset($_GET['edit']) && !empty($_GET['edit'])) {
                 $meeting = Meeting::getMeeting($_GET['edit']);
                 $meeting->setContact_id($_POST['contact_id']);
                 $start_time = Meeting::dateTimeLocaltoDate($_POST['start_time']);
