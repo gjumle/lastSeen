@@ -159,7 +159,9 @@ class Meeting {
 
             $contact = Contact::getContact($meeting->getContact_id());
             $contact->setLast_seen(NULL);
-            $contact->setCount_seen($contact->getCount_seen() - 1);
+            if ($contact->getCount_seen() > 0) {
+                $contact->setCount_seen($contact->getCount_seen() - 1);
+            }
             $contact->saveToDB();
             
             header("Location: ./dashboard.php");
