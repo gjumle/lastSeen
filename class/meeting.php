@@ -153,15 +153,17 @@ class Meeting {
 
     public static function handleForm() {
         if (isset($_GET['delete'])) {
-            $meeting = new Meeting();
-            $meeting->setMid($_GET['delete']);
-            $meeting->deleteFromDB();
+            $meeting = Meeting::getMeeting($_GET['delete']);
 
             $contact = Contact::getContact($meeting->getContact_id());
             $contact->setLast_seen(NULL);
-            $contact->setCount_seen($contact->getCount_seen() - 1);
+            if ($contact->getCount_seen() > 0) {
+                $contact->setCount_seen($contact->getCount_seen() - 1);
+            }
             $contact->setDuration_seen($contact->getDuration_seen() - $meeting->getDuration_in_minutes($meeting->getStart_time(), $meeting->getEnd_time()));
             $contact->saveToDB();
+
+            $meeting->deleteFromDB();
             
             header("Location: ./dashboard.php");
         }
