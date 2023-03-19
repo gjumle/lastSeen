@@ -162,6 +162,7 @@ class Meeting {
             if ($contact->getCount_seen() > 0) {
                 $contact->setCount_seen($contact->getCount_seen() - 1);
             }
+            $contact->setDuration_seen($contact->getDuration_seen() - $meeting->getDuration_in_minutes($meeting->getStart_time(), $meeting->getEnd_time()));
             $contact->saveToDB();
             
             header("Location: ./dashboard.php");
@@ -180,7 +181,8 @@ class Meeting {
 
                 $contact = Contact::getContact($meeting->getContact_id());
                 $contact->setLast_seen($meeting->getStart_time());
-                $contact->setCount_seen($contact->getCount_seen() + 1);
+                $contact->setDuration_seen($contact->getDuration_seen() - $meeting->getDuration_in_minutes($meeting->getStart_time(), $meeting->getEnd_time()));
+                $contact->setDuration_seen($contact->getDuration_seen() + $meeting->getDuration_in_minutes($meeting->getStart_time(), $meeting->getEnd_time()));
                 $contact->saveToDB();
 
             } else {
@@ -198,6 +200,7 @@ class Meeting {
                 $contact = Contact::getContact($meeting->getContact_id());
                 $contact->setLast_seen($meeting->getStart_time());
                 $contact->setCount_seen($contact->getCount_seen() + 1);
+                $contact->setDuration_seen($contact->getDuration_seen() + $meeting->getDuration_in_minutes($meeting->getStart_time(), $meeting->getEnd_time()));
                 $contact->saveToDB();
             }
 
