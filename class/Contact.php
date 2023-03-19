@@ -102,11 +102,10 @@ class Contact {
         return $date->format('F d, Y');
     }
 
-    public static function getDurationFromNumber($duration) {
-        $hours = floor($duration / 3600);
-        $minutes = floor(($duration / 60) % 60);
-        $seconds = $duration % 60;
-        return $hours . "h " . $minutes . "m " . $seconds . "s";
+    public static function getDurationFromNumberOfMinutes($duration) {
+        $hours = floor($duration / 60);
+        $minutes = $duration % 60;
+        return $hours . "h " . $minutes . "m";
     }
 
     public static function getLastSeenContactTime($user_id) {
@@ -483,7 +482,7 @@ class Contact {
                                                                                 Duration Seen
                                                                             </span>
                                                                             <div class="stat-value">
-                                                                                ' . Contact::getDurationFromNumber($contact->getDuration_seen()) . '
+                                                                                ' . Contact::getDurationFromNumberOfMinutes($contact->getDuration_seen()) . '
                                                                             </div>
                                                                         </div>
                                                                     </li>
