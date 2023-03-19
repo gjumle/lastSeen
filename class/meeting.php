@@ -151,12 +151,21 @@ class Meeting {
         return $date_time_local;
     }
 
+    public static function getLastMeetingWithContact($contact_id) {
+        $pdo = DB::connectPDO();
+        $sql = "SELECT * FROM meetings WHERE contact_id = ? ORDER BY start_time DESC LIMIT 1";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$contact_id]);
+        $meeting = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $meeting;
+    }
+
     public static function handleForm() {
         if (isset($_GET['delete'])) {
             $meeting = Meeting::getMeeting($_GET['delete']);
 
             $contact = Contact::getContact($meeting->getContact_id());
-            $contact->setLast_seen(0);
+            $contact->setLast_seen(Meeting::getLastMeetingWithContact($meeting->getContact_id()));
             if ($contact->getCount_seen() > 0) {
                 $contact->setCount_seen($contact->getCount_seen() - 1);
             }
