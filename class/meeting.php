@@ -170,6 +170,7 @@ class Meeting {
         if (isset($_POST['save'])) {
             if (isset($_GET['edit']) && !empty($_GET['edit'])) {
                 $meeting = Meeting::getMeeting($_GET['edit']);
+                $oldMeeting = clone $meeting;
                 $meeting->setContact_id($_POST['contact_id']);
                 $start_time = Meeting::dateTimeLocaltoDate($_POST['start_time']);
                 $end_time = Meeting::sumDateAndDurtation($start_time, $_POST['duration']);
@@ -181,8 +182,7 @@ class Meeting {
 
                 $contact = Contact::getContact($meeting->getContact_id());
                 $contact->setLast_seen($meeting->getStart_time());
-                $contact->setDuration_seen($contact->getDuration_seen() - $meeting->getDuration_in_minutes($meeting->getStart_time(), $meeting->getEnd_time()));
-                $contact->setDuration_seen($contact->getDuration_seen() + $meeting->getDuration_in_minutes($meeting->getStart_time(), $meeting->getEnd_time()));
+                $contact->setDuration_seen($contact->getDuration_seen() + $meeting->getDuration_in_minutes($meeting->getStart_time(), $meeting->getEnd_time()) - $oldMeeting->getDuration_in_minutes($oldMeeting->getStart_time(), $oldMeeting->getEnd_time()));
                 $contact->saveToDB();
 
             } else {
