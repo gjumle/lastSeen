@@ -156,7 +156,7 @@ class Meeting {
             $meeting = Meeting::getMeeting($_GET['delete']);
 
             $contact = Contact::getContact($meeting->getContact_id());
-            $contact->setLast_seen(NULL);
+            $contact->setLast_seen(0);
             if ($contact->getCount_seen() > 0) {
                 $contact->setCount_seen($contact->getCount_seen() - 1);
             }
