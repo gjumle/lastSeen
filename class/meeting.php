@@ -157,7 +157,7 @@ class Meeting {
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$contact_id]);
         $meeting = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $meeting->getStart_time();
+        return $meeting['start_time'];
     }
 
     public static function handleForm() {
