@@ -126,12 +126,16 @@ class User {
         $sql = "SELECT * FROM users" . $condition;
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$uid]);
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        return new User($row['uid'], $row['username'], $row['f_name'], $row['l_name'], $row['password'], $row['admin'], $row['email'], $row['timestamp']);
+        $users = [];
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $users[] = new User($row['uid'], $row['username'], $row['f_name'], $row['l_name'], $row['password'], $row['admin'], $row['email'], $row['timestamp']);
+        }
+        return $users;
     }
 
     public static function getUser($uid) {
-        return self::getUsers($uid);
+        $users = self::getUsers($uid);
+        return $users[0];
     }
 
     public static function getDateAsString($date) {
@@ -436,7 +440,8 @@ class User {
                     </div>
                 </div>';
             } else {
-                echo '<div id="dashboard-feed" class="main col-lg-6 col-md-8">
+                echo 
+                '<div id="dashboard-feed" class="main col-lg-6 col-md-8">
                     <div class="feed-container" id="' . $user->getUid() . '">
                         <div class="content">
                             <main id="main" class="feed-mfe">
