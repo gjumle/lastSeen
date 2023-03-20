@@ -99,13 +99,13 @@ User::logout();
                                             <li>
                                                 <a href="./contacts.php" class="stat">
                                                     <div class="stat-subtext">Contacts</div>
-                                                    <b class="stat-text"><?php echo User::getContactsCount() ?></b>
+                                                    <b class="stat-text"><?php echo User::getContactsCount($_COOKIE['uid']) ?></b>
                                                 </a>
                                             </li>
                                             <li>
                                                 <a href="#" class="stat">
                                                     <div class="stat-subtext">Meetings</div>
-                                                    <b class="stat-text"><?php echo Meeting::getMeetingsCount() ?></b>
+                                                    <b class="stat-text"><?php echo Meeting::getMeetingsCount($_COOKIE['uid']) ?></b>
                                                 </a>
                                             </li>
                                             <li>

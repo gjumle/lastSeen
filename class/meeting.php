@@ -75,11 +75,11 @@ class Meeting {
         $this->description = $description;
     }
 
-    public static function getMeetingsCount() {
+    public static function getMeetingsCount($uid) {
         $pdo = DB::connectPDO();
         $sql = "SELECT COUNT(*) FROM meetings WHERE user_id = ?";
         $stmt = $pdo->prepare($sql);
-        $stmt->execute([$_COOKIE['uid']]);
+        $stmt->execute([$uid]);
         $meetings_count = $stmt->fetchColumn();
         return $meetings_count;
     }

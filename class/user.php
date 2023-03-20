@@ -89,11 +89,11 @@ class User {
         $this->timestamp = $timestamp;
     }
 
-    public static function getContactsCount() {
+    public static function getContactsCount($uid) {
         $pdo = DB::connectPDO();
         $sql = "SELECT COUNT(*) FROM contacts WHERE user_id = ?";
         $stmt = $pdo->prepare($sql);
-        $stmt->execute([$_COOKIE['uid']]);
+        $stmt->execute([$uid]);
         $row = $stmt->fetch(PDO::FETCH_NUM);
         return $row[0];
     }
@@ -525,7 +525,7 @@ class User {
                                                                             Meetings
                                                                         </span>
                                                                         <div class="stat-value">
-                                                                            ' . Meeting::getMeetingsCount() . '
+                                                                            ' . Meeting::getMeetingsCount($user->getUid()) . '
                                                                         </div>
                                                                     </div>
                                                                 </li>
@@ -535,7 +535,7 @@ class User {
                                                                             Contacts            
                                                                         </span>
                                                                         <div class="stat-value">
-                                                                            ' . User::getContactsCount() . '
+                                                                            ' . User::getContactsCount($user->getUid()) . '
                                                                         </div>
                                                                     </div>
                                                                 </li>
