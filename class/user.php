@@ -120,12 +120,11 @@ class User {
         $stmt->execute([$this->username, $this->f_name, $this->l_name, $this->password, $this->admin, $this->email, $this->uid]);
     }
 
-    public static function getUsers($uid) {
-        $condition = ($uid) ? " WHERE uid = ?" : "";
+    public static function getUsers() {
         $pdo = DB::connectPDO();
-        $sql = "SELECT * FROM users" . $condition;
+        $sql = "SELECT * FROM users";
         $stmt = $pdo->prepare($sql);
-        $stmt->execute([$uid]);
+        $stmt->execute();
         $users = [];
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $users[] = new User($row['uid'], $row['username'], $row['f_name'], $row['l_name'], $row['password'], $row['admin'], $row['email'], $row['timestamp']);
@@ -134,8 +133,12 @@ class User {
     }
 
     public static function getUser($uid) {
-        $users = self::getUsers($uid);
-        return $users[0];
+        $pdo = DB::connectPDO();
+        $sql = "SELECT * FROM users WHERE uid = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$uid]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return new User($row['uid'], $row['username'], $row['f_name'], $row['l_name'], $row['password'], $row['admin'], $row['email'], $row['timestamp']);
     }
 
     public static function getDateAsString($date) {
