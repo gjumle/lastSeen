@@ -149,7 +149,11 @@ class User {
 
             $user->deleteFromDB();
 
-            header("Location: ./admin.php");
+            if (isset($_COOKIE['admin']) && $_COOKIE['admin'] == 1) {
+                header("Location: ./admin.php");
+            } else {
+                header("Location: ./profile.php");
+            }
         }
         if (isset($_POST['save'])) {
             if (isset($_GET['edit']) && !empty($_GET['edit'])) {
@@ -157,7 +161,7 @@ class User {
                 $user->setUsername($_POST['username']);
                 $user->setF_name($_POST['f_name']);
                 $user->setL_name($_POST['l_name']);
-                if (isset($_POST['admin']) && isset($_COOKIE['admin']) && $_COOKIE['admin'] == 1) {
+                if (isset($_POST['status']) && isset($_COOKIE['admin']) && $_COOKIE['admin'] == 1) {
                     $user->setAdmin($_POST['status']);
                 }
                 $user->setPassword($_POST['password']);
@@ -171,7 +175,7 @@ class User {
                 $user->setUsername($_POST['username']);
                 $user->setF_name($_POST['f_name']);
                 $user->setL_name($_POST['l_name']);
-                if (isset($_POST['admin']) && isset($_COOKIE['admin']) && $_COOKIE['admin'] == 1) {
+                if (isset($_POST['status']) && isset($_COOKIE['admin']) && $_COOKIE['admin'] == 1) {
                     $user->setAdmin($_POST['status']);
                 }
                 $user->setPassword($_POST['password']);
@@ -181,10 +185,18 @@ class User {
                 $user->insertToDB();
             }
 
-            header('Location: ./admin.php');
+            if (isset($_COOKIE['admin']) && $_COOKIE['admin'] == 1) {
+                header("Location: ./admin.php");
+            } else {
+                header("Location: ./profile.php");
+            }
         }
         if (isset($_GET['cancel'])) {
-            header("Location: ./admin.php");
+            if (isset($_COOKIE['admin']) && $_COOKIE['admin'] == 1) {
+                header("Location: ./admin.php");
+            } else {
+                header("Location: ./profile.php");
+            }
         }
     }
 
@@ -403,7 +415,7 @@ class User {
                                                                             <select name="status">';
                                                                             if ($user->getAdmin == 1) {
                                                                                 echo '<option value="1" selected>Admin</option>';
-                                                                            } else {
+                                                                            } elseif ($_COOKIE['admin'] == 1) {
                                                                                 echo '<option value="1">Admin</option>';
                                                                             }
                                                                             if ($user->getAdmin == 0) {
