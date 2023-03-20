@@ -138,8 +138,7 @@ class Contact {
 
     public static function handleForm() {
         if (isset($_GET['delete'])) {
-            $contact = new Contact();
-            $contact->setCid($_GET['delete']);
+            $contact = Contact::getContact($_GET['delete']);
             $contact->deleteFromDB();
             header("Location: ./contacts.php");
         }

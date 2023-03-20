@@ -13,13 +13,6 @@ if (!isset($_COOKIE['logged_in'])) {
     header("Location: ./login.php");
 }
 
-if (isset($_GET['delete'])) {
-    $contact = new Contact();
-    $contact->setCid($_GET['delete']);
-    $contact->deleteFromDB();
-    header("Location: ./contacts.php");
-}
-
 Contact::handleForm();
 
 User::logout();
@@ -59,6 +52,13 @@ User::logout();
                         <li class="nav-item" data-log-category="dashboard" data-log-page="dashboard">
                             <a href="./profile.php" class="selection nav-link">Profile</a>
                         </li>
+                        <?php
+
+                        if (isset($_COOKIE['admin']) && $_COOKIE['admin'] == 1) {
+                            echo '<li class="nav-item" data-log-category="dashboard" data-log-page="dashboard">
+                            <a href="./admin.php" class="selection nav-link">Admin</a></li>';
+                        }
+                        ?>
                     </ul>
                     <ul class="user-nav nav-group">
                         <li class="nav-object-group">

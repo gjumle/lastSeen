@@ -13,7 +13,6 @@ if (!isset($_COOKIE['logged_in'])) {
     header("Location: ./login.php");
 }
 
-
 User::logout();
 
 ?>
@@ -51,6 +50,13 @@ User::logout();
                         <li class="nav-item selected" data-log-category="dashboard" data-log-page="dashboard">
                             <a href="./profile.php" class="selection nav-link">Profile</a>
                         </li>
+                        <?php
+
+                        if (isset($_COOKIE['admin']) && $_COOKIE['admin'] == 1) {
+                            echo '<li class="nav-item" data-log-category="dashboard" data-log-page="dashboard">
+                            <a href="./admin.php" class="selection nav-link">Admin</a></li>';
+                        }
+                        ?>
                     </ul>
                     <ul class="user-nav nav-group">
                         <li class="nav-object-group">
@@ -66,6 +72,7 @@ User::logout();
             </nav>
         </header>
         <div class="page container">
+            <!--
             <div class="profile-heading profile section">
                 <div class="avatar avatar-xl">
                     <div class="avatar-content">
@@ -98,7 +105,6 @@ User::logout();
                                     <div class="count-label">Total Minutes</div>
                                 </div>
                             </div>
-                            <!--
                             <div class="activity-calendar">
                                 <h3 class="vh">Calendar</h3>
                                 <table>
@@ -330,9 +336,14 @@ User::logout();
                                     </div>
                                 </figure>
                             </div>
-                            -->
                         </section>
                     </div>
+                </div>
+            </div>
+            -->
+            <div id="dashboard-feed" class="main col-lg-6 col-md-8">
+                <div class="feed-container">
+                    <?php echo User::renderUser($_COOKIE['uid']); ?>
                 </div>
             </div>
         </div>
