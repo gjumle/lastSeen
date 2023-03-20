@@ -74,7 +74,6 @@ User::logout();
             </nav>
         </header>
         <div class="page container">
-            <div class="row">
                 <!--
                 <div class="profile-heading profile section">
                     <div class="avatar avatar-xl">
@@ -344,8 +343,7 @@ User::logout();
                     </div>
                 </div>
                 -->
-                    <?php echo User::renderUser($_COOKIE['uid']); ?>
-                </div>
+                <?php echo User::renderUser($_COOKIE['uid']); ?>
             </div>
         </div>
     </div>
