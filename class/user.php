@@ -171,6 +171,9 @@ class User {
                 $user->setUsername($_POST['username']);
                 $user->setF_name($_POST['f_name']);
                 $user->setL_name($_POST['l_name']);
+                if (isset($_POST['admin']) && isset($_COOKIE['admin']) && $_COOKIE['admin'] == 1) {
+                    $user->setAdmin($_POST['status']);
+                }
                 $user->setPassword($_POST['password']);
                 $user->setAdmin($_POST['admin']);
                 $user->setEmail($_POST['email']);
