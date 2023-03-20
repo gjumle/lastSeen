@@ -121,7 +121,7 @@ class User {
     }
 
     public static function getUsers($uid) {
-        $condition = ($uid) ? "WHERE uid = ?" : "";
+        $condition = ($uid) ? " WHERE uid = ?" : "";
         $pdo = DB::connectPDO();
         $sql = "SELECT * FROM users" . $condition;
         $stmt = $pdo->prepare($sql);
@@ -335,10 +335,10 @@ class User {
         }
         $users = User::getUsers($uid);
         foreach ($users as $user) {
-            if (isset($_GET['edit']) && $_GET['edit'] == $user->getCid()) {
+            if (isset($_GET['edit']) && $_GET['edit'] == $user->getUid()) {
                 echo
                 '<div id="dashboard-feed" class="main col-lg-6 col-md-8">
-                    <div class="feed-container" id="' . $user->getCid() . '">
+                    <div class="feed-container" id="' . $user->getUid() . '">
                         <div class="content">
                             <main id="main" class="feed-mfe">
                                 <div class="package-feed-ui">
@@ -437,7 +437,7 @@ class User {
                 </div>';
             } else {
                 echo '<div id="dashboard-feed" class="main col-lg-6 col-md-8">
-                    <div class="feed-container" id="' . $user->getCid() . '">
+                    <div class="feed-container" id="' . $user->getUid() . '">
                         <div class="content">
                             <main id="main" class="feed-mfe">
                                 <div class="package-feed-ui">
