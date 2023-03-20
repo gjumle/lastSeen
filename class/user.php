@@ -157,6 +157,9 @@ class User {
                 $user->setUsername($_POST['username']);
                 $user->setF_name($_POST['f_name']);
                 $user->setL_name($_POST['l_name']);
+                if (isset($_POST['admin']) && isset($_COOKIE['admin']) && $_COOKIE['admin'] == 1) {
+                    $user->setAdmin($_POST['admin']);
+                }
                 $user->setPassword($_POST['password']);
                 $user->setAdmin($_POST['admin']);
                 $user->setEmail($_POST['email']);
@@ -304,8 +307,8 @@ class User {
                                                                     <div class="stat-value">
                                                                         <select name="status">
                                                                             <option value="">Select Status</option>
-                                                                            <option value="1">Family</option>
-                                                                            <option value="0">Friend</option>
+                                                                            <option value="1">Admin</option>
+                                                                            <option value="0">User</option>
                                                                         </select>
                                                                     </div>
                                                                 </div>
