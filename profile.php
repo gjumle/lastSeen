@@ -344,10 +344,7 @@ User::logout();
                     </div>
                 </div>
                 -->
-                <div id="dashboard-feed" class="main col-lg-6 col-md-8">
-                    <div class="feed-container">
-                        <?php echo User::renderUser($_COOKIE['uid']); ?>
-                    </div>
+                    <?php echo User::renderUser($_COOKIE['uid']); ?>
                 </div>
             </div>
         </div>
