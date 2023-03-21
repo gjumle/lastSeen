@@ -11,24 +11,6 @@ spl_autoload_register("autoloadModel");
 if (isset($_COOKIE['logged_in'])) {
     header("Location: ./dashboard.php");
 }
-if (isset($_POST['login'])) {
-    $email_username = $_POST['email_username'];
-    if (filter_var($_POST['email_username'], FILTER_VALIDATE_EMAIL)) {
-        $email = $_POST['email_username'];
-        $username = null;
-    } else {
-        $username = $_POST['email_username'];
-        $email = null;
-    }
-
-    $user = new User();
-    $user->setEmail($email);
-    $user->setUsername($username);
-    $password = $_POST['password'];
-    $user->setPassword($password);
-
-    echo $user->login();
-}
 
 ?>
 

@@ -141,6 +141,24 @@ class User {
         return new User($row['uid'], $row['username'], $row['f_name'], $row['l_name'], $row['password'], $row['admin'], $row['email'], $row['timestamp']);
     }
 
+    public static function getUserByEmail($email) {
+        $pdo = DB::connectPDO();
+        $sql = "SELECT * FROM users WHERE email = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$email]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return new User($row['uid'], $row['username'], $row['f_name'], $row['l_name'], $row['password'], $row['admin'], $row['email'], $row['timestamp']);
+    }
+
+    public static function getUserByUserName($username) {
+        $pdo = DB::connectPDO();
+        $sql = "SELECT * FROM users WHERE username = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$username]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return new User($row['uid'], $row['username'], $row['f_name'], $row['l_name'], $row['password'], $row['admin'], $row['email'], $row['timestamp']);
+    }
+
     public static function getDateAsString($date) {
         $date = new DateTime($date);
         return $date->format('d.m.Y');
@@ -195,6 +213,39 @@ class User {
             } else {
                 header("Location: ./profile.php");
             }
+        }
+        if (isset($_POST['login'])) {
+            if (filter_var($_POST['email_username'], FILTER_VALIDATE_EMAIL)) {
+                $email = $_POST['email_username'];
+                $username = null;
+            } else {
+                $username = $_POST['email_username'];
+                $email = null;
+            }
+
+            $user = new User();
+            $user->setEmail($email);
+            $user->setUsername($username);
+            $password = $_POST['password'];
+            $user->setPassword($password);
+
+            echo $user->login();
+        }
+        if (isset($POST['recover'])) {
+            if (filter_var($_POST['email_username'], FILTER_VALIDATE_EMAIL)) {
+                $email = $_POST['email_username'];
+                $username = null;
+                $user = User::getUserByEmail($email);
+            } else {
+                $username = $_POST['email_username'];
+                $email = null;
+                $user = User::getUserByUserName($username);
+            }
+
+            Email::recoverPassword($user);
+
+            header("Location: ./login.php");
+            
         }
     }
 
