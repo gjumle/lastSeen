@@ -244,6 +244,7 @@ class User {
             $user->setL_name($last_name);
             $user->setEmail($email);
             $user->setPassword(password_hash($password, PASSWORD_DEFAULT));
+            
             echo $user->register();
         }
         if (isset($POST['recover'])) {
