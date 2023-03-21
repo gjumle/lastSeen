@@ -50,23 +50,23 @@ class Email {
     }
 
     public static function recoverPassword($user) {
-        $to = $user['email'];
+        $to = $user->getEmail();
         $subject = "Password Recovery";
-        $message = "Hello " . $user['username'] . ",<br><br>";
+        $message = "Hello " . $user->getF_name() . ",<br><br>";
         $message .= "Your password is: " . $password = Email::generatePassword() . "<br>";
         $message .= "If you did not request a password recovery, please contact us at support@hodne.kvalitne.cz<br>";
         $message .= "Thank you for using our services.";
         $headers = "From: support@hodne.kvalitne.cz";
+        $headers .= "MIME-Version: 1.0" . "\r";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r";
+        $headers .= "X-Mailer: PHP/" . phpversion();
 
         $pdo = DB::connectPDO();
-        $stmt = $pdo->prepare("UPDATE users SET password = :password WHERE uid = :id");
-        $stmt->execute(array(
-            ":password" => password_hash($password, PASSWORD_DEFAULT),
-            ":id" => $user['id']
-        ));
-
+        $stmt = $pdo->prepare("UPDATE users SET password = ? WHERE id = :?");
+        $stmt->execute([$password, $user->getId()]);
 
         $email = new Email($to, $subject, $message, $headers);
+        var_dump($email);
         $email->send();
     }
 
