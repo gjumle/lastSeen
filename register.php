@@ -58,23 +58,23 @@ User::handleForm();
                 <form id="register-form" action="" class="website" method="post" accept-charset="UTF-8">
                     <fieldset class="mt-0 mb-0">
                         <div class="form-group">
-                            <input id="name" class="form-control" type="text" name="username" value="" placeholder="Your Username" autofocus="autofocus">
+                            <input id="name" class="form-control" type="text" name="username" value="" placeholder="Your Username" autofocus="autofocus" required>
                             <span id="username-error" class="error-message"></span>
                         </div>
                         <div class="form-group">
-                            <input id="name" class="form-control" type="text" name="first_name" value="" placeholder="Your First Name" autofocus="autofocus">
+                            <input id="name" class="form-control" type="text" name="first_name" value="" placeholder="Your First Name" autofocus="autofocus" required>
                             <span id="firs-name-error" class="error-message"></span>
                         </div>
                         <div class="form-group">
-                            <input id="name" class="form-control" type="text" name="last_name" value="" placeholder="Your Last Name" autofocus="autofocus">
+                            <input id="name" class="form-control" type="text" name="last_name" value="" placeholder="Your Last Name" autofocus="autofocus" required>
                             <span id="last-name-error" class="error-message"></span>
                         </div>
                         <div class="form-group">
-                            <input id="email" class="form-control" type="text" name="email" value="" placeholder="Your E-mail" autofocus="autofocus">
+                            <input id="email" class="form-control" type="text" name="email" value="" placeholder="Your E-mail" autofocus="autofocus" required>
                             <span id="email-error" class="error-message"></span>
                         </div>
                         <div class="form-group">
-                            <input id="password" class="form-control" type="password" name="password" value="" placeholder="Your Password" autofocus="autofocus">
+                            <input id="password" class="form-control" type="password" name="password" value="" placeholder="Your Password" autofocus="autofocus" required>
                             <span id="email-error" class="error-message"></span>
                         </div>
                         <button id="register-button" class="btn btn-primary" type="submit" name="register">Sign Up</button>

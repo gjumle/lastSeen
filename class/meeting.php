@@ -285,7 +285,7 @@ class Meeting {
                                     <div class="feed-ui-media-body">
                                         <div class="feed-ui-media-body-header">
                                             <a href="#">
-                                                <select name="contact_id" class="form-control">
+                                                <select name="contact_id" class="form-control" required>
                                                     <option value="0">Select Contact</option>';
                                                     $contacts = Contact::getContacts($_COOKIE['uid']);
                                                     foreach ($contacts as $contact) {
@@ -321,7 +321,7 @@ class Meeting {
                                     </div>
                                     <div class="feed-ui-media-body">
                                         <div class="feed-ui-media-body-activity">
-                                            <h3 class="feed-body-header"><input type="datetime-local" name="start_time" value="' . Meeting::getDayTimeAsString($meeting->getStart_time(), $meeting->getEnd_time()) . '"> Meeting</h3>
+                                            <h3 class="feed-body-header"><input type="datetime-local" name="start_time" value="' . Meeting::getDayTimeAsString($meeting->getStart_time(), $meeting->getEnd_time()) . '" required> Meeting</h3>
                                             <div class="feed-ui-media">
                                                 <div class="feed-ui-nmedia-body">
                                                     <ul class="feed-media-items">
@@ -331,7 +331,7 @@ class Meeting {
                                                                     Duration
                                                                 </span>
                                                                 <div class="stat-value">
-                                                                    <input type="number" name="duration" value="' . Meeting::getDuration_in_minutes($meeting->getStart_time(), $meeting->getEnd_time()) . '">
+                                                                    <input type="number" name="duration" value="' . Meeting::getDuration_in_minutes($meeting->getStart_time(), $meeting->getEnd_time()) . '" required>
                                                                     <abbr title="metrics" class="unit">min</abbr>
                                                                 </div>
                                                             </div>
@@ -342,7 +342,7 @@ class Meeting {
                                                                     Location
                                                                 </span>
                                                                 <div class="stat-value">
-                                                                    <input type="text" name="location" value="' . $meeting->getLocation() . '">
+                                                                    <input type="text" name="location" value="' . $meeting->getLocation() . '" required>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -352,7 +352,7 @@ class Meeting {
                                                                     Description
                                                                 </span>
                                                                 <div class="stat-value">
-                                                                    <input type="textarea" name="description" value="' . $meeting->getDescription() . '">
+                                                                    <input type="textarea" name="description" value="' . $meeting->getDescription() . '" required>
                                                                     </form>
                                                                 </div>
                                                             </div>
@@ -393,7 +393,7 @@ class Meeting {
                                     <div class="feed-ui-media-body">
                                         <div class="feed-ui-media-body-header">
                                             <a href="#">
-                                                <select name="contact_id" class="form-control">
+                                                <select name="contact_id" class="form-control" required>
                                                     <option value="0">Select Contact</option>';
                                                     if (Meeting::getContactName($meeting->getContact_id())) {
                                                         echo '<option value="' . $meeting->getContact_id() . '" selected>' . Meeting::getContactName($meeting->getContact_id()) . '</option>';
@@ -432,7 +432,7 @@ class Meeting {
                                     </div>
                                     <div class="feed-ui-media-body">
                                         <div class="feed-ui-media-body-activity">
-                                            <h3 class="feed-body-header"><input type="datetime-local" name="start_time" value="' . Meeting::getDayTimeAsString($meeting->getStart_time(), $meeting->getEnd_time()) . '"> Meeting</h3>
+                                            <h3 class="feed-body-header"><input type="datetime-local" name="start_time" value="' . Meeting::getDayTimeAsString($meeting->getStart_time(), $meeting->getEnd_time()) . '" required> Meeting</h3>
                                             <div class="feed-ui-media">
                                                 <div class="feed-ui-nmedia-body">
                                                     <ul class="feed-media-items">
@@ -442,7 +442,7 @@ class Meeting {
                                                                     Duration
                                                                 </span>
                                                                 <div class="stat-value">
-                                                                    <input type="number" name="duration" value="' . Meeting::getDuration_in_minutes($meeting->getStart_time(), $meeting->getEnd_time()) . '">
+                                                                    <input type="number" name="duration" value="' . Meeting::getDuration_in_minutes($meeting->getStart_time(), $meeting->getEnd_time()) . '" required>
                                                                     <abbr title="metrics" class="unit">min</abbr>
                                                                 </div>
                                                             </div>
@@ -453,7 +453,7 @@ class Meeting {
                                                                     Location
                                                                 </span>
                                                                 <div class="stat-value">
-                                                                    <input type="text" name="location" value="' . $meeting->getLocation() . '">
+                                                                    <input type="text" name="location" value="' . $meeting->getLocation() . '" required>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -463,7 +463,7 @@ class Meeting {
                                                                     Description
                                                                 </span>
                                                                 <div class="stat-value">
-                                                                    <input type="textarea" name="description" value="' . $meeting->getDescription() . '">
+                                                                    <input type="textarea" name="description" value="' . $meeting->getDescription() . '" required>
                                                                     </form>
                                                                 </div>
                                                             </div>

@@ -267,7 +267,7 @@ class Contact {
                                                 </div>
                                                 <div class="feed-ui-media-body">
                                                     <div class="feed-ui-media-body-activity">
-                                                        <h3 class="feed-body-header"><input type="text" name="f_name" value="' . $contact->getF_Name(), '" placeholder="First Name"> <input type="text" name="l_name" value="' . $contact->getL_Name() . '" placeholder="Last Name"></h3>
+                                                        <h3 class="feed-body-header"><input type="text" name="f_name" value="' . $contact->getF_Name(), '" placeholder="First Name" required> <input type="text" name="l_name" value="' . $contact->getL_Name() . '" placeholder="Last Name" required></h3>
                                                         <div class="feed-ui-media">
                                                             <div class="feed-ui-nmedia-body">
                                                                 <ul class="feed-media-items">
@@ -291,7 +291,7 @@ class Contact {
                                                                                 E-mail                 
                                                                             </span>
                                                                             <div class="stat-value">
-                                                                                <input type="email" name="email" value="' . $contact->getEmail() . '" placeholder="Email">
+                                                                                <input type="email" name="email" value="' . $contact->getEmail() . '" placeholder="Email" required>
                                                                             </div>
                                                                         </div>
                                                                     </li>
@@ -363,7 +363,7 @@ class Contact {
                                                 </div>
                                                 <div class="feed-ui-media-body">
                                                     <div class="feed-ui-media-body-activity">
-                                                        <h3 class="feed-body-header"><input type="text" name="f_name" value="' . $contact->getF_Name(), '"> <input type="text" name="l_name" value="' . $contact->getL_Name() . '"></h3>
+                                                        <h3 class="feed-body-header"><input type="text" name="f_name" value="' . $contact->getF_Name(), '" required> <input type="text" name="l_name" value="' . $contact->getL_Name() . '" required></h3>
                                                         <div class="feed-ui-media">
                                                             <div class="feed-ui-nmedia-body">
                                                                 <ul class="feed-media-items">
@@ -394,7 +394,7 @@ class Contact {
                                                                                 E-mail                 
                                                                             </span>
                                                                             <div class="stat-value">
-                                                                                <input type="email" name="email" value="' . $contact->getEmail() . '">
+                                                                                <input type="email" name="email" value="' . $contact->getEmail() . '" required>
                                                                             </div>
                                                                         </div>
                                                                     </li>

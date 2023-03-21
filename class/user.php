@@ -258,6 +258,8 @@ class User {
                 $user = User::getUserByUserName($username);
             }
 
+            var_dump($user);
+
             Email::recoverPassword($user);
 
             header("Location: ./login.php");
@@ -377,7 +379,7 @@ class User {
                                             </div>
                                             <div class="feed-ui-media-body">
                                                 <div class="feed-ui-media-body-activity">
-                                                    <h3 class="feed-body-header"><input type="text" name="f_name" value="' . $user->getF_Name(), '" placeholder="First Name"> <input type="text" name="l_name" value="' . $user->getL_Name() . '" placeholder="Last Name"></h3>
+                                                    <h3 class="feed-body-header"><input type="text" name="f_name" value="' . $user->getF_Name(), '" placeholder="First Name" required> <input type="text" name="l_name" value="' . $user->getL_Name() . '" placeholder="Last Name" required></h3>
                                                     <div class="feed-ui-media">
                                                         <div class="feed-ui-nmedia-body">
                                                             <ul class="feed-media-items">
@@ -401,7 +403,7 @@ class User {
                                                                             E-mail                 
                                                                         </span>
                                                                         <div class="stat-value">
-                                                                            <input type="email" name="email" value="' . $user->getEmail() . '" placeholder="Email">
+                                                                            <input type="email" name="email" value="' . $user->getEmail() . '" placeholder="Email" required>
                                                                         </div>
                                                                     </div>
                                                                 </li>
@@ -473,7 +475,7 @@ class User {
                                                 </div>
                                                 <div class="feed-ui-media-body">
                                                     <div class="feed-ui-media-body-activity">
-                                                        <h3 class="feed-body-header"><input type="text" name="f_name" value="' . $user->getF_Name(), '"> <input type="text" name="l_name" value="' . $user->getL_Name() . '"></h3>
+                                                        <h3 class="feed-body-header"><input type="text" name="f_name" value="' . $user->getF_Name(), '" required> <input type="text" name="l_name" value="' . $user->getL_Name() . '" required></h3>
                                                         <div class="feed-ui-media">
                                                             <div class="feed-ui-nmedia-body">
                                                                 <ul class="feed-media-items">
@@ -483,7 +485,7 @@ class User {
                                                                                 Type
                                                                             </span>
                                                                             <div class="stat-value">
-                                                                                <select name="status">';
+                                                                                <select name="status" required>';
                                                                                 if ($user->getAdmin() == 1) {
                                                                                     echo '<option value="1" selected>Admin</option>';
                                                                                 } elseif ($_COOKIE['admin'] == 1) {
@@ -504,7 +506,7 @@ class User {
                                                                                 E-mail                 
                                                                             </span>
                                                                             <div class="stat-value">
-                                                                                <input type="email" name="email" value="' . $user->getEmail() . '">
+                                                                                <input type="email" name="email" value="' . $user->getEmail() . '" required>
                                                                             </div>
                                                                         </div>
                                                                     </li>

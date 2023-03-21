@@ -57,7 +57,7 @@ User::logout();
                 <form id="login-form" action="" class="website" method="post" accept-charset="UTF-8">
                     <fieldset class="mt-0 mb-0">
                         <div class="form-group">
-                            <input id="email" class="form-control" type="text" name="email_username" value="" placeholder="Your Email or Username" autofocus="autofocus">
+                            <input id="email" class="form-control" type="text" name="email_username" value="" placeholder="Your Email or Username" autofocus="autofocus" required>
                             <span id="email-error" class="error-message"></span>
                         </div>
                         <button id="login-button" class="btn btn-primary" type="submit" name="recover">Recover Password</button>

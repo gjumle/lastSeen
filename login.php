@@ -1,6 +1,7 @@
 <?php
 
-function autoloadModel($className) {
+function autoloadModel($className)
+{
     $filename = "class/" . $className . ".php";
     if (is_readable($filename)) {
         require $filename;
@@ -57,11 +58,11 @@ User::handleForm();
                 <form id="login-form" action="" class="website" method="post" accept-charset="UTF-8">
                     <fieldset class="mt-0 mb-0">
                         <div class="form-group">
-                            <input id="email" class="form-control" type="text" name="email_username" value="" placeholder="Your Email or Username" autofocus="autofocus">
+                            <input id="email" class="form-control" type="text" name="email_username" value="" placeholder="Your Email or Username" autofocus="autofocus" required>
                             <span id="email-error" class="error-message"></span>
                         </div>
                         <div class="form-group">
-                            <input id="password" class="form-control" type="password" name="password" value="" placeholder="Your Password" autofocus="autofocus">
+                            <input id="password" class="form-control" type="password" name="password" value="" placeholder="Your Password" autofocus="autofocus" required>
                             <span id="password-error" class="error-message"></span>
                         </div>
                         <button id="login-button" class="btn btn-primary" type="submit" name="login">Log In</button>
