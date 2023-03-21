@@ -84,7 +84,7 @@ if (isset($_POST['login'])) {
                     </fieldset>
                     <div class="reset-password">
                         <b>
-                            <a id="forgot-password" href="./password_reset.php">Forgot Your Password?</a>
+                            <a id="forgot-password" href="./password_recovery.php">Forgot Your Password?</a>
                         </b>
                     </div>
                 </form>
