@@ -12,6 +12,8 @@ if (isset($_COOKIE['logged_in'])) {
     header("Location: ./dashboard.php");
 }
 
+User::handleForm();
+
 ?>
 
 <html>

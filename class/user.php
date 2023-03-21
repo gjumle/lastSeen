@@ -231,6 +231,21 @@ class User {
 
             echo $user->login();
         }
+        if (isset($_POST['register'])) {
+            $username = $_POST['username'];
+            $first_name = $_POST['first_name'];
+            $last_name = $_POST['last_name'];
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+
+            $user = new User();
+            $user->setUsername($username);
+            $user->setF_name($first_name);
+            $user->setL_name($last_name);
+            $user->setEmail($email);
+            $user->setPassword(password_hash($password, PASSWORD_DEFAULT));
+            echo $user->register();
+        }
         if (isset($POST['recover'])) {
             if (filter_var($_POST['email_username'], FILTER_VALIDATE_EMAIL)) {
                 $email = $_POST['email_username'];
