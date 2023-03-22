@@ -242,13 +242,8 @@ class Meeting {
     }
 
     public static function getMeetings($user_id) {
-        if (isset($_POST['order-by'])) {
-            $condition = Meeting::getOrder($_POST['order-by']);
-        } else {
-            $condition = '';
-        }
         $pdo = DB::connectPDO();
-        $sql = "SELECT * FROM meetings WHERE user_id = ?" . $condition;
+        $sql = "SELECT * FROM meetings WHERE user_id = ?";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$user_id]);
         $meetings = [];
@@ -256,19 +251,6 @@ class Meeting {
             $meetings[] = new Meeting($row['mid'], $row['user_id'], $row['contact_id'], $row['start_time'], $row['end_time'], $row['location'], $row['description']);
         }
         return $meetings;
-    }
-
-    public static function getOrder($order) {
-        switch ($order) {
-            case 'date':
-                return 'ORDER BY start_time DESC';
-            case 'duration':
-                return 'ORDER BY (end_time - start_time) DESC';
-            case 'contact':
-                return 'ORDER BY contact_id DESC';
-            default:
-                return '';
-        }
     }
 
     public static function getMeeting($mid) {
