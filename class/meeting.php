@@ -243,7 +243,7 @@ class Meeting {
 
     public static function getMeetings($user_id) {
         $pdo = DB::connectPDO();
-        $sql = "SELECT * FROM meetings WHERE user_id = ?";
+        $sql = "SELECT * FROM meetings WHERE user_id = ? ORDER BY start_time ASC";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$user_id]);
         $meetings = [];
@@ -255,7 +255,7 @@ class Meeting {
 
     public static function getMeeting($mid) {
         $pdo = DB::connectPDO();
-        $sql = "SELECT * FROM meetings WHERE mid = ?";
+        $sql = "SELECT * FROM meetings WHERE mid = ? ORDER BY start_time ASC";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$mid]);
         $row = $stmt->fetch();

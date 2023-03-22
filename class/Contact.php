@@ -195,7 +195,7 @@ class Contact {
 
     public static function getContacts($user_id) {
         $pdo = DB::connectPDO();
-        $sql = "SELECT * FROM contacts WHERE user_id = ?";
+        $sql = "SELECT * FROM contacts WHERE user_id = ? ORDER BY l_name ASC";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$user_id]);
         $contacts = [];
@@ -207,7 +207,7 @@ class Contact {
 
     public static function getContact($cid) {
         $pdo = DB::connectPDO();
-        $sql = "SELECT * FROM contacts WHERE cid = ?";
+        $sql = "SELECT * FROM contacts WHERE cid = ? ORDER BY l_name ASC";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$cid]);
         $row = $stmt->fetch();
