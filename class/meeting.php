@@ -242,8 +242,13 @@ class Meeting {
     }
 
     public static function getMeetings($user_id) {
+        if (isset($_POST['order-by'])) {
+            $condition = Meeting::getOrder($_POST['order-by']);
+        } else {
+            $condition = '';
+        }
         $pdo = DB::connectPDO();
-        $sql = "SELECT * FROM meetings WHERE user_id = ? ORDER BY start_time ASC";
+        $sql = "SELECT * FROM meetings WHERE user_id = ?" . $condition;
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$user_id]);
         $meetings = [];
@@ -253,9 +258,22 @@ class Meeting {
         return $meetings;
     }
 
+    public static function getOrder($order) {
+        switch ($order) {
+            case 'date':
+                return 'ORDER BY start_time DESC';
+            case 'duration':
+                return 'ORDER BY (end_time - start_time) DESC';
+            case 'contact':
+                return 'ORDER BY contact_id DESC';
+            default:
+                return '';
+        }
+    }
+
     public static function getMeeting($mid) {
         $pdo = DB::connectPDO();
-        $sql = "SELECT * FROM meetings WHERE mid = ? ORDER BY start_time ASC";
+        $sql = "SELECT * FROM meetings WHERE mid = ?";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$mid]);
         $row = $stmt->fetch();
@@ -371,7 +389,7 @@ class Meeting {
             </div>';
 
         }
-        $meetings = Meeting::getMeetings($_COOKIE['uid']);
+        $meetings = Meeting::getMeetings($_COOKIE['uid'], $_POST['order-by']);
         foreach ($meetings as $meeting) {
             if (isset($_GET['edit']) && $_GET['edit'] == $meeting->getMid()) {
                 echo '<div class="content">

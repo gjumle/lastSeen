@@ -173,6 +173,20 @@ User::logout();
                 </div>
                 <div id="dashboard-feed" class="main col-lg-6 col-md-8">
                     <div class="feed-container">
+                        <form method="post" action="" accept-charset="UTF-8" class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <input class="form-control" placeholder="Search" name="search" type="text" value="">
+                                </div>
+                                <select name="order-by" id="order-by" class="form-control">
+                                    <option value="date">Date</option>
+                                    <option value="duration">Duration</option>
+                                    <option value="contact">Contact</option>
+                                </select>
+                                <div class="col-md-12">
+                                    <input class="btn btn-primary btn-login" type="submit" name="order" value="Search">
+                                </div>
+                            </div>
                         <?php echo Meeting::renderMeetings(); ?>
                     </div>
                 </div>
