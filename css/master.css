@@ -1384,6 +1384,13 @@ dd {
     width: 16px;
 }
 
+.col-12 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
 @media (min-width: 768px) {
     .container {
         width: 752px;

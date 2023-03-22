@@ -47,6 +47,22 @@ if (isset($_COOKIE['logged_in'])) {
                     </div>
                 </nav>
             </header>
+            <div class="page container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="hero">
+                            <div class="hero-content">
+                                <h1 class="hero-title">lastSeen</h1>
+                                <p class="hero-subtitle">A simple way to keep track of your time with others.</p>
+                                <div class="hero-cta">
+                                    <a href="./register.php" class="btn btn-primary btn-signup">Join For Free</a>
+                                    <a href="./login.php" class="btn btn-primary btn-login">Login</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>
