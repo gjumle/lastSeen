@@ -63,7 +63,7 @@ User::logout();
                     <ul class="user-nav nav-group">
                         <li class="nav-object-group">
                             <div class="nav-item logged-out-nav">
-                                <a href="?add" class="btn btn-primary btn-login" type="sumbit" name="add">Add</a>
+                                <a href="?add" class="btn btn-primary btn-login" type="sumbit" name="add">Add Meeting</a>
                             </div>
                             <div class="nav-item logged-out-nav">
                                 <a href="?logout" class="btn btn-primary btn-signup" type="sumbit" name="logout">Logout</a>
