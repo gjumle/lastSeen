@@ -20,6 +20,7 @@ User::handleForm();
 <html>
 
 <head>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta lang="en">
@@ -58,15 +59,15 @@ User::handleForm();
                 <form id="register-form" action="" class="website" method="post" accept-charset="UTF-8">
                     <fieldset class="mt-0 mb-0">
                         <div class="form-group">
-                            <input id="name" class="form-control" type="text" name="username" value="" placeholder="Your Username" autofocus="autofocus" required>
+                            <input id="username" class="form-control" type="text" name="username" value="" placeholder="Your Username" autofocus="autofocus" required>
                             <span id="username-error" class="error-message"></span>
                         </div>
                         <div class="form-group">
-                            <input id="name" class="form-control" type="text" name="first_name" value="" placeholder="Your First Name" autofocus="autofocus" required>
+                            <input id="first-name" class="form-control" type="text" name="first_name" value="" placeholder="Your First Name" autofocus="autofocus" required>
                             <span id="firs-name-error" class="error-message"></span>
                         </div>
                         <div class="form-group">
-                            <input id="name" class="form-control" type="text" name="last_name" value="" placeholder="Your Last Name" autofocus="autofocus" required>
+                            <input id="last-name" class="form-control" type="text" name="last_name" value="" placeholder="Your Last Name" autofocus="autofocus" required>
                             <span id="last-name-error" class="error-message"></span>
                         </div>
                         <div class="form-group">
