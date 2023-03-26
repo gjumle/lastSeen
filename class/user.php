@@ -247,7 +247,7 @@ class User {
             
             echo $user->register();
         }
-        if (isset($POST['recover'])) {
+        if (isset($_POST['recover'])) {
             if (filter_var($_POST['email_username'], FILTER_VALIDATE_EMAIL)) {
                 $email = $_POST['email_username'];
                 $username = null;
@@ -257,8 +257,6 @@ class User {
                 $email = null;
                 $user = User::getUserByUserName($username);
             }
-
-            var_dump($user);
 
             Email::recoverPassword($user);
 
