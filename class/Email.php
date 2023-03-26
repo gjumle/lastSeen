@@ -62,12 +62,14 @@ class Email {
         $headers .= "X-Mailer: PHP/" . phpversion();
 
         $pdo = DB::connectPDO();
-        $stmt = $pdo->prepare("UPDATE users SET password = ? WHERE id = :?");
-        $stmt->execute([$password, $user->getId()]);
+        $stmt = $pdo->prepare("UPDATE users SET password = ? WHERE uid = ?");
+        $stmt->execute([$password, $user->getUid()]);
 
         $email = new Email($to, $subject, $message, $headers);
         var_dump($email);
         $email->send();
+
+        echo "<div class='alert alert-success'>Your password has been sent to your email.</div>";
     }
 
     public static function generatePassword() {
