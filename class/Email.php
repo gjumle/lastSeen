@@ -50,10 +50,11 @@ class Email {
     }
 
     public static function recoverPassword($user) {
+        $password = Email::generatePassword();
         $to = $user->getEmail();
         $subject = "Password Recovery";
         $message = "Hello " . $user->getF_name() . ",<br><br>";
-        $message .= "Your password is: " . $password = Email::generatePassword() . "<br>";
+        $message .= "Your password is: " . $password . "<br>";
         $message .= "If you did not request a password recovery, please contact us at support@hodne.kvalitne.cz<br>";
         $message .= "Thank you for using our services.";
         $headers = "From: support@hodne.kvalitne.cz";
@@ -63,10 +64,9 @@ class Email {
 
         $pdo = DB::connectPDO();
         $stmt = $pdo->prepare("UPDATE users SET password = ? WHERE uid = ?");
-        $stmt->execute([$password, $user->getUid()]);
+        $stmt->execute([password_hash($password, PASSWORD_DEFAULT), $user->getUid()]);
 
         $email = new Email($to, $subject, $message, $headers);
-        var_dump($email);
         $email->send();
 
         echo "<div class='alert alert-success'>Your password has been sent to your email.</div>";

@@ -260,7 +260,7 @@ class User {
 
             Email::recoverPassword($user);
 
-            //header("Location: ./login.php");
+            header("refresh: 5, Location: ./login.php");
             
         }
     }
