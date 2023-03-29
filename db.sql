@@ -45,102 +45,24 @@ CREATE TABLE meetings (
     FOREIGN KEY (contact_id) REFERENCES contacts(cid)
 ) DEFAULT CHARACTER SET utf8;
 
-DELIMITER $$
-CREATE TRIGGER t_meeting_insert
-AFTER INSERT ON meetings
-FOR EACH ROW
-BEGIN
-  DECLARE total_duration TIME;
-  DECLARE total_minutes INT;
-  DECLARE last_time_seen DATETIME;
-  DECLARE total_count_seen INT;
-
-  SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF(end_time, start_time)))) INTO total_duration
-  FROM meetings
-  WHERE contact_id = NEW.contact_id;
-
-  SELECT TIMESTAMPDIFF(MINUTE, '2000-01-01', total_duration) INTO total_minutes;
-
-  SELECT MAX(end_time) INTO last_time_seen
-  FROM meetings
-  WHERE contact_id = NEW.contact_id;
-
-  SELECT COUNT(*) INTO total_count_seen
-  FROM meetings
-  WHERE contact_id = NEW.contact_id;
-
-  UPDATE contacts
-  SET duration_seen = total_minutes,
-      last_seen = last_time_seen,
-      count_seen = total_count_seen
-  WHERE cid = NEW.contact_id;
-END;
-
-// DONT USE THIS TRIGGERS
+CREATE TABLE log (
+    lid INT NOT NULL AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    contact_id INT NOT NULL,
+    start_time DATETIME NOT NULL,
+    end_time DATETIME NOT NULL,
+    location VARCHAR(50) NOT NULL,
+    description VARCHAR(255) NOT NULL,
+    PRIMARY KEY (lid),
+    FOREIGN KEY (user_id) REFERENCES users(uid),
+    FOREIGN KEY (contact_id) REFERENCES contacts(cid)
+) DEFAULT CHARACTER SET utf8;
 
 DELIMITER $$
-
-CREATE TRIGGER insert_meeting_trigger
-AFTER INSERT ON meetings
+CREATE TRIGGER log_meeting AFTER INSERT ON meetings
 FOR EACH ROW
 BEGIN
-    UPDATE contacts
-    SET count_seen = count_seen + 1,
-        last_seen = NEW.end_time,
-        duration_seen = TIMESTAMPDIFF(MINUTE, start_time, end_time) + duration_seen
-    WHERE cid = NEW.contact_id;
+    INSERT INTO log (user_id, contact_id, start_time, end_time, location, description)
+    VALUES (NEW.user_id, NEW.contact_id, NEW.start_time, NEW.end_time, NEW.location, NEW.description);
 END$$
-
-CREATE TRIGGER update_meeting_trigger
-AFTER UPDATE ON meetings
-FOR EACH ROW
-BEGIN
-    UPDATE contacts
-    SET duration_seen = duration_seen - TIMESTAMPDIFF(MINUTE, old.start_time, old.end_time) + TIMESTAMPDIFF(MINUTE, new.start_time, new.end_time)
-    WHERE cid = NEW.contact_id;
-    
-    IF NOT (OLD.contact_id <=> NEW.contact_id) THEN
-        UPDATE contacts
-        SET count_seen = count_seen + 1,
-            last_seen = NEW.end_time
-        WHERE cid = NEW.contact_id;
-        
-        UPDATE contacts
-        SET count_seen = count_seen - 1
-        WHERE cid = OLD.contact_id;
-    ELSEIF NOT (OLD.end_time <=> NEW.end_time) THEN
-        UPDATE contacts
-        SET last_seen = NEW.end_time
-        WHERE cid = NEW.contact_id;
-    END IF;
-END$$
-
-CREATE TRIGGER delete_meeting_trigger
-AFTER DELETE ON meetings
-FOR EACH ROW
-BEGIN
-  UPDATE contacts SET duration_seen = (
-    SELECT COALESCE(SUM(TIME_TO_SEC(TIMEDIFF(end_time, start_time))) / 60, 0) AS duration
-    FROM meetings
-    WHERE contact_id = OLD.contact_id
-  ) WHERE cid = OLD.contact_id;
-  
-  UPDATE contacts SET count_seen = (
-    SELECT COUNT(*) AS count
-    FROM meetings
-    WHERE contact_id = OLD.contact_id
-  ) WHERE cid = OLD.contact_id;
-  
-  UPDATE contacts SET last_seen = (
-    SELECT MAX(end_time) AS last_time
-    FROM meetings
-    WHERE contact_id = OLD.contact_id
-  ) WHERE cid = OLD.contact_id;
-
-  UPDATE contacts SET duration_seen = 0 WHERE duration_seen < 0;
-  UPDATE contacts SET count_seen = 0 WHERE count_seen < 0;
-  UPDATE contacts SET last_seen = 0 WHERE last_seen < 0;
-END$$
-
 DELIMITER ;
-
