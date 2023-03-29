@@ -76,6 +76,8 @@ BEGIN
   WHERE cid = NEW.contact_id;
 END;
 
+// DONT USE THIS TRIGGERS
+
 DELIMITER $$
 
 CREATE TRIGGER insert_meeting_trigger
