@@ -29,6 +29,8 @@ User::logout();
     <title>lastSeen | Profile</title>
 
     <link rel="stylesheet" type="text/css" href="css/master.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 </head>
 
 <body>
@@ -74,7 +76,7 @@ User::logout();
             </nav>
         </header>
         <div class="page container">
-                <!--
+            <!--
                 <div class="profile-heading profile section">
                     <div class="avatar avatar-xl">
                         <div class="avatar-content">
@@ -343,10 +345,11 @@ User::logout();
                     </div>
                 </div>
                 -->
-                <?php echo User::renderUser($_COOKIE['uid']); ?>
-            </div>
+            <?php echo User::renderUser($_COOKIE['uid']); ?>
         </div>
     </div>
+    </div>
+    <script srd="./js/master.js"></script>
 </body>
 
 </html>

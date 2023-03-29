@@ -29,6 +29,8 @@ User::logout();
     <title>lastSeen | Admin</title>
 
     <link rel="stylesheet" type="text/css" href="css/master.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 </head>
 
 <body>
@@ -78,6 +80,7 @@ User::logout();
             <?php echo User::renderUsers(null); ?>
         </div>
     </div>
+    <script srd="./js/master.js"></script>
 </body>
 
 </html>
