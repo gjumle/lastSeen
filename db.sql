@@ -66,3 +66,10 @@ BEGIN
     VALUES (NEW.user_id, NEW.contact_id, NEW.start_time, NEW.end_time, NEW.location, NEW.description);
 END$$
 DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE clean_log()
+BEGIN
+    DELETE FROM log WHERE end_time < NOW();
+END$$
+DELIMITER ;
