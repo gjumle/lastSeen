@@ -1,0 +1,13 @@
+Vítejte v návodu na instalaci webového projektu s nastavením připojení k databázi!
+
+Pro správnou funkčnost našeho projektu je třeba zajistit správné připojení k databázi. Níže jsou uvedeny kroky, jak nastavit toto připojení v PHP verze 8.4 a MySQL verze 13.2.
+- Nejprve je třeba vytvořit databázi pro náš projekt v MySQL. Toto lze udělat pomocí SQL dotazu CREATE DATABASE. Je vhodné tuto databázi pojmenovat podle názvu našeho projektu.
+- Poté je třeba vytvořit tabulky v této databázi, pokud jsou pro projekt potřebné. To lze provést pomocí SQL dotazů CREATE TABLE.
+- Nyní je třeba upravit soubor ./class/DB.php, který bude obsahovat nastavení připojení k databázi.
+
+Další dúležité informace:
+- Přihlašovací údaje do administrátorského rozhraní: login: admin, heslo: USJLURmQ95cKFf
+- Pole s formuláři jsou zobrazována poze v prohlížeči Firefox. Nutno prohlížet webovou aplikaci na tomto prohlížeči
+
+URL odkaz: http://hodne.kvalitne.cz
+- Pro spustění je potřeba povolit nezabezpečené připojení https v nastavení prohlížeče
