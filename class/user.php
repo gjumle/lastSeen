@@ -553,10 +553,10 @@ class User {
                                                 <div class="feed-ui-media-right">
                                                     <div class="feed-ui-media-right-components">
                                                         <div class="feed-ui-media-right-component">
-                                                            <a href="?edit=' . $user->getUid() . '&#' . $user->getUid() . '" class="btn btn-primary btn-edit" type="submit" name="logout">Edit</a>
+                                                            <a href="?edit=' . $user->getUid() . '&#' . $user->getUid() . '" class="btn btn-primary btn-edit" type="submit" name="edit">Edit</a>
                                                         </div>
                                                         <div class="feed-ui-media-right-component">
-                                                            <a href="?delete=' . $user->getUid() . '" class="btn btn-primary btn-delete" type="submit" name="logout">Delete</a>
+                                                            <a href="?delete=' . $user->getUid() . '" class="btn btn-primary btn-delete" type="submit" name="delete">Delete</a>
                                                         </div>
                                                     </div>
                                                 </div>

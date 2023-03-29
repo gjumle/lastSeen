@@ -441,10 +441,10 @@ class Contact {
                                                 <div class="feed-ui-media-right">
                                                     <div class="feed-ui-media-right-components">
                                                         <div class="feed-ui-media-right-component">
-                                                            <a href="?edit=' . $contact->getCid() . '&#' . $contact->getCid() . '" class="btn btn-primary btn-edit" type="submit" name="logout">Edit</a>
+                                                            <a href="?edit=' . $contact->getCid() . '&#' . $contact->getCid() . '" class="btn btn-primary btn-edit" type="submit" name="delete">Edit</a>
                                                         </div>
                                                         <div class="feed-ui-media-right-component">
-                                                            <a href="?delete=' . $contact->getCid() . '" class="btn btn-primary btn-delete" type="submit" name="logout">Delete</a>
+                                                            <a href="?delete=' . $contact->getCid() . '" class="btn btn-primary btn-delete" type="submit" name="delete">Delete</a>
                                                         </div>
                                                     </div>
                                                 </div>
