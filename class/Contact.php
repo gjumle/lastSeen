@@ -1,7 +1,5 @@
 <?php
 
-use Contact as GlobalContact;
-
 class Contact {
     private $cid;
     private $user_id;
