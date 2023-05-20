@@ -72,6 +72,14 @@ User::logout();
                                 <a href="?logout" class="btn btn-primary btn-signup" type="sumbit" name="logout">Logout</a>
                             </div>
                         </li>
+                        <li class="nav-object-group">
+                            <div class="nav-item logged-in-nav">
+                                <a href="?mode=dark" class="btn btn-primary btn-login">Dark Mode</a>
+                            </div>
+                            <div class="nav-item logged-in-nav">
+                                <a href="?lang=cz" class="btn btn-primary btn-signup" type="sumbit" name="lang">CZ</a>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </nav>
