@@ -22,6 +22,7 @@ if (isset($_COOKIE['logged_in'])) {
         <title>Home</title>
 
         <link rel="stylesheet" type="text/css" href="css/master.css">
+        <link rel="icon" type="image/png" href="./svg/favicon.ico">
     </head>
     <body>
         <div class="view">
