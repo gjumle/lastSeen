@@ -25,6 +25,7 @@ User::logout();
     <title>lastSeen | Admin</title>
 
     <link rel="stylesheet" type="text/css" href="css/master.css">
+    <link rel="icon" type="image/x-icon" href="./svg/favicon.ico">
 </head>
 
 <body>
