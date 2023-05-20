@@ -371,7 +371,7 @@ class Meeting {
             </div>';
 
         }
-        $meetings = Meeting::getMeetings($_COOKIE['uid'], $_POST['order-by']);
+        $meetings = Meeting::getMeetings($_COOKIE['uid']);
         foreach ($meetings as $meeting) {
             if (isset($_GET['edit']) && $_GET['edit'] == $meeting->getMid()) {
                 echo '<div class="content">
