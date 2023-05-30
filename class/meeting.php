@@ -510,7 +510,7 @@ class Meeting {
                                                     <a href="?edit=' . $meeting->getMid() .'" class="btn btn-primary btn-edit" type="submit" name="edit">Edit</a>
                                                 </div>
                                                 <div class="feed-ui-media-right-component">
-                                                    <a href="?delete=' . $meeting->getMid() . '" class="btn btn-primary btn-delete" type="submit" name="delete">Delete</a>
+                                                    <a href="?delete=' . $meeting->getMid() . '" class="btn btn-primary btn-delete" id="delete" type="submit" name="delete" onclick="deleteCheck()">Delete</a>
                                                 </div>
                                             </div>
                                         </div>

@@ -28,6 +28,7 @@ if (isset($_COOKIE['logged_in'])) {
     <link rel="icon" type="image/x-icon" href="./svg/favicon.ico">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <scrtipt src="js/master.js"></scrtipt>
 </head>
 
 <body>

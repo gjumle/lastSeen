@@ -31,6 +31,7 @@ User::handleForm();
     <link rel="icon" type="image/x-icon" href="./svg/favicon.ico">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <scrtipt src="js/master.js"></scrtipt>
 </head>
 
 <body>
