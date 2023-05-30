@@ -16,14 +16,16 @@ if (isset($_COOKIE['logged_in'])) {
 User::handleForm();
 
 ?>
-
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <link rel="icon" type="image/x-icon" href="./svg/favicon.ico">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta lang="en">
+    <meta dir="ltr">
+    <meta name="author" content="gjumle">
+    <meta name="description" content="lastSeen registration page">
 
     <title>Register</title>
 

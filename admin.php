@@ -18,13 +18,15 @@ User::handleForm();
 User::logout();
 
 ?>
-
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta lang="en">
+    <meta dir="ltr">
+    <meta name="author" content="gjumle">
+    <meta name="description" content="lastSeen admin">
 
     <title>lastSeen | Admin</title>
 
@@ -32,6 +34,7 @@ User::logout();
     <link rel="icon" type="image/x-icon" href="./svg/favicon.ico">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <scrtipt src="js/master.js"></scrtipt>
 </head>
 
 <body>

@@ -13,14 +13,15 @@ if (isset($_COOKIE['logged_in'])) {
 }
 
 ?>
-
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta lang="en">
     <meta dir="ltr">
+    <meta name="author" content="gjumle">
+    <meta name="description" content="lastSeen index page">
 
     <title>Home</title>
 
