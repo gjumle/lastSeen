@@ -56,7 +56,7 @@ class Email {
         $message = "Hello " . $user->getF_name() . ",<br><br>";
         $message .= "Your password is: " . $password . "<br>";
         $message .= "If you did not request a password recovery, please contact us at support@hodne.kvalitne.cz<br>";
-        $message .= "Thank you for using our services.";
+        $message .= "Thank you for using our platform.";
         $headers = "From: support@hodne.kvalitne.cz";
         $headers .= "MIME-Version: 1.0" . "\r";
         $headers .= "Content-type:text/html;charset=UTF-8" . "\r";
@@ -65,9 +65,14 @@ class Email {
         $pdo = DB::connectPDO();
         $stmt = $pdo->prepare("UPDATE users SET password = ? WHERE uid = ?");
         $stmt->execute([password_hash($password, PASSWORD_DEFAULT), $user->getUid()]);
+        if ($stmt->rowCount() == 0) {
+            echo "<div class='alert alert-danger'>Something went wrong. Please try again later.</div>";
+            return;
+        }
 
         $email = new Email($to, $subject, $message, $headers);
         $email->send();
+        var_dump($email);
 
         echo "<div class='alert alert-success'>Your password has been sent to your email.</div>";
     }

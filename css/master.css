@@ -64,10 +64,6 @@ ul {
     list-style: none;
 }
 
-li {
-    text-align: match-parent;
-}
-
 .nav-bar .nav-link {
     display: flex;
     flex-direction: column;
@@ -184,7 +180,6 @@ nav {
     justify-content: space-around;
     align-items: center;
     position: relative;
-    user-select: none;
     transition: border-color 0.1s linear 0.1s, color 0.1s linear;
     font-weight: 700;
 
@@ -383,14 +378,11 @@ input::placeholder {
     resize: none;
     overflow: hidden;
     pointer-events: none;
-    user-select: none;
 
     border: 0;
     padding: inherit;
     margin: 0;
     text-decoration: inherit;
-    ime-mode: inherit;
-    scrollbar-width: iniherit;
     visibility: hidden;
 }
 
@@ -586,7 +578,6 @@ h2 {
 
 li {
     display: list-item;
-    text-align: match-parent;
 }
 
 .list-stats .text-center li {
@@ -938,9 +929,6 @@ main {
 
 }
 
-.btn-svg-path {
-    user-select: none;
-}
 
 #dashboard-feed {
     padding-top: 20px;
@@ -1231,6 +1219,19 @@ p {
 .activity-calendar {
     margin-right: 32px;
     float: left;
+}
+
+.alert {
+    padding: 8px 16px;
+    margin-bottom: 16px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.alert-success {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
 }
 
 .vh {
