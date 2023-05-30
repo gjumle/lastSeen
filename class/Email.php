@@ -72,7 +72,6 @@ class Email {
 
         $email = new Email($to, $subject, $message, $headers);
         $email->send();
-        var_dump($email);
 
         echo "<div class='alert alert-success'>Your password has been sent to your email.</div>";
     }
